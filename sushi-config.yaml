@@ -5,28 +5,31 @@
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 id: tewhatuora.rheumaticfever.ig
 canonical: https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever
-name: Health New Zealand Te Whatu Ora FHIR Rheumatic Fever Implementation Guide
-title: Health New Zealand Te Whatu Ora FHIR Rheumatic Fever Implementation Guide
-description: Health New Zealand Te Whatu Ora FHIR Rheumatic Fever Implementation Guide
+name: Rheumatic Fever FHIR Implementation Guide
+title: Rheumatic Fever FHIR Implementation Guide
+description: Rheumatic Fever FHIR Implementation Guide
 status: draft
-version: 0.0.1
+version: 0.4.3
 fhirVersion: 4.0.1
 copyrightYear: 2024+
 releaseLabel: draft # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
 # license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 # jurisdiction: urn:iso:std:iso:3166#NZ "New Zealand"
-# publisher:
-#   name: Te Whatu Ora
-#   url: https://www.tewhatuora.govt.nz/
+publisher:
+  name: Te Whatu Ora
+  url: https://www.tewhatuora.govt.nz/
   # email: test@example.org
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced
 # use cases, the value can be an object with keys for id, uri, and version.
 #
-# dependencies:
-#
-#
+dependencies:
+  fhir.org.nz.ig.base: 
+    uri: http://fhir.org.nz/ig/base/ImplementationGuide/fhir.org.nz.ig.base
+    version: 3.0.0
+  hl7.fhir.uv.sdc: 3.0.0        # for indicating preferred terminology server for Questionnaire answerValueSets
+
 # The pages property corresponds to IG.definition.page. SUSHI can
 # auto-generate the page list, but if the author includes pages in
 # this file, it is assumed that the author will fully manage the
@@ -63,6 +66,11 @@ parameters:
   default-version: true
   suppressed-ids: $examples
   display-warnings: true
+  no-narrative:             #  Suppress narrative so gen'd canon instance JSON ready to seed 
+  - Observation/*
+  - CareTeam/*
+  - Questionnaire/*
+
 #   excludettl: true
 #   validation: [allow-any-extensions, no-broken-links]
 #
@@ -76,7 +84,24 @@ parameters:
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
-  Artifacts: artifacts.html
+  Artifacts:
+    All artifacts: artifacts.html
+    Structure definitions and canonical items: artifacts.html#definitions
+    Extensions: artifacts.html#extensions
+    Terminology definitions: artifacts.html#terminology
+    Example representations: artifacts.html#examples
+    Data consent examples: artifacts.html#consent
+  Documentation:
+    Changelog : changelog.html
+    Data models: rheumatic-fever-data-models.html
+    Data mapping: rheumatic-fever-data.html
+    Consent-based resource access control: consentBasedAccessControl.html
+    
+    Terminology overview: terminology.html
+    Parties in the examples: rheumatic-fever-examples-cast.html
+    Version History: history.html
+  API:
+    API capability statement: CapabilityStatement-CareInTheCommunityCapabilityStatement.html
   Support:
     FHIR Spec: new-tab http://hl7.org/fhir/R4/index.html
     Download IG : full-ig.zip
@@ -91,8 +116,13 @@ menu:
 # Those who need more control or want to add additional details to the contact values can use
 # contact directly and follow the format outlined in the ImplementationGuide resource and
 # ContactDetail.
-#
-#
+contact:
+   - name: David Grainger
+     telecom:
+       - system: email 
+         value: david.grainger@middleware.co.nz
+         use: work
+
 # The global property corresponds to the IG.global property, but it
 # uses the type as the YAML key and the profile as its value. Since
 # FHIR does not explicitly disallow more than one profile per type,
@@ -157,6 +187,100 @@ menu:
 #     - StructureDefinition/bark-control
 #     - StructureDefinition/bee-sting
 #
+groups:
+  Definitions:
+    name: definitions
+    description: FHIR structure definitions (profiles) and canonical instance definitions
+    resources:
+    - LeadProvidersGroup
+    - StructureDefinition/nz-sharedcare-rheumaticfever-careplan
+    - StructureDefinition/nz-sharedcare-rheumaticfever-careteam
+    - StructureDefinition/nz-sharedcare-rheumaticfever-condition
+    - StructureDefinition/nz-sharedcare-rheumaticfever-patient
+    - StructureDefinition/nz-sharedcare-rheumaticfever-medicationrequest
+    - StructureDefinition/nz-sharedcare-rheumaticfever-diagnosisgroup
+    - MedicationsAndFollowUpGuidanceQuestionnaire
+    - PatientMedicationAllergyQuestionnaire
+    - PatientWhanauGoalsPreferencesQuestionnaire
+    - SecondaryProphylaxisHealthAssessmentQuestionnaire
+
+  Extensions:
+    name: extensions
+    description: FHIR extension definitions
+    resources:
+    - StructureDefinition/rf-patient-whanaumember-role
+    - StructureDefinition/rf-patient-whanaumember-relationship
+    - StructureDefinition/rf-patient-whanaumember-primary
+    - StructureDefinition/rf-careplan-closure-reason
+    - StructureDefinition/rf-careplan-onhold-reason
+    - StructureDefinition/rf-careplan-lifelongSecondaryProphylaxis
+    - StructureDefinition/rf-condition-diagnosticcertainty
+    - StructureDefinition/rf-condition-rhdseverity
+    - StructureDefinition/rf-condition-assessmentdate
+    - StructureDefinition/rf-condition-symptomaticAtDiagnosis
+    - StructureDefinition/rf-medicationrequest-medicationfrequency
+
+  Examples:
+    name: examples
+    description: All rheumatic fever example FHIR instances
+    resources:
+    - BasicCarePlan
+    - BenzathineMedication
+    - CarePlanClosed
+    - CarePlanWentOnHold
+    - CarePlanWithOneAppointmentCompleted
+    - CarePlanWithSecondaryProphylaxisPlanned
+    - DraftCarePlan
+    - DiagnosisExample-ECHO
+    - DiagnosisExample-JonesCriteria
+    - DiagnosisExample-StrepEvidence
+    - DiagnosisExample-StrepEvidence-Secondary
+    - Encounter-Diagnosis
+    - Encounter-SecondaryProphylaxisAppointment
+    - MadeleineMeringue
+    - MadeleineMeringueAndWhanau
+    - MedicationsAndFollowUpGuidanceQuestionnaireResponse
+    - MedicationStatement-August
+    - PaniaPunga
+    - PatientMedicationAllergyQuestionnaireResponse
+    - PatientWhanauGoalsPreferencesQuestionnaireResponse
+    - PlannedBenzathineMedication
+    - PlannedBenzathineMedicationWithLignocaine
+    - RFPatientHealthAssessmentQuestionnaireResponse
+    - SecondaryProphylaxisAppointment-August-Booked
+    - SecondaryProphylaxisAppointment-August-Fulfilled
+    - SecondaryProphylaxisAppointment-September-Booked
+    - SecondaryProphylaxisAugustEncounterBundle
+    - SecondaryProphylaxisCareTeam
+    - SevereRfConditionExample
+    - SevereRfConditionWithDiagnosisEvidence
+    
+  Terminology:
+    name: terminology
+    description: All rheumatic fever ValueSets and CodeSystems
+    resources:
+    - RheumaticFeverConditionDiagnosticCertaintyCodeSystem
+    - RheumaticFeverConditionDiagnosticCertaintyValueSet
+    - RheumaticFeverConditionDiagnosisSummaryValueSet
+    - RheumaticFeverConditionSymptomaticAtDiagnosisValueSet
+    - RheumaticFeverConditionRHDSeverityValueSet
+    - RheumaticFeverDiagnosisObservationGroupValueSet
+    - RheumaticFeverMedicationAllergyValueSet
+    - RheumaticFeverCareTeamParticipantRoleValueSet
+    - RheumaticFeverMedicationRequestMedicationFrequencyValueSet
+    - QualifiedYesNoAnswerValueSet
+    - ExternalSystemIdentifierTypeValueSet
+    - ExternalSystemIdentifierTypeCodeSystem
+
+  Consent:
+    name: consent
+    description: Consent profiles/definitions and examples
+    resources:
+    - RheumaticFeverActiveConsentExample
+    - ProposedConsentBaseExample
+    - ProposedConsentCoverageExample
+    - ConsentByRelatedPersonExample
+
 #
 # The ImplementationGuide resource defines several other properties
 # not represented above. These properties can be used as-is and

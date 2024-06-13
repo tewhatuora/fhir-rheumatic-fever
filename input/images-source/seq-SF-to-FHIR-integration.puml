@@ -1,0 +1,108 @@
+@startuml seq-SF-to-FHIR-integration
+
+
+autonumber "<b> 00"
+
+skinparam ArrowFontSize 16
+skinparam BoxPadding 10
+skinparam dpi 400
+skinparam MaxMessageSize 350
+skinparam NoteFontSize 13
+skinparam ParticipantPadding 5
+skinparam responseMessageBelowArrow true
+skinparam roundcorner 15
+skinparam sequenceArrowThickness 2
+skinparam SequenceMessageAlignment left
+skinparam ArrowFontSize 12
+skinparam sequenceStyle uml2
+skinparam sequencegroupfontsize 14
+' semi-transparent sequence groups!
+' see https://sarafian.github.io/tips/2021/03/11/plantuml-tips-tricks-1.html#:~:text=responseMessageBelowArrow-,Semi,-transparent%20group%20backgrounds
+skinparam SequenceGroupBodyBackgroundColor #EEEEFF50
+
+scale max 450 width
+
+
+'' ** page 1
+title "Rheumatic Fever: Salesforce Health Cloud patient registration integration to Te Whatu Ora FHIR"
+
+actor "rheumatic fever collaborator" as USER
+participant "FHIR-integrated APP/UX" as APIC #Orange
+participant "Salesforce\nHealth Cloud" as OLLIE #YellowGreen
+database "Salesforce Mulesoft Connector\nplatform event" as SHIFTER #IndianRed
+database "Integration Health \nMonitoring (Datadog)" as WATCHDOG #LightCyan
+participant "Mulesoft" as TILLY #SkyBlue
+
+database "Mulesoft\nDead\nLetter\nQueue" as DLQ #LightCyan
+
+  entity "NIA OAUTH service" as WICKET
+  entity "**HNZ FHIR API**\n(AWS FHIRWorks)" as FHIR #LightSalmon
+
+
+entity "NHI FHIR API" as NHI
+
+autonumber stop
+
+?-> TILLY: init
+TILLY -> WICKET++: OAUTH2.0 Client Credentials Flow(\n\t1. api-key\n\t2. client credentials 
+return OAUTH token
+
+activate USER
+USER -> OLLIE: start registering RF patient 
+USER -> OLLIE: enter patient name, NHI 
+OLLIE -> NHI: NHI search
+OLLIE -> USER: confirm correct NHI to use
+USER -> OLLIE: select correct NHI
+USER -> OLLIE: enter other registration data
+USER -> OLLIE++ #YellowGreen: Patient registration valid\n data entry completed
+
+USER -> USER:  User is now free to \nprogress other RF tasks
+deactivate USER
+
+OLLIE -/ SHIFTER #IndianRed: <color:red>PATIENT-CHANGE (SF obj. Ids)
+'note right of SHIFTER #Yellow: Platform events stored \nfor up to 3 days for replay if needed
+TILLY -> SHIFTER #SkyBlue: <color:red>get next event (SF object IDs)
+activate TILLY #SkyBlue
+
+TILLY -/ WATCHDOG: Log start of processing \nplatform event
+
+note right of TILLY #Yellow
+  Mulesoft..
+  1. reads the 'platform event' (which deletes it) and places on persistent queue.
+  2. dequeues the event; extracts the relevant data from SF using the 'Connector'
+  3. if the sequence fails with an unrecoverable error, Mulesoft places the 'event' on DLQ
+endnote
+
+TILLY -> OLLIE: Retrieve Patient data \n<size:10>(Mulesoft Salesforce connector)
+deactivate OLLIE
+
+alt #LightGreen successful integration sequence
+
+  TILLY -> FHIR++: ""GET /Patient?""\n""identifier=https://standards.digital.health.nz/ns/nhi-id|{{NHI}}&""\n""_profile={{RF Patient profile}}""
+  FHIR -> TILLY--: ""200 OK"" bundle
+
+  TILLY -> TILLY: Form FHIR Bundle payload from Patient, CarePlan \nand Consent data from Salesforce HealthCloud
+  TILLY -> FHIR++: ""POST /Bundle""
+  note left of TILLY: Mulesoft retries \nFHIR API call if needed
+  group transaction POST bundle
+    FHIR -> PATIENT: POST new instance
+    FHIR -> CAREPLAN: POST new instance
+  end
+
+  FHIR -> TILLY--: ""201 CREATED"" - instance representations 
+  TILLY -/ WATCHDOG: Log FHIR operation outcomes
+
+else #SkyBlue failed integration sequence
+
+  TILLY -> FHIR++: ""POST /Patient"" some update
+  FHIR -> TILLY--: ""4xx / 5xx"" error
+
+  TILLY -> DLQ: event placed on DLQ
+  TILLY -/ WATCHDOG: Log FHIR operation outcomes
+end
+
+
+deactivate TILLY 
+
+
+@enduml

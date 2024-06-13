@@ -1,0 +1,198 @@
+@startuml obj-FHIR-data-diagnosis
+
+top to bottom direction
+skinparam dpi 200
+allow_mixing
+scale 400*900
+
+skinparam ActivityDiamondBackgroundColor #RoyalBlue
+skinparam ArrowColor #SlateGrey   
+skinparam ArrowFontColor #RoyalBlue
+skinparam ArrowFontColor #SlateGrey  
+skinparam ArrowFontSize 12
+skinparam ArrowMessageAlignment left
+skinparam BoxPadding 10
+skinparam linetype ortho
+skinparam nodesep 30
+skinparam ranksep 60
+skinparam roundcorner 5
+skinparam sequenceArrowThickness 2
+skinparam TitleFontSize 20
+
+caption FHIR resource instance object model
+footer "Health NZ/Te Whatu Ora.  Generated from PlantUML source on %date('dd/MM/yyyy')"
+
+!procedure $Coding($Alias,$System,$Code,$Display)
+  object "<color:GhostWhite>$System" as $Alias #MediumPurple {
+    <color:GhostWhite><size:11>**$Code**-$Display
+  }
+!endprocedure
+
+!procedure $Quantity($Alias,$Quantity,$Value,$Unit)
+  object "<color:GhostWhite><size:12>$Quantity</color>" as $Alias #DimGrey {
+    <color:GhostWhite><size:11>**$Value** ""$Unit""
+  }
+!endprocedure
+
+' ******** ******** ******** ******** ******** ******** ******** ******** 
+title "Diagnosis representation"
+
+package "Condition and diagnosis instances linked from RF CarePlan" as Activities #Snow { 
+  
+  object "Summary of condition\n<size:15>:**CONDITION**" as RFCOND <<RF profile>> #PaleGreen {
+    * identifier (usual): {{salesforce diagnosis Id}}
+    ---
+     * code: ""#195528001"" Acute rheumatic fever
+     * severity: ""#mild | #moderate | #severe""
+     * clinicalStatus: #active etc.
+     * recordedDate: **date of diagnosis**
+     * onsetDateTime: date of condition onset
+    -- extensions --
+      * **rhdSeverity**: code (in dedicated ValueSet)
+      * **diagnosticCertainty**: code (in dedicated ValueSet)
+      * **assessmentDate**: date of RHD severity assess.(UTC)
+      * **symptomStatusAtDiagnosis**: SNOMED
+  }
+
+  object "context of diagnosis:ENCOUNTER" as DENCOUNTER <<FHIR R4B>> #LightGoldenRodYellow {
+    Tracks context of patient's diagnosis.
+    ---
+    * status: ""#finished""
+    * class: ""#AMB""
+    * **serviceType**: context of diagnosis (SNOMED)
+    * period.start: date of diagnosis
+    * participant[0]: Reference[Patient] 
+    + location[0]: hospital or service name
+    + location[1]: patient home address when diagnosed
+    + location[2]: school when diagnosed
+  }
+
+  
+  ' class "patient detail at time of diagnosis\n**:PATIENT**" as DPATIENT <<RF profile>> #Pink {
+  '   Extends NzPatient (NZ Base) with 
+  '    RF patient registration detail.
+  '   ---
+  '   *identifier[NHI] (official): NHI
+  '   ---
+  '   *name: HumanName
+  '   *birthDate: date
+  '   *communication.language
+  '   *gender: code
+  '   *deceasedBoolean: boolean
+  '   *telecom: ContactPoint[]
+  '   *address: Address[]
+  '   +iwi: code
+  '   +ethnicity 0..*: code[]
+  '   +nzCitizen: code
+  '   .. (extensions)..
+  '   +**patient.contact[].**
+  '   +**interpreterRequired**: boolean
+  ' }
+
+  object "<size:18>ECHO assessment\n**:OBSERVATION**" as OBS1 <<RF profile>> #DarkSeaGreen {
+    *identifier: type #salesforce-observation-id (RFCCS)
+    ---
+    * status: ""#final""
+    * effectiveDateTime: datetime
+    * code: 439238004 <size:10>Echocardiography test interpretation</size>
+    ---
+    * components 0..*
+    \t+value[x]: result or measurement
+    \t+dataAbsentReason: code
+    \t+interpretation: code
+  }
+
+  object "<size:18>Jones Criteria\n**:OBSERVATION**" as OBS2 <<RF profile>> #DarkSeaGreen {
+    *identifier: type #salesforce-observation-id (RFCCS)
+    ---
+    * status: ""#final""
+    * effectiveDateTime: datetime
+    * code: 447541000210107 <size:10>New Zealand Jones Criteria Assessment</size>
+    ---
+    * components 0..*
+    \t+value[x]: result or measurement
+    \t+dataAbsentReason: code
+    \t+interpretation: code
+  }
+
+  object "<size:18>Strep primary evidence\n**:OBSERVATION**" as OBS3 <<RF profile>> #DarkSeaGreen {
+    *identifier: type #salesforce-observation-id (RFCCS)
+    ---
+    * status: ""#final""
+    * effectiveDateTime: datetime
+    * code: 448011000210101 <size:12>Evidence of preceding\n<size:12>Streptococcus group A infection
+    ---
+    * components 0..*
+    \t+value[x]: result or measurement
+    \t+dataAbsentReason: code
+    \t+interpretation: code
+  }
+
+  object "<size:18>Strep repeat testing\n**:OBSERVATION**" as OBS4 <<RF profile>> #DarkSeaGreen {
+    *identifier: type #salesforce-observation-id (RFCCS)
+    ---
+    * status: ""#final""
+    * effectiveDateTime: datetime
+    * code: 448011000210101 <size:12>Evidence of preceding\n<size:12>Streptococcus group A infection
+    ---
+    * components 0..*
+    \t+value[x]: result or measurement
+    \t+dataAbsentReason: code
+    \t+interpretation: code
+  }
+
+  $Coding(EncContext,"Diagnostic context SNOMED (<size:9>Encounter.serviceType</size>)","#22232009","Hospital (environment)")
+  $Coding(EncContext,"Diagnostic context SNOMED (<size:9>Encounter.serviceType</size>)","#257585005","Clinic (environment)")
+  $Coding(EncContext,"Diagnostic context SNOMED (<size:9>Encounter.serviceType</size>)","#365856005","Screening finding (finding)")
+  $Coding(EncContext,"Diagnostic context SNOMED (<size:9>Encounter.serviceType</size>)","#261665006","Unknown (qualifier value)")
+
+  $Coding(JONESCODING,"Jones criteria SNOMED","#703119002","Carditis due to rheumatic fever (disorder)")
+  $Coding(JONESCODING,"Jones criteria SNOMED","#200951007","Erythema marginatum in acute rheumatic fever (disorder)")
+  $Coding(JONESCODING,"Jones criteria SNOMED","#11211002","Migratory polyarthritis (disorder)")
+  $Coding(JONESCODING,"Jones criteria SNOMED","#165468009","Erythrocyte sedimentation rate ..")
+  $Coding(JONESCODING,"Jones criteria SNOMED","#..\t\t\t","Other Jones criteria..")
+
+}
+
+' positioning
+
+' connectors
+CAREPLAN ".addresses\n<size:14>1" ---> "<size:14>1..*" RFCOND
+
+note on link #Yellow
+If diagnosis changes the patient's condition, 
+a new version of this instance structure is
+created for the revised condition and diagnosis.
+endnote
+
+RFCOND ".encounter" -r-> DENCOUNTER
+RFCOND "evidence[0].detail" -d-> "<size:14>1" OBS1
+RFCOND "\nevidence[1].detail" -d-> "<size:14>1" OBS2
+RFCOND "evidence[2].detail" -d--> "<size:14>1" OBS3
+OBS3 "hasMember 1" <-d--> "derivedFrom 0..1" OBS4
+note on link #Yellow
+At most one repeat instance per primary Observation
+endnote
+
+DENCOUNTER "\n\n\n<color:MediumPurple><size:14>.serviceType" -[#MediumPurple,dotted]u-> EncContext
+
+OBS2 "\n<color:MediumPurple><size:14>.component.code" -[#MediumPurple,dotted]--> JONESCODING
+
+legend bottom
+  This model shows how a rheumatic fever patient's condition and diagnosis are represented in FHIR.
+
+  Note that multiple FHIR ""Observation"" instances are used, each representing a logical of 
+  similar diagnosis attributes.
+
+  As FHIR ""Observation"" instances MUST be coded ("".code"") and only SNOMED codes defined by
+   a ValueSet will be used for this.
+
+  Within each Observation instance, all of its "".component[]"" values are SNOMED-coded.
+
+  **Notes** 
+  1) Arrows indicate direction of FHIR reference
+  2) Object colour shading as per //Data Dictionary// mapping.
+endlegend
+
+
+@enduml

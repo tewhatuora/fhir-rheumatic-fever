@@ -3,3 +3,7 @@ temp
 output
 fsh-generated
 input-cache
+localscripts/node_modules
+localscripts/package-lock.json
+.DS_Store
+Thumbs.db

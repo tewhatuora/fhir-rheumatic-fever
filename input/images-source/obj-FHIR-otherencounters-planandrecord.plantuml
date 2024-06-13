@@ -1,0 +1,140 @@
+@startuml obj-FHIR-otherencounters-planandrecord
+
+top to bottom direction
+skinparam dpi 200
+allow_mixing
+scale 400 width
+
+skinparam ActivityDiamondBackgroundColor #RoyalBlue
+skinparam ArrowColor #SlateGrey   
+skinparam ArrowFontColor #RoyalBlue
+skinparam ArrowFontColor #SlateGrey  
+skinparam ArrowFontSize 12
+skinparam ArrowMessageAlignment left
+skinparam BoxPadding 10
+skinparam linetype ortho
+skinparam nodesep 30
+skinparam ranksep 60
+skinparam roundcorner 5
+skinparam sequenceArrowThickness 2
+skinparam TitleFontSize 20
+
+caption FHIR resource instance object model
+
+!procedure $Coding($Alias,$System,$Code,$Display)
+  object "<color:GhostWhite>$System" as $Alias #MediumPurple {
+    <color:GhostWhite><size:11>**$Code**-$Display
+  }
+!endprocedure
+
+!procedure $Quantity($Alias,$Quantity,$Value,$Unit)
+  object "<color:GhostWhite><size:12>$Quantity</color>" as $Alias #DimGrey {
+    <color:GhostWhite><size:11>**$Value** ""$Unit""
+  }
+!endprocedure
+
+!procedure $ObjectDiagramLegendWithNote($heading,$noteline)
+  legend bottom
+    **$heading**
+    $noteline
+  endlegend
+!endprocedure
+
+' ******** ******** ******** ******** ******** ******** ******** ******** 
+title "Other RF care planning and recording"
+
+package "Activity resources in the CarePlan" as Activities #Snow { 
+  
+  'object "secondary prophylaxis\nmedication planning" as PLAN_BENZA_2023 #LightSalmon
+
+  object "planned DENTAL appointment\n:**APPOINTMENT**" as FUTURE_APPT #Red {
+    *identifier: type #salesforce-careplanactivity-id (RFCCS)
+    ---
+    * status: ""**#booked**""
+    * start: ""2024-07-04""
+    * serviceType: ""#772071006"" | Referral to dentist (procedure)
+    * supportingInfo: dental service provider Ref(org by name)
+  }
+
+  object "Cancelled specialist appointment\n:**APPOINTMENT**" as CANNED_APPT #Red {
+    *identifier: type #salesforce-careplanactivity-id (RFCCS)
+    ---
+    * status: ""**#cancelled**""
+    * start: ""2024-09-05""
+    * serviceType: ""#103696004"" | Patient referral to specialist
+    * supportingInfo: Specialist Ref(org by name)
+    * //cancelationReason: ""#410543007"" | Did not attend (qualifier value)//
+  }
+
+
+  object "Completed ECHO cardiogram encounter\n:**APPOINTMENT**" as APPT1 #Red {
+    *identifier: type #salesforce-careplanactivity-id (RFCCS)
+    ---
+    * status: ""**#fulfilled**""
+    * start: ""2024-05-16""
+    * serviceType: ""#40701008"" | Echocardiography (procedure)
+    * supportingInfo: cardiology specialist provider Ref(org by name)
+  }
+  
+  'arrange activities in box
+  FUTURE_APPT -[hidden]d- APPT1
+
+}
+
+object "ECHO encounter\n:**ENCOUNTER**" as ECHO #yellow {
+  *identifier: type #salesforce-clinicalencounter-id (RFCCS)
+  ---
+  * status: //**#finished**//
+  * period: 2023-08-08
+  * participant: Ref(Practitioner)
+  * serviceProvider: Ref(Organisation)
+}
+
+
+object "Info from encounter\n**:OBSERVATION**" as OBS <<FHIR R4B>> #Pink {
+  *identifier: type #salesforce-observation-id (RFCCS)
+  ---
+  * status: ""#final""
+  * code: ""#371541002"" | Provider comment report (record artifact)
+  ---
+  * components 3..3 (SNOMED-coded)
+  \t+notes: text
+  \t+plan for next appointment: text
+  \t+file uploaded: TBC
+}
+
+
+$Coding(ServiceType,"Service Type SNOMED","#103696004","Patient referral to specialist (procedure)")
+$Coding(ServiceType,"Service Type SNOMED","#40701008","Echocardiography (procedure)")
+$Coding(ServiceType,"Service Type SNOMED","#772071006","Referral to dentist (procedure)")
+$Coding(ServiceType,"Service Type SNOMED","#225340009","Housing assessment (procedure)")
+$Coding(ServiceType,"Service Type SNOMED","#301631000210107","Provision for cultural support (procedure)")
+$Coding(ServiceType,"Service Type SNOMED","#308440001","Referral to social worker (procedure)")
+$Coding(ServiceType,"Service Type SNOMED","#351621000210102","Referral to sexual health service (procedure)")
+
+' positioning
+
+' connectors
+APPT1 "\n.supportingInfo" -d-> ECHO
+
+APPT1 -[#MediumPurple,dotted]--> "<color:MediumPurple><size:14>.serviceType" ServiceType
+FUTURE_APPT -[#MediumPurple,dotted]r-> "<color:MediumPurple><size:14>.serviceType" ServiceType
+CANNED_APPT -[#MediumPurple,dotted,norank]r-> "<color:MediumPurple><size:14>.serviceType" ServiceType
+
+ECHO ".appointment" -[thickness=3]u-> APPT1
+OBS ".encounter" -[thickness=3]u-> ECHO
+
+
+legend bottom
+  This model shows different kinds of non-secondary-prophylaxis appointment
+  a) a planned dental appointment
+  b) a specialist appointment that was planned but was then cancelled
+  c) a completed ECHO cardiography appt - details captured in an Encounter + Observation
+
+  **Notes**
+  1) Arrows indicate direction of FHIR reference
+  2) Object colour shading as per //Data Dictionary// mapping.
+endlegend
+
+
+@enduml
