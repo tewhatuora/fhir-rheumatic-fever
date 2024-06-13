@@ -1,0 +1,89 @@
+@startuml obj-FHIR-data-consent-active
+
+top to bottom direction
+skinparam dpi 300
+allow_mixing
+scale 400 width
+
+skinparam ActivityDiamondBackgroundColor #RoyalBlue
+skinparam ArrowColor #SlateGrey   
+skinparam ArrowFontColor #RoyalBlue
+skinparam ArrowFontColor #SlateGrey  
+skinparam ArrowFontSize 12
+skinparam ArrowMessageAlignment left
+skinparam BoxPadding 10
+skinparam linetype ortho
+skinparam nodesep 30
+skinparam ranksep 30
+skinparam roundcorner 5
+skinparam sequenceArrowThickness 2
+
+title Example of patient data consent
+
+!procedure $Coding($Alias,$System,$Code,$Display)
+  object "<color:GhostWhite>$System" as $Alias #MediumPurple {
+    <color:GhostWhite><size:11>**$Code**-$Display
+  }
+!endprocedure
+
+frame "HNZ FHIR API resources under management" as HNZMain {
+
+  package "<size:12>data consent <sup>1</sup>" as ACTIVE #Snow {
+      
+    object "activeConsentExample\n<size:16>**:CONSENT**" as CONSENT #GhostWhite/LightCoral {
+      * status: ""**#active**""
+      * scope: ""**#patient-privacy**""
+      * dateTime: ""2023-01-21""
+      * policy: reference to NZ Privacy Act / HIPC
+    }
+
+    object "data access permit provision" as DAP #GhostWhite {
+      * type: ""#permit""
+      * period: ""2023-01-21 to 2026-01-20""
+    }
+
+  }
+
+  object "privacy questions\n<size:14>**:QUESTIONNAIRE**" as Q #Red
+
+  package "<size:12>Resource instances protected by this consent <sup>2</sup>" as COVERED {
+    object "patient's responses\n<size:12>**:QUESTIONNAIRERESPONSE**" as QRC #LightSalmon
+    object "resource x<sub>1</sub>\n**<size:15>:X**" as AnyResource #LightGray
+    object "resource y<sub>1</sub>\n**<size:15>:Y**" as AnotherResource #LightGray
+    QRC -[hidden]d- AnyResource
+    AnyResource -[hidden]d- AnotherResource
+  }
+
+  ' connectors
+  'DAP "1" -[thickness=3,#RoyalBlue]l--{ COVERED : 0..*\ndata.references
+
+  DAP "data.reference" -[thickness=3,#RoyalBlue]--{ COVERED 
+
+}
+
+' resources in other repos
+object "**Patient** (NHI)" as Patient <<logical reference>> #SkyBlue {
+  * logical id: NHI
+}
+
+object "HPI:**Organization**\nCustodian of patient consent" as HPI <<logical reference>> #SkyBlue {
+  HPI Org Id:+ GXXNNN
+}
+
+CONSENT -d-* DAP : "".provision""
+CONSENT -[dashed,#Black]l-> QRC: <color:#Black>.sourceReference
+CONSENT "patient" -[dotted,#SkyBlue]r-> Patient
+CONSENT -[dashed,#Black]---> HPI: .organization/.performer\n**Reference(Organization)**
+QRC ".questionnaire" -[#LightGray]--> Q
+
+legend bottom
+  **Notes**
+  1. The Consent resource type itself is accessible by all authorized API consumers (no data access control)
+  2. Origin health applications are responsible for maintaining the data reference list of covered instances.
+  3. A valid Consent MUST reference EITHER a QuestionnaireResponse OR an Organization (black dashed lines)
+endlegend
+
+
+footer "Health NZ/Te Whatu Ora.  FHIR instance data model generated from PlantUML source on %date('dd/MM/yyyy')"
+
+@enduml
