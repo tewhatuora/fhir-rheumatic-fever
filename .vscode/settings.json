@@ -33,6 +33,8 @@
     "medicationrequest",
     "onhold",
     "RFCCS",
-    "rhdseverity"
+    "rhdseverity",
+    "synchronisation",
+    "synchronised"
   ]
 }

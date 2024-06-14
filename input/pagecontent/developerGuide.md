@@ -138,7 +138,7 @@ const encryptText = async (plainText) => {
 })();
 ```
 <!-- markdownlint-disable MD033 -->
-<img src="request-encryption.png" width="100%">
+<!-- <img src="request-encryption.png" width="100%"> -->
 
 ## FHIR Resource references
 

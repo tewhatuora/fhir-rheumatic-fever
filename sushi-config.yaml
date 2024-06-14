@@ -92,7 +92,6 @@ menu:
     Example representations: artifacts.html#examples
     Data consent examples: artifacts.html#consent
   Documentation:
-    Changelog : changelog.html
     Data models: rheumatic-fever-data-models.html
     Data mapping: rheumatic-fever-data.html
     Consent-based resource access control: consentBasedAccessControl.html
@@ -103,6 +102,7 @@ menu:
   API:
     API capability statement: CapabilityStatement-CareInTheCommunityCapabilityStatement.html
   Support:
+    Changelog : changelog.html
     FHIR Spec: new-tab http://hl7.org/fhir/R4/index.html
     Download IG : full-ig.zip
     Artifacts (Json): definitions.json.zip
