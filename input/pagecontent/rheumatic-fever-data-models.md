@@ -1,9 +1,11 @@
+<!-- markdownlint-disable MD041 -->
 ### FHIR data models (pilot phase)
 
 This section provides an overview of the design of the FHIR data representations that authorized applications can use to record and interchange rheumatic fever information.
 
 #### FHIR resource model
 
+<!-- markdownlint-disable MD033 -->
 <div width="100%">
 <!-- Generated from `input/images-source/FHIR-resource-model-rheumaticfever-pilot.plantuml` -->
 {% include FHIR-resource-model-rheumaticfever.svg %}
