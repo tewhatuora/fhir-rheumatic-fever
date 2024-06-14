@@ -4,7 +4,7 @@
 
 ## v0.4.3
 
-**Separated rheumatic fever API from shared care IG into this dedicated IG.**
+**Separated rheumatic fever API from shared care IG into the dedicated IG.**
 
 ## v0.4.2 Rheumatic Fever phase 2 part 2 (June 2024)
 
