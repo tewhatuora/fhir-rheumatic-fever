@@ -4,4 +4,4 @@
 #!/bin/bash
 curl -X POST  "https://us-central1-fhir-org-starter-project.cloudfunctions.net/ig-commit-trigger" \
   -H "Content-type: application/json" \
-  --data '{"ref": "refs/heads/RFphase2", "repository": {"full_name": "tewhatuora/fhir-rheumatic-fever"}}'
+  --data '{"ref": "refs/heads/main", "repository": {"full_name": "tewhatuora/fhir-rheumatic-fever"}}'
