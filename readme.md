@@ -1,8 +1,4 @@
-# HNZ Digital Tooling IG
-
-This repository contains the source for various FHIR profiles used alongside Te Whatu Ora Health New Zealand FHIR IG tooling.
-
-## New Zealand rheumatic fever FHIR IG
+# New Zealand rheumatic fever FHIR IG
 
 FHIR Implementation Guide for the rheumatic fever national solution covering
 
