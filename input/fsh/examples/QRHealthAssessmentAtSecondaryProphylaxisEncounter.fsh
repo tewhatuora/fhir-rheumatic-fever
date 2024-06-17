@@ -1,4 +1,4 @@
-Instance: RFPatientHealthAssessmentQuestionnaireResponse
+Instance: HealthAssessmentAtSecondaryProphylaxisEncounter
 InstanceOf: QuestionnaireResponse
 Description: "Example assessment of Madeleine's health at her August secondary prophylaxis appointment."
 Usage: #example
