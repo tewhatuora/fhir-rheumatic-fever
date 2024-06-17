@@ -31,3 +31,27 @@ Usage: #example
 * item[+] insert answerItemX(PlanForObtainingMedications,     [[4)]],  [[Plan for obtaining medications to last until next check-in (enter text)]])
 * item[=].answer.valueString = "Get more"
 // end of new oral SP items
+
+* item[+] insert answerItemX(AnyOtherConcerns,[[5)]],[[Were There Any Other Concerns or Issues Identified During the Visit?]])
+* item[=].answer.valueBoolean = true
+
+* item[+] insert answerItemX(OtherConcernsDetail,[[5.1)]],[[If yes, describe details, actions taken, and follow-up planned (enter text)]])
+* item[=].answer.valueString = "Madeleine has decided to set up her own pharmaceutical company to resolve medication supply issues."
+
+
+* item[+] insert answerItemX(HealthEducationTopicsDiscussed,[[6)]],[[Health education topics discussed? (multiple choice)]])
+* item[=].answer[0].valueString = "Secondary prophylaxis"
+* item[=].answer[+].valueString = "Nutrition"
+* item[=].answer[+].valueString = "Other"
+
+* item[+] insert answerItemX(HealthEducationOtherDetail,[[6.1)]],[[Enter details of other health education topic discussed (enter text)]])
+* item[=].answer.valueString = "Madeleine and I were discussing the importance of punctuality but ran out of time."
+
+* item[+] insert answerItemX(RecentOrUpcomingAppointments,[[7)]],[[Any recent or upcoming follow-up appointments?]])
+* item[=].answer.valueBoolean = true
+
+* item[+] insert answerItemX(RecentOrUpcomingAppointmentsDetails,[[7.1)]],[[Enter details and dates of any recent or upcoming follow-up appointments (enter text)]])
+* item[=].answer.valueString = "Madeleine has an upcoming follow-up with the cardiologist."
+
+* item[+] insert answerItemX(PlanForNextMedicationAppointment,[[8)]],[[Comments for the next appointment (enter text)]])
+* item[=].answer.valueString = "Keep it rolling"
