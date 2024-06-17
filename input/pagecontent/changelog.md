@@ -7,9 +7,13 @@
 **Separated rheumatic fever API from shared care IG into the dedicated IG.**
 
 - Rewrote [consent-based access control](consentBasedAccessControl.html) page.
-- Updated Consent data designs.
+- Updated Consent data designs to address consent to treatment and opt-out.
 
 ## v0.4.2 Rheumatic Fever phase 2 part 2 (June 2024)
+
+### Questionnaires
+
+- Added new [questionnaire for health assessment at oral SP encounters](Questionnaire-OralSecondaryProphylaxisHealthAssessmentQuestionnaire.html)
 
 ### Profiles
 
@@ -31,6 +35,7 @@
   - [Strep evidence](Observation-DiagnosisExample-StrepEvidence.html)
 - The various example `CarePlan`s now illustrate use of the **lifelong secondary prophylaxis** extension and have been revised so that creation adn period dates are UTC `dateTime` values.
 - SP `Appointment`s and `Encounter`s now have `.serviceType` = $sct#360271000 "Prophylaxis"  
+- Added new example questionnaire response [HealthAssessmentAtOralProphylaxisEncounter](QuestionnaireResponse-HealthAssessmentAtOralProphylaxisEncounter.html)
 - Madeleine Meringue example patient - changed language code to #en (English) to fix BCP-47 terminology publisher validation problem
 - Pania Punga example patient - changed language code for Maori to #mi to fix BCP-47 terminology publisher validation problem
 

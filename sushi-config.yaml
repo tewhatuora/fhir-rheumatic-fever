@@ -203,6 +203,7 @@ groups:
     - PatientMedicationAllergyQuestionnaire
     - PatientWhanauGoalsPreferencesQuestionnaire
     - SecondaryProphylaxisHealthAssessmentQuestionnaire
+    - OralSecondaryProphylaxisHealthAssessmentQuestionnaire
 
   Extensions:
     name: extensions
@@ -237,6 +238,8 @@ groups:
     - DiagnosisExample-StrepEvidence-Secondary
     - Encounter-Diagnosis
     - Encounter-SecondaryProphylaxisAppointment
+    - HealthAssessmentAtSecondaryProphylaxisEncounter
+    - HealthAssessmentAtOralProphylaxisEncounter
     - MadeleineMeringue
     - MadeleineMeringueAndWhanau
     - MedicationsAndFollowUpGuidanceQuestionnaireResponse
@@ -246,7 +249,6 @@ groups:
     - PatientWhanauGoalsPreferencesQuestionnaireResponse
     - PlannedBenzathineMedication
     - PlannedBenzathineMedicationWithLignocaine
-    - RFPatientHealthAssessmentQuestionnaireResponse
     - SecondaryProphylaxisAppointment-August-Booked
     - SecondaryProphylaxisAppointment-August-Fulfilled
     - SecondaryProphylaxisAppointment-September-Booked
