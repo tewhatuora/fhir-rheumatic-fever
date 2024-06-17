@@ -7,7 +7,7 @@
 **Separated rheumatic fever API from shared care IG into the dedicated IG.**
 
 - Rewrote [consent-based access control](consentBasedAccessControl.html) page.
-- Updated Consent data designs.
+- Updated Consent data designs to address consent to treatment and opt-out.
 
 ## v0.4.2 Rheumatic Fever phase 2 part 2 (June 2024)
 
