@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD024 -->
 
-## v0.4.3
+## v0.4.3 Completion of MVP phase 2 updates
 
 **Separated rheumatic fever API from shared care IG into the dedicated IG.**
 
@@ -11,7 +11,7 @@
 - Added new [questionnaire for health assessment at oral SP encounters](Questionnaire-OralSecondaryProphylaxisHealthAssessmentQuestionnaire.html)
 - Added new example questionnaire response [HealthAssessmentAtOralProphylaxisEncounter](QuestionnaireResponse-HealthAssessmentAtOralProphylaxisEncounter.html)
 
-## v0.4.2 Rheumatic Fever phase 2 part 2 (June 2024)
+## v0.4.2 phase 2 updates part 2 (June 2024)
 
 ### Profiles
 
@@ -50,8 +50,7 @@
 
 ---
 
-
-## v0.4.0 Rheumatic Fever phase 2 part 1 (May 2024)
+## v0.4.0 phase updates 2 part 1 (May 2024)
 
 ### [Data model designs](rheumatic-fever-data-models.html)
 
