@@ -1,9 +1,9 @@
 @startuml obj-FHIR-data-consent-givenonbehalf
 
 top to bottom direction
-skinparam dpi 300
+skinparam dpi 200
 allow_mixing
-scale 300 width
+scale 400 width
 
 skinparam ActivityDiamondBackgroundColor #RoyalBlue
 skinparam ArrowColor #SlateGrey   
@@ -18,7 +18,7 @@ skinparam ranksep 30
 skinparam roundcorner 5
 skinparam sequenceArrowThickness 2
 
-title Example of patient data consent given by a relative
+title FHIR instance data when patient consent given by a relative
 
 !procedure $Coding($Alias,$System,$Code,$Display)
   object "<color:GhostWhite>$System" as $Alias #MediumPurple {
@@ -26,71 +26,86 @@ title Example of patient data consent given by a relative
   }
 !endprocedure
 
-frame "HNZ FHIR API resources under management" as HNZMain {
-
-  package "<size:12>Patient consent given on-behalf <sup>1</sup>" as ONBEHALF #Snow {
-      
-    object "onBehalfConsentExample\n<size:16>**:CONSENT**" as CONSENT #GhostWhite/LightCoral {
-      * status: ""**#active**""
-      * scope: ""**#patient-privacy**""
-      * dateTime: ""2023-01-21""
-      * policy: reference to NZ Privacy Act / HIPC
-    }
-
-    object "data access permit provision" as DAP #GhostWhite {
-      * type: ""#permit""
-      * period: ""2023-01-21 to 2026-01-20""
-    }
-
-    object "person giving consent\n<size:14>**:RELATEDPERSON**<sup>4</sup>" as RP #GhostWhite {
-      * name.given: Beryl
-      * name.family: Hackett
-      * relationship: ""#PRN""
-    }
-
-  }
-
-  object "privacy questions\n<size:14>**:QUESTIONNAIRE**" as Q #Red
-
-  package "<size:12>Resource instances protected by this consent <sup>2</sup>" as COVERED {
-    object "patient's responses\n<size:12>**:QUESTIONNAIRERESPONSE**" as QRC #LightSalmon
-    object "resource x<sub>1</sub>\n**<size:15>:X**" as AnyResource #LightGray
-    object "resource y<sub>1</sub>\n**<size:15>:Y**" as AnotherResource #LightGray
-
-    QRC -[hidden]d- AnyResource
-    AnyResource -[hidden]d- AnotherResource
-  }
-
-  ' connectors
-
-  DAP "data.reference" -[thickness=3,#RoyalBlue]--{ COVERED 
-
-
+object "consent to treatment\n<size:16>**:CONSENT**" as TREATCONSENT #DodgerBlue {
+  * status: ""**#active**""
+  * scope: ""**#treatment**""
+  * dateTime: ""2023-01-21""
+  * policy: reference to Health Act / standing order
 }
 
+object "treatment permit provision" as TAP #GhostWhite/LightCoral  {
+  * type: ""#permit""
+  * period: ""2023-01-21 to 2026-01-20""
+}
+
+object "consent to collect/share data\n<size:16>**:CONSENT**" as DATACONSENT #DodgerBlue {
+  * status: ""**#active**""
+  * scope: ""**#patient-privacy**""
+  * dateTime: ""2023-01-21""
+  * policy: reference to NZ Privacy Act / HIPC
+}
+
+object "data access permit provision" as DAP #GhostWhite/LightCoral  {
+  * type: ""#permit""
+  * period: ""2023-01-21 to 2026-01-20""
+}
+
+object "person giving consent\n<size:14>**:RELATEDPERSON**<sup>4</sup>" as RP #GhostWhite {
+  * name.given: Beryl
+  * name.family: Hackett
+  * relationship: ""#PRN""
+}
+
+
 ' resources in other repos
-object "**Patient** (NHI)" as Patient <<logical reference>> #SkyBlue {
+object "NHI patient\n**:PATIENT**" as PATIENT <<logical reference>> #SkyBlue {
   * logical id: NHI
 }
 
-object "Custodian of patient consent\nHPI:**Organization**" as HPI <<logical reference>> #SkyBlue {
-  HPI Org Id:+ GXXNNN
+object "Rheumatic fever prevention service\n(custodian org):**ORGANIZATION**" as HPI <<logical reference>> #SkyBlue {
+  * HPI Org Id: ""GnXnnn""
 }
 
-CONSENT -d--* DAP: "".provision""
-CONSENT -d--* RP: <color:#Black>.performer**[1]**
-RP -[dotted,#SkyBlue,norank]-> Patient
-CONSENT "<color:#Black>.sourceReference" -[dashed,#Black]d-->  QRC
-CONSENT ".patient" -[dotted,#SkyBlue,norank]--> Patient
-CONSENT -[dashed,#Black]--> HPI: .organization/.performer[0]\n**Reference(Organization)**
-QRC ".questionnaire" -[#LightGray]l--> Q
+frame "<size:12>Resource instances protected by data consent <sup>2</sup>" as COVERED {
+'  object "patient's responses\n<size:12>**:QUESTIONNAIRERESPONSE**" as QRC #LightSalmon
+  object "<size:14>**:CAREPLAN**" as R1 #LightGray
+  object "<size:14>**:CONDITION**" as R2 #LightGray
+  object "<size:14>**:ENCOUNTER**" as R3 #LightGray
+  object "other FHIR instance x<sub>1</sub>\n**<size:15>:X**" as Another1 #LightGray
+  object "other FHIR instance y<sub>2</sub>\n**<size:15>:Y**" as Another2 #LightGray
+}
+
+' positioning
+TREATCONSENT -[hidden]d- RP
+'TAP -[hidden]d- RP
+RP -[hidden]d- DATACONSENT
+'RP -[hidden]l-- HPI
+
+' connectors
+DAP "**.data.reference**<sup>2</sup>" -[thickness=3,#RoyalBlue]-{ COVERED 
+
+RP -[dotted,#SkyBlue]l--> PATIENT
+
+TREATCONSENT ".patient<sup>3</sup>" -[dotted,#SkyBlue]--> PATIENT
+TREATCONSENT -[norank]--* RP: <color:#Black>.performer<sup>5</sup>
+TREATCONSENT -[norank]-* TAP : "".provision""
+TREATCONSENT -[dashed,#Black,norank]---> HPI: .organization\n**HPI org. ref**<sup>1</sup>
+
+DATACONSENT ".patient" -[dotted,#SkyBlue,norank]--> PATIENT
+DATACONSENT -d-* DAP : "".provision""
+DATACONSENT -[dashed,#Black]--> HPI: .organization\n**HPI org. ref**<sup>1</sup>
 
 legend bottom
   **Notes**
-  1. The Consent resource type itself is accessible by all authorized API consumers (no data access control)
-  2. Origin health applications are responsible for maintaining the data reference list of covered instances.
-  3. A valid Consent MUST reference EITHER a QuestionnaireResponse OR an Organization (black dashed lines)
-  4. Note how the RelatedPerson instance is **contained** within the Consent, AND linked as its second performer.
+  1. ""Consent.organization"" identifies a specific //RF Secondary Prevention Service// which:
+      \ta. Coordinates treatment for patients in that district/region, and
+      \tb. Operates the consent process (forms etc.), and
+      \tc. Is the custodian of data collected from these patients.
+  2. This list of referenced FHIR instances is maintained by Mulesoft integration on behalf of the  
+      RFCCS application which is used by the various RF Secondary Prevention Service orgs to maintain the register.
+  3. All Consent instances identify via "".patient"" the person the consent applies to.
+  4. Instances of the FHIR Consent resource type itself are accessible to all authorized API consumers.
+  5. Note the RelatedPerson instance links twice (by being **contained** within the treatment consent only, AND by being its "".performer"").
 endlegend
 
 footer "Health NZ/Te Whatu Ora.  FHIR instance data model generated from PlantUML source on %date('dd/MM/yyyy')"
