@@ -13,75 +13,76 @@ skinparam ArrowFontSize 12
 skinparam ArrowMessageAlignment left
 skinparam BoxPadding 10
 skinparam linetype ortho
-skinparam nodesep 30
-skinparam ranksep 30
+skinparam nodesep 90
+skinparam ranksep 40
 skinparam roundcorner 5
 skinparam sequenceArrowThickness 2
+skinparam TitleFontSize 20
 
-title FHIR Consent instance data for patient opted-out as of June 23 2023 
 
-!procedure $Coding($Alias,$System,$Code,$Display)
-  object "<color:GhostWhite>$System" as $Alias #MediumPurple {
-    <color:GhostWhite><size:11>**$Code**-$Display
+title FHIR Consent for patient opted-out of treatment and data sharing
+
+frame "Representation of consent given and then later withdrawn/denied by patient" as F {
+
+  object "consent to treatment\n<size:16>**:CONSENT**" as TREATCONSENT #DodgerBlue {
+    * status: ""<color:GreenYellow>**#active**""
+    * scope: ""**#treatment**""
+    * dateTime: ""2023-01-21""<sup>4</sup>
+    * policy: reference to regs/leg.
   }
-!endprocedure
 
-  
-object "consent to treatment\n<size:16>**:CONSENT**" as TREATCONSENT #DodgerBlue {
-  * status: ""**#active**""
-  * scope: ""**#treatment**""
-  * dateTime: ""2023-01-21""
-  * policy: reference to Health Act \n/ standing order
-}
+  object "treatment provision" as TP #LightBlue  {
+    * type: ""<color:DarkRed>**#deny**""
+    * period: 
+      ""**2023-06-23**"" to ""-""
+  }
 
-object "treatment permit provision" as TAP #GhostWhite/LightCoral  {
-  * type: ""<size:16>**#deny**</size><sup>5</sup>""
-  * period: ""2023-06-23 to 2026-01-20""
-}
+  object "consent to collect/share data\n<size:16>**:CONSENT**" as DATACONSENT #DodgerBlue {
+    * status: ""<color:GreenYellow>**#active**""
+    * scope: ""**#patient-privacy**""
+    * dateTime: ""2023-01-21""<sup>4</sup>
+    * policy: reference to regs/leg.
+  }
 
-object "consent to collect/share data\n<size:16>**:CONSENT**" as DATACONSENT #DodgerBlue {
-  * status: ""**#active**""
-  * scope: ""**#patient-privacy**""
-  * dateTime: ""2023-01-21""
-  * policy: reference to NZ Privacy Act / HIPC
-}
+  object "data access permit provision" as DAP #LightBlue  {
+    * type: ""<color:DarkRed>**#deny**""
+    * period: 
+      ""**2023-06-23**"" to ""-""
+  }
 
-object "data access permit provision" as DAP #GhostWhite/LightCoral  {
-  * type: ""<size:16>**#deny**</size><sup>5</sup>""
-  * period: ""2023-06-23 to 2026-01-20""
-}
+  ' resources in other repos
+  object "NHI patient\n**:PATIENT**" as PATIENT <<logical reference>> #SkyBlue {
+    * logical id: NHI
+  }
 
-frame "<size:12>Resource instances protected by data consent <sup>2</sup>" as COVERED {
-  object "<size:14>**:CAREPLAN**" as R1 #LightGray
-  object "<size:14>**:CONDITION**" as R2 #LightGray
-  object "<size:14>**:ENCOUNTER**" as R3 #LightGray
-  object "other FHIR instance x<sub>1</sub>\n**<size:15>:X**" as Another1 #LightGray
-  object "other FHIR instance y<sub>2</sub>\n**<size:15>:Y**" as Another2 #LightGray
-}
+  object "Rheumatic fever prevention service\n(custodian org):**ORGANIZATION**" as HPI <<logical reference>> #GhostWhite {
+    * HPI Org Id: ""GnXnnn""
+  }
 
-' resources in other repos
-object "NHI patient\n:**PATIENT**" as PATIENT <<logical reference>> #SkyBlue {
-  * logical id: NHI
-}
-
-object "RF Prevention Service\n:**ORGANIZATION**" as HPI <<logical reference>> #SkyBlue {
-  * HPI Org Id: ""GnXnnn""
+  frame "<size:12>Covered resources all security-labelled ""R"" restricted<sup>2,3</sup>" as COVERED #GhostWhite/OrangeRed {
+  '  object "patient's responses\n<size:12>**:QUESTIONNAIRERESPONSE**" as QRC #LightSalmon
+    object "<size:14>**:CAREPLAN**" as R1 #LightGray
+    object "<size:14>**:CONDITION**" as R2 #LightGray
+    object "<size:14>**:ENCOUNTER**" as R3 #LightGray
+    object "<size:14>**:QUESTIONNAIRERESPONSE**" as R4 #LightGray
+    object "<size:14>**:OBSERVATION**" as R5 #LightGray
+  }
 }
 
 ' positioning
-TREATCONSENT -[hidden]d- TAP
-TAP -[hidden]d- DATACONSENT
+TREATCONSENT -[hidden]d- TP
+TP -[hidden]d- DATACONSENT
 
 ' connectors
-DAP "**.data.reference**<sup>2</sup>" -[thickness=3,#RoyalBlue]-{ COVERED 
+DAP "**.data.reference**<sup>2</sup>" -[thickness=3,#RoyalBlue]--{ COVERED 
 
-TREATCONSENT -[dashed,#Black,norank]---> HPI: .organization\n**HPI Org. ref**<sup>1</sup>
-TREATCONSENT ".patient<sup>3</sup>" -[dotted,#SkyBlue,norank]--> PATIENT
-TREATCONSENT -[norank]-* TAP : "".provision""
+TREATCONSENT ".patient<sup>3</sup>" -[dotted,#SkyBlue,norank]-> PATIENT
+TREATCONSENT -[norank]-* TP : "".provision""
+TREATCONSENT ".organization\n**HPI org. ref**<sup>1</sup>" -[dashed,#Black]l-> HPI
 
-DATACONSENT -[dotted,#SkyBlue]l---> PATIENT
-DATACONSENT -d-* DAP : "".provision""
-DATACONSENT -[dashed,#Black]--> HPI: .organization\n**HPI Org. ref**<sup>1</sup>
+DATACONSENT ".patient" -[dotted,#SkyBlue,norank]-> PATIENT
+DATACONSENT -* DAP : "".provision""
+DATACONSENT ".organization\n**HPI org. ref**<sup>1</sup>" -[dashed,#Black]u-> HPI 
 
 legend bottom
   **Notes**
@@ -89,13 +90,12 @@ legend bottom
       \ta. Coordinates treatment for patients in that district/region, and
       \tb. Operates the consent process (forms etc.), and
       \tc. Is the custodian of data collected from these patients.
-  2. This list of referenced FHIR instances is maintained by Mulesoft integration on behalf of the  
-      RFCCS application which is used by the various RF Secondary Prevention Service orgs to maintain the register.
-  3. All Consent instances identify via "".patient"" the person the consent applies to 
-  4. Instances of the FHIR Consent resource type itself are accessible to all authorized API consumers.
-  5. A **'""#deny""'** code here represents the patient's explicit withdrawal of consent.
+  2. This list of referenced FHIR instances is maintained by Mulesoft integration.
+      - All these covered FHIR instances will have **""R"" security labels** attached when a patient DENY is recorded. 
+      - (If patient consent is subsequently re-obtained, these labels will be removed again.)
+  3. All Consent instances identify via "".patient"" the **person the consent applies to**.
+  4. Either the date of original consent (if applicable) or the date of withdrawal of consent.
 endlegend
-
 
 footer "Health NZ/Te Whatu Ora.  FHIR instance data model generated from PlantUML source on %date('dd/MM/yyyy')"
 
