@@ -17,7 +17,6 @@ This example includes sample `data.references` which identify the actual FHIR re
 
 * patient insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 * organization insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
-* performer insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
 * policy[0].authority = "https://www.privacy.org.nz"
 * policy[=].uri = "https://www.privacy.org.nz/privacy-act-2020/"

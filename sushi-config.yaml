@@ -279,8 +279,7 @@ groups:
     description: Consent profiles/definitions and examples
     resources:
     - RheumaticFeverActiveConsentExample
-    - ProposedConsentBaseExample
-    - ProposedConsentCoverageExample
+    - ProvisionalConsentExample
     - ConsentByRelatedPersonExample
 
 #

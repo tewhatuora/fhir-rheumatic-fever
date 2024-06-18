@@ -20,7 +20,7 @@ skinparam sequenceArrowThickness 2
 skinparam TitleFontSize 20
 
 
-title FHIR instance data for active patient consents
+title FHIR Consent instances for patient opted-out of everything on June 23 2023
 
 !procedure $Coding($Alias,$System,$Code,$Display)
   object "<color:GhostWhite>$System" as $Alias #MediumPurple {
@@ -36,9 +36,9 @@ object "consent to treatment\n<size:16>**:CONSENT**" as TREATCONSENT #DodgerBlue
 }
 
 object "treatment provision" as TP #GhostWhite/LightBlue  {
-  * type: **""#permit""**
+  * type: ""<color:Red>**#deny**""
   * period: 
-    ""2023-01-21"" to ""2026-01-20""
+    ""2023-06-23"" to ""2026-01-20""
 }
 
 object "consent to collect/share data\n<size:16>**:CONSENT**" as DATACONSENT #DodgerBlue {
@@ -49,7 +49,13 @@ object "consent to collect/share data\n<size:16>**:CONSENT**" as DATACONSENT #Do
 }
 
 object "data access permit provision" as DAP #GhostWhite/LightBlue  {
-  * type: **""#permit""**
+  * type: ""<color:Red>**#deny**""
+  * period: 
+    ""2023-06-23"" to ""2026-01-20""
+}
+
+object "exception access permit provision" as EDAP <<nested>> #GhostWhite/LightBlue  {
+  * type: ""**#permit**""
   * period: 
     ""2023-01-21"" to ""2026-01-20""
 }
@@ -87,9 +93,10 @@ TREATCONSENT -[hidden]d- TP
 TP -[hidden]d- DATACONSENT
 
 ' connectors
-DAP "**.data.reference**<sup>2</sup>" -[thickness=3,#RoyalBlue]d---{ COVERED 
+DAP "**.data.reference**<sup>2</sup>" -[thickness=3,#RoyalBlue]d----{ COVERED 
 DAP -r-* SUBJECTACTOR
-DAP --* ORGACTOR
+DAP -d-* EDAP
+EDAP --* ORGACTOR
 
 TREATCONSENT ".patient<sup>3</sup>" -[dotted,#SkyBlue,norank]---> PATIENT
 TREATCONSENT -[norank]-* TP : "".provision""
@@ -117,6 +124,7 @@ legend bottom
   3. All Consent instances identify via "".patient"" the person the consent applies to.
   4. FHIR Consent resource instances are not subject to consent-based access control.
   5. This CareTeam actor describes data access permission for Secondary Prevention Service orgs only.
+  6. A **'""#deny""'** code represents patient's withdrawal of the applicable permission scope.
 endlegend
 
 footer "Health NZ/Te Whatu Ora.  FHIR instance data model generated from PlantUML source on %date('dd/MM/yyyy')"

@@ -13,10 +13,13 @@ skinparam ArrowFontSize 12
 skinparam ArrowMessageAlignment left
 skinparam BoxPadding 10
 skinparam linetype ortho
-skinparam nodesep 30
-skinparam ranksep 30
+skinparam nodesep 90
+skinparam ranksep 50
 skinparam roundcorner 5
 skinparam sequenceArrowThickness 2
+skinparam TitleFontSize 20
+
+skinparam linetype poly
 
 title FHIR instance data when patient consent given by a relative
 
@@ -27,35 +30,44 @@ title FHIR instance data when patient consent given by a relative
 !endprocedure
 
 object "consent to treatment\n<size:16>**:CONSENT**" as TREATCONSENT #DodgerBlue {
-  * status: ""**#active**""
+  * status: ""<color:GreenYellow>**#active**""
   * scope: ""**#treatment**""
   * dateTime: ""2023-01-21""
   * policy: reference to Health Act / standing order
 }
 
-object "treatment permit provision" as TAP #GhostWhite/LightCoral  {
-  * type: ""#permit""
-  * period: ""2023-01-21 to 2026-01-20""
+object "treatment provision" as TP #GhostWhite/LightBlue  {
+  * type: **""#permit""**
+  * period: 
+    ""2023-01-21"" to ""2026-01-20""
 }
 
 object "consent to collect/share data\n<size:16>**:CONSENT**" as DATACONSENT #DodgerBlue {
-  * status: ""**#active**""
+  * status: ""<color:GreenYellow>**#active**""
   * scope: ""**#patient-privacy**""
   * dateTime: ""2023-01-21""
   * policy: reference to NZ Privacy Act / HIPC
 }
 
-object "data access permit provision" as DAP #GhostWhite/LightCoral  {
-  * type: ""#permit""
-  * period: ""2023-01-21 to 2026-01-20""
+object "data access permit provision" as DAP #GhostWhite/LightBlue  {
+  * type: **""#permit""**
+  * period: 
+  ""2023-01-21"" to ""2026-01-20""
 }
 
-object "person giving consent\n<size:14>**:RELATEDPERSON**<sup>4</sup>" as RP #GhostWhite {
+object "person giving consent\n<size:14>**:RELATEDPERSON**<sup>4</sup>" as RP1 <<contained>> #LightYellow {
   * name.given: Beryl
   * name.family: Hackett
   * relationship: ""#PRN""
 }
 
+object "person giving consent\n<size:14>**:RELATEDPERSON**<sup>4</sup>" as RP2 <<contained>> #LightYellow {
+  * name.given: Beryl
+  * name.family: Hackett
+  * relationship: ""#PRN""
+}
+
+object "All RF secondary prevention svcs\n**:CARETEAM**<sup>5</sup>" as CARETEAM <<canonical definition>> #GhostWhite/OrangeRed
 
 ' resources in other repos
 object "NHI patient\n**:PATIENT**" as PATIENT <<logical reference>> #SkyBlue {
@@ -66,34 +78,52 @@ object "Rheumatic fever prevention service\n(custodian org):**ORGANIZATION**" as
   * HPI Org Id: ""GnXnnn""
 }
 
+object "**provision.actor**" as ORGACTOR #GhostWhite/LightBlue {
+  * actor.role: ""<color:#IndianRed>**#datacollector**""
+}
+
+object "**provision.actor**" as SUBJECTACTOR #GhostWhite/LightBlue {
+  * actor.role: ""<color:#IndianRed>**#datasubject**""
+}
+
 frame "<size:12>Resource instances protected by data consent <sup>2</sup>" as COVERED {
 '  object "patient's responses\n<size:12>**:QUESTIONNAIRERESPONSE**" as QRC #LightSalmon
   object "<size:14>**:CAREPLAN**" as R1 #LightGray
   object "<size:14>**:CONDITION**" as R2 #LightGray
   object "<size:14>**:ENCOUNTER**" as R3 #LightGray
-  object "other FHIR instance x<sub>1</sub>\n**<size:15>:X**" as Another1 #LightGray
-  object "other FHIR instance y<sub>2</sub>\n**<size:15>:Y**" as Another2 #LightGray
+  object "another FHIR instance x<sub>1</sub>\n**<size:15>:X**" as Another1 #LightGray
+  object "another FHIR instance y<sub>2</sub>\n**<size:15>:Y**" as Another2 #LightGray
 }
 
 ' positioning
-TREATCONSENT -[hidden]d- RP
+TREATCONSENT -[hidden]d- RP1
 'TAP -[hidden]d- RP
-RP -[hidden]d- DATACONSENT
+RP1 -[hidden]d- DATACONSENT
+DATACONSENT -[hidden]d- RP2
 'RP -[hidden]l-- HPI
 
 ' connectors
-DAP "**.data.reference**<sup>2</sup>" -[thickness=3,#RoyalBlue]-{ COVERED 
+DAP "**.data.reference**<sup>2</sup>" -[thickness=3,#RoyalBlue]d---{ COVERED 
+DAP -r-* SUBJECTACTOR
+DAP --* ORGACTOR
 
-RP -[dotted,#SkyBlue]l--> PATIENT
+RP1 -[dotted,#SkyBlue,norank]---> PATIENT
+RP2 -[dotted,#SkyBlue,norank]--> PATIENT
 
-TREATCONSENT ".patient<sup>3</sup>" -[dotted,#SkyBlue]--> PATIENT
-TREATCONSENT -[norank]--* RP: <color:#Black>.performer<sup>5</sup>
-TREATCONSENT -[norank]-* TAP : "".provision""
-TREATCONSENT -[dashed,#Black,norank]---> HPI: .organization\n**HPI org. ref**<sup>1</sup>
+TREATCONSENT -[dashed,#Black]l-> HPI: .organization\n**HPI org. ref**<sup>1</sup>
+TREATCONSENT ".patient<sup>3</sup>" -[dotted,#SkyBlue,norank]--> PATIENT
+TREATCONSENT -[norank]--* RP1: <color:#Black>.performer<sup>5</sup>
+TREATCONSENT -u-* TP : "".provision""
 
-DATACONSENT ".patient" -[dotted,#SkyBlue,norank]--> PATIENT
+DATACONSENT ".patient" -[dotted,#SkyBlue]r-> PATIENT
+DATACONSENT -[norank]--* RP2: <color:#Black>.performer<sup>5</sup>
 DATACONSENT -d-* DAP : "".provision""
 DATACONSENT -[dashed,#Black]--> HPI: .organization\n**HPI org. ref**<sup>1</sup>
+
+ORGACTOR -[thickness=3,#RoyalBlue]-> CARETEAM: .actor.reference
+SUBJECTACTOR  -[dotted,#SkyBlue,norank]--> PATIENT: .actor.reference
+
+CARETEAM "\n.participant.member.reference" -[dashed,#SkyBlue]l-{ HPI: > 
 
 legend bottom
   **Notes**
@@ -105,7 +135,7 @@ legend bottom
       RFCCS application which is used by the various RF Secondary Prevention Service orgs to maintain the register.
   3. All Consent instances identify via "".patient"" the person the consent applies to.
   4. Instances of the FHIR Consent resource type itself are accessible to all authorized API consumers.
-  5. Note the RelatedPerson instance links twice (by being **contained** within the treatment consent only, AND by being its "".performer"").
+  5. Note the RelatedPerson instance is contained within AND linked from (via .performer) the Consent instance.
 endlegend
 
 footer "Health NZ/Te Whatu Ora.  FHIR instance data model generated from PlantUML source on %date('dd/MM/yyyy')"
