@@ -14,6 +14,19 @@ RuleSet: GenericCRUDInteractions
 * conditionalUpdate = false
 * conditionalDelete = #not-supported
 
+// defines operations supported for canonical definitions (owned by HNZ)
+RuleSet: DefinitionalResourceInteractions
+* interaction[+].code = #read
+* interaction[+].code = #vread
+* interaction[+].code = #search-type
+* versioning = #versioned
+* readHistory = false
+* updateCreate = false
+* conditionalCreate = false
+* conditionalRead = #not-supported
+* conditionalUpdate = false
+* conditionalDelete = #not-supported
+
 // REST resource search only interfaces (no CRUD)
 RuleSet: SearchOnlyInteraction
 * interaction[+].code = #search-type
