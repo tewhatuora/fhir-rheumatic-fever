@@ -19,89 +19,71 @@ skinparam roundcorner 5
 skinparam sequenceArrowThickness 2
 skinparam TitleFontSize 20
 
-title FHIR instance data in a provisional consent scenario <size:16>(Consent form pending)</size>
 
-!procedure $Coding($Alias,$System,$Code,$Display)
-  object "<color:GhostWhite>$System" as $Alias #MediumPurple {
-    <color:GhostWhite><size:11>**$Code**-$Display
+title FHIR instance data for active patient consents
+
+frame "Representation of limited provisional consent when patient's signed form pending but not received" as F {
+
+  object "consent to treatment\n<size:16>**:CONSENT**" as TREATCONSENT #DodgerBlue {
+    * status: ""<color:Orange>**#proposed**</color>""
+    * scope: ""**#treatment**""
+    * dateTime: ""2023-01-21""<sup>4</sup>
+    * policy: reference to regs/leg.
   }
-!endprocedure
 
-object "consent to treatment\n<size:16>**:CONSENT**" as TREATCONSENT #DodgerBlue {
-  * status: ""<color:Orange>**#proposed**</color>""
-  * scope: ""**#treatment**""
-  * dateTime: ""2023-01-21""
-  * policy: reference to Health Act / standing order
-}
+  object "treatment provision" as TP #LightBlue/DodgerBlue  {
+    * type: ""<color:GreenYellow>**#permit**""
+    * period: 
+      ""2023-01-21"" to **""2023-04-21""**
+  }
 
-object "treatment provision" as TP #GhostWhite/LightBlue  {
-  * type: **""#permit""**
-  * period: ""2023-01-21 to 2026-01-20""
-}
+  object "consent to collect/share data\n<size:16>**:CONSENT**" as DATACONSENT #DodgerBlue {
+    * status: ""<color:Orange>**#proposed**</color>""
+    * scope: ""**#patient-privacy**""
+    * dateTime: ""2023-01-21""<sup>4</sup>
+    * policy: reference to regs/leg.
+  }
 
-object "consent to collect/share data\n<size:16>**:CONSENT**" as DATACONSENT #DodgerBlue {
-  * status: ""<color:Orange>**#proposed**</color>""
-  * scope: ""**#patient-privacy**""
-  * dateTime: ""2023-01-21""
-  * policy: reference to NZ Privacy Act / HIPC
-}
+  object "data access permit provision" as DAP #LightBlue/DodgerBlue  {
+    * type: ""<color:GreenYellow>**#permit**""
+    * period: 
+      ""2023-01-21"" to **""2023-04-21""**
+  }
 
-object "data access permit provision" as DAP #GhostWhite/LightBlue  {
-  * type: **""#permit""**
-  * period: ""2023-01-21 to 2026-01-20""
-}
+  ' resources in other repos
+  object "NHI patient\n**:PATIENT**" as PATIENT <<logical reference>> #SkyBlue {
+    * logical id: NHI
+  }
 
-object "All RF secondary prevention svcs\n**:CARETEAM**<sup>5</sup>" as CARETEAM <<canonical definition>> #GhostWhite/OrangeRed
+  object "Rheumatic fever prevention service\n(custodian org):**ORGANIZATION**" as HPI <<logical reference>> #GhostWhite {
+    * HPI Org Id: ""GnXnnn""
+  }
 
-object "**provision.actor**" as ORGACTOR #GhostWhite/LightBlue {
-  * actor.role: ""<color:#IndianRed>**#datacollector**""
-}
-
-object "**provision.actor**" as SUBJECTACTOR #GhostWhite/LightBlue {
-  * actor.role: ""<color:#IndianRed>**#datasubject**""
-}
-
-' resources in other repos
-object "NHI patient\n**:PATIENT**" as PATIENT <<logical reference>> #SkyBlue {
-  * logical id: NHI
-}
-
-object "Rheumatic fever prevention service\n(custodian org):**ORGANIZATION**" as HPI <<logical reference>> #SkyBlue {
-  * HPI Org Id: ""GnXnnn""
-}
-
-frame "<size:12>Resource instances protected by data consent <sup>2</sup>" as COVERED {
-'  object "patient's responses\n<size:12>**:QUESTIONNAIRERESPONSE**" as QRC #LightSalmon
-  object "<size:14>**:CAREPLAN**" as R1 #LightGray
-  object "<size:14>**:CONDITION**" as R2 #LightGray
-  object "<size:14>**:ENCOUNTER**" as R3 #LightGray
-  object "another FHIR instance x<sub>1</sub>\n**<size:15>:X**" as Another1 #LightGray
-  object "another FHIR instance y<sub>2</sub>\n**<size:15>:Y**" as Another2 #LightGray
-
+  frame "<size:12>Resources covered by data access provision<sup>2</sup>" as COVERED #LightGreen {
+  '  object "patient's responses\n<size:12>**:QUESTIONNAIRERESPONSE**" as QRC #LightSalmon
+    object "<size:14>**:CAREPLAN**" as R1 #LightGray
+    object "<size:14>**:CONDITION**" as R2 #LightGray
+    object "<size:14>**:ENCOUNTER**" as R3 #LightGray
+    object "<size:14>**:QUESTIONNAIRERESPONSE**" as R4 #LightGray
+    object "<size:14>**:OBSERVATION**" as R5 #LightGray
+  }
 }
 
 ' positioning
 TREATCONSENT -[hidden]d- TP
 TP -[hidden]d- DATACONSENT
 
+
 ' connectors
-DAP "**.data.reference**<sup>2</sup>" -[thickness=3,#RoyalBlue]d---{ COVERED 
-DAP --* ORGACTOR
-DAP -r-* SUBJECTACTOR
+DAP "**.data.reference**<sup>2</sup>" -[thickness=3,#RoyalBlue]--{ COVERED 
 
-TREATCONSENT ".patient<sup>3</sup>" -[dotted,#SkyBlue]-> PATIENT
+TREATCONSENT ".patient<sup>3</sup>" -[dotted,#SkyBlue,norank]-> PATIENT
 TREATCONSENT -[norank]-* TP : "".provision""
-TREATCONSENT -[dashed,#Black]l-> HPI: .organization\n**HPI org. ref**<sup>1</sup>
+TREATCONSENT ".organization\n**HPI org. ref**<sup>1</sup>" -[dashed,#Black]l-> HPI
 
-DATACONSENT ".patient" -[dotted,#SkyBlue]r--> PATIENT
-DATACONSENT -d--* DAP : "".provision""
-DATACONSENT -[dashed,#Black,norank]--> HPI: .organization\n**HPI org. ref**<sup>1</sup>
-
-ORGACTOR -[thickness=3,#RoyalBlue]-> CARETEAM: .actor.reference
-SUBJECTACTOR  -[dotted,#SkyBlue,norank]-> PATIENT: .actor.reference
-
-CARETEAM "\n.participant.member.reference" -[dashed,#SkyBlue]l--{ HPI: > 
-
+DATACONSENT ".patient" -[dotted,#SkyBlue,norank]-> PATIENT
+DATACONSENT -* DAP : "".provision""
+DATACONSENT ".organization\n**HPI org. ref**<sup>1</sup>" -[dashed,#Black]u-> HPI 
 
 legend bottom
   **Notes**
@@ -109,11 +91,10 @@ legend bottom
       \ta. Coordinates treatment for patients in that district/region, and
       \tb. Operates the consent process (forms etc.), and
       \tc. Is the custodian of data collected from these patients.
-  2. This list of referenced FHIR instances is maintained by Mulesoft integration on behalf of the  
-      RFCCS application which is used by the various RF Secondary Prevention Service orgs to maintain the register.
-  3. All Consent instances identify via "".patient"" the person the consent applies to.
-  4. Instances of the FHIR Consent resource type itself are accessible to all authorized API consumers.
-  5. This CareTeam actor describes data access permission for Secondary Prevention Service orgs only.
+  2. This list of referenced FHIR instances is maintained by Mulesoft integration.
+  3. All Consent instances identify via "".patient"" the **person the consent applies to**.
+  4. The date consent assumed by the RF Secondary Prevention Service, anticipating patient confirmation.
+
 endlegend
 
 footer "Health NZ/Te Whatu Ora.  FHIR instance data model generated from PlantUML source on %date('dd/MM/yyyy')"
