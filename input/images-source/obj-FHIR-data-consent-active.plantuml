@@ -20,7 +20,7 @@ skinparam sequenceArrowThickness 2
 skinparam TitleFontSize 20
 
 
-title FHIR instance data for confirmed patient consent
+title FHIR Consent instances for confirmed patient consent
 
 frame "Representation of consent when confirmed by patient's signed form" as F {
 
@@ -33,27 +33,25 @@ frame "Representation of consent when confirmed by patient's signed form" as F {
   object "consent to treatment\n<size:16>**:CONSENT**" as TREATCONSENT #DodgerBlue {
     * status: ""<color:GreenYellow>**#active**""
     * scope: ""**#treatment**""
-    * dateTime: ""2023-01-21""<sup>4</sup>
     * policy: reference to regs/leg.
   }
 
   object "treatment provision" as TP #LightBlue/DodgerBlue  {
     * type: ""<color:GreenYellow>**#permit**""
     * period: 
-      ""2023-01-21"" to ""2026-01-20""
+      **""2023-01-21"" to ""2026-01-20""**
   }
 
   object "consent to collect/share data\n<size:16>**:CONSENT**" as DATACONSENT #DodgerBlue {
     * status: ""<color:GreenYellow>**#active**""
     * scope: ""**#patient-privacy**""
-    * dateTime: ""2023-01-21""<sup>4</sup>
     * policy: reference to regs/leg.
   }
 
   object "data access permit provision" as DAP #LightBlue/DodgerBlue  {
     * type: ""<color:GreenYellow>**#permit**""
     * period: 
-      ""2023-01-21"" to ""2026-01-20""
+      **""2023-01-21"" to ""2026-01-20""**
   }
 
   ' resources in other repos
@@ -66,12 +64,11 @@ frame "Representation of consent when confirmed by patient's signed form" as F {
   }
 
   frame "<size:12>Resources covered by data access provision<sup>2</sup>" as COVERED #LightGreen {
-  '  object "patient's responses\n<size:12>**:QUESTIONNAIRERESPONSE**" as QRC #LightSalmon
-    object "<size:14>**:CAREPLAN**" as R1 #LightGray
-    object "<size:14>**:CONDITION**" as R2 #LightGray
-    object "<size:14>**:ENCOUNTER**" as R3 #LightGray
-    object "<size:14>**:QUESTIONNAIRERESPONSE**" as R4 #LightGray
-    object "<size:14>**:OBSERVATION**" as R5 #LightGray
+    object "planned appointments, etc.\n<size:14>**:CAREPLAN**" as R1 #LightGray
+    object "condition severity and specifics\n<size:14>**:CONDITION**" as R2 #LightGray
+    object "appointments\n<size:14>**:ENCOUNTER**" as R3 #LightGray
+    object "preferences, health assessments\n<size:14>**:QUESTIONNAIRERESPONSE**" as R4 #LightGray
+    object "diagnosis detail\n<size:14>**:OBSERVATION**" as R5 #LightGray
   }
 }
 
@@ -99,7 +96,6 @@ legend bottom
       \tc. Is the custodian of data collected from these patients.
   2. This list of referenced FHIR instances is maintained by Mulesoft integration.
   3. All Consent instances identify via "".patient"" the **person the consent applies to**.
-  4. The date of consent as signed by the patient.
 endlegend
 
 footer "Health NZ/Te Whatu Ora.  FHIR instance data model generated from PlantUML source on %date('dd/MM/yyyy')"
