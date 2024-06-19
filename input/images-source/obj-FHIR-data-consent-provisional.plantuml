@@ -20,34 +20,32 @@ skinparam sequenceArrowThickness 2
 skinparam TitleFontSize 20
 
 
-title FHIR instance data for active patient consents
+title FHIR Consent instances when patient consent is pending
 
 frame "Representation of limited provisional consent when patient's signed form pending but not received" as F {
 
   object "consent to treatment\n<size:16>**:CONSENT**" as TREATCONSENT #DodgerBlue {
     * status: ""<color:Orange>**#proposed**</color>""
     * scope: ""**#treatment**""
-    * dateTime: ""2023-01-21""<sup>4</sup>
     * policy: reference to regs/leg.
   }
 
   object "treatment provision" as TP #LightBlue/DodgerBlue  {
     * type: ""<color:GreenYellow>**#permit**""
     * period: 
-      ""2023-01-21"" to **""2023-04-21""**
+      **""2023-01-21"" <sup>4</sup> to ""..""**
   }
 
   object "consent to collect/share data\n<size:16>**:CONSENT**" as DATACONSENT #DodgerBlue {
     * status: ""<color:Orange>**#proposed**</color>""
     * scope: ""**#patient-privacy**""
-    * dateTime: ""2023-01-21""<sup>4</sup>
     * policy: reference to regs/leg.
   }
 
   object "data access permit provision" as DAP #LightBlue/DodgerBlue  {
-    * type: ""<color:GreenYellow>**#permit**""
+    * type: ""<color:DarkRed>**#deny**""
     * period: 
-      ""2023-01-21"" to **""2023-04-21""**
+      **""2023-01-21"" <sup>4</sup> to ""..""**
   }
 
   ' resources in other repos
@@ -55,17 +53,16 @@ frame "Representation of limited provisional consent when patient's signed form 
     * logical id: NHI
   }
 
-  object "Rheumatic fever prevention service\n(custodian org):**ORGANIZATION**" as HPI <<logical reference>> #GhostWhite {
+  object "RF Secondary Prevention Service\n(custodian org)\n:**ORGANIZATION**" as HPI <<logical reference>> #GhostWhite {
     * HPI Org Id: ""GnXnnn""
   }
 
-  frame "<size:12>Resources covered by data access provision<sup>2</sup>" as COVERED #LightGreen {
-  '  object "patient's responses\n<size:12>**:QUESTIONNAIRERESPONSE**" as QRC #LightSalmon
-    object "<size:14>**:CAREPLAN**" as R1 #LightGray
-    object "<size:14>**:CONDITION**" as R2 #LightGray
-    object "<size:14>**:ENCOUNTER**" as R3 #LightGray
-    object "<size:14>**:QUESTIONNAIRERESPONSE**" as R4 #LightGray
-    object "<size:14>**:OBSERVATION**" as R5 #LightGray
+  frame "<size:12>Covered resources all security-labelled '""R""' (Restricted)<sup>2</sup>" as COVERED #GhostWhite/OrangeRed {
+    object "planned appointments, etc.\n<size:14>**:CAREPLAN**" as R1 #LightGray
+    object "condition severity and specifics\n<size:14>**:CONDITION**" as R2 #LightGray
+    object "appointments\n<size:14>**:ENCOUNTER**" as R3 #LightGray
+    object "preferences, health assessments\n<size:14>**:QUESTIONNAIRERESPONSE**" as R4 #LightGray
+    object "diagnosis detail\n<size:14>**:OBSERVATION**" as R5 #LightGray
   }
 }
 
@@ -91,9 +88,12 @@ legend bottom
       \ta. Coordinates treatment for patients in that district/region, and
       \tb. Operates the consent process (forms etc.), and
       \tc. Is the custodian of data collected from these patients.
-  2. This list of referenced FHIR instances is maintained by Mulesoft integration.
+   2. This list of referenced FHIR instances is maintained by Mulesoft integration.
+      - All these covered FHIR instances will have **""R"" security labels** attached while the consent
+         is provisional.  The labels will be removed when patient data consent is confirmed.
   3. All Consent instances identify via "".patient"" the **person the consent applies to**.
-  4. The date consent assumed by the RF Secondary Prevention Service, anticipating patient confirmation.
+  4. Start date is date consent provisionally assumed by the RF Secondary Prevention Service; 
+      End date is empty (provision doesn't expire).
 
 endlegend
 
