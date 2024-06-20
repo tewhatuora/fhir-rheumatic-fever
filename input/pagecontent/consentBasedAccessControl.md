@@ -15,15 +15,15 @@ Each Secondary Prevention Service organisation seeks these consents for its regi
 As the consent is obtained in writing (form) it may be deferred for practical reasons until the patient's first secondary prophylaxis encounter.  This means there can be a delay
 between registering a patient (which requires personal data to be entered into RFCCS) and officially obtaining consent.
 
+In these scenarios some kind of **provisional protection** is required to prevent data sharing outside of Rheumatic Fever Secondary Prevention services.
+
 #### Opting out / withdrawing consent
 
 A patient may choose not to receive secondary prophylaxis treatment.
 
 A patient can also elect not to give consent for data sharing (outside of Rheumatic Fever Prevention Services).
 
-If a patient **opts out** of treatment and data sharing, Rheumatic Fever Secondary Prevention Services, under current arrangements, retain the patient's information for analysis and in case the patient subsequently resumes treatment.
-
-When a patient is newly-registered and has not yet given their consent (by signing a form) their data is to be **provisionally protected** to prevent data sharing outside of Rheumatic Fever Secondary Prevention Services.
+If a patient **opts out** of treatment and data sharing, Rheumatic Fever Secondary Prevention services, under current arrangements, retain the patient's information for analysis and in case the patient subsequently resumes treatment.
 
 #### Custodianship of patient health data
 
