@@ -18,19 +18,19 @@ This page defines the data access levels and scopes required for the currently k
 
 ### Access scopes (subject to review)
 
-| FHIR Resource Type / level  | *SERVICE*| *CUSTODIAN*<br>*break-glass* for<br>`R`-label resources | *CARE TEAM* | *PROVIDER* | *ADMIN* |
+| FHIR Resource Type / level  | *SERVICE*| *CUSTODIAN*<br>*break-glass* for<br>`R`-label resources | *CARE TEAM* | *PROVIDER* <br>*break-glass* for<br>`R`-label resources | *ADMIN* |
 |:----|:----|:----|:----|:----|:----|
-|`Patient`              | C,R,U,S  | C,R,U    | R,S   | break-glass(R,S)  | C,R,U,S   |
-|`CarePlan`             | C,R,U,S  | C,R,U    | R,S   | break-glass(R,S)  | C,R,U,S   |
-|`Condition`            | C,R,U,S  | C,R,U    | R,S   | break-glass(R,S)  | C,R,U,S   |
-|`Encounter`            | C,R,U,S  | C,R,U    | R,S   | R,S, break-glass(C,U)| C,R,U,S   |
-|`Observation`          | C,R,U,S  | C,R,U    | R,S   | break-glass(R,S)  | C,R,U,S   |
-|`CareTeam`             | C,R,U,S  | C,R,U    | R,S   | break-glass(R,S)  | C,R,U,S   |
-|`Consent`              | C,R,S    | U        | R,S   | R,S               | C,R,U,S   |
-|`Appointment`          | C,R,U,S  | C,R,U,S  | R,S   | R,S               | C,R,U,S   |
-|`MedicationRequest`    | C,R,U,S  |          | R,S   | R,S               | C,R,U,S   |
-|`MedicationStatement`  | C,R,S    | U        | R,S   | R,S               | C,R,U,S   |
-|`Questionnaire`        | R,S      | R,S      | R,S   | R,S               | C,R,U,S   |
+|`Patient`              | C,R,U,S  | C,R,U    | R,S   | R,S   | C,R,U,S   |
+|`CarePlan`             | C,R,U,S  | C,R,U    | R,S   | R,S   | C,R,U,S   |
+|`Condition`            | C,R,U,S  | C,R,U    | R,S   | R,S   | C,R,U,S   |
+|`Encounter`            | C,R,U,S  | C,R,U    | R,S   | R,S   | C,R,U,S   |
+|`Observation`          | C,R,U,S  | C,R,U    | R,S   | R,S   | C,R,U,S   |
+|`CareTeam`             | C,R,U,S  | C,R,U    | R,S   | R,S   | C,R,U,S   |
+|`Consent`              | C,R,S    | U        | R,S   | R,S   | C,R,U,S   |
+|`Appointment`          | C,R,U,S  | C,R,U,S  | R,S   | R,S   | C,R,U,S   |
+|`MedicationRequest`    | C,R,U,S  |          | R,S   | R,S   | C,R,U,S   |
+|`MedicationStatement`  | C,R,S    | U        | R,S   | R,S   | C,R,U,S   |
+|`Questionnaire`        | R,S      | R,S      | R,S   | R,S   | C,R,U,S   |
 
 #### Break-glass authorization
 
