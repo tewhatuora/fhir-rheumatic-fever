@@ -1,7 +1,7 @@
-Instance: CarePlanWithSecondaryProphylaxisPlanned
+Instance: CarePlan-SecondaryProphylaxisPlanned
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
-Description: "Example of an RF care plan with secondary prophylaxis medication planned and two appointments booked."
+Description: "Example of an RF care plan with secondary prophylaxis medication planned and three appointments booked."
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "4"
@@ -12,7 +12,7 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 
 * title = "Active care plan with medication planned and appointments booked for Madeleine Meringue"
 
-* insert AddressesConditionExample(SevereRfConditionExample)
+* insert AddressesConditionExample(SevereRfCondition)
 
 * category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
 
@@ -24,21 +24,21 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 
 * status = #active
 
-* activity[0].reference = Reference(PlannedBenzathineMedicationWithLignocaine)
+* activity[+].reference = Reference(PlannedBenzathineMedicationWithLignocaine)
 * activity[+].reference = Reference(SecondaryProphylaxisAppointment-August-Booked)
+* activity[+].reference = Reference(FollowUp-Dental-August-Booked)
 * activity[+].reference = Reference(SecondaryProphylaxisAppointment-September-Booked)
 
-* insert PatientInstanceReference(subject,MadeleineMeringue)
+* insert SubjectPatientReference(MadeleineMeringue)
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * careTeam[0] = Reference(SecondaryProphylaxisCareTeam)
 
-* supportingInfo[0] = Reference(PatientMedicationAllergyQuestionnaireResponse)
+* supportingInfo[+] = Reference(PatientMedicationAllergyQuestionnaireResponse)
 * supportingInfo[+] = Reference(MedicationsAndFollowUpGuidanceQuestionnaireResponse)
 * supportingInfo[+] = Reference(PatientWhanauGoalsPreferencesQuestionnaireResponse)
 
 * extension[lifelongSecondaryProphylaxis].url = Canonical(rf-careplan-lifelongSecondaryProphylaxis)
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
-
 
 // * extension[0].url =Canonical(rf-careplan-onhold-reason)
 // * extension[=].valueString = "Patient on holiday overseas"

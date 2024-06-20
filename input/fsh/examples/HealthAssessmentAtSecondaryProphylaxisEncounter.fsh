@@ -13,8 +13,8 @@ Usage: #example
 
 * subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
-* basedOn = Reference(DraftCarePlan)
-* encounter = Reference(Encounter-SecondaryProphylaxisAppointment)
+* basedOn = Reference(CarePlan-PatientRegistered)
+* encounter = Reference(SecondaryProphylaxisEncounter)
 
 // NOTE: item numbering does not have to match the Questionnaire because answers relate to questions through link_id
 

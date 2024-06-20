@@ -1,10 +1,10 @@
 // //// //// //// //// //// 
 // This file creates a variety of inline NzLocations for use as contained instances in other examples
 
-// Example of a Hospital identified by its name only (not HPI)
+// //// //// //// //// //// 
 Instance: StarshipHospital
 InstanceOf: NzLocation
-Description: "Example of a hospital location identified by name only"
+Description: "Example of a hospital location identified by name (not HPI)"
 Usage: #inline
 * meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NzLocation"
 * name = "Starship Hospital"
@@ -12,7 +12,6 @@ Usage: #inline
 
 
 // //// //// //// //// //// 
-// example of a hospital clinic location identified by name only
 Instance: FantasticHospitalClinic
 InstanceOf: NzLocation
 Description: "Example of a clinic identified by name only"
@@ -21,11 +20,10 @@ Usage: #inline
 * name = "The Fantastic Hospital Clinic"
 * type insert ServiceDeliveryLocationRoleType(HOSP)
 
-
-// Example of a school location identified by its name and school ID
+// //// //// //// //// //// 
 Instance: MasseyHighSchool
 InstanceOf: NzLocation
-Description: "Example of a school location"
+Description: "Example of a school location identified by name and schoold ID"
 Usage: #inline
 * meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NzLocation"
 * name = "Massey High School"
@@ -36,7 +34,6 @@ Usage: #inline
 
 
 // //// //// //// //// //// 
-// example of a community location identified by its name only
 Instance: FriendlyCommunityPlace
 InstanceOf: NzLocation
 Description: "Example of a community location identified by name only"
@@ -47,10 +44,9 @@ Usage: #inline
 
 
 // //// //// //// //// //// 
-// example of a community location identified by its name only
 Instance: MadeleinesHome
 InstanceOf: NzLocation
-Description: "Example of a patient home location"
+Description: "Example of a patient home location (identified by name only)"
 Usage: #inline
 * meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NzLocation"
 * name = "Madeleine's Home"
@@ -64,7 +60,21 @@ Usage: #inline
 * address[=].period.start = "2023-08-01"
 
 
-
+// //// //// //// //// //// 
+Instance: PushPullDentalClinic
+InstanceOf: NzLocation
+Description: "example of a specialist follow-up provider location (identified by name only)"
+Usage: #inline
+* meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NzLocation"
+* name = "Push Pull Dental Clinic"
+* address[0].use = #home
+* address[=].text = "Level 24 Majestic Centre"
+* address[=].line[0] = "100 Willis Street"
+* address[=].line[+] = "Wellington Central"
+* address[=].city = "Wellington"
+* address[=].postalCode = "6011"
+* address[=].country = "NZL"
+* address[=].period.start = "2023-08-01"
 // Example of HPI facility id location
 // real HPI facility, display = "PHNs Whangarei"
 // * identifier.use = #official

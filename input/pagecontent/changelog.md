@@ -6,10 +6,25 @@
 
 **Separated rheumatic fever API from shared care IG into the dedicated IG.**
 
+- The Artifacts page is now simply the IG publisher output list format with standard artifact groupings.  Only consent items and canonical instances definitions are grouped separately.
+
+### Revised consent data design
+
 - Rewrote [consent-based access control](consentBasedAccessControl.html) page.
-- Updated Consent data designs to address consent to treatment and opt-out.
+- Updated Consent data models to address consent to treatment and opt-out.
+- Updated all Consent examples
+
+### Questionnaires
+
 - Added new [questionnaire for health assessment at oral SP encounters](Questionnaire-OralSecondaryProphylaxisHealthAssessmentQuestionnaire.html)
+
+### Updated examples
+
 - Added new example questionnaire response [HealthAssessmentAtOralProphylaxisEncounter](QuestionnaireResponse-HealthAssessmentAtOralProphylaxisEncounter.html)
+- All `Observation` example instances now have a `.performer`
+- All `Encounter` example instances now have a `.serviceProvider`
+- Added new examples for a FOLLOW-UP (dentist) appointment and encounter recording.
+- CarePlan examples renamed and refactored
 
 ## v0.4.2 phase 2 updates part 2 (June 2024)
 
@@ -24,13 +39,13 @@
 - [RF medication request profile](/StructureDefinition-nz-sharedcare-rheumaticfever-medicationrequest.html)
   - Added definitional detail to `dosageInstruction.route` and `.site`
 
-### [Examples](artifacts.html#examples)
+### Examples
 
 - A new [Condition with diagnosis evidence](Condition-SevereRfConditionWithDiagnosisEvidence.html) example illustrates linking Observations via `evidence[].detail` references.
 - Examples of enhanced diagnosis linked to a Condition
-  - [ECHO RHD assessment](Observation-DiagnosisExample-ECHO.html)
-  - [Jones Criteria](Observation-DiagnosisExample-JonesCriteria.html)
-  - [Strep evidence](Observation-DiagnosisExample-StrepEvidence.html)
+  - [ECHO RHD assessment](Observation-DiagnosisDetail-ECHO.html)
+  - [Jones Criteria](Observation-DiagnosisDetail-JonesCriteria.html)
+  - [Strep evidence](Observation-DiagnosisDetail-StrepEvidence.html)
 - The various example `CarePlan`s now illustrate use of the **lifelong secondary prophylaxis** extension and have been revised so that creation adn period dates are UTC `dateTime` values.
 - SP `Appointment`s and `Encounter`s now have `.serviceType` = $sct#360271000 "Prophylaxis"  
 - Madeleine Meringue example patient - changed language code to #en (English) to fix BCP-47 terminology publisher validation problem
@@ -60,7 +75,7 @@
 
 - Added new model for **planning/recording of other care appointments**
 
-### [Definition instances](artifacts.html#definitions)
+### Definitions
 
 - Moved the [**LeadProvidersGroup**](CareTeam-LeadProvidersGroup.html) from Examples to Definitions section
 
@@ -75,7 +90,7 @@
 1. Date of RHD severity assessment (Condition.**assessmentDate**)
 1. Symptom status at time of RF diagnosis (Condition.**symptomStatusAtDiagnosis**)
 
-### [Examples](artifacts.html#examples)
+### Examples
 
 #### Shared care provider scenario
 
@@ -86,7 +101,7 @@ These examples have been adjusted to correctly reflect the Taranaki RF SP servic
 
 #### Condition and diagnosis extensions
 
-- Expanded [RfCondition](Condition-SevereRfConditionExample.html) example to use a new extension (symptomStatusAtDiagnosis) and reference a diagnosis Encounter (see below)
+- Expanded [RfCondition](Condition-SevereRfCondition.html) example to use a new extension (symptomStatusAtDiagnosis) and reference a diagnosis Encounter (see below)
 
 #### Medication planning and recording
 
@@ -99,7 +114,7 @@ These examples have been adjusted to correctly reflect the Taranaki RF SP servic
 
 #### Miscellaneous
 
-- Added a new example [Diagnosis Encounter](Encounter-Encounter-Diagnosis.html) capturing representing context and locations of RF diagnosis.
+- Added a new example [Diagnosis Encounter](Encounter-DiagnosisEncounter.html) capturing representing context and locations of RF diagnosis.
 
 ### Consent (2024-05-07)
 
@@ -126,7 +141,7 @@ These examples have been adjusted to correctly reflect the Taranaki RF SP servic
 
 ### RF examples
 
-- The example showing [consent by a related person](Consent-ConsentByRelatedPersonExample.html) is now an `#active` rather than `#proposed` consent, to make it more realistic.
+- The example showing *consent by a related person* was corrected to be an `#active` rather than `#proposed` status.
 
 ### Doc
 
@@ -271,7 +286,7 @@ As a result of a design decision to constrain values of medication frequency to 
 #### Questionnaire updates
 
 - [Secondary Prophylaxis Health Assessment Questionnaire](Questionnaire-SecondaryProphylaxisHealthAssessmentQuestionnaire.html)  
-    Various items removed and one new item added [Example QR]QuestionnaireResponse-RFPatientHealthAssessmentQuestionnaireResponse.html) updated to match.
+    Various items removed and one new item added [Example QR]QuestionnaireResponse-HealthAssessmentAtSecondaryProphylaxisEncounter.html) updated to match.
 
 - [Medications and Follow-Up Guidance Questionnaire](Questionnaire-MedicationsAndFollowUpGuidanceQuestionnaire.html)  
     One item changed from boolean to yes/no/unknown coded answer. [Example QR](QuestionnaireResponse-MedicationsAndFollowUpGuidanceQuestionnaireResponse.html) updated to match.
@@ -287,7 +302,7 @@ As a result of a design decision to constrain values of medication frequency to 
 
 - `Appointment` examples updated to reflect changes to data dictionary, including the addition of another code for salesforce CarePlanActivity identifiers in [ExternalSystemIdentifierTypeValueSet](ValueSet-external-system-identifier-type-code.html).
 
-- A new example has been added demonstrating **consent by a person related to a patient**. See **[ConsentByRelatedPersonExample](Consent-ConsentByRelatedPersonExample.html)**.
+- A new example has been added demonstrating **consent by a person related to a patient**.
 
 - The example rheumatic fever patient **[MadeleineMeringue](Patient-MadeleineMeringue.html)** also now has some sample ContactPoint entries in `Patient.telecom[]`.
 
@@ -315,7 +330,7 @@ As a result of a design decision to constrain values of medication frequency to 
 
   - Examples now include the `.organization` element as the custodian of the consent, set to the same org as `.performer`
 
-  - An example of an `#active` status Consent has been added.  [This example](Consent-RheumaticFeverActiveConsentExample.html) demonstrates how clients should form a valid Consent instance representing when a patient's consent has been actually obtained.
+  - An example of an `#active` status Consent has been added.
 
 - In the `RheumaticFeverCarePlan` resource profile, `.addresses` now has cardinality zero to many (`0..*`)
 
@@ -346,7 +361,7 @@ As a result of a design decision to constrain values of medication frequency to 
     answer yes|no|unknown, and add third question to capture Other Allergy detail as free text.
 
 - [Secondary Prophylaxis Health Assessment Questionnaire](Questionnaire-SecondaryProphylaxisHealthAssessmentQuestionnaire.html) revised questions in line with
-    data dictionary changes, and [QuestionnaireResponse example]QuestionnaireResponse-RFPatientHealthAssessmentQuestionnaireResponse.html) updated to match.
+    data dictionary changes, and [QuestionnaireResponse example]QuestionnaireResponse-HealthAssessmentAtSecondaryProphylaxisEncounter.html) updated to match.
 
 - Corrected rheumatic heart disease severity [ValueSet](ValueSet-rf-condition-rhdseverity-code.html) to add missing code `#301561000210102 History of heart valve replacement (situation)`
 

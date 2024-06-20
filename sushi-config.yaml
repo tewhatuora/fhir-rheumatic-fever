@@ -66,9 +66,7 @@ parameters:
   default-version: true
   suppressed-ids: $examples
   display-warnings: true
-  no-narrative:             #  Suppress narrative so gen'd canon instance JSON ready to seed 
-  - Observation/*
-  - CareTeam/*
+  no-narrative:             #  Suppress narrative so gen'd canon instance JSONs ready to seed 
   - Questionnaire/*
 
 #   excludettl: true
@@ -84,13 +82,7 @@ parameters:
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
-  Artifacts:
-    All artifacts: artifacts.html
-    Structure definitions and canonical items: artifacts.html#definitions
-    Extensions: artifacts.html#extensions
-    Terminology definitions: artifacts.html#terminology
-    Example representations: artifacts.html#examples
-    Data consent examples: artifacts.html#consent
+  Artifacts: artifacts.html
   Documentation:
     Data models: rheumatic-fever-data-models.html
     Data mapping: rheumatic-fever-data.html
@@ -188,99 +180,28 @@ contact:
 #     - StructureDefinition/bee-sting
 #
 groups:
-  Definitions:
-    name: definitions
-    description: FHIR structure definitions (profiles) and canonical instance definitions
+  Canonical:
+    name: canonical instance definitions
+    description: canonical instance definitions
     resources:
     - LeadProvidersGroup
-    - StructureDefinition/nz-sharedcare-rheumaticfever-careplan
-    - StructureDefinition/nz-sharedcare-rheumaticfever-careteam
-    - StructureDefinition/nz-sharedcare-rheumaticfever-condition
-    - StructureDefinition/nz-sharedcare-rheumaticfever-patient
-    - StructureDefinition/nz-sharedcare-rheumaticfever-medicationrequest
-    - StructureDefinition/nz-sharedcare-rheumaticfever-diagnosisgroup
     - MedicationsAndFollowUpGuidanceQuestionnaire
     - PatientMedicationAllergyQuestionnaire
     - PatientWhanauGoalsPreferencesQuestionnaire
     - SecondaryProphylaxisHealthAssessmentQuestionnaire
     - OralSecondaryProphylaxisHealthAssessmentQuestionnaire
 
-  Extensions:
-    name: extensions
-    description: FHIR extension definitions
-    resources:
-    - StructureDefinition/rf-patient-whanaumember-role
-    - StructureDefinition/rf-patient-whanaumember-relationship
-    - StructureDefinition/rf-patient-whanaumember-primary
-    - StructureDefinition/rf-careplan-closure-reason
-    - StructureDefinition/rf-careplan-onhold-reason
-    - StructureDefinition/rf-careplan-lifelongSecondaryProphylaxis
-    - StructureDefinition/rf-condition-diagnosticcertainty
-    - StructureDefinition/rf-condition-rhdseverity
-    - StructureDefinition/rf-condition-assessmentdate
-    - StructureDefinition/rf-condition-symptomaticAtDiagnosis
-    - StructureDefinition/rf-medicationrequest-medicationfrequency
-
-  Examples:
-    name: examples
-    description: All rheumatic fever example FHIR instances
-    resources:
-    - BasicCarePlan
-    - BenzathineMedication
-    - CarePlanClosed
-    - CarePlanWentOnHold
-    - CarePlanWithOneAppointmentCompleted
-    - CarePlanWithSecondaryProphylaxisPlanned
-    - DraftCarePlan
-    - DiagnosisExample-ECHO
-    - DiagnosisExample-JonesCriteria
-    - DiagnosisExample-StrepEvidence
-    - DiagnosisExample-StrepEvidence-Secondary
-    - Encounter-Diagnosis
-    - Encounter-SecondaryProphylaxisAppointment
-    - HealthAssessmentAtSecondaryProphylaxisEncounter
-    - HealthAssessmentAtOralProphylaxisEncounter
-    - MadeleineMeringue
-    - MadeleineMeringueAndWhanau
-    - MedicationsAndFollowUpGuidanceQuestionnaireResponse
-    - MedicationStatement-August
-    - PaniaPunga
-    - PatientMedicationAllergyQuestionnaireResponse
-    - PatientWhanauGoalsPreferencesQuestionnaireResponse
-    - PlannedBenzathineMedication
-    - PlannedBenzathineMedicationWithLignocaine
-    - SecondaryProphylaxisAppointment-August-Booked
-    - SecondaryProphylaxisAppointment-August-Fulfilled
-    - SecondaryProphylaxisAppointment-September-Booked
-    - SecondaryProphylaxisAugustEncounterBundle
-    - SecondaryProphylaxisCareTeam
-    - SevereRfConditionExample
-    - SevereRfConditionWithDiagnosisEvidence
-    
-  Terminology:
-    name: terminology
-    description: All rheumatic fever ValueSets and CodeSystems
-    resources:
-    - RheumaticFeverConditionDiagnosticCertaintyCodeSystem
-    - RheumaticFeverConditionDiagnosticCertaintyValueSet
-    - RheumaticFeverConditionDiagnosisSummaryValueSet
-    - RheumaticFeverConditionSymptomaticAtDiagnosisValueSet
-    - RheumaticFeverConditionRHDSeverityValueSet
-    - RheumaticFeverDiagnosisObservationGroupValueSet
-    - RheumaticFeverMedicationAllergyValueSet
-    - RheumaticFeverCareTeamParticipantRoleValueSet
-    - RheumaticFeverMedicationRequestMedicationFrequencyValueSet
-    - QualifiedYesNoAnswerValueSet
-    - ExternalSystemIdentifierTypeValueSet
-    - ExternalSystemIdentifierTypeCodeSystem
 
   Consent:
     name: consent
     description: Consent profiles/definitions and examples
     resources:
-    - RheumaticFeverActiveConsentExample
-    - ProvisionalConsentExample
-    - ConsentByRelatedPersonExample
+    - Consent-Data-Active-Initial
+    - Consent-Data-Active-AfterDiagnosisAndPlanning
+    - Consent-Data-Active-AfterAppointments
+    - Consent-Data-Provisional
+    - Consent-Data-OnBehalfByRelatedPerson
+    - Consent-Data-OptOut
 
 #
 # The ImplementationGuide resource defines several other properties

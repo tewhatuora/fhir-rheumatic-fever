@@ -11,7 +11,7 @@ Usage: #example
 * contained = contained-Lignocaine-dose  // contained resource signifies lignocaine given too
 
 * basedOn = Reference(PlannedBenzathineMedication)
-* context = Reference(Encounter-SecondaryProphylaxisAppointment)
+* context = Reference(SecondaryProphylaxisEncounter)
 * medicationReference = Reference(BenzathineMedication)
 * subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 

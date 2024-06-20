@@ -1,4 +1,4 @@
-Instance: BasicCarePlan
+Instance: CarePlan-Basic
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "Example of the most basic RF care plan: not fully setup and indicates only that a patient registered with RF service."
@@ -10,7 +10,7 @@ Description: "Example of the most basic RF care plan: not fully setup and indica
 * identifier[NHI] insert NHIIdentifier(SCF7824)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
 
-* insert AddressesConditionExample(SevereRfConditionExample)
+* insert AddressesConditionExample(SevereRfCondition)
 
 * category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
 
@@ -24,12 +24,11 @@ Description: "Example of the most basic RF care plan: not fully setup and indica
 
 * status = #draft
 
-* insert PatientInstanceReference(subject,MadeleineMeringue)
+* insert SubjectPatientReference(MadeleineMeringue)
 
 // * subject = Reference(MadeleineMeringue)
 // * subject.type = https://hl7.org/fhir/R4B/codesystem-resource-types.html#resource-types-Patient
 // * subject.display = "Madeleine Meringue"
-
 
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * careTeam[0] = Reference(SecondaryProphylaxisCareTeam)

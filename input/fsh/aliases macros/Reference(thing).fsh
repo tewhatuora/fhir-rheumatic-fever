@@ -24,11 +24,10 @@ RuleSet: AddressesConditionExample(example-name)
 * addresses[=].type = "Condition"
 
 
-// makes a Patient-type reference, using specified element name and local patient instance
-RuleSet: PatientInstanceReference(element-name,instance-path)
-
-* {element-name} = Reference({instance-path})
-* {element-name}.type = "Patient"
+// makes a Patient-type reference, using specified example patient instance
+RuleSet: SubjectPatientReference(instance-name)
+* subject = Reference({instance-name})
+* subject.type = "Patient"
 
 
 // adds a Consent.data.reference as a relative reference to the instance specified by the path expression

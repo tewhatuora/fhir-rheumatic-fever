@@ -1,4 +1,4 @@
-Instance: SevereRfConditionExample
+Instance: SevereRfCondition
 InstanceOf: RheumaticFeverCondition
 Usage: #example
 Description: "An example of a rheumatic fever condition as initially diagnosed at registration"
@@ -20,7 +20,7 @@ Description: "An example of a rheumatic fever condition as initially diagnosed a
 * severity = http://snomed.info/sct#24484000 "Severe"
 * code = $sct#195528001 "Acute rheumatic fever (disorder)"
 
-* encounter = Reference(Encounter-Diagnosis)
+* encounter = Reference(DiagnosisEncounter)
 * subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 
 * onsetDateTime = "2023-02-05T02:00:00Z"
