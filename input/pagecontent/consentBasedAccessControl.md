@@ -17,9 +17,13 @@ between registering a patient (which requires personal data to be entered into R
 
 #### Opting out / withdrawing consent
 
-A patient may choose not to receive secondary prophylaxis treatment.  
+A patient may choose not to receive secondary prophylaxis treatment.
 
-At this point such a patient is deemed to have withdrawn consent for treatment and further data collection, however, current national policy allows Secondary Prevention Services to retain patient information for analysis and in case they subsequently come back onto the register to receive treatment.
+A patient can also elect not to give consent for data sharing (outside of Rheumatic Fever Prevention Services).
+
+If a patient **opts out** of treatment and data sharing, Rheumatic Fever Secondary Prevention Services, under current arrangements, retain the patient's information for analysis and in case the patient subsequently resumes treatment.
+
+When a patient is newly-registered and has not yet given their consent (by signing a form) their data is to be **provisionally protected** to prevent data sharing outside of Rheumatic Fever Secondary Prevention Services.
 
 #### Custodianship of patient health data
 
