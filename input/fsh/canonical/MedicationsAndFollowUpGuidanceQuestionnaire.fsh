@@ -57,3 +57,9 @@ Description: "Gathers information in secondary prophylaxis planning which guides
 * item[=].answerOption[0].valueString = "Specialist"
 * item[=].answerOption[+].valueString = "GP"
 * item[=].answerOption[+].valueString = "To be determined"
+
+* item[+] insert singleChoiceQuestion(PrescribingMethod,[[5)]],[[Method of prescribing (choose one)]])
+* item[=].answerOption[+].valueString = "Community Medication Authority"
+* item[=].answerOption[+].valueString = "Standing Order (local)"
+* item[=].answerOption[+].valueString = "Standing Order (national)"
+* item[=].answerOption[+].valueString = "Individual prescription"

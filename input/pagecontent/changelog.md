@@ -17,6 +17,7 @@
 ### Questionnaires
 
 - Added new [questionnaire for health assessment at oral SP encounters](Questionnaire-OralSecondaryProphylaxisHealthAssessmentQuestionnaire.html)
+- Added a new item *Prescribing method* (DD item M8) to the **Medications and Followup Guidance Questionnaire** and example.
 
 ### Updated examples
 

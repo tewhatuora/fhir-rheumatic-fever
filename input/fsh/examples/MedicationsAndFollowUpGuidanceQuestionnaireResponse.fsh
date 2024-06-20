@@ -4,11 +4,11 @@ Description: "Example payload demonstrating guidance defined for secondary proph
 Usage: #example
 
 * meta.profile = Canonical(QuestionnaireResponse)
-* meta.versionId = "2"
-* meta.lastUpdated = "2023-11-10T00:00:00Z"
+* meta.versionId = "3"
+* meta.lastUpdated = "2024-06-04T00:00:00Z"
 
 * status = #completed
-* authored = "2023-06-26T02:08:00.504Z"
+* authored = "2024-06-20T04:00:00Z"
 * questionnaire = Canonical(MedicationsAndFollowUpGuidanceQuestionnaire|1.0.0)
 * subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
@@ -30,3 +30,6 @@ Usage: #example
 
 * item[+] insert answerItemX(FollowUpClinicalService,[[4)]],[[Follow-up clinical service? (choose one)]])
 * item[=].answer.valueString = "GP"
+
+* item[+] insert answerItemX(PrescribingMethod,[[5)]],[[Method of prescribing (choose one)]])
+* item[=].answer.valueString = "Standing Order (local)"
