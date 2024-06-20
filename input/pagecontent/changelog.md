@@ -26,6 +26,7 @@
 - All `Encounter` example instances now have a `.serviceProvider`
 - Added new examples for a FOLLOW-UP (dentist) appointment and encounter recording.
 - CarePlan examples renamed and refactored
+- Added example of a security-labelled resource instance (for revised data access control scheme)
 
 ## v0.4.2 phase 2 updates part 2 (June 2024)
 

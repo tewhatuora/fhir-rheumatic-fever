@@ -25,17 +25,14 @@ Usage: #example
 * component[+] insert ObservationQuantity(394723001, [[Anti-deoxyribonuclease B antibody level (procedure)]], 680000, [[IU/litre]], [[[iU]/L]] )
 * component[+] insert ObservationDate(394723001, [[Anti-deoxyribonuclease B antibody level (procedure)]], "2023-06-02T02:00:00Z" )
 
-// Strep organism was found
-* component[+] insert ObservationPresent( 80166006,   [[Streptococcus pyogenes (organism)]], true )
-
 // 1/3: strep throat culture test was NOT DONE
-* component[+] insert ObservationPresent( 117015009, [[Throat culture (procedure)]], false )
+* component[+] insert ObservationAbsent( 117015009, [[Throat culture (procedure)]], not-performed, [[Not performed]] )
 
-// 2/3: Strep PCR test - test was DONE
-* component[+] insert ObservationPresent( 9718006,  [[Polymerase chain reaction analysis (procedure)]], true )
+// 2/3: Strep PCR test - test was DONE and positive finding
+* component[+] insert ObservationInterpretation( 9718006,  [[Polymerase chain reaction analysis (procedure)]], POS, [[Positive]] )
 
 // 3/3: Strep RAT - UNKNOWN if test was DONE
-* component[+] insert ObservationUnknown( 312504002, [[Antigen test (procedure)]] )
+* component[+] insert ObservationAbsent( 312504002, [[Antigen test (procedure)]], unknown, [[Unknown]] )
 
 
 // //////// //////// //////// //////// //////// //////// ////////

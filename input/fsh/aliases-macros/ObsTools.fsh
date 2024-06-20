@@ -44,14 +44,14 @@ RuleSet: ObservationCodeableValue(compCode, compDisplay, valueCode, valueDisplay
 * valueCodeableConcept.text = "{valueDisplay}"
 
 // make an coded observation component for a case where it is unknown if the observation was actually done or what the result was
-RuleSet: ObservationUnknown(code, display)
+RuleSet: ObservationAbsent(code, display, acode, adisplay)
 * code.coding.system = $sct
 * code.coding.code = #"{code}"
 * code.coding.display = "{display}"
 * code.text = "{display}"
 * dataAbsentReason.coding.system = $obs-dataabsentreason
-* dataAbsentReason.coding.code = #unknown
-* dataAbsentReason.coding.display = "Unknown"
+* dataAbsentReason.coding.code = #"{acode}"
+* dataAbsentReason.coding.display = "{adisplay}"
 
 // make an coded observation component with an measured quantity
 RuleSet: ObservationQuantity(code, display, mvalue, munit, mcode)
