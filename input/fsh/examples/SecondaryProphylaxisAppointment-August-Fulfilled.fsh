@@ -24,5 +24,5 @@ Usage: #example
 * participant[=].status = #accepted
 
 * supportingInformation[0] insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
-* supportingInformation[+] = Reference(Encounter-SecondaryProphylaxisAppointment)
+* supportingInformation[+] = Reference(SecondaryProphylaxisEncounter)
 * comment = "The plan for this appointment is..."

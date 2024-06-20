@@ -1,4 +1,4 @@
-Instance: Encounter-Diagnosis
+Instance: DiagnosisEncounter
 InstanceOf: Encounter
 Usage: #example
 Description: "Encounter capturing context of a patient's rheumatic fever diagnosis"
@@ -14,6 +14,8 @@ Description: "Encounter capturing context of a patient's rheumatic fever diagnos
 
 * subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 * participant.individual insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+
+* serviceProvider insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
 * period.start = "2023-03-12T02:00:00Z"    // UTC datetime
 

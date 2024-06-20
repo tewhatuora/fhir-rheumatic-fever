@@ -20,7 +20,7 @@ Description: "An example of a severe rheumatic fever Condition with linked evide
 * severity = http://snomed.info/sct#24484000 "Severe"
 * code = $sct#195528001 "Acute rheumatic fever (disorder)"
 
-* encounter = Reference(Encounter-Diagnosis)
+* encounter = Reference(DiagnosisEncounter)
 * subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 
 * onsetDateTime = "2023-02-05T02:00:00Z"
@@ -42,10 +42,10 @@ Description: "An example of a severe rheumatic fever Condition with linked evide
 // link to the three Observation instances which represent the groups of diagnosis detail
 
 * evidence[+].code insert SNOMEDCoding(439238004,[[Echocardiography test interpretation (observable entity)]])
-* evidence[=].detail = Reference(DiagnosisExample-ECHO)
+* evidence[=].detail = Reference(DiagnosisDetail-ECHO)
 
 * evidence[+].code insert SNOMEDCoding(447541000210107,[[New Zealand Jones Criteria Assessment (observable entity)]])
-* evidence[=].detail = Reference(DiagnosisExample-JonesCriteria)
+* evidence[=].detail = Reference(DiagnosisDetail-JonesCriteria)
 
 * evidence[+].code insert SNOMEDCoding(448011000210101,[[Evidence of preceding Streptococcus group A infection (observation entity)]])
-* evidence[=].detail = Reference(DiagnosisExample-StrepEvidence)
+* evidence[=].detail = Reference(DiagnosisDetail-StrepEvidence)

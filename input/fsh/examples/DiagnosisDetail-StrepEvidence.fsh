@@ -1,4 +1,4 @@
-Instance: DiagnosisExample-StrepEvidence
+Instance: DiagnosisDetail-StrepEvidence
 InstanceOf: RheumaticFeverDiagnosisGroup
 Description: "Illustrates primary strep diagnosis evidence (Strepococcus group A infection is the cause of rheumatic fever)"
 Usage: #example
@@ -13,7 +13,9 @@ Usage: #example
 * subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 * status = #final
 
-* hasMember[0] = Reference(DiagnosisExample-StrepEvidence-Secondary)
+* performer insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
+
+* hasMember[0] = Reference(DiagnosisDetail-StrepEvidence-Secondary)
 
 // First ASOT
 * component[+] insert ObservationQuantity(82703001, [[Antistreptolysin O titer (procedure)]], 480000, [[IU/litre]], [[[iU]/L]] )
@@ -23,21 +25,21 @@ Usage: #example
 * component[+] insert ObservationQuantity(394723001, [[Anti-deoxyribonuclease B antibody level (procedure)]], 680000, [[IU/litre]], [[[iU]/L]] )
 * component[+] insert ObservationDate(394723001, [[Anti-deoxyribonuclease B antibody level (procedure)]], "2023-06-02T02:00:00Z" )
 
-// Strep GAS Throat culture - UNKNOWN if this test was done, result unknown
-* component[+] insert ObservationUnknown( 80166006,   [[Streptococcus pyogenes (organism)]] )
-* component[+] insert ObservationUnknown( 117015009, [[Throat culture (procedure)]] )
+// Strep organism was found
+* component[+] insert ObservationPresent( 80166006,   [[Streptococcus pyogenes (organism)]], true )
 
-// Strep GAS Throat PCR - test was DONE AND was positive for strep
-* component[+] insert ObservationPresent( 80166006, [[Streptococcus pyogenes (organism)]], true )
+// 1/3: strep throat culture test was NOT DONE
+* component[+] insert ObservationPresent( 117015009, [[Throat culture (procedure)]], false )
+
+// 2/3: Strep PCR test - test was DONE
 * component[+] insert ObservationPresent( 9718006,  [[Polymerase chain reaction analysis (procedure)]], true )
 
-// Strep GAS Throat RAT - test was DONE AND was positive for strep
-* component[+] insert ObservationPresent( 80166006,  [[Streptococcus pyogenes (organism)]], true )
-* component[+] insert ObservationPresent( 312504002, [[Antigen test (procedure)]], true )
+// 3/3: Strep RAT - UNKNOWN if test was DONE
+* component[+] insert ObservationUnknown( 312504002, [[Antigen test (procedure)]] )
 
 
 // //////// //////// //////// //////// //////// //////// ////////
-Instance: DiagnosisExample-StrepEvidence-Secondary
+Instance: DiagnosisDetail-StrepEvidence-Secondary
 InstanceOf: RheumaticFeverDiagnosisGroup
 Description: "Illustrates second strep diagnosis evidence from repeated ASOT and Anti-Dnase B tests"
 Usage: #example
@@ -52,7 +54,9 @@ Usage: #example
 * subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 * status = #final
 
-* derivedFrom = Reference(DiagnosisExample-StrepEvidence)
+* performer insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
+
+* derivedFrom = Reference(DiagnosisDetail-StrepEvidence)
 
 // Second ASOT
 * component[+] insert ObservationQuantity(82703001, [[Antistreptolysin O titer (procedure)]], 480000, [[IU/litre]], [[[iU]/L]] )

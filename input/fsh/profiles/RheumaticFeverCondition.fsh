@@ -52,10 +52,10 @@ Id: nz-sharedcare-rheumaticfever-condition
 * stage 0..0      // don't need this as there are no formal stage conventions in RF diagnosis
 
 * evidence 0..3
-* evidence ^short = "Up to 3 Observation instances may be present (linked) to represent RF diagnosis detail"
 * evidence.code from rf-observation-diagnosisgroup-code (required)
 * evidence.code ^short = "Identifies the GROUPing of diagnosis data in the linked Observation instance"
 * evidence.detail only Reference(Observation)
+* evidence.detail ^short = "Up to 3 Observation instances, representing RF diagnosis detail, can be linked here"
 * evidence.extension 0..0
 * evidence.modifierExtension 0..0
 
@@ -72,7 +72,7 @@ Id: nz-sharedcare-rheumaticfever-condition
   RfConditionSymptomaticAtDiagnosisExtension named symptomStatusAtDiagnosis 0..1
 
 * extension[assessmentDate] ^short = "date (dateTime value in UTC timezone) of RHD severity assessment"
-* extension[diagnosticCertainty] ^short = "This certainty code value must be interpreted in conjunction with the patient's diagnosis in Condition.code"
+* extension[diagnosticCertainty] ^short = "**This certainty code MUST be interpreted in conjunction with the patient's diagnosis in the .code element**"
 
 // elements prohibited
 * implicitRules 0..0

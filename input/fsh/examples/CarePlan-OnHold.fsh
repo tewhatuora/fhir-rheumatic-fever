@@ -1,18 +1,18 @@
-Instance: CarePlanWentOnHold
+Instance: CarePlan-OnHold
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "Example of an RF care plan that has gone on-hold, after the first secondary prophylaxis appointment has been attended."
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
-* meta.versionId = "3"
-* meta.lastUpdated = "2024-06-12T06:00:00Z"
+* meta.versionId = "4"
+* meta.lastUpdated = "2024-06-20T02:00:00Z"
 
 * identifier[NHI] insert NHIIdentifier(SCF7824)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
 
 * title = "Care plan went on hold after first appointment completed"
 
-* insert AddressesConditionExample(SevereRfConditionExample)
+* insert AddressesConditionExample(SevereRfCondition)
 
 * category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
 
@@ -24,18 +24,19 @@ Description: "Example of an RF care plan that has gone on-hold, after the first 
 
 * status = #on-hold
 
-* activity[0].reference = Reference(PlannedBenzathineMedication)
+* activity[+].reference = Reference(PlannedBenzathineMedication)
 * activity[+].reference = Reference(SecondaryProphylaxisAppointment-August-Fulfilled)
+* activity[+].reference = Reference(FollowUp-Dental-August-Booked)
 * activity[+].reference = Reference(SecondaryProphylaxisAppointment-September-Booked)
 
-* insert PatientInstanceReference(subject,MadeleineMeringue)
+* insert SubjectPatientReference(MadeleineMeringue)
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * careTeam[0] = Reference(SecondaryProphylaxisCareTeam)
 
-* supportingInfo[0] = Reference(PatientMedicationAllergyQuestionnaireResponse)
+* supportingInfo[+] = Reference(PatientMedicationAllergyQuestionnaireResponse)
 * supportingInfo[+] = Reference(MedicationsAndFollowUpGuidanceQuestionnaireResponse)
 * supportingInfo[+] = Reference(PatientWhanauGoalsPreferencesQuestionnaireResponse)
-* supportingInfo[+] = Reference(RFPatientHealthAssessmentQuestionnaireResponse)       //  *****
+* supportingInfo[+] = Reference(HealthAssessmentAtSecondaryProphylaxisEncounter)      //  *****
 
 * extension[lifelongSecondaryProphylaxis].url = Canonical(rf-careplan-lifelongSecondaryProphylaxis)
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false

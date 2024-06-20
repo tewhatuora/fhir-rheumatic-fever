@@ -1,4 +1,4 @@
-Instance: DiagnosisExample-JonesCriteria
+Instance: DiagnosisDetail-JonesCriteria
 InstanceOf: RheumaticFeverDiagnosisGroup
 Description: "Illustrates a FHIR Observation describing a Jones (twelve) criteria diagnosis for a rheumatic fever patient"
 Usage: #example
@@ -13,6 +13,8 @@ Usage: #example
 
 * subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 * status = #final
+
+* performer insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
 // numero zero
 * component[+] insert ObservationPresent( 703119002,                   [[Carditis due to rheumatic fever (disorder)]], true)

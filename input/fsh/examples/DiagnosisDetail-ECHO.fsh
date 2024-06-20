@@ -1,4 +1,4 @@
-Instance: DiagnosisExample-ECHO
+Instance: DiagnosisDetail-ECHO
 InstanceOf: RheumaticFeverDiagnosisGroup
 Description: "Illustrates a FHIR Observation describing a Jones (twelve) criteria diagnosis for a rheumatic fever patient"
 Usage: #example
@@ -14,6 +14,8 @@ Usage: #example
 * subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 * status = #final
 * effectiveDateTime = "2023-06-02T02:00:00Z"
+
+* performer insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
 * component[+] insert ObservationCodeableValue( 48724000, [[Mitral valve regurgitation (disorder)]],    1255665007, [[Moderate (qualifier value)]] )
 * component[+] insert ObservationCodeableValue( 79619009, [[Mitral valve stenosis (disorder)]],           24484000, [[Severe (severity modifier) (qualifier value)]] )

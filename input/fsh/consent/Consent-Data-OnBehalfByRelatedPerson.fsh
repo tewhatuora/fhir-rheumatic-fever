@@ -1,26 +1,21 @@
-Instance: ConsentByRelatedPersonExample
+Instance: Consent-Data-OnBehalfByRelatedPerson
 InstanceOf: Consent
 Usage: #example
-Description: "Example of a patient consent given on a patient's behalf by a relative, recorded by the Te Tai Tokerau Rheumatic Fever Service.
-
-On-behalf consent can arises in rheumatic fever scenarios where patients are commonly children/teenagers.  This example shows how to identify the relative using a contained instance of 
-a `RelatedPerson` FHIR resource.
-"
+Description: "An active, 3 year, patient DATA consent given on patient's behalf by their relative, as obtained by the Te Tai Tokerau Rheumatic Fever Service, with sample `data.references`"
 
 * meta.profile = Canonical(Consent)    
-* meta.versionId = "3"
-* meta.lastUpdated = "2024-02-01T23:00:00Z" // UTC datetime
+* meta.versionId = "4"
+* meta.lastUpdated = "2024-06-20T02:00:00Z" // UTC datetime
 
 * status = #active
 * scope = http://terminology.hl7.org/CodeSystem/consentscope#patient-privacy "Privacy Consent"
 
 * category = http://terminology.hl7.org/CodeSystem/consentcategorycodes#npp "Notice of Privacy Practices"
-* dateTime = "2023-06-12T02:30:35.982Z"
 
 * patient insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 * organization insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * performer[+].type = "RelatedPerson"
-* performer[=].reference = "#contained-Related-Person"
+* performer[=].reference = "#contained-Related-Person"  // instance defined below
 * performer[=].display = "Beryl Hackett"
 
 * contained = contained-Related-Person  // contained resource identifies the relative who gave consent on patient's behalf
@@ -33,19 +28,21 @@ a `RelatedPerson` FHIR resource.
 // ********
 // make a provision for access by RF provider orgs 
 * provision.period.start = "2023-06-12T02:30:35Z"
-* provision.period.end = "2026-06-11T02:30:35Z"     // a 3 year period in this example
+* provision.period.end = "2026-06-11T02:30:35Z"     
 * provision.type = #permit
-* provision.actor[0].role = http://terminology.hl7.org/CodeSystem/extra-security-role-type#datacollector "data collector"
-* provision.actor[=].reference = Reference(LeadProvidersGroup)
 
-* provision.actor[+].role = http://terminology.hl7.org/CodeSystem/extra-security-role-type#datasubject "data subject"
-* provision.actor[=].reference insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* provision insert ConsentInstanceDataRef( CarePlan-PatientRegistered )
 
 * provision insert ConsentInstanceDataRef( PatientMedicationAllergyQuestionnaireResponse )
+* provision insert ConsentInstanceDataRef( MedicationsAndFollowUpGuidanceQuestionnaireResponse )
+* provision insert ConsentInstanceDataRef( PatientWhanauGoalsPreferencesQuestionnaireResponse )
+ 
+* provision insert ConsentInstanceDataRef( SecondaryProphylaxisCareTeam )
 
-// * provision.data[0].meaning = #instance
-// * provision.data[=].reference = Reference(blah blah)
+// condition
+* provision insert ConsentInstanceDataRef( SevereRfCondition )
 
+// //// //// //// //// //// //// //// //// ////
 // //// //// //// //// //// //// //// //// ////
 // Make a contained resource identifying a RelatedPerson who gave Consent eg. patient's mum
 

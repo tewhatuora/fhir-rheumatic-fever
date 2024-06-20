@@ -1,7 +1,7 @@
-Instance: CarePlanClosed
+Instance: CarePlan-Closed
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
-Description: "Example of an RF care plan that has gone on-hold, after the first secondary prophylaxis appointment has been attended."
+Description: "Example of an RF care plan that has been closed because the patient went overseas."
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "3"
@@ -12,7 +12,7 @@ Description: "Example of an RF care plan that has gone on-hold, after the first 
 
 * title = "Care plan closed with only one appointment completed"
 
-* insert AddressesConditionExample(SevereRfConditionExample)
+* insert AddressesConditionExample(SevereRfCondition)
 
 * category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
 
@@ -23,18 +23,19 @@ Description: "Example of an RF care plan that has gone on-hold, after the first 
 * period.end    = "2033-07-31T00:00:00Z"    // UTC equivalent of midday NZ time (depend on the season)
 * status = #revoked
 
-* activity[0].reference = Reference(PlannedBenzathineMedication)
+* activity[+].reference = Reference(PlannedBenzathineMedication)
 * activity[+].reference = Reference(SecondaryProphylaxisAppointment-August-Fulfilled)
+* activity[+].reference = Reference(FollowUp-Dental-August-Booked)
 * activity[+].reference = Reference(SecondaryProphylaxisAppointment-September-Booked)
 
-* insert PatientInstanceReference(subject,MadeleineMeringue)
+* insert SubjectPatientReference(MadeleineMeringue)
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * careTeam[0] = Reference(SecondaryProphylaxisCareTeam)
 
-* supportingInfo[0] = Reference(PatientMedicationAllergyQuestionnaireResponse)
+* supportingInfo[+] = Reference(PatientMedicationAllergyQuestionnaireResponse)
 * supportingInfo[+] = Reference(MedicationsAndFollowUpGuidanceQuestionnaireResponse)
 * supportingInfo[+] = Reference(PatientWhanauGoalsPreferencesQuestionnaireResponse)
-* supportingInfo[+] = Reference(RFPatientHealthAssessmentQuestionnaireResponse)       //  *****
+* supportingInfo[+] = Reference(HealthAssessmentAtSecondaryProphylaxisEncounter)      //  *****
 
 * extension[lifelongSecondaryProphylaxis].url = Canonical(rf-careplan-lifelongSecondaryProphylaxis)
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
