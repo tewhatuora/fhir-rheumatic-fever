@@ -32,6 +32,8 @@ Alias: $preferredTermServer = https://nzhts.digital.health.nz/fhir
 
 Alias: $NationalCareCoordinationSystem = https://standards.digital.health.nz/ns/rheumatic-fever-identifiers
 
+Alias: $confidentialityLabels = http://terminology.hl7.org/CodeSystem/v3-Confidentiality
+
 Alias: $sctNZ = http://snomed.info/sct/21000210109      // not used; doesn't work!
 Alias: $nzmt = http://nzmt.org.nz
 

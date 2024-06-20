@@ -11,34 +11,36 @@ This page defines the data access levels and scopes required for the currently k
 ### Access levels
 
 - **SERVICE** - routine access for NZ Rheumatic Fever Secondary Prevention Service organisations (RFCCS integrating with FHIR via Mulesoft)
-- **SERVICE ELEVATED** - **higher privilege** access to change security labels and consent provisions for NZ Rheumatic Fever Secondary Prevention Service organisations (RFCCS integrating with FHIR via Mulesoft)
+- **CUSTODIAN** - **higher privilege** access to access `R` labelled resources referenced by consents in RF Service custody, including power to apply/remove security labels and adjust consent provisions (RFCCS via Mulesoft)
 - **CARE TEAM** - view/enquiry access to data needed by members / participants of the RF patient's care team
 - **PROVIDER** - access by other providers/practitioners to rheumatic fever patient FHIR data for NZ health care delivery
 - **ADMIN** - Health New Zealand administrative access eg. to change canonical definition instances
 
 ### Access scopes (subject to review)
 
-| FHIR Resource Type / level  | *SERVICE*| *SERVICE ELEVATED* | *CARE TEAM* | *PROVIDER* | *ADMIN* |
+| FHIR Resource Type / level  | *SERVICE*| *CUSTODIAN*<br>*break-glass* for<br>`R`-label resources | *CARE TEAM* | *PROVIDER* | *ADMIN* |
 |:----|:----|:----|:----|:----|:----|
-|`Patient`              | C,R,U,S  | break-glass(C,R,U) | R,S   | break-glass(R,S)  | C,R,U,S   |
-|`CarePlan`             | C,R,U,S  | break-glass(C,R,U) | R,S   | break-glass(R,S)  | C,R,U,S   |
-|`Condition`            | C,R,U,S  | break-glass(C,R,U) | R,S   | break-glass(R,S)  | C,R,U,S   |
-|`Encounter`            | C,R,U,S  | break-glass(C,R,U) | R,S   | R,S, break-glass(C,U)| C,R,U,S   |
-|`Observation`          | C,R,U,S  | break-glass(C,R,U) | R,S   | break-glass(R,S)  | C,R,U,S   |
-|`CareTeam`             | C,R,U,S  | break-glass(C,R,U) | R,S   | break-glass(R,S)  | C,R,U,S   |
-|`Consent`              | C,R,S    | break-glass(U)     | R,S   | R,S               | C,R,U,S   |
-|`Appointment`          | C,R,U,S  | C,R,U,S            | R,S   | R,S               | C,R,U,S   |
-|`MedicationRequest`    | C,R,U,S  |                    | R,S   | R,S               | C,R,U,S   |
-|`MedicationStatement`  | C,R,S    | break-glass(U)     | R,S   | R,S               | C,R,U,S   |
-|`Questionnaire`        | R,S      | R,S                | R,S   | R,S               | C,R,U,S   |
+|`Patient`              | C,R,U,S  | C,R,U    | R,S   | break-glass(R,S)  | C,R,U,S   |
+|`CarePlan`             | C,R,U,S  | C,R,U    | R,S   | break-glass(R,S)  | C,R,U,S   |
+|`Condition`            | C,R,U,S  | C,R,U    | R,S   | break-glass(R,S)  | C,R,U,S   |
+|`Encounter`            | C,R,U,S  | C,R,U    | R,S   | R,S, break-glass(C,U)| C,R,U,S   |
+|`Observation`          | C,R,U,S  | C,R,U    | R,S   | break-glass(R,S)  | C,R,U,S   |
+|`CareTeam`             | C,R,U,S  | C,R,U    | R,S   | break-glass(R,S)  | C,R,U,S   |
+|`Consent`              | C,R,S    | U        | R,S   | R,S               | C,R,U,S   |
+|`Appointment`          | C,R,U,S  | C,R,U,S  | R,S   | R,S               | C,R,U,S   |
+|`MedicationRequest`    | C,R,U,S  |          | R,S   | R,S               | C,R,U,S   |
+|`MedicationStatement`  | C,R,S    | U        | R,S   | R,S               | C,R,U,S   |
+|`Questionnaire`        | R,S      | R,S      | R,S   | R,S               | C,R,U,S   |
 
-#### Break-glass privilege elevation
+#### Break-glass authorization
 
 'Break the glass' refers to protocol, common in healthcare, in which a clinician requests *unauthorized* access to a patient record.  Unauthorized here means not expressly authorized by the patient that is the subject of the data.
 
 There are many scenarios in which such unauthorized access might be needed, the obvious one being when a rheumatic fever patient needs emergency treatment.
 
 Regardless of the scenario, all access under break-glass protocol is audited and remains subject to any patient consent special provisions defined in associated FHIR `Consent` instances.
+
+This is an example of temporary privilege elevation analogous to Unix `sudo` to run commands with root privelege (Windows User Account Control is another similar scheme).
 
 #### Labelling
 
