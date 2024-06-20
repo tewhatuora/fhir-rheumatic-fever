@@ -48,28 +48,7 @@ Rheumatic fever patient records in FHIR that need elevated privileges to access 
 
 These labels are the responsibility of each Secondary Prevention Service ('lead provider') as data custodian to apply/remove.  The actual labelling will be done on the organisation's behalf by RFCCS via Mulesoft.
 
-An excerpt from a rheumatic fever patient FHIR `CarePlan` follows, showing how the `R` security label will appear in an instance.
-
-```json
-{
-  "resourceType" : "CarePlan",
-  "meta" : {
-    "security": {
-      "coding": [
-        {
-          "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
-          "code": "R"
-        }
-      ]
-    },
-    "profile" : [ "https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/nz-sharedcare-rheumaticfever-careplan|1.0.0",
-    .. 
-    [rest of instance metadata], 
-  }
-  [rest of instance FHIR data],
-  ...
-}
-```
+An example of a rheumatic fever patient FHIR `CarePlan` with the `R` security label attached is [here](CarePlan-CarePlan-PatientRegistered-R.json.html).
 
 #### Requesting elevated access scope
 
