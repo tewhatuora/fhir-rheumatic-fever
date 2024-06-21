@@ -10,7 +10,7 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 * identifier[NHI] insert NHIIdentifier(SCF7824)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
 
-* title = "Active care plan with medication planned and appointments booked for Madeleine Meringue"
+* title = "Care plan ready to go with all medication planned and appointments booked"
 
 * insert AddressesConditionExample(SevereRfCondition)
 

@@ -14,6 +14,8 @@ Usage: #example
 * subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 * status = #final
 
+* encounter = Reference(DiagnosisEncounter)
+
 * performer insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
 // numero zero

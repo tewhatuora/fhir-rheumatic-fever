@@ -17,6 +17,8 @@ Usage: #example
 
 * performer insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
+* encounter = Reference(DiagnosisEncounter)
+
 * component[+] insert ObservationCodeableValue( 48724000, [[Mitral valve regurgitation (disorder)]],    1255665007, [[Moderate (qualifier value)]] )
 * component[+] insert ObservationCodeableValue( 79619009, [[Mitral valve stenosis (disorder)]],           24484000, [[Severe (severity modifier) (qualifier value)]] )
 * component[+] insert ObservationCodeableValue( 60234000, [[Aortic valve regurgitation (disorder)]],    1255665007, [[Moderate (qualifier value)]] )

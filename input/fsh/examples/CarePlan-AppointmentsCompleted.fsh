@@ -10,7 +10,7 @@ Description: "An RF care plan after the first secondary prophylaxis and follow-u
 * identifier[NHI] insert NHIIdentifier(SCF7824)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
 
-* title = "Care plan underway for Madeleine Meringue with two appointments completed"
+* title = "Care plan with secondary propylaxis underway - two appointments completed"
 
 * insert AddressesConditionExample(SevereRfCondition)
 

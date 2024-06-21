@@ -12,7 +12,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 
 * insert AddressesConditionExample(SevereRfCondition)
 
-* title = "Draft care plan for Madeleine Meringue (no secondary prevention planned)"
+* title = "Care plan in initial state after Madeleine Meringue registered"
 
 * category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
 
