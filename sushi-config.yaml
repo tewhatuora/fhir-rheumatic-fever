@@ -69,6 +69,7 @@ parameters:
   no-narrative:             #  Suppress narrative so gen'd canon instance JSONs ready to seed 
   - Questionnaire/*
   - QuestionnaireResponse/*
+  - Appointment/*
   - Observation/*
   - Encounter/*
   - MedicationRequest/*

@@ -170,6 +170,7 @@ RFCOND "evidence[0].detail" -d-> "<size:14>1" OBS1
 RFCOND "\nevidence[1].detail" -d-> "<size:14>1" OBS2
 RFCOND "evidence[2].detail" -d--> "<size:14>1" OBS3
 OBS3 "hasMember 1" <-d--> "derivedFrom 0..1" OBS4
+
 note on link #Yellow
 At most one repeat instance per primary Observation
 endnote
@@ -187,7 +188,10 @@ legend bottom
   As FHIR ""Observation"" instances MUST be coded ("".code"") and only SNOMED codes defined by
    a ValueSet will be used for this.
 
-  Within each Observation instance, all of its "".component[]"" values are SNOMED-coded.
+  Each Observation instance has:
+  - An overall SNOMED code for the class of observation data points, and
+  - All its "".component[]"" values SNOMED-coded, and
+  - Refers to the diagnosis encounter via its "".encounter"" element
 
   **Notes** 
   1) Arrows indicate direction of FHIR reference
