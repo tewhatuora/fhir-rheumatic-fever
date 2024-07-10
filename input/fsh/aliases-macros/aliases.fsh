@@ -4,6 +4,8 @@ Alias: $UoM = http://unitsofmeasure.org
 Alias: $obs-dataabsentreason = http://terminology.hl7.org/CodeSystem/data-absent-reason
 Alias: $obs-interpretation = http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
 
+Alias: $careplan-status = http://hl7.org/fhir/ValueSet/request-status
+Alias: $careplan-status-codes = http://hl7.org/fhir/request-status
 Alias: $resource-types = http://hl7.org/fhir/resource-types
 Alias: $restful-security-service = http://terminology.hl7.org/CodeSystem/restful-security-service
 Alias: $goal-priority = http://terminology.hl7.org/CodeSystem/goal-priority
