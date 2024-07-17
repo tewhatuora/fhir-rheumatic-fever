@@ -17,7 +17,7 @@
 Extension: CarePlanStatusHistory
 Id: rf-careplan-statusHistory 
 Title: "Care Plan status change history" 
-Description: "Captures metadata about a change in careplan status; history accumulates as an array"
+Description: "Captures metadata about a change in careplan status"
 Context: CarePlan
 * extension contains
   toStatus 1..1 and

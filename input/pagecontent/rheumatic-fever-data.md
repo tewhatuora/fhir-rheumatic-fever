@@ -6,9 +6,9 @@ The mappings are intended to be bi-directional, that is sector applications can 
 
 #### Mapping patient registration status to FHIR `CarePlan.status`
 
+The mapping of status of care plan between the RFCCS national system and FHIR is intuitive as given by the following table.
 
-
-|Patient registration status value (RCCCS)|FHIR CarePlan status [(binding)](https://hl7.org/fhir/R4B/valueset-request-status.html)|FHIR status definition|
+|**Patient registration status value (RCCCS)**|**FHIR CarePlan status code [(binding)](https://hl7.org/fhir/R4B/valueset-request-status.html)**|**FHIR status definition**|
 |:----|:----|:----|
 |New (Draft)            |`#draft` |The request (CarePlan) has been created but is not yet complete or ready for action.
 |Care Underway (Active) |`#active` |The request (CarePlan) is in force and ready to be acted upon.
@@ -22,22 +22,22 @@ The mappings are intended to be bi-directional, that is sector applications can 
 
 Applies to **patient's current address**.
 
-|RFCCS value|Code in FHIR [Address.use](https://fhir.org.nz/ig/base/StructureDefinition-NzAddress-definitions.html#Address.use)|Code in FHIR [Address.type](https://fhir.org.nz/ig/base/StructureDefinition-NzAddress-definitions.html#Address.type)|Date(s) in FHIR [Address.period](https://fhir.org.nz/ig/base/StructureDefinition-NzAddress-definitions.html#Address.period)|
+|**RFCCS value*|**FHIR [Address.use](https://fhir.org.nz/ig/base/StructureDefinition-NzAddress-definitions.html#Address.use) code**|**FHIR [Address.type](https://fhir.org.nz/ig/base/StructureDefinition-NzAddress-definitions.html#Address.type) code**|**FHIR Date(s) in [Address.period](https://fhir.org.nz/ig/base/StructureDefinition-NzAddress-definitions.html#Address.period)**|
 |:----|:----|:----|:----|
-|*Home*|`#home`|none|`period.start` SHOULD be set to date when patient registered / address recorded $|
-|*Work*|`#work`|none|`period.start` SHOULD be set to date when patient registered / address recorded $|
-|*Temporary*|`#temp`|none|`period.start` SHOULD be set to date when patient registered / address recorded $|
-|*Inactive*|`#old`|none|No `period`, or `period.end` set to any date in the past ^|
-|*Physical*|none|`#physical`|`period.start` SHOULD be set to date when patient registered / address recorded $|
-|*Postal*|none|`#postal`|`period.start` SHOULD be set to date when patient registered / address recorded $|
-|*Current*|none|none|`period.start` MUST be set to any date in the past, and `period.end`, if specified, must be in the future|
+|*Home*|`#home`|none|`period.start` = date when patient registered / address recorded $|
+|*Work*|`#work`|none|`period.start` = date when patient registered / address recorded $|
+|*Temporary*|`#temp`|none|`period.start` = date when patient registered / address recorded $|
+|*Inactive*|`#old`|none|No `period`, or `period.end` = any date in the past ^|
+|*Physical*|none|`#physical`|`period.start` = date when patient registered / address recorded $|
+|*Postal*|none|`#postal`|`period.start` = date when patient registered / address recorded $|
+|*Current*|none|none|`period.start` = any date in the past; `period.end`, if specified, must be in the future|
 
 
 Notes
   
 1. 'none' means no code is set - ie. the element is absent in the FHIR JSON representation
 
-1. $ It makes sense to use the date of patient registration as the default value for Address.period.start
+1. $ Use date of patient registration as the default value for Address.period.start
 
 1. ^ When there is neither a **use** nor **type** code and `Address.period` is present with the current date in range, this maps to ‘Current’ in RFCCS.  If `Address.period` is missing, the address shall be mapped to 'Inactive'
 
@@ -45,9 +45,11 @@ Notes
 
 #### Mapping members of whanau care team to `Patient.contact[]`
 
-As a rheumatic fever patient's whanau care team members need to have contact details, role and relationship to the patient captured, this IG uses `Patient.contact` rather than an instance of `CareTeam` resource.  The data mapping between the national system and FHIR is given by the following table.
+As whanau/relative members of a rheumatic fever patient's care team need to have contact details, role and relationship to the patient represented, this IG uses `Patient.contact` rather than an instance of `CareTeam` resource.  
 
-|Business data field (national system)|FHIR element of `Patient` resource|FHIR data type|translation|FHIR data example 1|FHIR data example 2|
+The logic for mapping data between the RFCCS national system and FHIR is given by the following table.
+
+|**RFCCS data field**|**FHIR element of `Patient` resource**|**FHIR data type**|**translation**|**FHIR data example 1**|**FHIR data example 2**|
 |:----|:----|:----|:-----|:----|:----|
 |care team member role|`.whanauMemberCareRole` **extension**|coding (SNOMED)|-|**$sct#58626002** *Legal Guardian*|**$sct#394738000** *Other related persons (person)*|
 |care team member relationship to patient (freetext)|`.whanauMemberCareRelationship` **extension**|string|-|`"mother"`|`"brother in law"`|
@@ -70,7 +72,7 @@ Therefore the Te Whatu Ora Shared Care API uses **ISO 639-3 three character lang
 
 The translation between RFCCS language and FHIR is given in the table below. 
 
-|English name of language|ISO 639-3 language code to use for FHIR mapping|RFCCS Health Cloud language|IANA primary language SUBTAG (BCP47)|
+|**English name of language**|**ISO 639-3 language code</br> to use for FHIR mapping**|**RFCCS Health Cloud language**|**IANA primary language SUBTAG (BCP47)**|
 |:----|:----|:----|:----|
 |English|eng|English|en|
 |Spanish (Castilian)|spa|Spanish|es|
@@ -107,17 +109,17 @@ See the [example patient Madeleine Meringue](Patient-MadeleineMeringue.json.html
 
 Rheumatic heart disease severity is the driving factor for severity of a patient's rheumatic fever diagnosis.
 
-To adequately encode the severity values supported by the RFCCS application three FHIR elements are used:
+To fully represent severity values supported by the RFCCS national application, three FHIR elements need to be used:
 
 1. `Condition.severity`: this is the basic severity classifier in a stock FHIR Condition
 
-1. `RheumaticFeverCondition.rhdSeverity` - this is a profile extension to Condition which allows a specific SNOMED code matching the patient's rheumatic heart disease situation.  
+1. `RheumaticFeverCondition.rhdSeverity` - this is a profile extension which allows a Condition to capture a specific SNOMED code matching the patient's rheumatic heart disease situation.  
  
-1. `RheumaticFeverCondition.assessmentDate` - this is a profile extension to Condition which allows a specific date of assessment to be recorded (the stock `recordedDate` element of Condition is needed to capture the date of diagnosis).  
+1. `RheumaticFeverCondition.assessmentDate` - another profile extension to Condition which allows a specific date of assessment to be recorded (`.recordedDate` in Condition is already used to capture date of diagnosis).  
 
 Translation between the RFCCS RHD severity value and FHIR representation is given by the following table. 
 
-|RFCCS - Rheumatic Heart Disease Severity classification|FHIR [Condition.severity](StructureDefinition-nz-sharedcare-rheumaticfever-condition-definitions.html#Condition.severity) (SNOMED)| [*rhdSeverity*](StructureDefinition-rf-condition-rhdseverity.html) extension in RheumaticFeverCondition / [ValueSet](ValueSet-rf-condition-rhdseverity-code.html)|FHIR NzCondition.long-term-condition indicator ^|
+|**RFCCS - Rheumatic Heart Disease Severity classification**|**FHIR [Condition.severity](StructureDefinition-nz-sharedcare-rheumaticfever-condition-definitions.html#Condition.severity) (SNOMED)**|**[*rhdSeverity*](StructureDefinition-rf-condition-rhdseverity.html) extension in RheumaticFeverCondition (SNOMED)**|**FHIR NzCondition.long-term-condition indicator ^**|
 |:----|:----|:----|:----|
 |“none”|do not map|**#260413007** None (qualifier value)|TRUE|
 |“trivial”|do not map|**#300171000210106** Trivial (qualifier value)|TRUE|
