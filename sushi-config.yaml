@@ -1,4 +1,4 @@
-# ╭─────────────────────────Commonly Used ImplementationGuide Properties───────────────────────────╮
+          # ╭─────────────────────────Commonly Used ImplementationGuide Properties───────────────────────────╮
 # │  The properties below are used to create the ImplementationGuide resource. The most commonly   │
 # │  used properties are included. For a list of all supported properties and their functions,     │
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
@@ -9,7 +9,7 @@ name: Rheumatic Fever FHIR Implementation Guide
 title: Rheumatic Fever FHIR Implementation Guide
 description: Rheumatic Fever FHIR Implementation Guide
 status: draft
-version: 0.4.3
+version: 0.4.4
 fhirVersion: 4.0.1
 copyrightYear: 2024+
 releaseLabel: draft # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
@@ -28,7 +28,8 @@ dependencies:
   fhir.org.nz.ig.base: 
     uri: http://fhir.org.nz/ig/base/ImplementationGuide/fhir.org.nz.ig.base
     version: 3.0.0
-  hl7.fhir.uv.sdc: 3.0.0        # for indicating preferred terminology server for Questionnaire answerValueSets
+  hl7.fhir.uv.sdc: 3.0.0         # for indicating preferred terminology server for Questionnaire answerValueSets
+  hl7.terminology.r4: 5.5.0       
 
 # The pages property corresponds to IG.definition.page. SUSHI can
 # auto-generate the page list, but if the author includes pages in

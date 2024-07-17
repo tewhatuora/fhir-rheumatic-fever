@@ -85,12 +85,11 @@ Id: nz-sharedcare-rheumaticfever-careplan
 
 // extensions
 * extension contains
-  RfCarePlanOnHoldReasonExtension named onHoldReason 0..1 
-    and
-  RfCarePlanClosureReasonExtension named closureReason 0..1
+  CarePlanStatusHistory named statusChange 0..*
     and
   RfCarePlanLifelongSecondaryProphylaxisExtension named lifelongSecondaryProphylaxis 0..1
 
+* extension[statusChange] ^short = "Accumulates a history of status changes in the care plan"
 * extension[lifelongSecondaryProphylaxis] ^short = "Indicates that a rheumatic fever patient has been recommended lifelong prophylaxis"
 
 
