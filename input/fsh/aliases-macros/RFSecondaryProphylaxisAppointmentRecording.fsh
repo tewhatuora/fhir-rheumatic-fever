@@ -72,7 +72,7 @@ RuleSet: makeQRContent
 
 * subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
-* basedOn = Reference(CarePlanWithAppointmentsCompleted)
+* basedOn = Reference(CarePlan-AppointmentsCompleted)
 
 * encounter.reference = "http://example.org/fhir/Encounter/1"    // ***** alpha instance in the Bundle  *****
 

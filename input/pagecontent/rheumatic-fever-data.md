@@ -4,6 +4,20 @@ This section defines mappings to apply between data in RFCCS and the Te Whatu Or
 
 The mappings are intended to be bi-directional, that is sector applications can update FHIR representations that can then flow through (Mulesoft) to updates in the RFCCS datastore. 
 
+#### Mapping patient registration status to FHIR `CarePlan.status`
+
+
+
+|Patient registration status value (RCCCS)|FHIR CarePlan status [(binding)](https://hl7.org/fhir/R4B/valueset-request-status.html)|FHIR status definition|
+|:----|:----|:----|
+|New (Draft)            |`#draft` |The request (CarePlan) has been created but is not yet complete or ready for action.
+|Care Underway (Active) |`#active` |The request (CarePlan) is in force and ready to be acted upon.
+|Care On-Hold (On-Hold) |`#on-hold` |The request (CarePlan) and any implicit authorization to act) has been temporarily withdrawn but is expected to resume in the future.|
+|Completed              |`#completed`|The activity described by the request has been fully performed. No further activity will occur.
+|Revoked (TBC) |`#revoked` | The request (CarePlan) has been terminated prior to the known full completion of the intended actions. No further activity should occur. |
+
+---
+
 #### Patient's Current Address -- type, use and currency
 
 Applies to **patient's current address**.

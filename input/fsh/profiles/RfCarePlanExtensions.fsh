@@ -13,21 +13,17 @@
 // Context: CarePlan
 // * value[x] only string
 
-// this extension slices the extension SUBarray (as required by FSH language syntax).  This enables capture of the four values representing a care plan status change event
-Extension: RfCarePlanStatusChangeHistoryExtension
-Id: rf-careplan-statusChangeHistory 
+// this complex extension collects three values ( primitive datatypes) to capture a care plan status change
+Extension: CarePlanStatusHistory
+Id: rf-careplan-statusHistory 
 Title: "Care Plan status change history" 
-Description: "Accumulates a history of status changes in a care plan, each having an effective date and optional reason"
+Description: "Captures metadata about a change in careplan status; history accumulates as an array"
 Context: CarePlan
 * extension contains
-  fromStatus 1..1 and
   toStatus 1..1 and
   changeDate 1..1 and
   changeReason 0..1
 
-* extension[fromStatus] ^short = "The former status of the care plan"
-* extension[fromStatus].value[x] only Coding
-* extension[fromStatus].value[x] from $careplan-status
 * extension[toStatus] ^short = "The revised status of the care plan"
 * extension[toStatus].value[x] only Coding
 * extension[toStatus].value[x] from $careplan-status

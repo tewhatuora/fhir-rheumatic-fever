@@ -2,7 +2,20 @@
 
 <!-- markdownlint-disable MD024 -->
 
-## v0.4.3 Completion of MVP phase 2 updates
+## v0.4.4 Final phase 2 updates
+
+### Profiles
+
+- [RF CarePlan profile](StructureDefinition-nz-sharedcare-rheumaticfever-careplan.html)
+  - Added a new complex extension to capture CarePlan status change with dates and reasons.
+  - Removed the old specific extensions which tracked the reason a CarePlan instance entered on-hold or closed status.
+  - Updated CarePlan example instances to illustrate build-up of status change history
+
+### Documentation
+
+- Added RFCCS to FHIR CarePlan status mapping information to the data mapping page.
+
+## v0.4.3 MVP phase 2 updates
 
 **Separated rheumatic fever API from shared care IG into the dedicated IG.**
 
