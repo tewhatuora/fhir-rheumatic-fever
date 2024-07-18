@@ -21,6 +21,6 @@ Usage: #example
 * participant[0].actor insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
 * participant[=].status = #accepted
 
-* supportingInformation[0] insert ReferenceOrganisation(GAX123-C,[[Push Pull Dental Company]])
+* supportingInformation[0] insert ReferenceOrganisation(GZZ851-K,[[Extractive Dental Revenue Limited]])
 * supportingInformation[+] = Reference(DentalFollowUpEncounter)
 * comment = "Specialist consult for Maddie's rheumatic fever condition."

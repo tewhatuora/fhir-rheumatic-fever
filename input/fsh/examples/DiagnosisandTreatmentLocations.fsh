@@ -79,26 +79,6 @@ Usage: #inline
 * position.longitude = 174.481122
 
 
-// //// //// //// //// //// 
-Instance: PushPullDentalClinic
-InstanceOf: NzLocation
-Description: "example of a specialist follow-up provider location (identified by name only)"
-Usage: #inline
-* meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NzLocation"
-* name = "Push Pull Dental Clinic"
-* address[0].use = #home
-* address[=].text = "Level 24 Majestic Centre"
-* address[=].line[0] = "100 Willis Street"
-* address[=].line[+] = "Wellington Central"
-* address[=].city = "Wellington"
-* address[=].postalCode = "6011"
-* address[=].country = "NZL"
-* address[=].period.start = "2023-08-01"
-// Example of HPI facility id location
-// real HPI facility, display = "PHNs Whangarei"
-// * identifier.use = #official
-// * identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
-// * identifier.value = "F3S457-C"
 
 
 
