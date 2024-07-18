@@ -1,6 +1,6 @@
 ValueSet: RheumaticFeverConditionSymptomaticAtDiagnosisValueSet
 Id: rf-condition-symptomaticatdiagnosis-code
-Title: "Rheumatic heart disease severity codes"
+Title: "Codes for rheumatic heart disease symptom status at time of diagnosis"
 Description:  "This value set defines codes which describe whether a patient was symptomatic at the time of rheumatic fever diagnosis"
 * ^version = "1.0.0"
 * ^experimental = false
