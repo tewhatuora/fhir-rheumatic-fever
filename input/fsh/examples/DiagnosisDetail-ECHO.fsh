@@ -11,7 +11,7 @@ Usage: #example
 
 * code insert SNOMEDCoding(439238004,[[Echocardiography test interpretation (observable entity)]])
 
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * status = #final
 * effectiveDateTime = "2023-06-02T02:00:00Z"
 

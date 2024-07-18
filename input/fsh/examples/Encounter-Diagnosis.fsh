@@ -12,23 +12,17 @@ Description: "Encounter capturing context of a patient's rheumatic fever diagnos
 
 * serviceType insert SNOMEDCoding(22232009,[[Hospital (environment)]])
 
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
-* participant.individual insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
+* participant.individual insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
 * serviceProvider insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
 * period.start = "2023-03-12T02:00:00Z"    // UTC datetime
 
-* contained[0] = StarshipHospital
-* contained[+] = MadeleinesHome
-* contained[+] = MasseyHighSchool
+* contained[0] = PublicHospital             // see DiagnosisandTreatmentLocations.fsh
+* contained[+] = SageWestbrookHomeAddress
+* contained[+] = WhangareiGirlsHighSchool   // see DiagnosisandTreatmentLocations.fsh
 
-* location[0].location = Reference(StarshipHospital)
-* location[+].location = Reference(MadeleinesHome)
-* location[+].location = Reference(MasseyHighSchool)
-
-
-
-
-
-
+* location[0].location = Reference(PublicHospital)              // see DiagnosisandTreatmentLocations.fsh
+* location[+].location = Reference(SageWestbrookHomeAddress)
+* location[+].location = Reference(WhangareiGirlsHighSchool)    // see DiagnosisandTreatmentLocations.fsh

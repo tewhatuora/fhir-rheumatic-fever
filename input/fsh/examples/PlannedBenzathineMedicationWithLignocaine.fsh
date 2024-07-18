@@ -15,11 +15,11 @@ Usage: #example
 
 * medicationReference = Reference(BenzathineMedication)
 
-* performer insert ReferencePractitioner(99ZAAA,[[Isabel Injecta]])
+* performer insert ReferencePractitioner(98ZZQJ,[[Isabel Injecta]])
 
 * requester insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
 * status = #active
 
@@ -43,7 +43,7 @@ Usage: #inline
 
 * status = #active
 * intent = #plan
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * basedOn.reference = "#"     // note this is the only FSH syntax found which prevents runtime validation errors by ensuring the rule is met that a contained instance must references its container
 
 * medicationCodeableConcept insert NZMTMedicationCoding(10747581000116100,[[lidocaine hydrochloride anhydrous 1% (20 mg/2 mL) injection, ampoule]])

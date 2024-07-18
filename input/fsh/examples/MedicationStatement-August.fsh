@@ -13,7 +13,7 @@ Usage: #example
 * basedOn = Reference(PlannedBenzathineMedication)
 * context = Reference(SecondaryProphylaxisEncounter)
 * medicationReference = Reference(BenzathineMedication)
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
 * effectiveDateTime = "2023-08-08T03:15:00Z"    // UTC datetime
 * dateAsserted = "2023-08-18T03:15:00Z"    // UTC datetime
@@ -39,6 +39,6 @@ Usage: #inline
 * dosage.doseAndRate[0].doseQuantity insert UnitOfMeasureQuantity(0.25,[[ml]],[[ml]])
 
 * partOf = Reference(MedicationStatement-August)
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * status = #completed
 

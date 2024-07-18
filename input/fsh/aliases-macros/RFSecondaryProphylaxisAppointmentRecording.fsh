@@ -7,10 +7,10 @@ RuleSet: makeEncounterContent
 * status = #finished
 * appointment = Reference(SecondaryProphylaxisAppointment-August-Fulfilled)
 * class = http://terminology.hl7.org/CodeSystem/v3-ActCode#AMB "ambulatory"
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
-* participant[0].individual insert ReferencePractitioner(99ZAAA,[[Isabel Injecta]])
-* participant[1].individual insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* participant[0].individual insert ReferencePractitioner(98ZZQJ,[[Isabel Injecta]])
+* participant[1].individual insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
 * period.start = "2023-08-08T02:10:00Z"    // UTC datetime
 * period.end = "2023-08-08T03:15:00Z"    // UTC datetime
@@ -36,7 +36,7 @@ RuleSet: makeMedStmtContent
 * contained[0].id = "contained-Lignocaine-dose"     // special case of setting the id directly instance of via Instance FSH keyword 
 * contained[0].partOf.reference = "http://example.org/fhir/MedicationStatement/1"    // ***** ref to our containing instance above, to be fixed up by FHIRWorks
 * contained[0].status = #completed
-* contained[0].subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* contained[0].subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * contained[0].medicationCodeableConcept insert NZMTMedicationCoding(10747581000116100,[[lidocaine hydrochloride anhydrous 1% (20 mg/2 mL) injection, ampoule]])
 * contained[0].dosage.doseAndRate[0].doseQuantity insert UnitOfMeasureQuantity(0.25,[[ml]],[[ml]])
 
@@ -44,7 +44,7 @@ RuleSet: makeMedStmtContent
 * partOf.reference = "#contained-Lignocaine-dose"   // NOTE: We only make the container 'partOf' its contained resource to avoid FHIR validator errors
 * context.reference = "http://example.org/fhir/Encounter/1"    // ***** alpha instance in the Bundle  *****
 * medicationReference = Reference(BenzathineMedication)
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
 * effectiveDateTime = "2023-08-08T03:15:00Z"    // UTC datetime
 * dateAsserted = "2023-08-18T03:15:00Z"    // UTC datetime
@@ -70,7 +70,7 @@ RuleSet: makeQRContent
 * authored = "2023-08-08T01:08:00.504Z"   // UTC, assumed to be the time of information collection during the appointment
 * questionnaire = Canonical(SecondaryProphylaxisHealthAssessmentQuestionnaire)
 
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * basedOn = Reference(CarePlan-AppointmentsCompleted)
 
@@ -104,13 +104,13 @@ RuleSet: makeQRContent
 * item[=].answer.valueBoolean = true
 
 * item[+] insert answerItemX(PostInjectionConcernDetails,[[12.1)]],[[If Yes, Record Details, Symptoms, Actions Taken and Follow-Up Plan (enter text)]])
-* item[=].answer.valueString = "Madeleine had a bit more than the usual sensitivity at the injection site so we dished out extra ice cream, which was nice."
+* item[=].answer.valueString = "Sage had a bit more than the usual sensitivity at the injection site so we dished out extra ice cream, which was nice."
 
 * item[+] insert answerItemX(AnyOtherConcerns,[[13)]],[[Were There Any Other Concerns or Issues Identified During the Visit?]])
 * item[=].answer.valueBoolean = true
 
 * item[+] insert answerItemX(OtherConcernsDetail,[[13.1)]],[[If yes, describe details, actions taken, and follow-up planned (enter text)]])
-* item[=].answer.valueString = "A shortage of ice cream in our freezer led to some unnecessary worries for Madeleine."
+* item[=].answer.valueString = "A shortage of ice cream in our freezer led to some unnecessary worries for Sage."
 
 
 * item[+] insert answerItemX(HealthEducationTopicsDiscussed,[[14)]],[[Health education topics discussed? (multiple choice)]])
@@ -119,13 +119,13 @@ RuleSet: makeQRContent
 * item[=].answer[+].valueString = "Other"
 
 * item[+] insert answerItemX(HealthEducationOtherDetail,[[14.1)]],[[Enter details of other health education topic discussed (enter text)]])
-* item[=].answer.valueString = "Madeleine and I discussed the importance of punctuality and the benefits of planning ahead."
+* item[=].answer.valueString = "Sage and I discussed the importance of punctuality and the benefits of planning ahead."
 
 * item[+] insert answerItemX(RecentOrUpcomingAppointments,[[15)]],[[Any recent or upcoming follow-up appointments?]])
 * item[=].answer.valueBoolean = true
 
 * item[+] insert answerItemX(RecentOrUpcomingAppointmentsDetails,[[15.1)]],[[Enter details and dates of any recent or upcoming follow-up appointments (enter text)]])
-* item[=].answer.valueString = "Madeleine has an upcoming follow-up appointment covering iOS calendar basics"
+* item[=].answer.valueString = "Sage has an upcoming follow-up appointment covering iOS calendar basics"
 
 * item[+] insert answerItemX(PlanForNextMedicationAppointment,[[16)]],[[Comments for the next appointment (enter text)]])
 * item[=].answer.valueString = "The plan for the next medication appointment is to keep up the good work"

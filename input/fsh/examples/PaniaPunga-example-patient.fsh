@@ -1,12 +1,14 @@
+// ///////// ///////// ///////// ///////// ///////// ///////// ///////// 
+// Example of a rheumatic fever patient
+// - teenager, Māori ethnicity and language
 Instance: PaniaPunga
 InstanceOf: RheumaticFeverPatient
 Usage: #example
 Description: "An example rheumatic fever patient who is Māori ethnicity and speaks Māori"
 
 * meta.profile = Canonical(RheumaticFeverPatient|1.0.0)
-* meta.versionId = "2"
-* meta.lastUpdated = "2024-05-29T06:00:00Z"
-
+* meta.versionId = "3"
+* meta.lastUpdated = "2024-07-18T04:00:00Z"
 
 * extension[interpreterRequired].url = "http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired"
 * extension[interpreterRequired].valueBoolean = false
@@ -20,7 +22,7 @@ Description: "An example rheumatic fever patient who is Māori ethnicity and spe
 * extension[nzCitizen].extension[+].url = "source"
 * extension[nzCitizen].extension[=].valueCodeableConcept = https://standards.digital.health.nz/ns/information-source-code#BREG "Birth Register"
 
-* identifier[NHI] insert NHIIdentifier(SCF7825)
+* identifier[NHI] insert NHIIdentifier(ZAG0345)
 
 * name.use = #usual
 * name.family = "Punga"
@@ -46,5 +48,5 @@ Description: "An example rheumatic fever patient who is Māori ethnicity and spe
 
 * deceasedBoolean = false
 
-* link.other insert NHIPatientRef(SCF7825,[[Pania Punga]])
+* link.other insert NHIPatientRef(ZAG0345,[[Pania Punga]])
 * link.type = #seealso

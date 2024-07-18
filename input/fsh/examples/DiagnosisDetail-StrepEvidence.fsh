@@ -10,7 +10,7 @@ Usage: #example
 
 * code insert SNOMEDCoding(448011000210101,[[Evidence of preceding Streptococcus group A infection (observation entity)]])
 
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * status = #final
 
 * encounter = Reference(DiagnosisEncounter)
@@ -50,7 +50,7 @@ Usage: #example
 
 * code insert SNOMEDCoding(448011000210101,[[Evidence of preceding Streptococcus group A infection (observation entity)]])
 
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * status = #final
 
 * encounter = Reference(DiagnosisEncounter)

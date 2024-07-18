@@ -1,6 +1,6 @@
 Instance: HealthAssessmentAtSecondaryProphylaxisEncounter
 InstanceOf: QuestionnaireResponse
-Description: "Example assessment of Madeleine's health at her August secondary prophylaxis appointment."
+Description: "Example assessment of Sage's health at her August secondary prophylaxis appointment."
 Usage: #example
 
 * meta.profile = Canonical(QuestionnaireResponse)
@@ -11,7 +11,7 @@ Usage: #example
 * authored = "2023-08-08T01:08:00.504Z"   // UTC, assumed to be the time of information collection during the appointment
 * questionnaire = Canonical(SecondaryProphylaxisHealthAssessmentQuestionnaire|1.0.0)
 
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * basedOn = Reference(CarePlan-PatientRegistered)
 * encounter = Reference(SecondaryProphylaxisEncounter)
@@ -44,13 +44,13 @@ Usage: #example
 * item[=].answer.valueBoolean = true
 
 * item[+] insert answerItemX(PostInjectionConcernDetails,[[12.1)]],[[If Yes, Record Details, Symptoms, Actions Taken and Follow-Up Plan (enter text)]])
-* item[=].answer.valueString = "Madeleine had a bit more than the usual sensitivity at the injection site so we dished out extra ice cream, which was nice."
+* item[=].answer.valueString = "Sage had a bit more than the usual sensitivity at the injection site so we dished out extra ice cream, which was nice."
 
 * item[+] insert answerItemX(AnyOtherConcerns,[[13)]],[[Were There Any Other Concerns or Issues Identified During the Visit?]])
 * item[=].answer.valueBoolean = true
 
 * item[+] insert answerItemX(OtherConcernsDetail,[[13.1)]],[[If yes, describe details, actions taken, and follow-up planned (enter text)]])
-* item[=].answer.valueString = "A shortage of ice cream in our freezer led to some unnecessary worries for Madeleine."
+* item[=].answer.valueString = "A shortage of ice cream in our freezer led to some unnecessary worries for Sage."
 
 
 * item[+] insert answerItemX(HealthEducationTopicsDiscussed,[[14)]],[[Health education topics discussed? (multiple choice)]])
@@ -59,13 +59,13 @@ Usage: #example
 * item[=].answer[+].valueString = "Other"
 
 * item[+] insert answerItemX(HealthEducationOtherDetail,[[14.1)]],[[Enter details of other health education topic discussed (enter text)]])
-* item[=].answer.valueString = "Madeleine and I discussed the importance of punctuality and the benefits of planning ahead."
+* item[=].answer.valueString = "Sage and I discussed the importance of punctuality and the benefits of planning ahead."
 
 * item[+] insert answerItemX(RecentOrUpcomingAppointments,[[15)]],[[Any recent or upcoming follow-up appointments?]])
 * item[=].answer.valueBoolean = true
 
 * item[+] insert answerItemX(RecentOrUpcomingAppointmentsDetails,[[15.1)]],[[Enter details and dates of any recent or upcoming follow-up appointments (enter text)]])
-* item[=].answer.valueString = "Madeleine has an upcoming follow-up appointment covering iOS calendar basics"
+* item[=].answer.valueString = "Sage has an upcoming follow-up appointment covering iOS calendar basics"
 
 * item[+] insert answerItemX(PlanForNextMedicationAppointment,[[16)]],[[Comments for the next appointment (enter text)]])
 * item[=].answer.valueString = "The plan for the next medication appointment is to keep up the good work"

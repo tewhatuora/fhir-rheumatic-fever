@@ -21,7 +21,7 @@ Description: "An example of a rheumatic fever condition as initially diagnosed a
 * code = $sct#195528001 "Acute rheumatic fever (disorder)"
 
 // * encounter = initially there is no encounter to reference - this changes after detailed diagnosis
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
 * onsetDateTime = "2023-02-05T02:00:00Z"
 * recordedDate =  "2023-03-12T02:00:00Z"

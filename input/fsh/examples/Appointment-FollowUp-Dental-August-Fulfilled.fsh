@@ -4,8 +4,8 @@ Description: "Example of a planned patient follow-up with the dentist"
 Usage: #example
 
 * meta.profile = Canonical(Appointment)
-* meta.versionId = "1"
-* meta.lastUpdated = "2024-06-20T00:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-07-18T04:00:00Z"
 
 * description = "dentist follow up August 2023"
 
@@ -18,9 +18,9 @@ Usage: #example
 
 * serviceType = $sct#772071006 "Referral to dentist (procedure)" 
 
-* participant[0].actor insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* participant[0].actor insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * participant[=].status = #accepted
 
-* supportingInformation[0] insert ReferenceOrganisation(GAX123-C,[[Push Pull Dental Company]])
+* supportingInformation[0] insert ReferenceOrganisation(GZZ851-K,[[Extractive Dental Revenue Limited]])
 * supportingInformation[+] = Reference(DentalFollowUpEncounter)
-* comment = "Specialist consult for Maddie's rheumatic fever condition."
+* comment = "Specialist consult for Sage's rheumatic fever condition."

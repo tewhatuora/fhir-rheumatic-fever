@@ -54,7 +54,7 @@ The logic for mapping data between the RFCCS national system and FHIR is given b
 |care team member role|`.whanauMemberCareRole` **extension**|coding (SNOMED)|-|**$sct#58626002** *Legal Guardian*|**$sct#394738000** *Other related persons (person)*|
 |care team member relationship to patient (freetext)|`.whanauMemberCareRelationship` **extension**|string|-|`"mother"`|`"brother in law"`|
 |first name|`name.given`|string|-|`"Beryl"`|`"Mike"`|
-|last name|`name.family`|string|-|`"Hackett"`|`"Meringue"`|
+|last name|`name.family`|string|-|`"Hackett"`|`"Westbrook"`|
 |primary contact (yes/no)|`.whanauMemberCarePrimary` **extension**|boolean|-|`true`|`false`|
 |status (active/inactive)|`.period.start` - `period.end`|datetime x2|Consider member an ACTIVE contact unless BOTH dates are in the past, in which case INACTIVE|`"2023-06-01"` to `"2026-05-31"`|`"2021-01-01"` to `"2021-01-01"`|
 
@@ -101,7 +101,7 @@ The translation between RFCCS language and FHIR is given in the table below.
 |Vietnamese|vie|Vietnamese|vi|
 |Yue Chinese (Cantonese)|yue|Cantonese| |
 
-See the [example patient Madeleine Meringue](Patient-MadeleineMeringue.json.html) for how to correctly code language for FHIR representation of rheumatic fever patients.
+See the [example patient Sage Westbrook](Patient-SageWestbrook.json.html) for how to correctly code language for FHIR representation of rheumatic fever patients.
 
 ---
 

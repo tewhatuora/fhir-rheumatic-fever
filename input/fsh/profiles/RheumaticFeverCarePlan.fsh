@@ -44,7 +44,7 @@ Id: nz-sharedcare-rheumaticfever-careplan
 * identifier[NHI].system 1..1
 * identifier[NHI].system = "https://standards.digital.health.nz/ns/nhi-id" (exactly)
 * identifier[NHI].value 1..1
-* identifier[NHI].value insert MakeProfileIdentifierExample([[National Health Index]],[[SCF7824]])
+* identifier[NHI].value insert MakeProfileIdentifierExample([[National Health Index]],[[ZKC7284]])
 * identifier[NHI].id 0..0       // don't want this kind of thing
 * identifier[NHI].extension 0..0       // don't want this kind of thing
 

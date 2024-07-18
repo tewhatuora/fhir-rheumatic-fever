@@ -1,11 +1,11 @@
 Instance: SecondaryProphylaxisEncounter
 InstanceOf: Encounter
 Usage: #example
-Description: "Example of a rheumatic fever patient/lead provider encounter for delivery of secondary prophylaxis meds"
+Description: "Example where RF secondary prophylaxis delivered at a Whangarei medical centre"
 
 * meta.profile = Canonical(Encounter)
-* meta.versionId = "1"
-* meta.lastUpdated = "2023-10-06T08:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-07-18T04:00:00Z"
 
 * status = #finished
 
@@ -13,20 +13,18 @@ Description: "Example of a rheumatic fever patient/lead provider encounter for d
 
 * class = http://terminology.hl7.org/CodeSystem/v3-ActCode#AMB "ambulatory"
 
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
-* participant[0].individual insert ReferencePractitioner(99ZAAA,[[Isabel Injecta]])
-* participant[1].individual insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* participant[0].individual insert ReferencePractitioner(98ZZQJ,[[Isabel Injecta]])
+* participant[1].individual insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
 * period.start = "2023-08-08T02:10:00Z"    // UTC datetime
 * period.end = "2023-08-08T03:15:00Z"    // UTC datetime
 
-* location.location.type = "Location"
-* location.location.identifier.use = #official
-* location.location.identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
-* location.location.identifier.value = "F3S457-C"
-* location.location.display = "PHNs Whangarei"
+* contained[0] = RedDiamondWhangarei                      // see DiagnosisandTreatmentLocations.fsh
 
-* serviceProvider insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
+* location[0].location = Reference(RedDiamondWhangarei)   // see DiagnosisandTreatmentLocations.fsh
+
+* serviceProvider insert ReferenceOrganisation(GZZ866-A,[[Red Diamond Medical Limited]])
 * serviceType = $sct#360271000 "Prophylaxis - procedure intent (qualifier value)" 
 
