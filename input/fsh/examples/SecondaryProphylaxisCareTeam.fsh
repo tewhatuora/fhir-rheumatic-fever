@@ -9,14 +9,14 @@ Usage: #example
 
 * identifier[NationalSystem] insert SalesforceCareTeamIdentifier([[CTM-0016606]])
 
-* name = "Madeleine Meringue's secondary prophylaxis team"
+* name = "Sage Westbrook's secondary prophylaxis team"
 * status = #active
 // lead provider
 * participant[0].member insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
 // lead nurse
 * participant[+].role[0] insert CareTeamRole(224535009,[[Registered nurse]])
-* participant[=].member insert ReferencePractitioner(99ZAAA,[[Isabel Injecta]])
+* participant[=].member insert ReferencePractitioner(98ZZQJ,[[Isabel Injecta]])
 * participant[=].onBehalfOf insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
 // shared care provider
@@ -24,5 +24,5 @@ Usage: #example
 
 // lead nurse
 * participant[+].role[0] insert CareTeamRole(224535009,[[Registered nurse]])
-* participant[=].member insert ReferencePractitioner(99ZABC,[[Felicity Faraway]])
+* participant[=].member insert ReferencePractitioner(95ZZEJ,[[Felicity Faraway]])
 * participant[=].onBehalfOf insert ReferenceOrganisation(G0M744-C,[[Taranaki Rheumatic Fever Secondary Prevention Service]])

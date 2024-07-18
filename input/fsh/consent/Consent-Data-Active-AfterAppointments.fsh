@@ -12,7 +12,7 @@ Description: "An active, 3 year, patient DATA consent obtained by the Te Tai Tok
 
 * category = http://terminology.hl7.org/CodeSystem/consentcategorycodes#npp "Notice of Privacy Practices"
 
-* patient insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* patient insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * organization insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
 * policy[0].authority = "https://www.privacy.org.nz"

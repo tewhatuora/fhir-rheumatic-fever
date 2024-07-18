@@ -14,12 +14,12 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
 * meta insert RSecurityLabel
 
-* identifier[NHI] insert NHIIdentifier(SCF7824)
+* identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
 
 * insert AddressesConditionExample(SevereRfCondition)
 
-* title = "Care plan in initial state after Madeleine Meringue registered (R-labelled)"
+* title = "Care plan in initial state after Sage Westbrook registered (R-labelled)"
 
 * category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
 
@@ -30,7 +30,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * period.end    = "2033-07-31T00:00:00Z"    // UTC equivalent of midday NZ time (depend on the season)
 * status = #draft
 
-* insert SubjectPatientReference(MadeleineMeringue)
+* insert SubjectPatientReference(SageWestbrook)
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * careTeam[0] = Reference(SecondaryProphylaxisCareTeam)
 
@@ -58,12 +58,12 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * meta.versionId = "6"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
 
-* identifier[NHI] insert NHIIdentifier(SCF7824)
+* identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
 
 * insert AddressesConditionExample(SevereRfCondition)
 
-* title = "Care plan in initial state after Madeleine Meringue registered"
+* title = "Care plan in initial state after Sage Westbrook registered"
 
 * category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
 
@@ -74,7 +74,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * period.end    = "2033-07-31T00:00:00Z"    // UTC equivalent of midday NZ time (depend on the season)
 * status = #draft
 
-* insert SubjectPatientReference(MadeleineMeringue)
+* insert SubjectPatientReference(SageWestbrook)
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * careTeam[0] = Reference(SecondaryProphylaxisCareTeam)
 
@@ -102,7 +102,7 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 * meta.versionId = "5"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
 
-* identifier[NHI] insert NHIIdentifier(SCF7824)
+* identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
 
 * title = "Care plan ready to go with all medication planned and appointments booked"
@@ -124,7 +124,7 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 * activity[+].reference = Reference(FollowUp-Dental-August-Booked)
 * activity[+].reference = Reference(SecondaryProphylaxisAppointment-September-Booked)
 
-* insert SubjectPatientReference(MadeleineMeringue)
+* insert SubjectPatientReference(SageWestbrook)
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * careTeam[0] = Reference(SecondaryProphylaxisCareTeam)
 
@@ -157,7 +157,7 @@ Description: "An RF care plan after the first secondary prophylaxis and follow-u
 * meta.versionId = "6"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
 
-* identifier[NHI] insert NHIIdentifier(SCF7824)
+* identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
 
 * title = "Care plan with secondary propylaxis underway - two appointments completed"
@@ -178,7 +178,7 @@ Description: "An RF care plan after the first secondary prophylaxis and follow-u
 * activity[+].reference = Reference(FollowUp-Dental-August-Fulfilled)
 * activity[+].reference = Reference(SecondaryProphylaxisAppointment-September-Booked)
 
-* insert SubjectPatientReference(MadeleineMeringue)
+* insert SubjectPatientReference(SageWestbrook)
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * careTeam[0] = Reference(SecondaryProphylaxisCareTeam)
 
@@ -214,7 +214,7 @@ Description: "Example of an RF care plan that has been put ON-HOLD after the fir
 * meta.versionId = "5"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
 
-* identifier[NHI] insert NHIIdentifier(SCF7824)
+* identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
 
 * title = "Care plan on-hold after first appointment completed"
@@ -236,7 +236,7 @@ Description: "Example of an RF care plan that has been put ON-HOLD after the fir
 * activity[+].reference = Reference(FollowUp-Dental-August-Booked)
 * activity[+].reference = Reference(SecondaryProphylaxisAppointment-September-Booked)
 
-* insert SubjectPatientReference(MadeleineMeringue)
+* insert SubjectPatientReference(SageWestbrook)
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * careTeam[0] = Reference(SecondaryProphylaxisCareTeam)
 
@@ -276,7 +276,7 @@ Description: "Example of a RF care plan CLOSED after the patient recently went o
 * meta.versionId = "4"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
 
-* identifier[NHI] insert NHIIdentifier(SCF7824)
+* identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
 
 * title = "Care plan closed after one appointment completed"
@@ -297,7 +297,7 @@ Description: "Example of a RF care plan CLOSED after the patient recently went o
 * activity[+].reference = Reference(FollowUp-Dental-August-Booked)
 * activity[+].reference = Reference(SecondaryProphylaxisAppointment-September-Booked)
 
-* insert SubjectPatientReference(MadeleineMeringue)
+* insert SubjectPatientReference(SageWestbrook)
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * careTeam[0] = Reference(SecondaryProphylaxisCareTeam)
 

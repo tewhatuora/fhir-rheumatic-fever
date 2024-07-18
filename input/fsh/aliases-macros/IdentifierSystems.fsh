@@ -2,7 +2,7 @@
 // NHI
 // sets up Identifier elements to form logical ref to an NHI resource
 // Usage in a FSH Instance:
-//   * identifier insert NHIIdentifier(SCF7824)
+//   * identifier insert NHIIdentifier(ZKC7284)
 RuleSet: NHIIdentifier(nhi-id)
 * use = #official
 * system = "https://standards.digital.health.nz/ns/nhi-id"

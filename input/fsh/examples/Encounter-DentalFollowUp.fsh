@@ -4,8 +4,8 @@ Usage: #example
 Description: "Example of a rheumatic fever patient encounter for dental specialist follow-up"
 
 * meta.profile = Canonical(Encounter)
-* meta.versionId = "1"
-* meta.lastUpdated = "2024-06-20T00:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-07-18T04:00:00Z"
 
 * status = #finished
 
@@ -13,9 +13,9 @@ Description: "Example of a rheumatic fever patient encounter for dental speciali
 
 * class = http://terminology.hl7.org/CodeSystem/v3-ActCode#AMB "ambulatory"
 
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
-* participant[+].individual insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* participant[+].individual insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
 * period.start = "2023-08-15T02:10:00Z"    // UTC datetime
 * period.end = "2023-08-15T03:15:00Z"    // UTC datetime

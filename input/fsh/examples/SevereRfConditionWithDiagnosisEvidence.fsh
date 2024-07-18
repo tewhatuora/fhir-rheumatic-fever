@@ -21,7 +21,7 @@ Description: "An example of a severe rheumatic fever Condition with linked evide
 * code = $sct#195528001 "Acute rheumatic fever (disorder)"
 
 * encounter = Reference(DiagnosisEncounter)
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
 * onsetDateTime = "2023-02-05T02:00:00Z"
 * recordedDate =  "2023-03-12T02:00:00Z"

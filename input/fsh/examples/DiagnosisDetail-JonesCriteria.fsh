@@ -11,7 +11,7 @@ Usage: #example
 
 * code insert SNOMEDCoding(447541000210107,[[New Zealand Jones Criteria Assessment (observable entity)]])
 
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * status = #final
 
 * encounter = Reference(DiagnosisEncounter)

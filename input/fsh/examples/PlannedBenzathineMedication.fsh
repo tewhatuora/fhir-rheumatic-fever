@@ -15,11 +15,11 @@ Usage: #example
 
 * medicationReference = Reference(BenzathineMedication)
 
-* performer insert ReferencePractitioner(99ZAAA,[[Isabel Injecta]])
+* performer insert ReferencePractitioner(98ZZQJ,[[Isabel Injecta]])
 
 * requester insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
-* subject insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
 * status = #active
 

@@ -12,7 +12,7 @@ Description: "An active, 3 year, patient DATA consent given on patient's behalf 
 
 * category = http://terminology.hl7.org/CodeSystem/consentcategorycodes#npp "Notice of Privacy Practices"
 
-* patient insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* patient insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * organization insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 * performer[+].type = "RelatedPerson"
 * performer[=].reference = "#contained-Related-Person"  // instance defined below
@@ -51,9 +51,9 @@ Alias: $relatedrelationshiptypeCS = http://terminology.hl7.org/CodeSystem/v3-Rol
 Instance: contained-Related-Person
 InstanceOf: RelatedPerson
 Usage: #inline
-Description: "An example of how to Madeleine's mum (relationshiptype code for parent = #PRN) as the RelatedPerson who gave consent on Maddie's behalf"
+Description: "An example of how to Sage's mum (relationshiptype code for parent = #PRN) as the RelatedPerson who gave consent on Sage's behalf"
 
-* patient insert NHIPatientRef(SCF7824,[[Madeleine Meringue]])
+* patient insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * name.given = "Beryl"
 * name.family = "Hackett"
 * relationship = 	$relatedrelationshiptypeCS#PRN

@@ -16,7 +16,8 @@
 - Reworked `Encounter` example instances to use official test data
   - Encounter service providers now use HPI Organisation identifiers from [HPI test data](https://www.tewhatuora.govt.nz/health-services-and-programmes/health-identity/information-for-it-vendors-and-developers#health-provider-index-hpi)
   - Encounters at hospital and clinic `Location`s now use HPI Facility identifiers from [HPI test data](https://www.tewhatuora.govt.nz/health-services-and-programmes/health-identity/information-for-it-vendors-and-developers#health-provider-index-hpi)
-  - School locations now identified with real [school numbers] from the New Zealand [Schools Directory](https://www.educationcounts.govt.nz/directories/list-of-nz-schools#)
+  - Sample school location now identified with its (real) School Numbers from the New Zealand [Schools Directory](https://www.educationcounts.govt.nz/directories/list-of-nz-schools#)
+- Revised patient example instances and all references to use official NHI test identifiers
 
 ### Documentation
 
@@ -70,7 +71,7 @@
   - [Strep evidence](Observation-DiagnosisDetail-StrepEvidence.html)
 - The various example `CarePlan`s now illustrate use of the **lifelong secondary prophylaxis** extension and have been revised so that creation adn period dates are UTC `dateTime` values.
 - SP `Appointment`s and `Encounter`s now have `.serviceType` = $sct#360271000 "Prophylaxis"  
-- Madeleine Meringue example patient - changed language code to #en (English) to fix BCP-47 terminology publisher validation problem
+- Sage Westbrook example patient - changed language code to #en (English) to fix BCP-47 terminology publisher validation problem
 - Pania Punga example patient - changed language code for Maori to #mi to fix BCP-47 terminology publisher validation problem
 
 ### Terminology
@@ -118,7 +119,7 @@
 
 These examples have been adjusted to correctly reflect the Taranaki RF SP service as a shared care provider by referencing its HPI org Id **G0M744-C**
 
-- [Madeleine Meringue's care team](CareTeam-SecondaryProphylaxisCareTeam.html)
+- [Sage Westbrook's care team](CareTeam-SecondaryProphylaxisCareTeam.html)
 - [Booked september appointment](Appointment-SecondaryProphylaxisAppointment-September-Booked.html)
 
 #### Condition and diagnosis extensions
@@ -299,7 +300,7 @@ As a result of a design decision to constrain values of medication frequency to 
 - The `RheumaticFeverCareTeam` resource profile will now be used only for *secondary prophylaxis* care teams.  So all instances of `RheumaticFeverCareTeam` resources are categorised sct#320741000210108 "Secondary prophylaxis team"
 
 - A new example `RheumaticFeverPatient` instance has been added showing how to model whanau members as contacts
-  **[MadeleineMeringueAndWhanau](Patient-MadeleineMeringueAndWhanau.html)**
+  **[SageWestbrookAndWhanau](Patient-SageWestbrookAndWhanau.html)**
 
 #### `RheumaticFeverPatient` profile changes
 
@@ -326,7 +327,7 @@ As a result of a design decision to constrain values of medication frequency to 
 
 - A new example has been added demonstrating **consent by a person related to a patient**.
 
-- The example rheumatic fever patient **[MadeleineMeringue](Patient-MadeleineMeringue.html)** also now has some sample ContactPoint entries in `Patient.telecom[]`.
+- The example rheumatic fever patient **[SageWestbrook](Patient-SageWestbrook.html)** also now has some sample ContactPoint entries in `Patient.telecom[]`.
 
 - documentation  
   - The [Terminology overview](terminology.html) and [Data translation and models](rheumatic-fever-data.html) pages have been updated.
