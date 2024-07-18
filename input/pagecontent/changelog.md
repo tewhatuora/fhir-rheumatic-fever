@@ -11,6 +11,13 @@
   - Removed the old specific extensions which tracked the reason a CarePlan instance entered on-hold or closed status.
   - Updated CarePlan example instances to illustrate build-up of status change history
 
+### Examples
+
+- Reworked `Encounter` example instances to use official test data
+  - Encounter service providers now use HPI Organisation identifiers from [HPI test data](https://www.tewhatuora.govt.nz/health-services-and-programmes/health-identity/information-for-it-vendors-and-developers#health-provider-index-hpi)
+  - Encounters at hospital and clinic `Location`s now use HPI Facility identifiers from [HPI test data](https://www.tewhatuora.govt.nz/health-services-and-programmes/health-identity/information-for-it-vendors-and-developers#health-provider-index-hpi)
+  - School locations now identified with real [school numbers] from the New Zealand [Schools Directory](https://www.educationcounts.govt.nz/directories/list-of-nz-schools#)
+
 ### Documentation
 
 - Added RFCCS to FHIR CarePlan status mapping information to the data mapping page.

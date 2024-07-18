@@ -1,7 +1,7 @@
 Instance: SecondaryProphylaxisEncounter
 InstanceOf: Encounter
 Usage: #example
-Description: "Example of a rheumatic fever patient/lead provider encounter for delivery of secondary prophylaxis meds"
+Description: "Example where RF secondary prophylaxis delivered at a Whangarei medical centre"
 
 * meta.profile = Canonical(Encounter)
 * meta.versionId = "1"
@@ -21,12 +21,10 @@ Description: "Example of a rheumatic fever patient/lead provider encounter for d
 * period.start = "2023-08-08T02:10:00Z"    // UTC datetime
 * period.end = "2023-08-08T03:15:00Z"    // UTC datetime
 
-* location.location.type = "Location"
-* location.location.identifier.use = #official
-* location.location.identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
-* location.location.identifier.value = "F3S457-C"
-* location.location.display = "PHNs Whangarei"
+* contained[0] = RedDiamondWhangarei
 
-* serviceProvider insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
+* location[0].location = Reference(RedDiamondWhangarei)
+
+* serviceProvider insert ReferenceOrganisation(GZZ866-A,[[Red Diamond Medical Limited]])
 * serviceType = $sct#360271000 "Prophylaxis - procedure intent (qualifier value)" 
 

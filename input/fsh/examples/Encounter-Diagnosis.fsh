@@ -19,16 +19,10 @@ Description: "Encounter capturing context of a patient's rheumatic fever diagnos
 
 * period.start = "2023-03-12T02:00:00Z"    // UTC datetime
 
-* contained[0] = StarshipHospital
-* contained[+] = MadeleinesHome
-* contained[+] = MasseyHighSchool
+* contained[0] = PublicHospital
+* contained[+] = PatientHomeAddress
+* contained[+] = WhangareiGirlsHighSchool
 
-* location[0].location = Reference(StarshipHospital)
-* location[+].location = Reference(MadeleinesHome)
-* location[+].location = Reference(MasseyHighSchool)
-
-
-
-
-
-
+* location[0].location = Reference(PublicHospital)
+* location[+].location = Reference(PatientHomeAddress)
+* location[+].location = Reference(WhangareiGirlsHighSchool)
