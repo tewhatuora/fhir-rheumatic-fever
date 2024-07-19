@@ -41,7 +41,7 @@ caption FHIR resource instance object model
 !endprocedure
 
 ' ******** ******** ******** ******** ******** ******** ******** ******** 
-title "Secondary prophylaxis medication planning and recording"
+title "Secondary prophylaxis medication planning and recording instance model"
 
 package "Activity resources in the CarePlan" as Activities #Snow { 
   
