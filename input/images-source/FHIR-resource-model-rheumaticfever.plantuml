@@ -27,9 +27,9 @@ skinparam ranksep 60
 skinparam roundcorner 5
 skinparam TitleFontSize 20
 
-title "Rheumatic fever FHIR resources (pilot phase)"
+title "Rheumatic fever FHIR resource model"
 
-frame "Rheumatic fever FHIR resources (bounded context)" as HNZMain {
+frame "Rheumatic fever FHIR resources (bounded contexts)" as HNZMain {
   
   class ":APPOINTMENT" as APPT <<FHIR R4B>> #GhostWhite ##[bold] {
     Represents planned encounters. 
@@ -212,7 +212,7 @@ frame "Rheumatic fever FHIR resources (bounded context)" as HNZMain {
 }
 
 class "RFCCS (Salesforce)" as RFCCS <<external data>> #SkyBlue {
-  Salesforce logical resource
+  Salesforce logical ref
   ---
   * logical id: CarePlanId
 }
@@ -223,11 +223,11 @@ class "Episurv" as EPISURV <<external data>> #SkyBlue {
   * logical id: Episurv number
 }
 
-class "Patient (NHI)" as Patient <<logical resource>> #SkyBlue {
+class "Patient (NHI)" as Patient <<logical ref>> #SkyBlue {
   * logical id: NHI
 }
 
-class "HPI" as HPI <<logical resource>> #SkyBlue {
+class "HPI" as HPI <<logical ref>> #SkyBlue {
   logical identifier formats:
   + ""NNXXXX"" - 
     \tpractitioner CPNs

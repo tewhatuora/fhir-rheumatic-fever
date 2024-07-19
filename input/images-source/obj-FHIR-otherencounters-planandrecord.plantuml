@@ -41,7 +41,7 @@ caption FHIR resource instance object model
 !endprocedure
 
 ' ******** ******** ******** ******** ******** ******** ******** ******** 
-title "Other RF care planning and recording"
+title "Follow-up appointments planning and recording (instance model)"
 
 package "Activity resources in the CarePlan" as Activities #Snow { 
   

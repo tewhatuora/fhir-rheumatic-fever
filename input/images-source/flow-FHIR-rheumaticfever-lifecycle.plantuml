@@ -2,6 +2,8 @@
 
 title "Typical sequence of rheumatic fever FHIR resource instance creation"
 
+' TODO: redraw as a sequence diagram
+
 skinparam dpi 250
 scale 600 width
 
@@ -29,7 +31,7 @@ state "patient registration" as REGO #FloralWhite {
     state Consent #Orange
   }
 
-  state "CarePlan --> **#draft**" as REG_COMPLETE #Red ##[bold]
+  state "CarePlan -> **#draft**" as REG_COMPLETE #Red ##[bold]
   
 
   P -r-> CP : ok
@@ -90,7 +92,7 @@ state "care plan setup" as SETUP #FloralWhite {
 
 }
 
-state "CarePlan --> **#active**" as CPA #Red
+state "CarePlan -> **#active**" as CPA #Red
 
 ALLSETUP -d-> CPA
 
@@ -101,8 +103,8 @@ state "Medication planning" as MEDPLAN #FloralWhite  {
     state "Medication\nRequest 2023" as MR #MediumPurple
     state "Medication (Benzathine)" #CadetBlue
     note bottom of MR
-      SP medication frequency 
-      is set (say every 28 days)
+      Medication planned for a sufficient period
+      at a set frequency (say every 28 days)
     end note
   }
 
@@ -113,14 +115,9 @@ state "Medication planning" as MEDPLAN #FloralWhite  {
     state "more appointments..." as AP4 #OrangeRed
   }
 
-  state "MedicationRequest --> **#active** \n& appointments planned" as PLANDONE #White/MediumPurple
+  state "MedicationRequest -> **#active** \n& SP/follow-up appointments booked" as PLANDONE #White/MediumPurple
 
-  note left of PLANDONE
-    When medication planned
-    for a sufficient period
-  end note
-
-  state "CarePlan --> **#active**" as CPA #Red
+  state "CarePlan -> **#active**" as CPA #Red
 
   MEDREQUEST --> ACT2
   ACT2 -d-> PLANDONE
@@ -133,14 +130,14 @@ state "Secondary prophylaxis activity recording" as APPOINTMENTS #FloralWhite {
     state "Medication\nStatement (aug)" #PaleGreen
     state "Questionnaire type D\nResponse (aug)" #SkyBlue
     state "Encounter of\n aug appointment" #Yellow
-    state "Appointment (aug)\n --> **#fulfilled**" #OrangeRed
+    state "Appointment (aug)\n -> **#fulfilled**" #OrangeRed
   }
 
   state "Second appointment data capture (say **September 2023**)" as APPT2 {
     state "Medication\nStatement (sept)" #PaleGreen
     state "Questionnaire type D\nResponse (sept)" #SkyBlue
     state "Encounter of\n sept appointment" #Yellow
-    state "Appointment (sept)\n--> **#fulfilled**" #OrangeRed
+    state "Appointment (sept)\n-> **#fulfilled**" #OrangeRed
   }
 
   APPT1 --> APPT2

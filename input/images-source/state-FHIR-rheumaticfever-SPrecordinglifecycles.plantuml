@@ -15,13 +15,13 @@ top to bottom direction
 
 frame "Planned **Appointment**" as appt {
   state "PROPOSED" as proposed #LimeGreen
-  state "FINISHED" as finished #Orange
+  state "FULFILLED" as fulfilled #Orange
   state "CANCELLED" as cancelled #Orange
   state "ENTERED-IN-ERROR" as error
 
-  proposed -> finished
+  proposed -> fulfilled
   proposed --> cancelled
-  finished -[dashed]-> cancelled
+  fulfilled -[dashed]-> cancelled
   proposed -[dashed]-> error
 
   note as n2 #GhostWhite 
@@ -35,12 +35,12 @@ state "secondary prophylaxis treatment records" as SPR {
 
   frame "**Encounter**" as enc {
 
-    state "FINISHED" as finished2 #Orange
+    state "FINISHED" as finished #Orange
     state "ENTERED-IN-ERROR" as error2
 
-    [*] -> finished2
+    [*] -> finished
     [*] --> error2
-    finished2 -[dashed]-> error2
+    finished -[dashed]-> error2
   }
 
   frame "**MedicationStatement**" as medstmt {

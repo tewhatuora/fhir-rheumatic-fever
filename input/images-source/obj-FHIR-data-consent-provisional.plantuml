@@ -1,4 +1,4 @@
-@startuml obj-FHIR-data-consent-provisional
+@startuml
 
 top to bottom direction
 skinparam dpi 200
