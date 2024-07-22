@@ -9,7 +9,7 @@ name: Rheumatic Fever FHIR Implementation Guide
 title: Rheumatic Fever FHIR Implementation Guide
 description: Rheumatic Fever FHIR Implementation Guide
 status: draft
-version: 0.4.4
+version: 0.4.5
 fhirVersion: 4.0.1
 copyrightYear: 2024+
 releaseLabel: draft # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
