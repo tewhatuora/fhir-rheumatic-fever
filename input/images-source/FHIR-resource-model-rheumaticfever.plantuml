@@ -1,8 +1,8 @@
-@startuml FHIR-resource-model-rheumaticfever
+@startuml
 
 top to bottom direction
-skinparam dpi 200 
-scale 500 width
+skinparam dpi 100 
+scale max 350 width
 
 skinparam ActivityDiamondBackgroundColor #RoyalBlue
 skinparam ArrowColor #RoyalBlue   
@@ -12,6 +12,7 @@ skinparam ArrowMessageAlignment right
 skinparam BoxPadding 10
 skinparam ClassFontSize 16
 skinparam ClassFontStyle bold
+skinparam ClassStereotypeFontSize 16
 skinparam dpi 300
 skinparam FooterFontSize 14
 skinparam FooterFontStyle italic
@@ -27,9 +28,9 @@ skinparam ranksep 60
 skinparam roundcorner 5
 skinparam TitleFontSize 20
 
-title "Rheumatic fever FHIR resources (pilot phase)"
+title "Rheumatic fever FHIR resource data model"
 
-frame "Rheumatic fever FHIR resources (bounded context)" as HNZMain {
+frame "Rheumatic fever FHIR interchangeable data" as HNZMain {
   
   class ":APPOINTMENT" as APPT <<FHIR R4B>> #GhostWhite ##[bold] {
     Represents planned encounters. 
@@ -39,20 +40,24 @@ frame "Rheumatic fever FHIR resources (bounded context)" as HNZMain {
     ----
     * text: appointment description
     * status: ""#booked | #arrived""
-    * **serviceType** $sct#360271000 "Prophylaxis"
+    * serviceCategory <&tag>
+    * serviceType 
+        $sct#360271000 "Prophylaxis"
+        $sct#772071006 "Referral to dentist"
+        ..
     * start: instant (UTC)
     * end: instance (UTC)
     * participant: Reference(Practitioner)
   }
 
 
-  class ":CAREPLAN" as CP <<RF profile>> #LightSalmon ##[bold] {
+  class ":CAREPLAN" as CP <<RF profile  <&tag>>> #LightSalmon ##[bold] {
     Captures patient planned medication\nand next appointment
     ---
     *identifier[NHI] (official): NHI
     *identifier[case] (usual): case Id (salesforce)
     ....
-    * **category**: ""$sct#320721000210102""
+    * **category**: ""$sct#320721000210102"" <&tag>
       \t"Rheumatic fever secondary prevention care plan" 
     -- extensions --
       * **onHoldReason**: string
@@ -60,7 +65,7 @@ frame "Rheumatic fever FHIR resources (bounded context)" as HNZMain {
       * **lifelongSecondaryProphylaxis**: boolean
   }
 
-  class ":PATIENT" as RfPatient <<RF profile>> #LightSalmon ##[bold] {
+  class ":PATIENT" as RfPatient <<RF profile <&tag>>> #LightSalmon ##[bold] {
     Captures patient registration detail
     Extends NzPatient to represent whanau
     care roleplayers.
@@ -82,7 +87,7 @@ frame "Rheumatic fever FHIR resources (bounded context)" as HNZMain {
     * **interpreterRequired**: boolean
   }
 
-  class ":CARETEAM" as CareTeam <<RF profile>> #LightSalmon ##[bold] {
+  class ":CARETEAM" as CareTeam <<RF profile  <&tag>>> #LightSalmon ##[bold] {
     Teams of RF secondary prevention
     participants (practitioners,
     providers)
@@ -105,11 +110,11 @@ frame "Rheumatic fever FHIR resources (bounded context)" as HNZMain {
   }
 
 
-  class ":CONDITION" as RFCOND <<RF profile>> #LightSalmon ##[bold] {
+  class ":CONDITION" as RFCOND <<RF profile <&tag>>> #LightSalmon ##[bold] {
     Summery of RF patient condition.
     Profile extends NzRFCOND (NZ Base)
     ---
-    * identifier: RFCCS condition id
+    * **identifier: RFCCS condition id**
     ....
      * code: SNOMED diagnosis code
      * severity: ""#Mild|Moderate|Severe""
@@ -127,7 +132,7 @@ frame "Rheumatic fever FHIR resources (bounded context)" as HNZMain {
     * ingredient: SNOMED (type)
   }
 
-  class ":MEDICATIONREQUEST" as MEDREQ <<RF profile>> #LightSalmon ##[bold] {
+  class ":MEDICATIONREQUEST" as MEDREQ <<RF profile <&tag>>> #LightSalmon ##[bold] {
     Medication that is planned for RF prevention
     ---
     *status: code //medicationRequestStatus//
@@ -143,10 +148,12 @@ frame "Rheumatic fever FHIR resources (bounded context)" as HNZMain {
       * **medicationFrequency**: code (bound)
   }
 
-  class ":OBSERVATION" as OBS <<FHIR R4B>> #GhostWhite ##[bold] {
+  class "RF diagnosis group\n:OBSERVATION" as OBS <<RF profile <&tag>>> #LightSalmon  ##[bold] {
     Contains diagnostic detail 
       eg. Jones Criteria
     ---
+    * **identifier: RFCCS obseervation id**
+    ....
     * status: ""#final""
     * code: SNOMED
     * effectiveDateTime: datetime
@@ -162,9 +169,10 @@ frame "Rheumatic fever FHIR resources (bounded context)" as HNZMain {
     1) Detail of benzathine given.
     2) Strength of lignocaine given.
     --
-    status: ""#completed""
-    effectiveDatePeriod: UTC dateTime  
-    note: brand of benzathine used
+    * status: ""#completed""
+    * category: <RF categoriser code> <&tag>
+    * effectiveDatePeriod: UTC dateTime  
+    * note: brand of benzathine used
   }
 
   ' class ":MEDICATIONSTATEMENT" as CONTMEDSTMT <<FHIR R4B>> #GhostWhite  ##[bold] {
@@ -176,11 +184,11 @@ frame "Rheumatic fever FHIR resources (bounded context)" as HNZMain {
 
 
   class ":QUESTIONNAIRE\n(definitional)" as Questionnaire <<FHIR R4B>> #OrangeRed {
-    Four canonical instances defined by Te Whatu Ora
-    1 ""Patient Medication Allergies""
-    2 ""Medications and Follow-up Guidance""
-    3 ""Patient & Whanau Goals and Preferences""
-    4 ""Secondary Prophylaxis Health Assessment""
+    Canonical instances covering:
+    - Medication Allergies
+    - Medications and Follow-up Planning Guidance
+    - Patient Goals and Preferences
+    - Secondary Prophylaxis Health Assessment
   }
 
   class ":QUESTIONNAIRERESPONSE" as QR <<FHIR R4B>> #GhostWhite ##[bold] {
@@ -194,19 +202,20 @@ frame "Rheumatic fever FHIR resources (bounded context)" as HNZMain {
   class ":ENCOUNTER" as Encounter <<FHIR R4B>> #GhostWhite ##[bold] {
     Context of patient's secondary prophylaxis treatment.
     ---
-    * class: ""#AMB"" "ambulatory"
-    * status: ""#planned | #finished""
-     * **serviceType** $sct#360271000 "Prophylaxis"
+    * status: ""#finished""
+    * type: <RF categoriser code> <&tag>
+    * serviceType $sct#360271000 "Prophylaxis"
     * participant[]: Reference[Patient, Practitioner]
     * period: datetime range
-    * location: Reference[HPI facility]
+    * location: Ref(HPI facility)
   }
 
 
   class ":ENCOUNTER" as EncounterDiag <<FHIR R4B>> #GhostWhite ##[bold] {
     Context of patient's diagnosis
     ---
-    * location[]: hospital|home|school
+    * type: <RF categoriser code> <&tag>
+    * location: facility / home / school
   }
 
 }
@@ -247,55 +256,52 @@ MEDREQ -[hidden]d- Consent
 ' ********
 ' * resource linkages
 
-APPT "supportingInformation\n<size:18>1" -- "appointment\n<size:18>1" Encounter: <>
-
-'RFCOND "1" - "1" DIAG: > "stage.\nassessment"
+APPT ".supportingInformation\n<size:18>1" <--> ".appointment\n<size:18>1" Encounter: <>
 
 CP ".addresses" -[#SlateGray]u-{ RFCOND : >
 CP ".supportingInfo" }--{ "basedOn" QR: <>
 CP - "1" RfPatient
 CP ".activity.\nreference" -[#Black,thickness=4]--{ "basedOn" MEDREQ: >
 CP .[#SkyBlue].. "1" RFCCS : > <color:RoyalBlue>.Identifier[NationalSystem]
-CP ".careTeam" ---{ CareTeam
+CP ".careTeam" -d-{ CareTeam
 CP ".activity.\nreference" -[#Black,thickness=4]l-{ APPT: >
 CP }.[#SkyBlue,dashed]. HPI : > ""CarePlan.**author**"" \nidentifies Lead Provider
 
-CareTeam ".participant.member" }.[#SkyBlue,norank]..{ HPI
+CareTeam  }.[#SkyBlue,norank]..{ HPI
 
 RFCOND .[#SkyBlue,norank]. "1" Patient : > .subject
 RFCOND .[#SkyBlue]u.. "1" EPISURV : > <color:RoyalBlue>.Identifier[NationalSystem]
 RFCOND ".evidence[]\n.detail" -l-> "*" OBS
-RFCOND <-- "basedOn" OBS
+RFCOND <-- ".basedOn" OBS
 RFCOND ".encounter" -r--> "1" EncounterDiag
 
 Consent ".patient" .[#SkyBlue,norank]. "1" Patient : >
 Consent ".performer" .[#SkyBlue,norank]. "1" HPI : >
 
-'DIAG "basedOn" }-- CP
-
-Encounter .[#SkyBlue,norank]. "1" HPI: > .participant / .serviceProvider" 
+Encounter ".serviceProvider" .[#SkyBlue,norank].> "1" HPI
 
 MEDREQ ".medication[x]" }- "1" MED : >
 MEDREQ ".requester" .[#SkyBlue,norank]. "1" HPI
 MEDREQ ".subject" .[#SkyBlue,norank]. "1" Patient
 
-MEDSTMT -[norank]-* "nested\nlignocaine\nrecord" MEDSTMT
-MEDSTMT "1" -l- "1" Encounter: > context
-MEDSTMT ".basedOn" }- MEDREQ : >
-MEDSTMT ".medication\nReference" }--"1" MED: > 
+MEDSTMT "1" -l- "1" Encounter: > ".context"
+MEDSTMT ".basedOn" }-[norank]- MEDREQ : >
+MEDSTMT ".medication\nReference" }-- "1" MED: > 
 
+OBS ".hasMember" -[norank]l-> OBS
+
+QR ".encounter" --> Encounter
+QR "\n\n<color:Red>.questionnaire\n<size:16><color:Red><&tag>" }.[#Red]..> Questionnaire
 
 RfPatient ".Identifier[NHI]" .[#SkyBlue]r. "1" Patient
 
-QR ".encounter" --> Encounter
-QR "<color:Red>.questionnaire" }.[#Red]l.. Questionnaire: > \n\n\n\n
-
-legend left
+legend center
   **Notes**
   - Model of data types (FHIR resources) and relations (FHIR references) for national rheumatic fever FHIR data.
   - Only attributes which are keying/defining are shown.
   - Arrows show direction of FHIR reference.
   - Solid/open dots indicate mandatory/optional data elements.
+  - <&tag> indicates element used to scope data access (SMART scopes)
 
   **Key to resource type colour**
   |= colour |= stereotype |
