@@ -12,6 +12,7 @@ Description: "Example where RF secondary prophylaxis delivered at a Whangarei me
 * appointment = Reference(SecondaryProphylaxisAppointment-August-Fulfilled)
 
 * class = http://terminology.hl7.org/CodeSystem/v3-ActCode#AMB "ambulatory"
+* type =  $sct#58718002 "Rheumatic fever (disorder)"
 
 * subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 

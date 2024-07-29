@@ -40,10 +40,11 @@ frame "Rheumatic fever FHIR interchangeable data" as HNZMain {
     ----
     * text: appointment description
     * status: ""#booked | #arrived""
-    * serviceCategory <&tag>
+    * serviceCategory <color:RoyalBlue><&tag> ""$sct#58718002""
+       \t "Rheumatic fever (disorder)"
     * serviceType 
-        $sct#360271000 "Prophylaxis"
-        $sct#772071006 "Referral to dentist"
+       \t $sct#360271000 "Prophylaxis"
+       \t $sct#772071006 "Referral to dentist"
         ..
     * start: instant (UTC)
     * end: instance (UTC)
@@ -57,8 +58,8 @@ frame "Rheumatic fever FHIR interchangeable data" as HNZMain {
     *identifier[NHI] (official): NHI
     *identifier[case] (usual): case Id (salesforce)
     ....
-    * **category**: ""$sct#320721000210102"" <&tag>
-      \t"Rheumatic fever secondary prevention care plan" 
+    * category: <color:RoyalBlue><&tag> ""$sct#320721000210102""
+      \t "Rheumatic fever secondary prevention care plan" 
     -- extensions --
       * **onHoldReason**: string
       * **closureReason**: string
@@ -116,10 +117,12 @@ frame "Rheumatic fever FHIR interchangeable data" as HNZMain {
     ---
     * **identifier: RFCCS condition id**
     ....
-     * code: SNOMED diagnosis code
-     * severity: ""#Mild|Moderate|Severe""
-     * clinicalStatus: #active etc.
-     * recordedDate: date
+    * category: <color:RoyalBlue><&tag> $sct#58718002
+      \t "Rheumatic fever (disorder)"
+    * code: SNOMED diagnosis code
+    * severity: ""#Mild|Moderate|Severe""
+    * clinicalStatus: #active etc.
+    * recordedDate: date
     -- extensions --
       * **rhdSeverity**: code (bound)
       * **diagnosticCertainty**: code (bound)
@@ -170,7 +173,8 @@ frame "Rheumatic fever FHIR interchangeable data" as HNZMain {
     2) Strength of lignocaine given.
     --
     * status: ""#completed""
-    * category: <RF categoriser code> <&tag>
+    * category: <color:RoyalBlue><&tag> $sct#58718002
+       \t "Rheumatic fever (disorder)"
     * effectiveDatePeriod: UTC dateTime  
     * note: brand of benzathine used
   }
@@ -203,7 +207,8 @@ frame "Rheumatic fever FHIR interchangeable data" as HNZMain {
     Context of patient's secondary prophylaxis treatment.
     ---
     * status: ""#finished""
-    * type: <RF categoriser code> <&tag>
+    * type: <color:RoyalBlue><&tag> $sct#58718002
+      \t "Rheumatic fever (disorder)"
     * serviceType $sct#360271000 "Prophylaxis"
     * participant[]: Reference[Patient, Practitioner]
     * period: datetime range
@@ -214,7 +219,8 @@ frame "Rheumatic fever FHIR interchangeable data" as HNZMain {
   class ":ENCOUNTER" as EncounterDiag <<FHIR R4B>> #GhostWhite ##[bold] {
     Context of patient's diagnosis
     ---
-    * type: <RF categoriser code> <&tag>
+    * type: <color:RoyalBlue><&tag> $sct#58718002
+      \t "Rheumatic fever (disorder)"
     * location: facility / home / school
   }
 
@@ -301,7 +307,7 @@ legend center
   - Only attributes which are keying/defining are shown.
   - Arrows show direction of FHIR reference.
   - Solid/open dots indicate mandatory/optional data elements.
-  - <&tag> indicates element used to scope data access (SMART scopes)
+  - <color:RoyalBlue>element: <&tag> value</color> indicates element and value which scopes RF data access (SMART scopes)
 
   **Key to resource type colour**
   |= colour |= stereotype |

@@ -44,6 +44,12 @@ Id: nz-sharedcare-rheumaticfever-condition
 * identifier[NationalSystem].id 0..0       // don't want this kind of thing
 * identifier[NationalSystem].extension 0..0       // don't want this kind of thing
 
+
+* category 1..*
+// force one category entry as the classifier for OAUTH SMART scoping
+
+* category = $sct#58718002 "Rheumatic fever (disorder)"
+
 // bind to the permissible SNOMED codes for NZ RF diagnosis.
 * code 1..1
 * code ^short = "Must be one of the diagnosis codes"

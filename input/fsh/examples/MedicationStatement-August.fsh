@@ -15,6 +15,8 @@ Usage: #example
 * medicationReference = Reference(BenzathineMedication)
 * subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
+* category =  $sct#58718002 "Rheumatic fever (disorder)"
+
 * effectiveDateTime = "2023-08-08T03:15:00Z"    // UTC datetime
 * dateAsserted = "2023-08-18T03:15:00Z"    // UTC datetime
 

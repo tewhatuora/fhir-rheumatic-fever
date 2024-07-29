@@ -10,7 +10,7 @@ Id: nz-sharedcare-rheumaticfever-careteam
 * insert metaContactDetail([[David Grainger]],[[david.grainger@middleware.co.nz]])
 
 // elements modified from base profile
-* category 1..1
+* category 1..*
 
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "use"

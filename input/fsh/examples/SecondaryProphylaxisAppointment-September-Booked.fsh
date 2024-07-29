@@ -11,6 +11,8 @@ Usage: #example
 
 * identifier[0] insert SalesforceCarePlanActivityIdentifier([[CPA-00073693-20230905]])     // corresponding salesforce record
 
+* serviceCategory =  $sct#58718002 "Rheumatic fever (disorder)"
+
 * start = "2023-09-05T02:00:00Z"    // UTC equivalent of a start time at 2pm NZ Standard Time on September 5th 2023
 * end =   "2023-09-05T03:00:00Z"      //  UTC equivalent of a finish time of 3pm NZ Standard Time on September 5th 2023
 

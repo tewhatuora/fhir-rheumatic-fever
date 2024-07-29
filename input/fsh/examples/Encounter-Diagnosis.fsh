@@ -11,6 +11,7 @@ Description: "Encounter capturing context of a patient's rheumatic fever diagnos
 * class = http://terminology.hl7.org/CodeSystem/v3-ActCode#AMB "ambulatory"
 
 * serviceType insert SNOMEDCoding(22232009,[[Hospital (environment)]])
+* type =  $sct#58718002 "Rheumatic fever (disorder)"
 
 * subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * participant.individual insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])

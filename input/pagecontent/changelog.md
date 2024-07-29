@@ -2,7 +2,18 @@
 
 <!-- markdownlint-disable MD024 -->
 
-## v0.4.4 Final phase 2 updates
+## v0.4.5 Updates to support revised data access controls
+
+
+### Classifiers for OAUTH scoping of RF data
+
+Filtering classifiers added to some RF resource types as follows:
+
+- `Appointment`s have `.serviceCategory` set to $sct#58718002
+- `Encounter`s have `.type` set to $sct#58718002
+- `MedicationStatement`s have `.category` set to $sct#58718002
+
+## v0.4.4 CarePlan profile status history and examples updates
 
 ### Profiles
 

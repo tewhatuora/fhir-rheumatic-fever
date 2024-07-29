@@ -14,9 +14,13 @@ Description: "An example of a severe rheumatic fever Condition with linked evide
 * clinicalStatus.text = "Active"
 * verificationStatus = http://terminology.hl7.org/CodeSystem/condition-ver-status#confirmed "Confirmed"
 * verificationStatus.text = "Confirmed"
-* category.coding[0] = http://terminology.hl7.org/CodeSystem/condition-category#encounter-diagnosis "Encounter Diagnosis"
-* category.coding[+] = http://snomed.info/sct#439401001 "Diagnosis"
-* category.text = "Diagnosis"
+
+// * category.coding[0] = http://terminology.hl7.org/CodeSystem/condition-category#encounter-diagnosis "Encounter Diagnosis"
+// * category.coding[+] = http://snomed.info/sct#439401001 "Diagnosis"
+// * category.text = "Diagnosis"
+
+* category =  $sct#58718002 "Rheumatic fever (disorder)"
+
 * severity = http://snomed.info/sct#24484000 "Severe"
 * code = $sct#195528001 "Acute rheumatic fever (disorder)"
 
