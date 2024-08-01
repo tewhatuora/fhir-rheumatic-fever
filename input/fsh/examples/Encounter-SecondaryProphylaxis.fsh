@@ -22,9 +22,8 @@ Description: "Example where RF secondary prophylaxis delivered at a Whangarei me
 * period.start = "2023-08-08T02:10:00Z"    // UTC datetime
 * period.end = "2023-08-08T03:15:00Z"    // UTC datetime
 
-* contained[0] = RedDiamondWhangarei                      // see DiagnosisandTreatmentLocations.fsh
-
-* location[0].location = Reference(RedDiamondWhangarei)   // see DiagnosisandTreatmentLocations.fsh
+* contained = RedDiamondWhangarei                           // see DiagnosisandTreatmentLocations.fsh
+* location[0].location.reference = "#RedDiamondWhangarei"   // see DiagnosisandTreatmentLocations.fsh
 
 * serviceProvider insert ReferenceOrganisation(GZZ866-A,[[Red Diamond Medical Limited]])
 * serviceType = $sct#360271000 "Prophylaxis - procedure intent (qualifier value)" 

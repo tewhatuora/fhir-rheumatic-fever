@@ -35,14 +35,16 @@ Usage: #example
 // makes the contents of Bundled instances used in RF secondary prophylaxis appointment recording
 RuleSet: makeEncounterContent
 * meta.profile = Canonical(Encounter)
-* meta.lastUpdated = "2023-11-27T00:00:00Z"
+* meta.lastUpdated = "2024-07-18T00:00:00Z"
 
 * id = "1001"
 * status = #finished
 * appointment = Reference(SecondaryProphylaxisAppointment-August-Fulfilled)
+
 * class = http://terminology.hl7.org/CodeSystem/v3-ActCode#AMB "ambulatory"
-* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * type =  $sct#58718002 "Rheumatic fever (disorder)"
+
+* subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 
 * participant[0].individual insert ReferencePractitioner(98ZZQJ,[[Isabel Injecta]])
 * participant[1].individual insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
@@ -50,13 +52,10 @@ RuleSet: makeEncounterContent
 * period.start = "2023-08-08T02:10:00Z"    // UTC datetime
 * period.end = "2023-08-08T03:15:00Z"    // UTC datetime
 
-* location.location.type = "Location"
-* location.location.identifier.use = #official
-* location.location.identifier.system = "https://standards.digital.health.nz/ns/hpi-facility-id"
-* location.location.identifier.value = "F3S457-C"
-* location.location.display = "PHNs Whangarei"
+* contained = RedDiamondWhangarei                       // see DiagnosisandTreatmentLocations.fsh
+* location[0].location.reference = "#RedDiamondWhangarei"  // see DiagnosisandTreatmentLocations.fsh
 
-* serviceProvider insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
+* serviceProvider insert ReferenceOrganisation(GZZ866-A,[[Red Diamond Medical Limited]])
 * serviceType = $sct#360271000 "Prophylaxis - procedure intent (qualifier value)" 
 
 //////// //////// //////// //////// //////// //////// //////// //////// //////// 
@@ -68,16 +67,10 @@ RuleSet: makeMedStmtContent
 
 * id = "1002"
 // set up the contained instance that records lignocaine pain relief medication also given at this appointment
-* contained[0].resourceType = "MedicationStatement"
-* contained[0].id = "contained-Lignocaine-dose"     // special case of setting the id directly instance of via Instance FSH keyword 
-* contained[0].partOf.reference = "http://example.org/fhir/MedicationStatement/1"    // ***** ref to our containing instance above, to be fixed up by FHIRWorks
-* contained[0].status = #completed
-* contained[0].subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
-* contained[0].medicationCodeableConcept insert NZMTMedicationCoding(10747581000116100,[[lidocaine hydrochloride anhydrous 1% (20 mg/2 mL) injection, ampoule]])
-* contained[0].dosage.doseAndRate[0].doseQuantity insert UnitOfMeasureQuantity(0.25,[[ml]],[[ml]])
+* contained = contained-Lignocaine-dose     // This instance is fefined in file MedicationStatement-August.fsh
 
 * basedOn = Reference(PlannedBenzathineMedication)
-* partOf.reference = "#contained-Lignocaine-dose"   // NOTE: We only make the container 'partOf' its contained resource to avoid FHIR validator errors
+* partOf.reference = "#contained-Lignocaine-dose"               // NOTE: Invariant requires resource to make ref. to its contained instance
 * context.reference = "http://example.org/fhir/Encounter/1"    // ***** alpha instance in the Bundle  *****
 * medicationReference = Reference(BenzathineMedication)
 * subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
