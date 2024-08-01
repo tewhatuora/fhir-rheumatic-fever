@@ -43,6 +43,21 @@ Notes
 
 ---
 
+#### Encounter location mapping
+
+Representation of locations where rheumatic fever secondary prophylaxis encounters take place.
+
+|**RFCCS value*|**FHIR `Location.type`<br>[ServiceDeliveryLocationRoleType](https://terminology.hl7.org/3.1.0/ValueSet-v3-ServiceDeliveryLocationRoleType.html) code**|**FHIR code meaning**|
+|:----|:----|:----|
+|*Hospital*    |`#HOSP`   |Hospital|
+|*Home*        |`#PTRES`  |Patient's residence|
+|*School*      |`#SCHOOL` |School|
+|*Work*        |`#WORK`   |Work|
+|*Clinic*      |`#PC`     |Primary care clinic|
+|*Virtual*     |set no type code|No type here means 'virtual'|
+
+---
+
 #### Mapping members of whanau care team to `Patient.contact[]`
 
 As whanau/relative members of a rheumatic fever patient's care team need to have contact details, role and relationship to the patient represented, this IG uses `Patient.contact` rather than an instance of `CareTeam` resource.  
@@ -59,6 +74,7 @@ The logic for mapping data between the RFCCS national system and FHIR is given b
 |status (active/inactive)|`.period.start` - `period.end`|datetime x2|Consider member an ACTIVE contact unless BOTH dates are in the past, in which case INACTIVE|`"2023-06-01"` to `"2026-05-31"`|`"2021-01-01"` to `"2021-01-01"`|
 
 ---
+
 
 #### Language mapping
 
