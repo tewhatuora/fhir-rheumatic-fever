@@ -54,7 +54,7 @@ Representation of locations where rheumatic fever secondary prophylaxis encounte
 |*School*      |`#SCHOOL` |School|
 |*Work*        |`#WORK`   |Work|
 |*Clinic*      |`#PC`     |Primary care clinic|
-|*Virtual*     |set no type code|No type here means 'virtual'|
+|*Virtual*     |**special case**<br> code `#VR` in [ActEncounterCode]( http://terminology.hl7.org/CodeSystem/v3-ActCode) system |virtual|
 
 ---
 
