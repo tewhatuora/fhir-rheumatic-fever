@@ -5,6 +5,7 @@ Usage: #example
 
 * meta.versionId = "1"
 * meta.lastUpdated = "2024-06-04T00:00:00Z" // UTC datetime
+* meta insert RFTag
 
 * identifier[NationalSystem][0] insert SalesforceObservationIdentifier([[OBSD-0102]])     // corresponding salesforce record
 

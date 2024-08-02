@@ -9,6 +9,8 @@ Id: nz-sharedcare-rheumaticfever-condition
 * ^purpose = "Adds classifiers for severity, diagnostic certainty and symptomatic status and specifies groups of diagnosic evidence to be attached"
 * insert metaContactDetail([[David Grainger]],[[david.grainger@middleware.co.nz]])
 
+* meta obeys RFTagConstraint      // see file LabelsTags.fsh
+
 // elements modified
 * subject only Reference(Patient)
 * onset[x] only dateTime

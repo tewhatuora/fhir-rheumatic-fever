@@ -9,6 +9,7 @@ Usage: #example
 * meta.profile = Canonical(RheumaticFeverPatient|1.0.0)
 * meta.versionId = "4"
 * meta.lastUpdated = "2024-07-18T04:00:00Z"
+* meta insert RFTag
 
 * extension[interpreterRequired].url = "http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired"
 * extension[interpreterRequired].valueBoolean = false
@@ -92,6 +93,7 @@ Usage: #example
 * meta.profile = Canonical(RheumaticFeverPatient|1.0.0)
 * meta.versionId = "4"
 * meta.lastUpdated = "2024-07-18T04:00:00Z"
+* meta insert RFTag
 
 
 * extension[interpreterRequired].url = "http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired"

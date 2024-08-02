@@ -11,6 +11,8 @@ Id: nz-sharedcare-rheumaticfever-patient
 * ^purpose = "Profiles a New Zealand patient with rheumatic fever (extends NzPatient resource)"
 * insert metaContactDetail([[David Grainger]],[[david.grainger@middleware.co.nz]])
 
+* meta obeys RFTagConstraint      // see file LabelsTags.fsh
+
 // elements modified from base profile
 * name 1..1
 * link.other only Reference(Patient)

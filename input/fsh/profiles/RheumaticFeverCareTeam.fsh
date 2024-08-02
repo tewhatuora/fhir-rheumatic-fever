@@ -9,6 +9,8 @@ Id: nz-sharedcare-rheumaticfever-careteam
 * ^purpose = "Controls CareTeam representations to model care teams involved in rheumatic fever secondary prophylaxis (preventative treatment)"
 * insert metaContactDetail([[David Grainger]],[[david.grainger@middleware.co.nz]])
 
+* meta obeys RFTagConstraint      // see file LabelsTags.fsh
+
 // elements modified from base profile
 * category 1..*
 

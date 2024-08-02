@@ -6,6 +6,7 @@ Description: "Example of a rheumatic fever patient encounter for dental speciali
 * meta.profile = Canonical(Encounter)
 * meta.versionId = "2"
 * meta.lastUpdated = "2024-07-18T04:00:00Z"
+* meta insert RFTag
 
 * status = #finished
 

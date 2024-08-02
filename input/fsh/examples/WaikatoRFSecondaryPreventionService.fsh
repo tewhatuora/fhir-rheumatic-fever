@@ -6,6 +6,7 @@ Usage: #example
 * meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NzOrganization"
 * meta.versionId = "1"
 * meta.lastUpdated = "2023-10-06T08:00:00Z"
+* meta insert RFTag
 
 * identifier.use = #official
 * identifier.system = "https://standards.digital.health.nz/ns/hpi-organisation-id"

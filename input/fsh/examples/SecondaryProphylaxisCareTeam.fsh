@@ -6,6 +6,7 @@ Usage: #example
 * meta.profile = Canonical(RheumaticFeverCareTeam|1.0.0)
 * meta.versionId = "3"
 * meta.lastUpdated = "2024-05-14T05:00:00Z"
+* meta insert RFTag
 
 * identifier[NationalSystem] insert SalesforceCareTeamIdentifier([[CTM-0016606]])
 

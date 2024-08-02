@@ -6,6 +6,7 @@ Description: "Example where RF secondary prophylaxis delivered at a Whangarei me
 * meta.profile = Canonical(Encounter)
 * meta.versionId = "2"
 * meta.lastUpdated = "2024-07-18T04:00:00Z"
+* meta insert RFTag
 
 * status = #finished
 

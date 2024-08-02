@@ -6,6 +6,7 @@ Usage: #example
 * meta.profile = Canonical(QuestionnaireResponse)
 * meta.versionId = "2"
 * meta.lastUpdated = "2023-11-07T20:00:00Z"
+* meta insert RFTag
 
 * status = #completed
 * authored = "2023-08-08T01:08:00.504Z"   // UTC, assumed to be the time of information collection during the appointment

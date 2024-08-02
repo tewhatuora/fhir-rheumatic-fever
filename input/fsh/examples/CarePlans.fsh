@@ -12,6 +12,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "2"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta insert RFTag
 * meta insert RSecurityLabel
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
@@ -57,6 +58,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "6"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
@@ -101,6 +103,7 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "5"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
@@ -156,6 +159,7 @@ Description: "An RF care plan after the first secondary prophylaxis and follow-u
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "6"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
@@ -213,6 +217,7 @@ Description: "Example of an RF care plan that has been put ON-HOLD after the fir
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "5"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
@@ -274,7 +279,8 @@ Description: "Example of a RF care plan CLOSED after the patient recently went o
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "4"
-* meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta.lastUpdated = "2024-07-10T05:00:00Z" 
+* meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)

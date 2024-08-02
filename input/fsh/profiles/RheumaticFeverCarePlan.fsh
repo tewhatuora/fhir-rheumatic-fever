@@ -10,8 +10,8 @@ Id: nz-sharedcare-rheumaticfever-careplan
 * ^purpose = "Profiles a secondary prevention care plan for a NZ rheumatic fever patient"
 * insert metaContactDetail([[David Grainger]],[[david.grainger@middleware.co.nz]])
 
-// elements modified from base profile
-
+* meta obeys RFTagConstraint      // see file LabelsTags.fsh
+ 
 * author 1..1
 * author only Reference(Practitioner or Organization)
 

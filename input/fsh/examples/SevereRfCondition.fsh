@@ -6,6 +6,7 @@ Description: "An example of a rheumatic fever condition as initially diagnosed a
 * meta.profile = Canonical(RheumaticFeverCondition)
 * meta.versionId = "5"
 * meta.lastUpdated = "2024-05-29T05:45:00Z"
+* meta insert RFTag
 
 * identifier[NationalSystem][0] insert SalesforceConditionIdentifier([[CON-0206]])     // corresponding salesforce record
 * identifier[NationalSystem][+] insert  EpisurvNumber(21-383414-AK)                    // EPISurv nunber as notified to in diagnosis

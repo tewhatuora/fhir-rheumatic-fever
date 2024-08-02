@@ -94,7 +94,7 @@ menu:
   Artifacts: artifacts.html
   Documentation:
     Data models: rheumatic-fever-data-models.html
-    Data mapping: rheumatic-fever-data.html
+    Data mapping: data-standard.html
     Consent-based resource access control: consentBasedAccessControl.html
     
     Terminology overview: terminology.html

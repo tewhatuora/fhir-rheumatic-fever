@@ -7,6 +7,7 @@ Usage: #example
 * meta.profile = Canonical(http://hl7.org.nz/fhir/StructureDefinition/NzMedicationStatement)
 * meta.versionId = "2"
 * meta.lastUpdated = "2023-11-24T00:10:00Z" // UTC datetime
+* meta insert RFTag
 
 * contained = contained-Lignocaine-dose  // contained resource signifies lignocaine given too
 

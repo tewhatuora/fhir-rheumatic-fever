@@ -36,6 +36,7 @@ Usage: #example
 RuleSet: makeEncounterContent
 * meta.profile = Canonical(Encounter)
 * meta.lastUpdated = "2024-07-18T00:00:00Z"
+* meta insert RFTag
 
 * id = "1001"
 * status = #finished
@@ -64,6 +65,7 @@ RuleSet: makeMedStmtContent
 
 * meta.profile = Canonical(http://hl7.org.nz/fhir/StructureDefinition/NzMedicationStatement)
 * meta.lastUpdated = "2023-11-27T00:00:00Z"
+* meta insert RFTag
 
 * id = "1002"
 // set up the contained instance that records lignocaine pain relief medication also given at this appointment
@@ -95,6 +97,7 @@ RuleSet: makeMedStmtContent
 RuleSet: makeQRContent
 * meta.profile = Canonical(QuestionnaireResponse)
 * meta.lastUpdated = "2023-11-27T00:00:00Z"
+* meta insert RFTag
 
 * id = "1003"
 * status = #completed

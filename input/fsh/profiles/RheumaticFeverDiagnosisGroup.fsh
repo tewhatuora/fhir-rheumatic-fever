@@ -9,6 +9,8 @@ Id: nz-sharedcare-rheumaticfever-diagnosisgroup
 * ^purpose = "Constraints coding of a standard FHIR Observation for use in RF diagnosis representation"
 * insert metaContactDetail([[David Grainger]],[[david.grainger@middleware.co.nz]])
 
+* meta obeys RFTagConstraint      // see file LabelsTags.fsh
+
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "use"
 * identifier ^slicing.rules = #open

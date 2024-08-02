@@ -6,6 +6,7 @@ Description: "Encounter capturing context of a patient's rheumatic fever diagnos
 * meta.profile = Canonical(Encounter)
 * meta.versionId = "2"
 * meta.lastUpdated = "2024-05-17T08:00:00Z"
+* meta insert RFTag
 
 * status = #finished
 * class = http://terminology.hl7.org/CodeSystem/v3-ActCode#AMB "ambulatory"

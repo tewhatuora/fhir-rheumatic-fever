@@ -6,6 +6,7 @@ Usage: #example
 //* meta.profile = Canonical(RheumaticFeverMedicationRequest|1.0.0)
 * meta.versionId = "1"
 * meta.lastUpdated = "2024-05-31T07:00:00Z" // UTC datetime
+* meta insert RFTag
 
 * identifier[NationalSystem][0] insert SalesforceObservationIdentifier([[OBSD-0100]])     // corresponding salesforce record
 

@@ -1,12 +1,30 @@
-### Translating data between FHIR and the national rheumatic fever care coordination solution (RFCCS)
+### Data standards
 
-This section defines mappings to apply between data in RFCCS and the Te Whatu Ora Shared Care API FHIR representations.
+This section defines standards that apply when mapping data to the New Zealand rheumatic fever FHIR representation.
 
-The mappings are intended to be bi-directional, that is sector applications can update FHIR representations that can then flow through (Mulesoft) to updates in the RFCCS datastore. 
+#### Tagging
+
+All rheumatic fever resource instances should be tagged with the SNOMED code 58718002 "Rheumatic Fever (disorder)"
+
+This is done in FHIR by adding a tag in the metadata of each instance (so the FHIRPath expression `meta.tag.code=58718002` is true).
+
+This consistent tagging enables proper scoping of data access controls as well as facilitating analytics across the rheumatic fever FHIR data set.
+
+The rheumatic fever resource profiles on FHIR `CarePlan`, `Condition`, `CareTeam`, `Observation` (DiagnosisGroup), `MedicationRequest` and `Patient` resources specify an invariant which requires use of the RF SNOMED code tag when creating valid instances.
+
+---
+
+#### Labelling
+
+Applications may label rheumatic fever resource instances with the `R` "restricted" security label, when they contain sensitive content.  The presence of this label on an instance means that API consumers need to obtain additional privilege to access this data via a FHIR operation.
+
+This is done in FHIR by adding a label in the metadata of each instance (so the FHIRPath expression `meta.security.code=R` is true).
+
+---
 
 #### Mapping patient registration status to FHIR `CarePlan.status`
 
-The mapping of status of care plan between the RFCCS national system and FHIR is intuitive as given by the following table.
+Mapping care plan status between the RFCCS national system and FHIR is straightforward as given by the following table.
 
 |**Patient registration status value (RCCCS)**|**FHIR CarePlan status code [(binding)](https://hl7.org/fhir/R4B/valueset-request-status.html)**|**FHIR status definition**|
 |:----|:----|:----|
