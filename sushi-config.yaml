@@ -68,15 +68,16 @@ parameters:
   suppressed-ids: $examples
   display-warnings: true
   no-narrative:             #  Suppress narrative so gen'd canon instance JSONs ready to seed 
-  - Questionnaire/*
-  - QuestionnaireResponse/*
   - Appointment/*
-  - Observation/*
+  - Bundle/*
+  - CarePlan/*
+  - Consent/*
   - Encounter/*
   - MedicationRequest/*
   - MedicationStatement/*
-  - Consent/*
-  - CarePlan/*
+  - Observation/*
+  - Questionnaire/*
+  - QuestionnaireResponse/*
 
 #   excludettl: true
 #   validation: [allow-any-extensions, no-broken-links]
@@ -94,7 +95,7 @@ menu:
   Artifacts: artifacts.html
   Documentation:
     Data models: rheumatic-fever-data-models.html
-    Data mapping: data-standard.html
+    Data mapping: dataStandards.html
     Consent-based resource access control: consentBasedAccessControl.html
     
     Terminology overview: terminology.html

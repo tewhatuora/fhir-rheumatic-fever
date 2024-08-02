@@ -349,7 +349,7 @@ As a result of a design decision to constrain values of medication frequency to 
 - The example rheumatic fever patient **[SageWestbrook](Patient-SageWestbrook.html)** also now has some sample ContactPoint entries in `Patient.telecom[]`.
 
 - documentation  
-  - The [Terminology overview](terminology.html) and [Data translation and models](data-standard.html) pages have been updated.
+  - The [Terminology overview](terminology.html) and [Data translation and models](dataStandards.html) pages have been updated.
 
 ### Other IG changes in v0.3.4
 
@@ -415,7 +415,7 @@ As a result of a design decision to constrain values of medication frequency to 
 
 - All Rheumatic fever terminology now appears in the *rheumatic fever* section of the **Profiles** tab.  
 
-- Key **salesforce <-> FHIR mappings** are now defined in the [rheumatic fever data](data-standard.html) page.
+- Key **salesforce <-> FHIR mappings** are now defined in the [rheumatic fever data](dataStandards.html) page.
 
 - Added **Consent** tab describing patient-consent-based access controls implemented by the Te Whatu Ora Shared Care API.
 

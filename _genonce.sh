@@ -9,8 +9,11 @@ if [ $? -eq 0 ]; then
 	txoption=""
 else
 	echo "Offline"
-	txoption="-tx n/a"
+	txoption="-tx "
 fi
+
+# txoption="-resetTx -tx https://nzhts.digital.health.nz/fhir"
+# txoption="-resetTx"
 
 echo "$txoption"
 

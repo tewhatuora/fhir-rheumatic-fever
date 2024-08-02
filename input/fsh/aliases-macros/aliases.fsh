@@ -1,4 +1,6 @@
 Alias: $sct = http://snomed.info/sct
+Alias: $sctNZ = http://snomed.info/sct/21000210109      // NZ edition served off nzhts.digital.health.nz/fhir BUT doesn't work!
+
 Alias: $UoM = http://unitsofmeasure.org
 
 Alias: $obs-dataabsentreason = http://terminology.hl7.org/CodeSystem/data-absent-reason
@@ -34,7 +36,7 @@ Alias: $preferredTermServer = https://nzhts.digital.health.nz/fhir
 
 Alias: $NationalCareCoordinationSystem = https://standards.digital.health.nz/ns/rheumatic-fever-identifiers
 
-Alias: $sctNZ = http://snomed.info/sct/21000210109      // not used; doesn't work!
+
 Alias: $nzmt = http://nzmt.org.nz
 
 Alias: $CarePlanCategoryCS = https://standards.digital.health.nz/ns/temporary-rheumatic-fever-codes

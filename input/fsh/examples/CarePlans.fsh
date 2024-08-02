@@ -43,7 +43,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
 
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#draft,
+    draft,
     [[2023-06-19]], 
     [[new patient]]
   )
@@ -88,7 +88,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
 
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#draft,
+    draft,
     [[2023-06-19]], 
     [[new patient]]
   )
@@ -139,12 +139,12 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
 
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#draft,
+    draft,
     [[2023-06-19]], 
     [[new patient]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#active,
+    active,
     [[2023-07-01]], 
     [[Initial secondary prophylaxis planned]]
   )
@@ -195,12 +195,12 @@ Description: "An RF care plan after the first secondary prophylaxis and follow-u
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
 
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#draft,
+    draft,
     [[2023-06-19]], 
     [[new patient]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#active,
+    active,
     [[2023-07-01]], 
     [[Initial secondary prophylaxis planned]]
   )
@@ -254,17 +254,17 @@ Description: "Example of an RF care plan that has been put ON-HOLD after the fir
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
 
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#draft,
+    draft,
     [[2023-06-19]], 
     [[new patient]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#active,
+    active,
     [[2023-07-01]], 
     [[Initial secondary prophylaxis planned]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#on-hold,
+    on-hold,
     [[2023-08-01]], 
     [[Patient has gone on big OE]]
   )
@@ -316,22 +316,22 @@ Description: "Example of a RF care plan CLOSED after the patient recently went o
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
 
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#draft,
+    draft,
     [[2023-06-19]], 
     [[new patient]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#active,
+    active,
     [[2023-07-01]], 
     [[Initial secondary prophylaxis planned]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#on-hold,
+    on-hold,
     [[2023-08-01]], 
     [[Patient has gone on big OE]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#revoked,
+    revoked,
     [[2023-09-01]], 
     [[Patient no longer needs secondary prophylaxis after moving to Nepal and becoming enlightened at high elevations]]
   )
