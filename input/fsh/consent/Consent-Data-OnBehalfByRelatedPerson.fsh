@@ -5,7 +5,7 @@ Description: "An active, 3 year, patient DATA consent given on patient's behalf 
 
 * meta.profile = Canonical(Consent)    
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00" // UTC datetime
+* meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 
 * status = #active
 * scope = http://terminology.hl7.org/CodeSystem/consentscope#patient-privacy "Privacy Consent"

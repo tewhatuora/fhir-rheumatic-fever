@@ -5,7 +5,7 @@ Usage: #example
 
 * meta.profile = Canonical(Bundle)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 
 * type = #transaction
 
@@ -35,7 +35,7 @@ Usage: #example
 // makes the contents of Bundled instances used in RF secondary prophylaxis appointment recording
 RuleSet: makeEncounterContent
 * meta.profile = Canonical(Encounter)
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 * id = "1001"
@@ -63,7 +63,7 @@ RuleSet: makeEncounterContent
 // MedicationStatement: benzathine medication and associated lignocaine pain relief
 RuleSet: makeMedStmtContent
 
-* meta.lastUpdated = "2024-08-07T08:31:00" // UTC datetime
+* meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 * meta insert RFTag
 
 * id = "1002"
@@ -95,7 +95,7 @@ RuleSet: makeMedStmtContent
 // QuestionnaireResponse: patient health assessment questions at appointment
 RuleSet: makeQRContent
 * meta.profile = Canonical(QuestionnaireResponse)
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 * id = "1003"

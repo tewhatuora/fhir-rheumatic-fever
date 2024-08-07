@@ -5,7 +5,7 @@ Description: "Example of a rheumatic fever patient encounter at a virtual locati
 
 * meta.profile = Canonical(Encounter)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 * status = #finished

@@ -5,7 +5,7 @@ Usage: #example
 
 * meta.profile = Canonical(Medication)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 // NZMT codes are published by NZ on NZHTS

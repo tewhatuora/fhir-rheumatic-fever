@@ -5,7 +5,7 @@ Description: "An example of a severe rheumatic fever Condition with linked evide
 
 * meta.profile = Canonical(RheumaticFeverCondition)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 * identifier[NationalSystem][0] insert SalesforceConditionIdentifier([[CON-0206]])     // corresponding salesforce record

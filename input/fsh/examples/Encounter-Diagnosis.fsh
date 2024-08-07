@@ -5,7 +5,7 @@ Description: "Encounter capturing context of a patient's rheumatic fever diagnos
 
 * meta.profile = Canonical(Encounter)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 * status = #finished

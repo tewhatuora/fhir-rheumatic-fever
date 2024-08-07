@@ -8,7 +8,7 @@ Description: "An example rheumatic fever patient who is Māori ethnicity and spe
 
 * meta.profile = Canonical(RheumaticFeverPatient|1.0.0)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 * extension[interpreterRequired].url = "http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired"

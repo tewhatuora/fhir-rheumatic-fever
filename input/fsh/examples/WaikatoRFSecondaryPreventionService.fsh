@@ -5,7 +5,7 @@ Usage: #example
 
 * meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NzOrganization"
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 * identifier.use = #official

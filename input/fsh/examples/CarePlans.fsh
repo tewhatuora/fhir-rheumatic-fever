@@ -11,7 +11,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 * meta insert RSecurityLabel
 
@@ -57,7 +57,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
@@ -102,7 +102,7 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
@@ -158,7 +158,7 @@ Description: "An RF care plan after the first secondary prophylaxis and follow-u
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
@@ -216,7 +216,7 @@ Description: "Example of an RF care plan that has been put ON-HOLD after the fir
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
@@ -279,7 +279,7 @@ Description: "Example of a RF care plan CLOSED after the patient recently went o
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00" 
+* meta.lastUpdated = "2024-08-07T08:31:00Z" 
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)

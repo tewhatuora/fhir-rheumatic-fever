@@ -4,7 +4,7 @@ Description: "Illustrates primary strep diagnosis evidence (Strepococcus group A
 Usage: #example
 
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00" // UTC datetime
+* meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 * meta insert RFTag
 
 * identifier[NationalSystem][0] insert SalesforceObservationIdentifier([[OBSD-0102]])     // corresponding salesforce record
@@ -45,7 +45,7 @@ Description: "Illustrates second strep diagnosis evidence from repeated ASOT and
 Usage: #example
 
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00" // UTC datetime
+* meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 * meta insert RFTag
 
 * identifier[NationalSystem][0] insert SalesforceObservationIdentifier([[OBSD-0103]])     // corresponding salesforce record

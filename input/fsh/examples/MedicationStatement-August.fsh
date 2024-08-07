@@ -5,7 +5,7 @@ Description: "Illustrates details of secondary prophylaxis medication given to a
 Usage: #example
 
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00" // UTC datetime
+* meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 * meta insert RFTag
 
 * contained = contained-Lignocaine-dose  // contained resource signifies lignocaine given too
