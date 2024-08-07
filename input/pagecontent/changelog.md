@@ -71,7 +71,7 @@ The following profiles now require use of the local code `#rf-nz` to categorise 
 
 ### Profiles
 
-- [RF CarePlan profile](StructureDefinition-nz-sharedcare-rheumaticfever-careplan.html)
+- [RF CarePlan profile](StructureDefinition-nz-rheumaticfever-careplan.html)
   - Added a new complex extension to capture CarePlan status change with dates and reasons.
   - Removed the old specific extensions which tracked the reason a CarePlan instance entered on-hold or closed status.
   - Updated CarePlan example instances to illustrate build-up of status change history
@@ -118,13 +118,13 @@ The following profiles now require use of the local code `#rf-nz` to categorise 
 
 ### Profiles
 
-- Added new profile on Observation resource [Rheumatic Fever Diagnosis Group](StructureDefinition-nz-sharedcare-rheumaticfever-diagnosisgroup.html)
-- [RF CarePlan profile](StructureDefinition-nz-sharedcare-rheumaticfever-careplan.html)
+- Added new profile on Observation resource [Rheumatic Fever Diagnosis Group](StructureDefinition-nz-rheumaticfever-diagnosisgroup.html)
+- [RF CarePlan profile](StructureDefinition-nz-rheumaticfever-careplan.html)
   - Added new boolean extension to indicate lifelong secondary prophylaxis
-- [RF Condition profile](StructureDefinition-nz-sharedcare-rheumaticfever-condition.html)
+- [RF Condition profile](StructureDefinition-nz-rheumaticfever-condition.html)
   - Added constraint and description on .evidence[] element for linking diagnosis Observations
   - Added descriptions to extension elements to clarify usage
-- [RF medication request profile](/StructureDefinition-nz-sharedcare-rheumaticfever-medicationrequest.html)
+- [RF medication request profile](/StructureDefinition-nz-rheumaticfever-medicationrequest.html)
   - Added definitional detail to `dosageInstruction.route` and `.site`
 
 ### Examples
@@ -141,7 +141,7 @@ The following profiles now require use of the local code `#rf-nz` to categorise 
 
 ### Terminology
 
-- Added a new [ValueSet](ValueSet-rf-observation-diagnosisgroup-code.html) to constrain SNOMED codes used on [Rheumatic Fever Diagnosis Group](StructureDefinition-nz-sharedcare-rheumaticfever-diagnosisgroup.html)s
+- Added a new [ValueSet](ValueSet-rf-observation-diagnosisgroup-code.html) to constrain SNOMED codes used on [Rheumatic Fever Diagnosis Group](StructureDefinition-nz-rheumaticfever-diagnosisgroup.html)s
 - Adjusted **medication frequency codes** //allowed by the [ValueSet](ValueSet-rf-medicationrequest-frequency-code.html) to include every 10|13 weeks.
 - Improved Terminology Overview page
 
@@ -171,7 +171,7 @@ The following profiles now require use of the local code `#rf-nz` to categorise 
 
 ### Profiles
 
-[Condition](StructureDefinition-nz-sharedcare-rheumaticfever-condition.html) RF profile:
+[Condition](StructureDefinition-nz-rheumaticfever-condition.html) RF profile:
 
 - two new extensions for RF-specific diagnosis attributes
 
@@ -271,7 +271,7 @@ Corresponding example instances of these profiled types now use a versioned FHIR
     "versionId" : "2",
     "lastUpdated" : "2023-11-07T04:00:00Z",
     "profile" : [
-      🔗 "https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/nz-sharedcare-rheumaticfever-careplan|1.0.0"
+      🔗 "https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/nz-rheumaticfever-careplan|1.0.0"
     ]
   },
   ...

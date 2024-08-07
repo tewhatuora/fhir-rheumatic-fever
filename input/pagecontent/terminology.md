@@ -14,7 +14,7 @@ This IG introduces new terminology (CodeSystems and ValueSets) to cover four spe
 1. **certainty** of rheumatic fever diagnosis
 1. **symptomatic status at diagnosis** of rheumatic fever
 
-The new terminology is used in a binding on `Condition.code` and by three *extensions* to `Condition` (see the [Rheumatic Fever Condition structure definition](StructureDefinition-nz-sharedcare-rheumaticfever-condition.html)).
+The new terminology is used in a binding on `Condition.code` and by three *extensions* to `Condition` (see the [Rheumatic Fever Condition structure definition](StructureDefinition-nz-rheumaticfever-condition.html)).
 
 Diagnosis detail data is captured in groups in `Observation` instances (one Observation per diagnosis logical group) and further [ValueSet](ValueSet-rf-observation-diagnosisgroup-code.html) in this IG defines the valid SNOMED codes for this purpose.
 

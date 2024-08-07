@@ -3,7 +3,7 @@ Profile: RheumaticFeverCarePlan
 Parent: CarePlan
 Title: "Rheumatic Fever CarePlan"
 Description: "Profiles shared care plans used in NZ for management of rheumatic fever cases with suspected acute rheumatic fever"
-Id: nz-sharedcare-rheumaticfever-careplan
+Id: nz-rheumaticfever-careplan
 
 * ^version = "1.0.0"
 * ^jurisdiction = urn:iso:std:iso:3166#NZ
@@ -15,10 +15,12 @@ Id: nz-sharedcare-rheumaticfever-careplan
 * author 1..1
 * author only Reference(Practitioner or Organization)
 
-* activity.reference only Reference(MedicationRequest or Appointment)
+* activity.reference only Reference(RheumaticFeverMedicationRequest or Appointment)
+* activity.reference ^short = "The types of activity resources that can be linked in a rheumatic fever careplan are presently limited."
 
 * addresses 0..*
-* addresses only Reference(nz-sharedcare-rheumaticfever-condition)
+* addresses only Reference(RheumaticFeverCondition)
+* addresses ^short = "Must be a reference to Condition instance using the rheumatic fever profile"
 
 * category 1..*
 
@@ -72,7 +74,8 @@ Id: nz-sharedcare-rheumaticfever-careplan
 * period 1..1
 * period ^short = "Period start | end must be dateTime values in UTC timezone on the FHIR representation" 
 
-* subject only Reference(nz-sharedcare-rheumaticfever-patient)
+* subject only Reference(RheumaticFeverPatient)
+* subject ^short = "Must be a reference to Patient instance using the rheumatic fever profile"
 
 * title 1..1
 
