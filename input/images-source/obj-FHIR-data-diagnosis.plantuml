@@ -35,7 +35,7 @@ footer "Health NZ/Te Whatu Ora.  Generated from PlantUML source on %date('dd/MM/
 !endprocedure
 
 ' ******** ******** ******** ******** ******** ******** ******** ******** 
-title "Diagnosis representation"
+title "Detailed diagnosis representation (instance model)"
 
 package "Condition and diagnosis instances linked from RF CarePlan" as Activities #Snow { 
   
@@ -157,6 +157,7 @@ package "Condition and diagnosis instances linked from RF CarePlan" as Activitie
 ' positioning
 
 ' connectors
+object "careplan\n:**CAREPLAN**" as CAREPLAN
 CAREPLAN ".addresses\n<size:14>1" ---> "<size:14>1..*" RFCOND
 
 note on link #Yellow

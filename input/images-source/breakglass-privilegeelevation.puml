@@ -1,4 +1,4 @@
-@startuml seq-SF-to-FHIR-integration
+@startuml
 
 
 autonumber "<b> 00"
