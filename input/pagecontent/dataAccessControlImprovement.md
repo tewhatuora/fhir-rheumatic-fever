@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD033 MD034 MD041 -->
 ## Rheumatic fever FHIR data access
 
 ### Current data access controls
@@ -22,14 +23,14 @@ Any FHIR data lying outside of these scopes would not be accesible to Mulesoft/R
 | *FHIR resource type  | *OAUTH scope for RFCCS access via Mulesoft |
 |:-----                |:-----                                     |
 | Appointment | Appointment.crus?service-category=http://snomed.info/sct\|58718002  |
-| CarePlan | CarePlan.crus?_profile=<RfCarePlan profile uri>        |
-| CareTeam | CareTeam.crus?_profile=<RfCareTeam profile uri>        |
-| Condition | Condition.crus?_profile=<RfCondition profile uri>     |
-| Encounter | Encounter.crus?type=http://snomed.info/sct|58718002   |
-| MedicationRequest | MedicationRequest.crus?_profile=<RfMedicationRequest profile uri>     |
-| MedicationStatement | MedicationStatement.crus?category=http://snomed.info/sct\|58718002  | 
-| Observation | Observation.crus?_profile=<RfDiagnosisGroup profile uri>  |
-| Patient | Patient.crus?_profile=<RfPatient profile uri>           |
-| QuestionnaireResponse | QuestionnaireResponse.crus?tag=`#rf-nz`   |
+| CarePlan | CarePlan.crus?_profile={{RfCarePlan profile uri}}        |
+| CareTeam | CareTeam.crus?_profile={{RfCareTeam profile uri}}        |
+| Condition | Condition.crus?_profile={{RfCondition profile uri}}     |
+| Encounter | Encounter.crus?type=http://snomed.info/sct|58718002     |
+| MedicationRequest | MedicationRequest.crus?_profile={{RfMedicationRequest profile uri}}   |
+| MedicationStatement | MedicationStatement.crus?category=http://snomed.info/sct\|58718002  |
+| Observation | Observation.crus?_profile={{RfDiagnosisGroup profile uri}}  |
+| Patient | Patient.crus?_profile={{RfPatient profile uri}}           |
+| QuestionnaireResponse | QuestionnaireResponse.crus?tag=`#rf-nz`     |
 
 Setup and maintenance of data access per the OAUTH scopes above occurs under *Digital Services Hub* processes operated/overseen by Health New Zealand.
