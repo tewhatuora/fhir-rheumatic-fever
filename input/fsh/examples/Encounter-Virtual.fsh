@@ -4,8 +4,8 @@ Usage: #example
 Description: "Example of a rheumatic fever patient encounter at a virtual location"
 
 * meta.profile = Canonical(Encounter)
-* meta.versionId = "1"
-* meta.lastUpdated = "2024-07-18T04:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00"
 * meta insert RFTag
 
 * status = #finished

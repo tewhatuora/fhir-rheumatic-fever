@@ -4,8 +4,8 @@ Description: "Example of secondary prophylaxis care team membership"
 Usage: #example
 
 * meta.profile = Canonical(RheumaticFeverCareTeam|1.0.0)
-* meta.versionId = "1"
-* meta.lastUpdated = "2024-05-14T05:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00"
 * meta insert RFTag
 
 * identifier[NationalSystem] insert SalesforceCareTeamIdentifier([[CTM-0016606]])

@@ -7,8 +7,8 @@ Usage: #example
 Description: "An example rheumatic fever patient who is Māori ethnicity and speaks Māori"
 
 * meta.profile = Canonical(RheumaticFeverPatient|1.0.0)
-* meta.versionId = "3"
-* meta.lastUpdated = "2024-07-18T04:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00"
 * meta insert RFTag
 
 * extension[interpreterRequired].url = "http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired"

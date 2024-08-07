@@ -4,8 +4,8 @@ InstanceOf: MedicationStatement
 Description: "Illustrates details of secondary prophylaxis medication given to a patient at an appointment"
 Usage: #example
 
-* meta.versionId = "3"
-* meta.lastUpdated = "2024-08-05T00:00:00Z" // UTC datetime
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00" // UTC datetime
 * meta insert RFTag
 
 * contained = contained-Lignocaine-dose  // contained resource signifies lignocaine given too

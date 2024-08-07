@@ -4,8 +4,8 @@ Description: "Example of patient health assessment from an encounter for oral se
 Usage: #example
 
 * meta.profile = Canonical(QuestionnaireResponse)
-* meta.versionId = "1"
-* meta.lastUpdated = "2024-06-17T07:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00"
 * meta insert RFTag
 
 * status = #completed

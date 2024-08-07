@@ -5,7 +5,7 @@ Description: "A provisional patient DATA consent recorded by Te Tai Tokerau Rheu
 
 * meta.profile = Canonical(Consent)  
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-06-20T03:00:00Z" // UTC datetime
+* meta.lastUpdated = "2024-08-07T08:31:00" // UTC datetime
 
 * status = #proposed
 * scope = http://terminology.hl7.org/CodeSystem/consentscope#patient-privacy "Privacy Consent"

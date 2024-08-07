@@ -4,8 +4,8 @@ Description: "Identifies the Te Tai Tokerau rheumatic fever secondary prevention
 Usage: #example
 
 * meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NzOrganization"
-* meta.versionId = "1"
-* meta.lastUpdated = "2023-10-06T08:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00"
 * meta insert RFTag
 
 * identifier.use = #official

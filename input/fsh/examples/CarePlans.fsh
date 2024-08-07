@@ -11,7 +11,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta.lastUpdated = "2024-08-07T08:31:00"
 * meta insert RFTag
 * meta insert RSecurityLabel
 
@@ -56,8 +56,8 @@ Usage: #example
 Description: "RF care plan where patient registered and basic questionnaires completed, but no detail diagnosis or appointments yet."
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
-* meta.versionId = "6"
-* meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00"
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
@@ -101,8 +101,8 @@ Usage: #example
 Description: "Example of an RF care plan with secondary prophylaxis medication planned and three appointments booked."
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
-* meta.versionId = "5"
-* meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00"
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
@@ -157,8 +157,8 @@ Usage: #example
 Description: "An RF care plan after the first secondary prophylaxis and follow-up appointments attended."
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
-* meta.versionId = "6"
-* meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00"
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
@@ -215,8 +215,8 @@ Usage: #example
 Description: "Example of an RF care plan that has been put ON-HOLD after the first secondary prophylaxis appointment, because the patient is overseas."
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
-* meta.versionId = "5"
-* meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00"
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
@@ -278,8 +278,8 @@ Usage: #example
 Description: "Example of a RF care plan CLOSED after the patient recently went overseas."
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
-* meta.versionId = "4"
-* meta.lastUpdated = "2024-07-10T05:00:00Z" 
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00" 
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)

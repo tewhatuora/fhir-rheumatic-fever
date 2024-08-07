@@ -4,8 +4,8 @@ Usage: #example
 Description: "An example of a rheumatic fever condition as initially diagnosed at registration"
 
 * meta.profile = Canonical(RheumaticFeverCondition)
-* meta.versionId = "5"
-* meta.lastUpdated = "2024-05-29T05:45:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00"
 * meta insert RFTag
 
 * identifier[NationalSystem][0] insert SalesforceConditionIdentifier([[CON-0206]])     // corresponding salesforce record

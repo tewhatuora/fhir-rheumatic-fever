@@ -5,7 +5,7 @@ Usage: #example
 
 * meta.profile = Canonical(Appointment)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-07-18T04:00:00Z"
+* meta.lastUpdated = "2024-08-07T08:31:00"
 * meta insert RFTag
 
 * description = "dentist follow up August 2023"

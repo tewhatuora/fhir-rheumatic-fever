@@ -5,7 +5,7 @@ Usage: #definition
 
 * meta.profile = Canonical(CareTeam)
 * meta.versionId = "2"
-* meta.lastUpdated = "2024-05-14T05:00:00Z"
+* meta.lastUpdated = "2024-08-07T08:31:00"
 
 * identifier[0].use = #official
 * identifier[=].value = "RheumaticFeverLeadProviderGroup"
