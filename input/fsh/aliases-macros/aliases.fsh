@@ -29,8 +29,8 @@ Alias: $usage-context-type = http://terminology.hl7.org/CodeSystem/usage-context
 Alias: $observation-category = http://terminology.hl7.org/CodeSystem/observation-category
 Alias: $pathway-status-codes = https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/CodeSystem/longterm-pathway-state-cs
 
-Alias: $v3-RoleCode   = http://terminology.hl7.org/CodeSystem/v3-RoleCode
-Alias: $location-type = http://terminology.hl7.org/CodeSystem/v3-RoleCode
+Alias: $v3-RoleCode   = http://terminology.hl7.org/CodeSystem/v3-RoleCode // aka https://terminology.hl7.org/6.0.2/ValueSet-v3-ServiceDeliveryLocationRoleType.html
+Alias: $location-type = http://terminology.hl7.org/CodeSystem/v3-ActCode
 
 Alias: $termServerExtension = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-preferredTerminologyServer
 Alias: $preferredTermServer = https://nzhts.digital.health.nz/fhir
