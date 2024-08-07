@@ -56,9 +56,13 @@ Usage: #inline
 * type insert ServiceDeliveryLocationRoleType(COMM)
 
 
-
-
-
-
-
-
+// //// //// //// //// //// 
+Instance: OnlineLocation
+InstanceOf: NzLocation
+Description: "example of an online location featuring in a virtual encounter"
+Usage: #inline
+* meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NzLocation"
+* name = "zoom meeting"
+* type[+].coding.system = $location-type
+* type[=].coding.code = #VR
+* type[=].coding.display = "virtual"
