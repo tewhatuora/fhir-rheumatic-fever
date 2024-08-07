@@ -7,9 +7,7 @@ Description:  "This system defines standard codes used throughout this Implement
 * ^caseSensitive = true
 * ^version = "1.0.0"
 * ^purpose = """
-This system defines standard codings needed for New Zealand rheumatic fever data representation.  
-
-These codes are used throughout this IG including in resource profiles.
+The codes defined in this CodeSystem are used throughout the rheumatic fever IG, including in resource profiles.
 
 Originally it was sought to define these codes as concepts in the NZ Edition of SNOMED CT.  However, this turned out to be unworkable due to 
 restrictions imposed by SNOMED that only 'affiliate members' can access the contents of the SNOMED CT edition.  As a consequence of this, applications 
