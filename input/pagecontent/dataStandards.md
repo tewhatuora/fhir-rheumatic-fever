@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD033 MD041 -->
 ### Data standards
 
 This section defines standards that apply when mapping data to the New Zealand rheumatic fever FHIR representation.
@@ -16,7 +17,7 @@ The rheumatic fever resource profiles on FHIR `CarePlan`, `Condition`, `CareTeam
 
 #### Labelling
 
-Applications may label rheumatic fever resource instances with the `R` "restricted" security label, when they contain sensitive content.  The presence of this label on an instance means that API consumers need to obtain additional privilege to access this data via a FHIR operation.
+Applications may label rheumatic fever resource instances with the `R` "restricted" security label, when they contain sensitive content.  The presence of this label on an instance will require API consumers to obtain additional privilege before accessing the tagged instance.
 
 This is done in FHIR by adding a label in the metadata of each instance (so the FHIRPath expression `meta.security.code=R` is true).
 
@@ -28,10 +29,10 @@ Mapping care plan status between the RFCCS national system and FHIR is straightf
 
 |**Patient registration status value (RCCCS)**|**FHIR CarePlan status code [(binding)](https://hl7.org/fhir/R4B/valueset-request-status.html)**|**FHIR status definition**|
 |:----|:----|:----|
-|New (Draft)            |`#draft` |The request (CarePlan) has been created but is not yet complete or ready for action.
-|Care Underway (Active) |`#active` |The request (CarePlan) is in force and ready to be acted upon.
+|New (Draft)            |`#draft` |The request (CarePlan) has been created but is not yet complete or ready for action.         |
+|Care Underway (Active) |`#active` |The request (CarePlan) is in force and ready to be acted upon.                              |
 |Care On-Hold (On-Hold) |`#on-hold` |The request (CarePlan) and any implicit authorization to act) has been temporarily withdrawn but is expected to resume in the future.|
-|Completed              |`#completed`|The activity described by the request has been fully performed. No further activity will occur.
+|Completed              |`#completed`|The activity described by the request has been fully performed. No further activity will occur. |
 |Revoked (TBC) |`#revoked` | The request (CarePlan) has been terminated prior to the known full completion of the intended actions. No further activity should occur. |
 
 ---
@@ -49,7 +50,6 @@ Applies to **patient's current address**.
 |*Physical*|none|`#physical`|`period.start` = date when patient registered / address recorded $|
 |*Postal*|none|`#postal`|`period.start` = date when patient registered / address recorded $|
 |*Current*|none|none|`period.start` = any date in the past; `period.end`, if specified, must be in the future|
-
 
 Notes
   
@@ -93,7 +93,6 @@ The logic for mapping data between the RFCCS national system and FHIR is given b
 
 ---
 
-
 #### Language mapping
 
 Applies to **patient's preferred language**.
@@ -104,7 +103,7 @@ Two character codes in the preferred *CommonLanguages* binding are not sufficien
 
 Therefore the Te Whatu Ora Shared Care API uses **ISO 639-3 three character language codes** which is allowed by the *AllLanguages* (maximum) binding on [Patient.communication.language](StructureDefinition-nz-sharedcare-rheumaticfever-patient-definitions.html#Patient.communication.language).
 
-The translation between RFCCS language and FHIR is given in the table below. 
+The translation between RFCCS language and FHIR is given in the table below.
 
 |**English name of language**|**ISO 639-3 language code</br> to use for FHIR mapping**|**RFCCS Health Cloud language**|**IANA primary language SUBTAG (BCP47)**|
 |:----|:----|:----|:----|
@@ -148,10 +147,10 @@ To fully represent severity values supported by the RFCCS national application, 
 1. `Condition.severity`: this is the basic severity classifier in a stock FHIR Condition
 
 1. `RheumaticFeverCondition.rhdSeverity` - this is a profile extension which allows a Condition to capture a specific SNOMED code matching the patient's rheumatic heart disease situation.  
- 
-1. `RheumaticFeverCondition.assessmentDate` - another profile extension to Condition which allows a specific date of assessment to be recorded (`.recordedDate` in Condition is already used to capture date of diagnosis).  
 
-Translation between the RFCCS RHD severity value and FHIR representation is given by the following table. 
+1. `RheumaticFeverCondition.assessmentDate` - another profile extension to Condition which allows a specific date of assessment to be recorded (`.recordedDate` in Condition is already used to capture date of diagnosis).
+
+Translation between the RFCCS RHD severity value and FHIR representation is given by the following table.
 
 |**RFCCS - Rheumatic Heart Disease Severity classification**|**FHIR [Condition.severity](StructureDefinition-nz-sharedcare-rheumaticfever-condition-definitions.html#Condition.severity) (SNOMED)**|**[*rhdSeverity*](StructureDefinition-rf-condition-rhdseverity.html) extension in RheumaticFeverCondition (SNOMED)**|**FHIR NzCondition.long-term-condition indicator ^**|
 |:----|:----|:----|:----|
@@ -163,7 +162,6 @@ Translation between the RFCCS RHD severity value and FHIR representation is give
 |“Post valve repair”|**#24484000** Severe (severity modifier) (qualifier value)|Post valve repair or replacement **#59391000119102** History of heart valve repair (situation)| TRUE|
 |“Post valve replacement”|**#24484000** Severe (severity modifier) (qualifier value)| **#301561000210102** History of heart valve replacement (situation)|TRUE |
 |“Unknown”|do not map|**#261665006** Unknown (qualifier value)|TRUE |
-
 
 ^ Note: The FHIR representation of rheumatic fever condition includes setting the [long-term condition extension](https://fhir.org.nz/ig/base/StructureDefinition-NzCondition-definitions.html#Condition.extension:long-term-condition) as the disease is considered in NZ a long term condition.
 
