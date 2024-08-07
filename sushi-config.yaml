@@ -4,7 +4,7 @@
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 id: tewhatuora.rheumaticfever
-canonical: https://build.fhir.org/ig/tewhatuora/rheumatic-fever
+canonical: https://fhir-ig-uat.digital.health.nz/rheumatic-fever #https://build.fhir.org/ig/tewhatuora/rheumatic-fever
 name: New Zealand rheumatic fever FHIR Implementation Guide
 title: New Zealand rheumatic fever FHIR Implementation Guide
 description: New Zealand rheumatic fever FHIR Implementation Guide
