@@ -32,7 +32,7 @@ Context: CarePlan
 * extension[changeReason] ^short = "Optional reason why the status changed"
 * extension[changeReason].value[x] only string
 
-
+//
 Extension: RfCarePlanLifelongSecondaryProphylaxisExtension
 Id:  rf-careplan-lifelongSecondaryProphylaxis
 Title: "Lifelong secondary prophylaxis recommended?"
