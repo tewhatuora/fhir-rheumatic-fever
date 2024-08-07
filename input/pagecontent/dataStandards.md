@@ -101,7 +101,7 @@ Patient language is represented in the `Patient.communication.language` element.
 
 Two character codes in the preferred *CommonLanguages* binding are not sufficient to encode the patient languages available in RFCCS.
 
-Therefore the Te Whatu Ora Shared Care API uses **ISO 639-3 three character language codes** which is allowed by the *AllLanguages* (maximum) binding on [Patient.communication.language](StructureDefinition-nz-sharedcare-rheumaticfever-patient-definitions.html#Patient.communication.language).
+Therefore the Te Whatu Ora Shared Care API uses **ISO 639-3 three character language codes** which is allowed by the *AllLanguages* (maximum) binding on [Patient.communication.language](StructureDefinition-nz-rheumaticfever-patient-definitions.html#Patient.communication.language).
 
 The translation between RFCCS language and FHIR is given in the table below.
 
@@ -152,7 +152,7 @@ To fully represent severity values supported by the RFCCS national application, 
 
 Translation between the RFCCS RHD severity value and FHIR representation is given by the following table.
 
-|**RFCCS - Rheumatic Heart Disease Severity classification**|**FHIR [Condition.severity](StructureDefinition-nz-sharedcare-rheumaticfever-condition-definitions.html#Condition.severity) (SNOMED)**|**[*rhdSeverity*](StructureDefinition-rf-condition-rhdseverity.html) extension in RheumaticFeverCondition (SNOMED)**|**FHIR NzCondition.long-term-condition indicator ^**|
+|**RFCCS - Rheumatic Heart Disease Severity classification**|**FHIR [Condition.severity](StructureDefinition-nz-rheumaticfever-condition-definitions.html#Condition.severity) (SNOMED)**|**[*rhdSeverity*](StructureDefinition-rf-condition-rhdseverity.html) extension in RheumaticFeverCondition (SNOMED)**|**FHIR NzCondition.long-term-condition indicator ^**|
 |:----|:----|:----|:----|
 |“none”|do not map|**#260413007** None (qualifier value)|TRUE|
 |“trivial”|do not map|**#300171000210106** Trivial (qualifier value)|TRUE|

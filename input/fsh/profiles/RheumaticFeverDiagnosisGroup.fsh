@@ -2,7 +2,7 @@ Profile: RheumaticFeverDiagnosisGroup
 Parent: Observation
 Title: "Rheumatic Fever Diagnosis Group"
 Description: "This profile constrains the codes valid on an Observation so it can represent groups of rheumatic fever diagnosis data."
-Id: nz-sharedcare-rheumaticfever-diagnosisgroup
+Id: nz-rheumaticfever-diagnosisgroup
 
 * ^version = "1.0.0"
 * ^jurisdiction = urn:iso:std:iso:3166#NZ

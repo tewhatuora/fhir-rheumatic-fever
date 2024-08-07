@@ -4,7 +4,7 @@ Profile: RheumaticFeverPatient
 Parent: NzPatient
 Title: "Rheumatic Fever Patient"
 Description: "NzPatient-based FHIR resource for representing rheumatic fever patients"
-Id: nz-sharedcare-rheumaticfever-patient
+Id: nz-rheumaticfever-patient
 
 * ^version = "1.0.0"
 * ^jurisdiction = urn:iso:std:iso:3166#NZ

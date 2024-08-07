@@ -2,7 +2,7 @@ Profile: RheumaticFeverCondition
 Parent: NzCondition
 Title: "Rheumatic Fever Condition"
 Description: "Extends NzCondition to add classifiers for RHD severity, diagnostic certainty and symptomatic status and specifies groups of diagnosic evidence that can be attached."
-Id: nz-sharedcare-rheumaticfever-condition
+Id: nz-rheumaticfever-condition
 
 * ^version = "1.0.0"
 * ^jurisdiction = urn:iso:std:iso:3166#NZ
@@ -12,7 +12,9 @@ Id: nz-sharedcare-rheumaticfever-condition
 * meta obeys RFNZTagConstraint      // see file CategoriesLabelsTags.fsh
 
 // elements modified
-* subject only Reference(Patient)
+* subject only Reference(RheumaticFeverPatient)
+* subject ^short = "Must be a reference to Patient instance using the rheumatic fever profile"
+
 * onset[x] only dateTime
 
 * recordedDate ^short = "The date (UTC dateTime) of diagnosis" 
@@ -64,8 +66,8 @@ Id: nz-sharedcare-rheumaticfever-condition
 * evidence 0..3
 * evidence.code from rf-observation-diagnosisgroup-code (preferred)
 * evidence.code ^short = "Identifies the GROUPing of diagnosis data in the linked Observation instance"
-* evidence.detail only Reference(Observation)
-* evidence.detail ^short = "Up to 3 Observation instances, representing RF diagnosis detail, can be linked here"
+* evidence.detail only Reference(RheumaticFeverDiagnosisGroup)
+* evidence.detail ^short = "Links up to 3 Observation instances (all using the RF diagnosis group profile) to represent diagnosis detail"
 * evidence.extension 0..0
 * evidence.modifierExtension 0..0
 

@@ -2,7 +2,7 @@ Profile: RheumaticFeverCareTeam
 Parent: CareTeam
 Title: "Rheumatic Fever Care Team"
 Description: "Identifies parties involved in secondary prophylaxis (preventative treatment) for a patient.  Members typically comprise rheumatic fever service Organizations and Practitioners especially nurses"
-Id: nz-sharedcare-rheumaticfever-careteam
+Id: nz-rheumaticfever-careteam
 
 * ^version = "1.0.0"
 * ^jurisdiction = urn:iso:std:iso:3166#NZ
