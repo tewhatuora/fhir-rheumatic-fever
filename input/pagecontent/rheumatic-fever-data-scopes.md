@@ -48,7 +48,7 @@ Rheumatic fever patient records in FHIR that need elevated privileges to access 
 
 These labels are the responsibility of each Secondary Prevention Service ('lead provider') as data custodian to apply/remove.  The actual labelling will be done on the organisation's behalf by RFCCS via Mulesoft.
 
-An example of a rheumatic fever patient FHIR `CarePlan` with the `R` security label attached is [here](CarePlan-CarePlan-PatientRegistered-R.json.html).
+An example of a rheumatic fever patient FHIR `CarePlan` with the `R` security label attached is [here](CarePlan-RegisteredPatient-R.json.html).
 
 #### Requesting elevated access scope
 

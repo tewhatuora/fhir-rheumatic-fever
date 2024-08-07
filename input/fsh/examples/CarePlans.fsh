@@ -4,7 +4,7 @@
 
 
 // //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// 
-Instance: CarePlan-PatientRegistered-R
+Instance: RegisteredPatient-R
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "RF care plan where patient registered and basic questionnaires completed, but no detail diagnosis or appointments yet."
@@ -12,6 +12,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "2"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta insert RFTag
 * meta insert RSecurityLabel
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
@@ -21,7 +22,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 
 * title = "Care plan in initial state after Sage Westbrook registered (R-labelled)"
 
-* category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]])
 
 * intent = #plan
 
@@ -42,14 +43,14 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
 
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#draft,
+    draft,
     [[2023-06-19]], 
     [[new patient]]
   )
 
 
 // //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// 
-Instance: CarePlan-PatientRegistered
+Instance: RegisteredPatient
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "RF care plan where patient registered and basic questionnaires completed, but no detail diagnosis or appointments yet."
@@ -57,6 +58,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "6"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
@@ -65,7 +67,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 
 * title = "Care plan in initial state after Sage Westbrook registered"
 
-* category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]])
 
 * intent = #plan
 
@@ -86,14 +88,14 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
 
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#draft,
+    draft,
     [[2023-06-19]], 
     [[new patient]]
   )
 
 
 // //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// 
-Instance: CarePlan-SecondaryProphylaxisPlanned
+Instance: SecondaryProphylaxisPlanned
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "Example of an RF care plan with secondary prophylaxis medication planned and three appointments booked."
@@ -101,6 +103,7 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "5"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
@@ -109,7 +112,7 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 
 * insert AddressesConditionExample(SevereRfCondition)
 
-* category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]])
 
 * intent = #plan
 
@@ -136,19 +139,19 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
 
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#draft,
+    draft,
     [[2023-06-19]], 
     [[new patient]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#active,
+    active,
     [[2023-07-01]], 
     [[Initial secondary prophylaxis planned]]
   )
 
 
 // //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// 
-Instance: CarePlan-AppointmentsCompleted
+Instance: AllAppointmentsCompleted
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "An RF care plan after the first secondary prophylaxis and follow-up appointments attended."
@@ -156,6 +159,7 @@ Description: "An RF care plan after the first secondary prophylaxis and follow-u
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "6"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
@@ -164,7 +168,7 @@ Description: "An RF care plan after the first secondary prophylaxis and follow-u
 
 * insert AddressesConditionExample(SevereRfCondition)
 
-* category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]])
 
 * intent = #plan
 
@@ -191,12 +195,12 @@ Description: "An RF care plan after the first secondary prophylaxis and follow-u
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
 
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#draft,
+    draft,
     [[2023-06-19]], 
     [[new patient]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#active,
+    active,
     [[2023-07-01]], 
     [[Initial secondary prophylaxis planned]]
   )
@@ -205,7 +209,7 @@ Description: "An RF care plan after the first secondary prophylaxis and follow-u
 
 
 // //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// 
-Instance: CarePlan-OnHold
+Instance: OnHold
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "Example of an RF care plan that has been put ON-HOLD after the first secondary prophylaxis appointment, because the patient is overseas."
@@ -213,6 +217,7 @@ Description: "Example of an RF care plan that has been put ON-HOLD after the fir
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "5"
 * meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
@@ -221,7 +226,7 @@ Description: "Example of an RF care plan that has been put ON-HOLD after the fir
 
 * insert AddressesConditionExample(SevereRfCondition)
 
-* category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]]) 
 
 * intent = #plan
 
@@ -249,17 +254,17 @@ Description: "Example of an RF care plan that has been put ON-HOLD after the fir
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
 
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#draft,
+    draft,
     [[2023-06-19]], 
     [[new patient]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#active,
+    active,
     [[2023-07-01]], 
     [[Initial secondary prophylaxis planned]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#on-hold,
+    on-hold,
     [[2023-08-01]], 
     [[Patient has gone on big OE]]
   )
@@ -267,14 +272,15 @@ Description: "Example of an RF care plan that has been put ON-HOLD after the fir
 
 
 // //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// 
-Instance: CarePlan-Closed
+Instance: Closed
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "Example of a RF care plan CLOSED after the patient recently went overseas."
 
 * meta.profile = Canonical(RheumaticFeverCarePlan|1.0.0)
 * meta.versionId = "4"
-* meta.lastUpdated = "2024-07-10T05:00:00Z"
+* meta.lastUpdated = "2024-07-10T05:00:00Z" 
+* meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
 * identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
@@ -283,7 +289,7 @@ Description: "Example of a RF care plan CLOSED after the patient recently went o
 
 * insert AddressesConditionExample(SevereRfCondition)
 
-* category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]]) 
 
 * intent = #plan
 
@@ -310,22 +316,22 @@ Description: "Example of a RF care plan CLOSED after the patient recently went o
 * extension[lifelongSecondaryProphylaxis].valueBoolean = false
 
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#draft,
+    draft,
     [[2023-06-19]], 
     [[new patient]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#active,
+    active,
     [[2023-07-01]], 
     [[Initial secondary prophylaxis planned]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#on-hold,
+    on-hold,
     [[2023-08-01]], 
     [[Patient has gone on big OE]]
   )
 * extension[statusChange][+] insert StatusChange(
-    $careplan-status-codes#revoked,
+    revoked,
     [[2023-09-01]], 
     [[Patient no longer needs secondary prophylaxis after moving to Nepal and becoming enlightened at high elevations]]
   )

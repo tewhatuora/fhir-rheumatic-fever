@@ -3,13 +3,13 @@
 # │  used properties are included. For a list of all supported properties and their functions,     │
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-id: tewhatuora.rheumaticfever.ig
-canonical: https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever
-name: Rheumatic Fever FHIR Implementation Guide
-title: Rheumatic Fever FHIR Implementation Guide
-description: Rheumatic Fever FHIR Implementation Guide
+id: rheumaticfever
+canonical: https://build.fhir.org/ig/tewhatuora/rheumatic-fever
+name: New Zealand rheumatic fever FHIR Implementation Guide
+title: New Zealand rheumatic fever FHIR Implementation Guide
+description: New Zealand rheumatic fever FHIR Implementation Guide
 status: draft
-version: 0.4.4
+version: 0.4.5
 fhirVersion: 4.0.1
 copyrightYear: 2024+
 releaseLabel: draft # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
@@ -68,15 +68,16 @@ parameters:
   suppressed-ids: $examples
   display-warnings: true
   no-narrative:             #  Suppress narrative so gen'd canon instance JSONs ready to seed 
-  - Questionnaire/*
-  - QuestionnaireResponse/*
   - Appointment/*
-  - Observation/*
+  - Bundle/*
+  - CarePlan/*
+  - Consent/*
   - Encounter/*
   - MedicationRequest/*
   - MedicationStatement/*
-  - Consent/*
-  - CarePlan/*
+  - Observation/*
+  - Questionnaire/*
+  - QuestionnaireResponse/*
 
 #   excludettl: true
 #   validation: [allow-any-extensions, no-broken-links]
@@ -94,7 +95,7 @@ menu:
   Artifacts: artifacts.html
   Documentation:
     Data models: rheumatic-fever-data-models.html
-    Data mapping: rheumatic-fever-data.html
+    Data mapping: dataStandards.html
     Consent-based resource access control: consentBasedAccessControl.html
     
     Terminology overview: terminology.html

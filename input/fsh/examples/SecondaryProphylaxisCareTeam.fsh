@@ -6,8 +6,12 @@ Usage: #example
 * meta.profile = Canonical(RheumaticFeverCareTeam|1.0.0)
 * meta.versionId = "3"
 * meta.lastUpdated = "2024-05-14T05:00:00Z"
+* meta insert RFTag
 
 * identifier[NationalSystem] insert SalesforceCareTeamIdentifier([[CTM-0016606]])
+
+//* category = $sctNZ#320741000210108 "Secondary prophylaxis team"
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]])
 
 * name = "Sage Westbrook's secondary prophylaxis team"
 * status = #active

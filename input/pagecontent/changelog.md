@@ -2,7 +2,72 @@
 
 <!-- markdownlint-disable MD024 -->
 
-## v0.4.4 Final phase 2 updates
+## v0.4.5 Coding fixes and general updates
+
+### Classifiers for OAUTH scoping of RF data
+
+Filtering classifiers added to various RF resource types to enable OAUTH scoping as follows:
+
+- `Appointment`s have `.serviceCategory` set to $sct#58718002
+- `Encounter`s have `.type` set to $sct#58718002
+- `MedicationStatement`s have `.category` set to $sct#58718002
+
+### RF resource tagging
+
+- To enable OAuth scoped access controls, all RF resource instances *should* be tagged with the RF SNOMED code (`meta.tag.code=58718002`)
+- The RF profiles on CarePlan, Condition, CareTeam, Observation (DiagnosisGroup), MedicationRequest and Patient resource types now have an invariant requiring the RF SNOMED code tag.
+- All example instances have been RF-tagged
+- A tagging section has been added to the [data standards](dataStandards.html) page.
+
+### Consolidation of SNOMED NZ Edition terminology into one local CodeSystem
+
+Testing has shown that applications cannot practically use codes defined in the **NZ SNOMED edition** because the New Zealand Health Terminology
+Service (NZHTS) is unable to support lookup and validation of these codes.  (This stems from SNOMED affiliate licensing restrictions affecting the NZ Edition.)
+
+As NZ SNOMED terms are in effect unusable for NZ applications, all these codes have been brought into a CodeSystem in the IG, so the IG itself defines the codes.
+
+The IG now has a single local CodeSystem which consolidates all the special codes needed for New Zealand rheumatic fever FHIR data representation.  
+This CodeSystem includes codes which previously sat in their own systems eg. the RF diagnostic certainty codes.
+
+The various ValueSets used throughout this IG now draw all their codes from the new common IG CodeSystem, or from applicable public terminology systems (http://snomed.sct/info, http://nzmt.org.nz).
+
+The following IG artefacts have changed to draw some or all of their codes from the new common local CodeSystem:
+
+- `RFConditionDiagnosticCertaintyValueSet`
+- `RFConditionRHDSeverityValueSet`
+- `RFConditionSummaryDiagnosisValueSet`
+- `RFDiagnosisGroupValueSet`
+- `RFRelatedPersonRoleValueSet` (renamed from `RFCareTeamParticipantRoleValueSet`)
+- `RFMedicationRequestMedicationFrequencyValueSet` (renamed from `RheumaticFeverMedicationRequestMedicationFrequencyValueSet`)
+- `RFMedicationAllergyValueSet` (renamed from `RheumaticFeverMedicationAllergyValueSet`)
+
+**All instance examples featuring NZ-specific codings now use the local codesystem Uri in this IG instead of a SNOMED NZ edition Uri**
+
+### DiagnosisGroup (Observation) profile strengthened
+
+The `DiagnosisGroup` (Observation) profile now requires:
+
+1. All **Observation instances** (group-level) to be coded using local codes instead of SNOMED codes (however, the same code numbers are used as per the SNOMED terms.)
+2. All **Observation component items** are to be coded from a new ValueSet `RFDiagnosisObservationCodingValueSet` which draws all the diagnosis SNOMED codes plus one special local code `#448021000210106` (Indolent carditis (disorder))
+
+### Revised categories in CarePlans and Conditions
+
+The following profiles now require use of the local code `#rf-nz` to categorise all instances:
+
+- `CarePlan` profile requires instances to be categorised `#rf-nz` (was SNOMED #320721000210102)
+- `Condition` profile requires instances to be dual-categorised `#rf-nz`, SNOMED #58718002 (was SNOMED category only)
+- `CareTeam` profile requires instances to be categorised `#rf-nz` (was SNOMED #320741000210108)
+
+### Miscellaneous fixes
+
+- Altered relationship role ValueSet to include all codes from the (as per binding of FHIR `RelatedPerson.relationship`)
+- Medication statement examples - removed incorrect profile reference  
+- Fixed a publisher error on the example Uri for the code system of the national identifier slice on identifier in CarePlan, CareTeam, Condition and Observation profiles.
+- Adjusted patient care team for example [SageWestbrookAndWhanau](Patient-SageWestbrookAndWhanau.html) to demonstrate a legal guardian type contact.
+
+---
+
+## v0.4.4 CarePlan profile status history and examples updates
 
 ### Profiles
 
@@ -330,7 +395,7 @@ As a result of a design decision to constrain values of medication frequency to 
 - The example rheumatic fever patient **[SageWestbrook](Patient-SageWestbrook.html)** also now has some sample ContactPoint entries in `Patient.telecom[]`.
 
 - documentation  
-  - The [Terminology overview](terminology.html) and [Data translation and models](rheumatic-fever-data.html) pages have been updated.
+  - The [Terminology overview](terminology.html) and [Data translation and models](dataStandards.html) pages have been updated.
 
 ### Other IG changes in v0.3.4
 
@@ -396,7 +461,7 @@ As a result of a design decision to constrain values of medication frequency to 
 
 - All Rheumatic fever terminology now appears in the *rheumatic fever* section of the **Profiles** tab.  
 
-- Key **salesforce <-> FHIR mappings** are now defined in the [rheumatic fever data](rheumatic-fever-data.html) page.
+- Key **salesforce <-> FHIR mappings** are now defined in the [rheumatic fever data](dataStandards.html) page.
 
 - Added **Consent** tab describing patient-consent-based access controls implemented by the Te Whatu Ora Shared Care API.
 

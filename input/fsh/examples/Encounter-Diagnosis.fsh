@@ -6,11 +6,13 @@ Description: "Encounter capturing context of a patient's rheumatic fever diagnos
 * meta.profile = Canonical(Encounter)
 * meta.versionId = "2"
 * meta.lastUpdated = "2024-05-17T08:00:00Z"
+* meta insert RFTag
 
 * status = #finished
 * class = http://terminology.hl7.org/CodeSystem/v3-ActCode#AMB "ambulatory"
 
 * serviceType insert SNOMEDCoding(22232009,[[Hospital (environment)]])
+* type =  $sct#58718002 "Rheumatic fever (disorder)"
 
 * subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * participant.individual insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])

@@ -9,8 +9,14 @@ if [ $? -eq 0 ]; then
 	txoption=""
 else
 	echo "Offline"
-	txoption="-tx n/a"
+	txoption="-tx "
 fi
+
+# NZHTS only needed to validate codings using http://nzmt.org.nz terminology
+#txoption="-tx tx.fhir.org -tx https://nzhts.digital.health.nz/fhir"
+txoption="-tx tx.fhir.org"
+
+# txoption="-resetTx"
 
 echo "$txoption"
 

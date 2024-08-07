@@ -31,11 +31,9 @@ Usage: #inline
 * meta.profile = "http://hl7.org.nz/fhir/StructureDefinition/NzLocation"
 * name = "Whangārei Girls’ High School"
 * identifier.use = #official
-* identifier.system = "https://www.educationcounts.govt.nz/directories/list-of-nz-schools"
+* identifier.system = "https://standards.digital.health.nz/ns/moe-facility-id"
 * identifier.value = "16"
 * type insert ServiceDeliveryLocationRoleType(SCHOOL)
-
-
 
 // //// //// //// //// //// 
 Instance: RedDiamondWhangarei

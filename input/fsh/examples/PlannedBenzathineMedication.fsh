@@ -6,10 +6,11 @@ Usage: #example
 * meta.profile = Canonical(RheumaticFeverMedicationRequest|1.0.0)
 * meta.versionId = "3"
 * meta.lastUpdated = "2024-05-29T04:00:00Z" // UTC datetime
+* meta insert RFTag
 
 * authoredOn = "2023-07-12T04:22:55.965Z"
 
-* basedOn = Reference(CarePlan-SecondaryProphylaxisPlanned)
+* basedOn = Reference(SecondaryProphylaxisPlanned)
 
 * intent = #plan
 

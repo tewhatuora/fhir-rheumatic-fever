@@ -1,4 +1,6 @@
 Alias: $sct = http://snomed.info/sct
+Alias: $sctNZEdition = http://snomed.info/sct/21000210109      // Do not use; NZHTS doesn't support lookup, expansion or validation of ANY codes in this codesystem!
+
 Alias: $UoM = http://unitsofmeasure.org
 
 Alias: $obs-dataabsentreason = http://terminology.hl7.org/CodeSystem/data-absent-reason
@@ -27,6 +29,7 @@ Alias: $usage-context-type = http://terminology.hl7.org/CodeSystem/usage-context
 Alias: $observation-category = http://terminology.hl7.org/CodeSystem/observation-category
 Alias: $pathway-status-codes = https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/CodeSystem/longterm-pathway-state-cs
 
+Alias: $v3-RoleCode   = http://terminology.hl7.org/CodeSystem/v3-RoleCode
 Alias: $location-type = http://terminology.hl7.org/CodeSystem/v3-RoleCode
 
 Alias: $termServerExtension = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-preferredTerminologyServer
@@ -34,14 +37,12 @@ Alias: $preferredTermServer = https://nzhts.digital.health.nz/fhir
 
 Alias: $NationalCareCoordinationSystem = https://standards.digital.health.nz/ns/rheumatic-fever-identifiers
 
-Alias: $sctNZ = http://snomed.info/sct/21000210109      // not used; doesn't work!
-Alias: $nzmt = http://nzmt.org.nz
-
-Alias: $CarePlanCategoryCS = https://standards.digital.health.nz/ns/temporary-rheumatic-fever-codes
-Alias: $CareTeamCategoryCS = https://standards.digital.health.nz/ns/temporary-rheumatic-fever-codes
-
-// Alias: $RFdiagnosticCertaintyCS = https://standards.digital.health.nz/ns/rheumatic-fever-diagnostic-certainty    November 7 2023 Disabling because NZHTS valueset expands but codesystem unknown ... this should work but doesn't work yet 
-Alias: $RFdiagnosticCertaintyCS = https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/CodeSystem/rf-condition-diagnosticcertainty-codesystem
 
 Alias: $BaseIdentifierTypeCS = http://terminology.hl7.org/CodeSystem/v2-0203
-Alias: $ExternalIdentifierTypeCS = https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/CodeSystem/external-system-identifier-type-codesystem
+
+Alias: $nzmt = http://nzmt.org.nz
+
+// For production the following aliases will need to change to base on the autobuild IG canonical.
+Alias: $rfnzt = https://build.fhir.org/ig/tewhatuora/rheumatic-fever/CodeSystem/nz-rheumaticfever-codesystem
+
+Alias: $ExternalIdentifierTypeCS = https://build.fhir.org/ig/tewhatuora/rheumatic-fever/CodeSystem/external-system-identifier-type-codesystem

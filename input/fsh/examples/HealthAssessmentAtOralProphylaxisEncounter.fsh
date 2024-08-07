@@ -6,6 +6,7 @@ Usage: #example
 * meta.profile = Canonical(QuestionnaireResponse)
 * meta.versionId = "1"
 * meta.lastUpdated = "2024-06-17T07:00:00Z"
+* meta insert RFTag
 
 * status = #completed
 * authored = "2023-08-08T01:08:00.504Z"   // UTC, assumed to be the time of information collection during the appointment
@@ -13,7 +14,7 @@ Usage: #example
 
 * subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
-* basedOn = Reference(CarePlan-PatientRegistered)
+* basedOn = Reference(RegisteredPatient)
 * encounter = Reference(SecondaryProphylaxisEncounter)
 
 * item[+] insert answerItemX(MedicationIssues,                [[1)]],  [[Has the patient had any issues taking their medications?]])

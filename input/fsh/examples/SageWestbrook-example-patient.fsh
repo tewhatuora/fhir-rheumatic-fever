@@ -9,6 +9,7 @@ Usage: #example
 * meta.profile = Canonical(RheumaticFeverPatient|1.0.0)
 * meta.versionId = "4"
 * meta.lastUpdated = "2024-07-18T04:00:00Z"
+* meta insert RFTag
 
 * extension[interpreterRequired].url = "http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired"
 * extension[interpreterRequired].valueBoolean = false
@@ -50,8 +51,8 @@ Usage: #example
 * communication[0].language.coding[0].code = #en
 * communication[0].language.coding[0].display = "English"
 
-* contact[0] insert WhanauCareTeamMember( true,$sct#58626002,[[Mother]],[[Beryl]],[[Hackett]],[[2023-06-01]],[[2026-01-01]],[[+64 21 111 111]],[[person1@gmail.com]] )            // legal guardian / mother 
-* contact[+] insert WhanauCareTeamMember( true,$sct#58626002,[[Spouse]],[[Matt]],[[Westbrook]],[[2023-06-01]],[[2026-01-01]],[[+64 21 111 222]],[[person2@gmail.com]] )            // caregiver / spouse
+* contact[0] insert WhanauCareTeamMember( true, $sct, 58626002, [[Legal guardian]], [[mother]],  [[Beryl]],  [[Hackett]],   [[2023-06-01]],[[2026-01-01]],[[+64 21 111 111]],[[person1@gmail.com]] )        // legal guardian / mother 
+* contact[+] insert WhanauCareTeamMember( true,  $v3-RoleCode, SPS,       [[Spouse]],         [[husband]] ,       [[Connor]],[[Westbrook]], [[2023-06-01]],[[2026-01-01]],[[+64 21 111 222]],[[person2@gmail.com]] )        // spouse
 
 * deceasedBoolean = false
 
@@ -92,6 +93,7 @@ Usage: #example
 * meta.profile = Canonical(RheumaticFeverPatient|1.0.0)
 * meta.versionId = "4"
 * meta.lastUpdated = "2024-07-18T04:00:00Z"
+* meta insert RFTag
 
 
 * extension[interpreterRequired].url = "http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired"
@@ -134,11 +136,11 @@ Usage: #example
 * communication[0].language.coding[0].code = #en
 * communication[0].language.coding[0].display = "English"
 
-* contact[0] insert WhanauCareTeamMember( true,$sct#58626002,[[Mother]],[[Beryl]],[[Hackett]],[[2023-06-01]],[[2026-01-01]],[[+64 21 111 111]],[[person1@gmail.com]] )            // legal guardian / mother 
-* contact[+] insert WhanauCareTeamMember( true,$sct#58626002,[[Spouse]],[[Matt]],[[Westbrook]],[[2023-06-01]],[[2026-01-01]],[[+64 21 111 222]],[[person2@gmail.com]] )            // caregiver / spouse
-* contact[+] insert WhanauCareTeamMember( false,$sct#320731000210100,[[Aunt]],[[Delina]],[[Donut]],[[2023-06-01]],[[2026-01-01]],[[+64 21 111 333]],[[person3@gmail.com]] )       // support person / aunt
-* contact[+] insert WhanauCareTeamMember( false,$sct#394738000,[[Father]],[[Cyril]],[[Hackett]],[[2023-06-01]],[[2026-01-01]],[[+64 21 111 444]],[[person4@gmail.com]] )           // other / father
-* contact[+] insert WhanauCareTeamMember( false,$sct#394738000,[[Brother in law]],[[Mike]],[[Westbrook]],[[2021-01-01]],[[2021-01-01]],[[+64 21 111 555]],[[person5@gmail.com]] )   // other / brother (inactive)
+* contact[0] insert WhanauCareTeamMember( true,  $sct, 58626002,          [[Legal guardian]], [[mother]],         [[Beryl]], [[Hackett]],   [[2023-06-01]],[[2026-01-01]],[[+64 21 111 111]],[[person1@gmail.com]] )        // legal guardian / mother 
+* contact[+] insert WhanauCareTeamMember( true,  $v3-RoleCode, SPS,       [[Spouse]],         [[husband]] ,       [[Connor]],[[Westbrook]], [[2023-06-01]],[[2026-01-01]],[[+64 21 111 222]],[[person2@gmail.com]] )        // spouse
+* contact[+] insert WhanauCareTeamMember( false, $rfnzt, 320731000210100, [[Support person]], [[aunt]],           [[Delina]],[[Donut]],     [[2023-06-01]],[[2026-01-01]],[[+64 21 111 333]],[[person3@gmail.com]] )        // SUPPORT person / aunt
+* contact[+] insert WhanauCareTeamMember( false, $v3-RoleCode, FTH,       [[Father]],         [[father]],         [[Cyril]], [[Westbrook]], [[2023-06-01]],[[2026-01-01]],[[+64 21 111 444]],[[person4@gmail.com]] )        // other / father
+* contact[+] insert WhanauCareTeamMember( false, $v3-RoleCode, BROINLAW,  [[brother-in-law]], [[brother in law]], [[Mike]],  [[Hacket]],    [[2021-01-01]],[[2021-01-01]],[[+64 21 111 555]],[[person5@gmail.com]] )        // other / brother (inactive)
 
 * deceasedBoolean = false
 

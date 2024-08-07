@@ -6,10 +6,13 @@ Usage: #example
 * meta.profile = Canonical(Appointment)
 * meta.versionId = "3"
 * meta.lastUpdated = "2024-06-12T07:00:00Z"
+* meta insert RFTag
 
 * description = "monthly injection August 2023"
 
 * identifier[0] insert SalesforceCarePlanActivityIdentifier([[CPA-00073693-20230808]])     // corresponding salesforce record
+
+* serviceCategory =  $sct#58718002 "Rheumatic fever (disorder)"
 
 * start = "2023-08-08T02:00:00Z"    // UTC equivalent of a start time at 2pm NZ Standard Time on August 8th 2023
 * end =   "2023-08-08T03:00:00Z"      //  UTC equivalent of a finish time of 3pm NZ Standard Time on August 8th 2023

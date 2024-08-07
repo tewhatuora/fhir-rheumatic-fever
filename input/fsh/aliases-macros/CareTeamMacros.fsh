@@ -8,13 +8,14 @@ RuleSet: CareTeamRole(snomed-code,display)
 
 
 // inserts a Patient.contact identifying a whanau care team member with role and relationship SNOMED-coded
-RuleSet: WhanauCareTeamMember(primary-flag,role-code,relationship-text,first,last,period-start,period-end,contact-phone,contact-email)
+RuleSet: WhanauCareTeamMember(primary-flag,role-system,role-code,role-display,relationship-text,first,last,period-start,period-end,contact-phone,contact-email)
 
 * extension[whanauMemberCarePrimary].url = Canonical(rf-patient-whanaumember-primary)
 * extension[whanauMemberCarePrimary].valueBoolean = {primary-flag}
 
 * extension[whanauMemberCareRole].url = Canonical(rf-patient-whanaumember-role)
-* extension[whanauMemberCareRole].valueCoding = {role-code}
+* extension[whanauMemberCareRole].valueCoding = {role-system}#{role-code}
+* extension[whanauMemberCareRole].valueCoding.display = "{role-display}"
 
 * extension[whanauMemberCareRelationship].url = Canonical(rf-patient-whanaumember-relationship)
 * extension[whanauMemberCareRelationship].valueString = "{relationship-text}"

@@ -27,7 +27,7 @@ Description: "Example of consent when the patient OPTED OUT of data sharing on 0
 * provision.type = #deny
 
 // setup a boatload of example data references to consent-protected resource instances
-* provision insert ConsentInstanceDataRef( CarePlan-AppointmentsCompleted )
+* provision insert ConsentInstanceDataRef( AllAppointmentsCompleted )
 
 * provision insert ConsentInstanceDataRef( SevereRfCondition )
 * provision insert ConsentInstanceDataRef( SecondaryProphylaxisCareTeam )

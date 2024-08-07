@@ -10,8 +10,8 @@ Description: "Describes any known patient allergies to medications used in rheum
 * identifier[=].value = "PatientMedicationAllergyQuestionnaire"
 * identifier[=].period.start = "2023-10-16"
 
-* version = "1.0.0"
-* date = "2023-10-16"
+* version = "1.1.0"
+* date = "2024-08-07"
 * status = #draft
 * experimental = false
 
@@ -34,8 +34,7 @@ Description: "Describes any known patient allergies to medications used in rheum
 * item[=].enableWhen.operator = #=
 * item[=].enableWhen.answerCoding = $sct#373066001 "Yes (qualifier value)"
 
-// future "https://nzhts.digital.health.nz/fhir/ValueSet/Rheumatic-fever-medication-allergy"
-* item[=].answerValueSet = Canonical(RheumaticFeverMedicationAllergyValueSet)  
+* item[=].answerValueSet = Canonical(RFMedicationAllergyValueSet)  
 * item[=].extension.url = $termServerExtension
 * item[=].extension.valueUrl = $preferredTermServer
 

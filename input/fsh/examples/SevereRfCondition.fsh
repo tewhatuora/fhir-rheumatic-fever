@@ -6,6 +6,7 @@ Description: "An example of a rheumatic fever condition as initially diagnosed a
 * meta.profile = Canonical(RheumaticFeverCondition)
 * meta.versionId = "5"
 * meta.lastUpdated = "2024-05-29T05:45:00Z"
+* meta insert RFTag
 
 * identifier[NationalSystem][0] insert SalesforceConditionIdentifier([[CON-0206]])     // corresponding salesforce record
 * identifier[NationalSystem][+] insert  EpisurvNumber(21-383414-AK)                    // EPISurv nunber as notified to in diagnosis
@@ -14,9 +15,14 @@ Description: "An example of a rheumatic fever condition as initially diagnosed a
 * clinicalStatus.text = "Active"
 * verificationStatus = http://terminology.hl7.org/CodeSystem/condition-ver-status#confirmed "Confirmed"
 * verificationStatus.text = "Confirmed"
-* category.coding[0] = http://terminology.hl7.org/CodeSystem/condition-category#encounter-diagnosis "Encounter Diagnosis"
-* category.coding[+] = http://snomed.info/sct#439401001 "Diagnosis"
-* category.text = "Diagnosis"
+
+// * category.coding[0] = http://terminology.hl7.org/CodeSystem/condition-category#encounter-diagnosis "Encounter Diagnosis"
+// * category.coding[+] = http://snomed.info/sct#439401001 "Diagnosis"
+// * category.text = "Diagnosis"
+
+* category[+] = $sct#58718002 "Rheumatic fever (disorder)"    // One of two categories that must be used in an Rf Condition
+* category[+] insert RFNZCoding(rf-nz,[[rheumatic fever]])    // One of two categories that must be used in an Rf Condition
+
 * severity = http://snomed.info/sct#24484000 "Severe"
 * code = $sct#195528001 "Acute rheumatic fever (disorder)"
 
@@ -31,7 +37,7 @@ Description: "An example of a rheumatic fever condition as initially diagnosed a
 * extension[rhdSeverity].valueCoding = $sct#24484000 "Severe (severity modifier) (qualifier value)"
 
 * extension[diagnosticCertainty].url = Canonical(rf-condition-diagnosticcertainty)
-* extension[diagnosticCertainty].valueCoding = $RFdiagnosticCertaintyCS#probable "probable"
+* extension[diagnosticCertainty].valueCoding = $rfnzt#probable "probable"
 
 * extension[assessmentDate].url = Canonical(rf-condition-assessmentdate)
 * extension[assessmentDate].valueDateTime = "2023-03-12T02:00:00Z"

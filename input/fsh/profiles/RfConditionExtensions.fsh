@@ -4,7 +4,7 @@ Title: "Certainty of rheumatic fever diagnosis"
 Description: "Certainty of rheumatic fever diagnosis"
 Context: Condition
 * value[x] only Coding
-* value[x] from RheumaticFeverConditionDiagnosticCertaintyValueSet (required)
+* value[x] from RFConditionDiagnosticCertaintyValueSet (required)
 
 
 Extension: RfConditionRhdSeverityExtension
@@ -13,7 +13,7 @@ Title: "Severity of rheumatic heart disease"
 Description: "Severity of rheumatic heart disease determines the severity of a patient's rheumatic fever condition."
 Context: Condition
 * value[x] only Coding
-* value[x] from rf-condition-rhdseverity-code (required)
+* value[x] from RFConditionRHDSeverityValueSet (required)
 
 
 Extension: RfConditionAssessmentDateExtension
@@ -30,4 +30,4 @@ Title: "Symptom status at diagnosis"
 Description: "Symptom status at time of rheumatic fever diagnosis"
 Context: Condition
 * value[x] only Coding
-* value[x] from RheumaticFeverConditionSymptomaticAtDiagnosisValueSet (required)
+* value[x] from RFConditionSymptomaticAtDiagnosisValueSet (required)

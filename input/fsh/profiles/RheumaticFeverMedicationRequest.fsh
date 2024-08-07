@@ -9,6 +9,8 @@ Id: nz-sharedcare-rheumaticfever-medicationrequest
 * ^purpose = "Controls values of medication frequency (secondary prophylaxis appointments) to a set of standard frequency intervals used in NZ RF care."
 * insert metaContactDetail([[David Grainger]],[[david.grainger@middleware.co.nz]])
 
+* meta obeys RFNZTagConstraint      // see file CategoriesLabelsTags.fsh
+
 // elements modified from base profile
 * extension contains
   RfMedicationRequestFrequencyExtension named medicationFrequency 0..1

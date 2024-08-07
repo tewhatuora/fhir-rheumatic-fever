@@ -26,7 +26,7 @@ Description: "A provisional patient DATA consent recorded by Te Tai Tokerau Rheu
 * provision.type = #deny
 
 // setup a boatload of example data references to consent-protected resource instances
-* provision insert ConsentInstanceDataRef( CarePlan-PatientRegistered )
+* provision insert ConsentInstanceDataRef( RegisteredPatient )
 
 * provision insert ConsentInstanceDataRef( PatientMedicationAllergyQuestionnaireResponse )
 * provision insert ConsentInstanceDataRef( MedicationsAndFollowUpGuidanceQuestionnaireResponse )

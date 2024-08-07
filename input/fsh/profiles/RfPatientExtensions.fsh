@@ -4,7 +4,7 @@ Title: "Codifies role taken by a whanau member of patient's care team"
 Description: "Codifies role this whanau member plays in a patient's care team"
 Context: Patient.contact
 * value[x] only Coding
-* value[x] from rf-careteam-participant-role-code (required)
+* value[x] from RFRelatedPersonRoleValueSet (preferred)
 
 
 Extension: RfPatientWhanauMemberRelationshipExtension

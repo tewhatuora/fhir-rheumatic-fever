@@ -19,31 +19,46 @@ skinparam roundcorner 5
 skinparam sequenceArrowThickness 2
 skinparam TitleFontSize 20
 
+' create a object with security label
+' usage: $SEC_LABELLED_INSTANCE(R1,"<object name>","<label Id")
+!unquoted procedure $SEC_LABELLED_INSTANCE($Alias, $displayText="",$label="")
+  object "$displayText" as $Alias {
+    <color:Red><&flag> <Color:Black>security label: ""<size:16><color:DarkRed>$label""
+  }
+!endprocedure
+
+!unquoted procedure $DUAL_SEC_LABELLED_INSTANCE($Alias, $displayText="",$label1="",$label2="")
+  object "$displayText" as $Alias {
+    <color:Red><&flag> <Color:Black>security label: ""<size:16><color:DarkRed>$label1""
+    <color:Red><&flag> <Color:Black>security label: ""<size:16><color:DarkRed>$label2""
+  }
+!endprocedure
 
 title FHIR Consent instances for patient opted-out (of treatment / data sharing)
 
 frame "Representation of consent denied (or withdrawn) by patient" as F {
 
-  object "consent to treatment\n<size:16>**:CONSENT**" as TREATCONSENT #DodgerBlue {
-    * status: ""<color:GreenYellow>**#active**""
+
+  object "<size:16>**Consent to treatment**\n<size:16>**:CONSENT**" as TREATCONSENT #DodgerBlue {
+    * status: ""<color:GreenYellow>**#ACTIVE**""
     * scope: ""**#treatment**""
     * policy: reference to regs/leg.
   }
 
-  object "treatment provision" as TP #LightBlue  {
-    * type: ""<color:DarkRed>**#deny**""
+  object "treatment provision" as TP #Brown/SandyBrown  {
+    * type: ""<color:GreenYellow>**#PERMIT**""
     * period: 
-      ""**2023-06-23**"" to ""-""
+      **""2023-01-21"" to ""2026-01-20""**
   }
 
-  object "consent to collect/share data\n<size:16>**:CONSENT**" as DATACONSENT #DodgerBlue {
-    * status: ""<color:GreenYellow>**#active**""
+  object "<size:16>**Consent to collect/share data**\n<size:16>**:CONSENT**" as DATACONSENT #DodgerBlue {
+    * status: ""<color:GreenYellow>**#ACTIVE**""
     * scope: ""**#patient-privacy**""
     * policy: reference to regs/leg.
   }
 
-  object "data access permit provision" as DAP #LightBlue  {
-    * type: ""<color:DarkRed>**#deny**""
+  object "data access permit provision" as DAP #SandyBrown  {
+    * type: ""<color:DarkRed>**#DENY**""
     * period: 
       ""**2023-06-23**"" to ""-""
   }
@@ -57,15 +72,18 @@ frame "Representation of consent denied (or withdrawn) by patient" as F {
     * HPI Org Id: ""GnXnnn""
   }
 
-  frame "<size:12>Covered resources all security-labelled '""R""' (Restricted)<sup>2</sup>" as COVERED #GhostWhite/OrangeRed {
-    object "planned appointments, etc.\n<size:14>**:CAREPLAN**" as R1 #LightGray
-    object "condition severity and specifics\n<size:14>**:CONDITION**" as R2 #LightGray
-    object "appointments\n<size:14>**:ENCOUNTER**" as R3 #LightGray
-    object "preferences, health assessments\n<size:14>**:QUESTIONNAIRERESPONSE**" as R4 #LightGray
-    object "diagnosis detail\n<size:14>**:OBSERVATION**" as R5 #LightGray
+  frame "<size:12>Patient data covered by data access provision<sup>2</sup>" as COVERED #LightGreen {
+    $DUAL_SEC_LABELLED_INSTANCE(R1,"planned appointments, etc.\n<size:14>**:CAREPLAN**"                    ,"R (restricted)","break-the-glass")
+    $DUAL_SEC_LABELLED_INSTANCE(R2,"condition severity and specifics\n<size:14>**:CONDITION**"             ,"R (restricted)","break-the-glass")
+    $DUAL_SEC_LABELLED_INSTANCE(R3,"appointments\n<size:14>**:ENCOUNTER**                               "  ,"R (restricted)","break-the-glass")
+    $DUAL_SEC_LABELLED_INSTANCE(R4,"preferences, health assessments\n<size:14>**:QUESTIONNAIRERESPONSE**"  ,"R (restricted)","break-the-glass")
+    $DUAL_SEC_LABELLED_INSTANCE(R5,"diagnosis detail\n<size:14>**:OBSERVATION**                         "  ,"R (restricted)","break-the-glass")
+
+    R3 -[hidden]u- R1
+    R4 -[hidden]u- R2
+    R5 -[hidden]u- R4
   }
 }
-
 ' positioning
 TREATCONSENT -[hidden]d- TP
 TP -[hidden]d- DATACONSENT
@@ -78,19 +96,18 @@ TREATCONSENT -[norank]-* TP : "".provision""
 TREATCONSENT ".organization\n**HPI org. ref**<sup>1</sup>" -[dashed,#Black]l-> HPI
 
 DATACONSENT ".patient" -[dotted,#SkyBlue,norank]-> PATIENT
-DATACONSENT -* DAP : "".provision""
-DATACONSENT ".organization\n**HPI org. ref**<sup>1</sup>" -[dashed,#Black]u-> HPI 
+DATACONSENT -d-* DAP : "".provision""
+DATACONSENT ".organization\n**HPI org. ref**<sup>1</sup>" -[dashed,#Black,norank]--> HPI
 
 legend bottom
   **Notes**
-  1. ""Consent.organization"" identifies a specific //RF Secondary Prevention Service// which:
-      \ta. Coordinates treatment for patients in that district/region, and
-      \tb. Operates the consent process (forms etc.), and
-      \tc. Is the custodian of data collected from these patients.
-  2. This list of referenced FHIR instances is maintained by Mulesoft integration.
-      - All these covered FHIR instances will have **""R"" security labels** attached when a patient DENY is recorded. 
-      - (If patient consent is subsequently re-obtained, these labels will be removed again.)
-  3. All Consent instances identify via "".patient"" the **person the consent applies to**.
+  1. Consent instances identify the data subject in "".patient"" references.
+  2. ""Consent.organization"" identifies which org is custodian of the patient data.
+  3. All patient data stored in resource instances with ""**R**"" and ""**break-the-glass**"" labels.
+  4. The custodian organisation must obtain administrative privilege (parameterized 
+        OAUTH scope) to update **R-labelled** resource types (including label changes).
+  5. Any other authenticated API consumer wanting to read data in these labelled instances 
+        must **break the glass** (request a break-glass parameterized OAUTH scope).
 endlegend
 
 footer "Health NZ/Te Whatu Ora.  FHIR instance data model generated from PlantUML source on %date('dd/MM/yyyy')"
