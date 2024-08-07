@@ -3,11 +3,11 @@
 # │  used properties are included. For a list of all supported properties and their functions,     │
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-id: tewhatuora.rheumaticfever.ig
-canonical: https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever
-name: Rheumatic Fever FHIR Implementation Guide
-title: Rheumatic Fever FHIR Implementation Guide
-description: Rheumatic Fever FHIR Implementation Guide
+id: rheumaticfever
+canonical: https://build.fhir.org/ig/tewhatuora/rheumatic-fever
+name: New Zealand rheumatic fever FHIR Implementation Guide
+title: New Zealand rheumatic fever FHIR Implementation Guide
+description: New Zealand rheumatic fever FHIR Implementation Guide
 status: draft
 version: 0.4.5
 fhirVersion: 4.0.1

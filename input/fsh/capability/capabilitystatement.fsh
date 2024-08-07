@@ -78,7 +78,7 @@ Usage: #definition
 * rest.resource[=].searchParam[+].name = "category"
 * rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#CarePlan-category"
 * rest.resource[=].searchParam[=].type = #token
-* rest.resource[=].searchParam[=].documentation = "Care plan search by category (SNOMED) code.  Rheumatic fever secondary prevention care plans have category=http://snomed.sct/info|320721000210102"
+* rest.resource[=].searchParam[=].documentation = "Care plan search by category code.  All rheumatic fever care plans are categorised #rf-nz"
 
 // rheumatic fever profiled type
 * rest.resource[+].type = #CareTeam
@@ -92,10 +92,6 @@ This server supports one subtype of FHIR CareTeam - refer to Profiles
 * rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#Patient-identifier"
 * rest.resource[=].searchParam[=].type = #token
 * rest.resource[=].searchParam[=].documentation = "The patient's official NHI identifier"
-* rest.resource[=].searchParam[+].name = "category"
-* rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#CareTeam-category"
-* rest.resource[=].searchParam[=].type = #token
-* rest.resource[=].searchParam[=].documentation = "Rheumatic fever care teams will be found by the category code (NZ SNOMED Edition) category=http://snomed.sct/info|320741000210108"
 * rest.resource[=].searchParam[+].name = "_profile"
 * rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#Resource-profile"
 * rest.resource[=].searchParam[=].type = #reference
@@ -104,6 +100,11 @@ This server supports one subtype of FHIR CareTeam - refer to Profiles
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
 * rest.resource[=].searchParam[=].type = #token
 * rest.resource[=].searchParam[=].documentation = "Logical id of this artifact"
+* rest.resource[=].searchParam[+].name = "category"
+* rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#CareTeam-category"
+* rest.resource[=].searchParam[=].type = #token
+* rest.resource[=].searchParam[=].documentation = "Care team search by category code.  All rheumatic fever care teams are categorised #rf-nz"
+
 
 * rest.resource[+].type = #Condition
 * rest.resource[=].profile = Canonical(RheumaticFeverCondition)
@@ -124,6 +125,11 @@ This server supports one subtype of FHIR CareTeam - refer to Profiles
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
 * rest.resource[=].searchParam[=].type = #token
 * rest.resource[=].searchParam[=].documentation = "Logical id of this artifact"
+* rest.resource[=].searchParam[+].name = "category"
+* rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#Condition-category"
+* rest.resource[=].searchParam[=].type = #token
+* rest.resource[=].searchParam[=].documentation = "Condition search by category code.  All rheumatic fever condtion instances have two category values (#rf-nz, SNOMED #58718002)"
+
 
 * rest.resource[+].type = #Consent
 * rest.resource[=].profile = Canonical(Consent)

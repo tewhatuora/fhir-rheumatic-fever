@@ -31,7 +31,7 @@ Description: "An active, 3 year, patient DATA consent given on patient's behalf 
 * provision.period.end = "2026-06-11T02:30:35Z"     
 * provision.type = #permit
 
-* provision insert ConsentInstanceDataRef( CarePlan-PatientRegistered )
+* provision insert ConsentInstanceDataRef( RegisteredPatient )
 
 * provision insert ConsentInstanceDataRef( PatientMedicationAllergyQuestionnaireResponse )
 * provision insert ConsentInstanceDataRef( MedicationsAndFollowUpGuidanceQuestionnaireResponse )
@@ -51,9 +51,9 @@ Alias: $relatedrelationshiptypeCS = http://terminology.hl7.org/CodeSystem/v3-Rol
 Instance: contained-Related-Person
 InstanceOf: RelatedPerson
 Usage: #inline
-Description: "An example of how to Sage's mum (relationshiptype code for parent = #PRN) as the RelatedPerson who gave consent on Sage's behalf"
+Description: "An example of RelatedPerson -- Beryl -- as Sage's legal guardian who gave consent on Sage's behalf"
 
 * patient insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * name.given = "Beryl"
 * name.family = "Hackett"
-* relationship = 	$relatedrelationshiptypeCS#PRN
+* relationship = 	$sct#58626002 "Legal guardian (person)" // should be a code in RFRelatedPersonRoleValueSet

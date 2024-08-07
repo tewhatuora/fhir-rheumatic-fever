@@ -27,7 +27,7 @@ Description: "An active, 3 year, patient DATA consent obtained by the Te Tai Tok
 * provision.type = #permit
 
 // setup a boatload of example data references to consent-protected resource instances
-* provision insert ConsentInstanceDataRef( CarePlan-SecondaryProphylaxisPlanned )
+* provision insert ConsentInstanceDataRef( SecondaryProphylaxisPlanned )
 
 * provision insert ConsentInstanceDataRef( PatientMedicationAllergyQuestionnaireResponse )
 * provision insert ConsentInstanceDataRef( MedicationsAndFollowUpGuidanceQuestionnaireResponse )

@@ -4,7 +4,7 @@
 
 
 // //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// 
-Instance: CarePlan-PatientRegistered-R
+Instance: RegisteredPatient-R
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "RF care plan where patient registered and basic questionnaires completed, but no detail diagnosis or appointments yet."
@@ -22,7 +22,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 
 * title = "Care plan in initial state after Sage Westbrook registered (R-labelled)"
 
-* category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]])
 
 * intent = #plan
 
@@ -50,7 +50,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 
 
 // //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// 
-Instance: CarePlan-PatientRegistered
+Instance: RegisteredPatient
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "RF care plan where patient registered and basic questionnaires completed, but no detail diagnosis or appointments yet."
@@ -67,7 +67,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 
 * title = "Care plan in initial state after Sage Westbrook registered"
 
-* category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]])
 
 * intent = #plan
 
@@ -95,7 +95,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 
 
 // //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// 
-Instance: CarePlan-SecondaryProphylaxisPlanned
+Instance: SecondaryProphylaxisPlanned
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "Example of an RF care plan with secondary prophylaxis medication planned and three appointments booked."
@@ -112,7 +112,7 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 
 * insert AddressesConditionExample(SevereRfCondition)
 
-* category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]])
 
 * intent = #plan
 
@@ -151,7 +151,7 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 
 
 // //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// 
-Instance: CarePlan-AppointmentsCompleted
+Instance: AllAppointmentsCompleted
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "An RF care plan after the first secondary prophylaxis and follow-up appointments attended."
@@ -168,7 +168,7 @@ Description: "An RF care plan after the first secondary prophylaxis and follow-u
 
 * insert AddressesConditionExample(SevereRfCondition)
 
-* category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]])
 
 * intent = #plan
 
@@ -209,7 +209,7 @@ Description: "An RF care plan after the first secondary prophylaxis and follow-u
 
 
 // //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// 
-Instance: CarePlan-OnHold
+Instance: OnHold
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "Example of an RF care plan that has been put ON-HOLD after the first secondary prophylaxis appointment, because the patient is overseas."
@@ -226,7 +226,7 @@ Description: "Example of an RF care plan that has been put ON-HOLD after the fir
 
 * insert AddressesConditionExample(SevereRfCondition)
 
-* category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]]) 
 
 * intent = #plan
 
@@ -272,7 +272,7 @@ Description: "Example of an RF care plan that has been put ON-HOLD after the fir
 
 
 // //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// //////// 
-Instance: CarePlan-Closed
+Instance: Closed
 InstanceOf: RheumaticFeverCarePlan
 Usage: #example
 Description: "Example of a RF care plan CLOSED after the patient recently went overseas."
@@ -289,7 +289,7 @@ Description: "Example of a RF care plan CLOSED after the patient recently went o
 
 * insert AddressesConditionExample(SevereRfCondition)
 
-* category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan" 
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]]) 
 
 * intent = #plan
 

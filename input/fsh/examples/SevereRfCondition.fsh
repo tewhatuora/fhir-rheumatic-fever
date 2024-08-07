@@ -20,7 +20,8 @@ Description: "An example of a rheumatic fever condition as initially diagnosed a
 // * category.coding[+] = http://snomed.info/sct#439401001 "Diagnosis"
 // * category.text = "Diagnosis"
 
-* category =  $sct#58718002 "Rheumatic fever (disorder)"
+* category[+] = $sct#58718002 "Rheumatic fever (disorder)"    // One of two categories that must be used in an Rf Condition
+* category[+] insert RFNZCoding(rf-nz,[[rheumatic fever]])    // One of two categories that must be used in an Rf Condition
 
 * severity = http://snomed.info/sct#24484000 "Severe"
 * code = $sct#195528001 "Acute rheumatic fever (disorder)"
@@ -36,7 +37,7 @@ Description: "An example of a rheumatic fever condition as initially diagnosed a
 * extension[rhdSeverity].valueCoding = $sct#24484000 "Severe (severity modifier) (qualifier value)"
 
 * extension[diagnosticCertainty].url = Canonical(rf-condition-diagnosticcertainty)
-* extension[diagnosticCertainty].valueCoding = $RFdiagnosticCertaintyCS#probable "probable"
+* extension[diagnosticCertainty].valueCoding = $rfnzt#probable "probable"
 
 * extension[assessmentDate].url = Canonical(rf-condition-assessmentdate)
 * extension[assessmentDate].valueDateTime = "2023-03-12T02:00:00Z"

@@ -14,7 +14,7 @@ Usage: #example
 
 * subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
-* basedOn = Reference(CarePlan-PatientRegistered)
+* basedOn = Reference(RegisteredPatient)
 * encounter = Reference(SecondaryProphylaxisEncounter)
 
 * item[+] insert answerItemX(MedicationIssues,                [[1)]],  [[Has the patient had any issues taking their medications?]])

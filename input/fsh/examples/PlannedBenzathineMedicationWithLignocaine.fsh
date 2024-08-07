@@ -10,7 +10,7 @@ Usage: #example
 
 * authoredOn = "2023-07-12T04:22:55.965Z"
 
-* basedOn = Reference(CarePlan-SecondaryProphylaxisPlanned)
+* basedOn = Reference(SecondaryProphylaxisPlanned)
 
 * intent = #plan
 

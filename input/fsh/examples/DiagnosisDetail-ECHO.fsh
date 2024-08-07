@@ -1,6 +1,6 @@
 Instance: DiagnosisDetail-ECHO
 InstanceOf: RheumaticFeverDiagnosisGroup
-Description: "Illustrates a FHIR Observation describing a Jones (twelve) criteria diagnosis for a rheumatic fever patient"
+Description: "Illustrates collection of ECHO cardiogram diagnosis evidence in a rheumatic fever case"
 Usage: #example
 
 //* meta.profile = Canonical(RheumaticFeverMedicationRequest|1.0.0)
@@ -10,7 +10,7 @@ Usage: #example
 
 * identifier[NationalSystem][0] insert SalesforceObservationIdentifier([[OBSD-0100]])     // corresponding salesforce record
 
-* code insert SNOMEDCoding(439238004,[[Echocardiography test interpretation (observable entity)]])
+* code insert RFNZCoding(439238004,[[Echocardiography test interpretation (observable entity)]])
 
 * subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * status = #final
@@ -20,11 +20,11 @@ Usage: #example
 
 * encounter = Reference(DiagnosisEncounter)
 
-* component[+] insert ObservationCodeableValue( 48724000, [[Mitral valve regurgitation (disorder)]],    1255665007, [[Moderate (qualifier value)]] )
-* component[+] insert ObservationCodeableValue( 79619009, [[Mitral valve stenosis (disorder)]],           24484000, [[Severe (severity modifier) (qualifier value)]] )
-* component[+] insert ObservationCodeableValue( 60234000, [[Aortic valve regurgitation (disorder)]],    1255665007, [[Moderate (qualifier value)]] )
+* component[+] insert ObservationCodeableValue( $sct,  48724000, [[Mitral valve regurgitation (disorder)]],    $sct, 1255665007, [[Moderate (qualifier value)]] )
+* component[+] insert ObservationCodeableValue( $sct,  79619009, [[Mitral valve stenosis (disorder)]],         $sct,   24484000, [[Severe (severity modifier) (qualifier value)]] )
+* component[+] insert ObservationCodeableValue( $sct,  60234000, [[Aortic valve regurgitation (disorder)]],    $sct, 1255665007, [[Moderate (qualifier value)]] )
 
-* component[+] insert ObservationCodeableValue( 60573004, [[Aortic valve stenosis (disorder)]],           24484000, [[Severe (severity modifier) (qualifier value)]] )
-* component[+] insert ObservationCodeableValue(111287006, [[Tricuspid valve regurgitation (disorder)]], 1255665007, [[Moderate (qualifier value)]] )
+* component[+] insert ObservationCodeableValue( $sct,  60573004, [[Aortic valve stenosis (disorder)]],         $sct,   24484000, [[Severe (severity modifier) (qualifier value)]] )
+* component[+] insert ObservationCodeableValue( $sct, 111287006, [[Tricuspid valve regurgitation (disorder)]], $sct, 1255665007, [[Moderate (qualifier value)]] )
 
 * note.text = "- Around and around and around with its own sound\n- A sound that no one has to hear"

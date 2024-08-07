@@ -10,6 +10,9 @@ Usage: #example
 
 * identifier[NationalSystem] insert SalesforceCareTeamIdentifier([[CTM-0016606]])
 
+//* category = $sctNZ#320741000210108 "Secondary prophylaxis team"
+* category insert RFNZCoding(rf-nz,[[rheumatic fever]])
+
 * name = "Sage Westbrook's secondary prophylaxis team"
 * status = #active
 // lead provider

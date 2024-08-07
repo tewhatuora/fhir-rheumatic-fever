@@ -1,4 +1,4 @@
-ValueSet: RheumaticFeverConditionDiagnosticCertaintyValueSet
+ValueSet: RFConditionDiagnosticCertaintyValueSet
 Id: rf-condition-diagnosticcertainty-code
 Title: "Rheumatic fever certainty of diagnosis codes"
 Description:  "This value set defines the codes that represent the certainty of a diagnosis of rheumatic fever in a patient."
@@ -7,4 +7,4 @@ Description:  "This value set defines the codes that represent the certainty of 
 // * ^url = "https://nzhts.digital.health.nz/fhir/ValueSet/rheumatic-fever-diagnostic-certainty"
 * ^status = #active
 
-* include codes from system rf-condition-diagnosticcertainty-codesystem
+* include codes from system $rfnzt where concept descendant-of #diagnostic-certainty-codes

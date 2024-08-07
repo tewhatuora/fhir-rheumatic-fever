@@ -63,8 +63,7 @@ RuleSet: makeEncounterContent
 // MedicationStatement: benzathine medication and associated lignocaine pain relief
 RuleSet: makeMedStmtContent
 
-* meta.profile = Canonical(http://hl7.org.nz/fhir/StructureDefinition/NzMedicationStatement)
-* meta.lastUpdated = "2023-11-27T00:00:00Z"
+* meta.lastUpdated = "2024-08-05T00:00:00Z" // UTC datetime
 * meta insert RFTag
 
 * id = "1002"
@@ -85,7 +84,7 @@ RuleSet: makeMedStmtContent
 * status = #completed
 
 // records the actual benzathine brand, site of injection and quantity administered.
-* dosage.site insert SNOMEDCoding(299151000210101,[[Structure of left ventrogluteal region (body structure)]])
+* dosage.site insert RFNZCoding(299151000210101,[[Structure of left ventrogluteal region (body structure)]])
 * dosage.route insert SNOMEDCoding(78421000,[[Intramuscular route (qualifier value)]])
 * dosage.doseAndRate[0].doseQuantity insert UnitOfMeasureQuantity(25,[[mg]],[[mg]]) 
 
@@ -106,7 +105,7 @@ RuleSet: makeQRContent
 
 * subject insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * author insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
-* basedOn = Reference(CarePlan-AppointmentsCompleted)
+* basedOn = Reference(AllAppointmentsCompleted)
 
 * encounter.reference = "http://example.org/fhir/Encounter/1"    // ***** alpha instance in the Bundle  *****
 

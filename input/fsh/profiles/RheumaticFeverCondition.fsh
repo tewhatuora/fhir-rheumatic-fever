@@ -9,7 +9,7 @@ Id: nz-sharedcare-rheumaticfever-condition
 * ^purpose = "Adds classifiers for severity, diagnostic certainty and symptomatic status and specifies groups of diagnosic evidence to be attached"
 * insert metaContactDetail([[David Grainger]],[[david.grainger@middleware.co.nz]])
 
-* meta obeys RFTagConstraint      // see file LabelsTags.fsh
+* meta obeys RFNZTagConstraint      // see file CategoriesLabelsTags.fsh
 
 // elements modified
 * subject only Reference(Patient)
@@ -33,7 +33,7 @@ Id: nz-sharedcare-rheumaticfever-condition
 * identifier[NationalSystem].use = #usual
 
 * identifier[NationalSystem].system 0..1        // system Uri may (SHOULD) be specified but it's up to clients to do this.
-* identifier[NationalSystem].system insert MakeProfileIdentifierSystemExample([[Uri that defines the type of external identifier]])
+* identifier[NationalSystem].system insert MakeProfileIdentifierSystemExample([[https://standards.digital.health.nz/ns/rfccs]])
 
 // In this slice, clients MUST set a type taken from known external identifier type codes
 * identifier[NationalSystem].type 1..1      
@@ -50,17 +50,19 @@ Id: nz-sharedcare-rheumaticfever-condition
 * category 1..*
 // force one category entry as the classifier for OAUTH SMART scoping
 
-* category = $sct#58718002 "Rheumatic fever (disorder)"
+// classifier 1 clinical
+// classifier 2 for OAUTH SMART scoping
+* obeys RFConditionNZCategoryConstraint and RFConditionSNOMEDCategoryConstraint 
 
 // bind to the permissible SNOMED codes for NZ RF diagnosis.
 * code 1..1
 * code ^short = "Must be one of the diagnosis codes"
-* code from rf-condition-diagnosis-code (required)
+* code from RFConditionSummaryDiagnosisValueSet (required)
 
 * stage 0..0      // don't need this as there are no formal stage conventions in RF diagnosis
 
 * evidence 0..3
-* evidence.code from rf-observation-diagnosisgroup-code (required)
+* evidence.code from rf-observation-diagnosisgroup-code (preferred)
 * evidence.code ^short = "Identifies the GROUPing of diagnosis data in the linked Observation instance"
 * evidence.detail only Reference(Observation)
 * evidence.detail ^short = "Up to 3 Observation instances, representing RF diagnosis detail, can be linked here"
@@ -85,3 +87,15 @@ Id: nz-sharedcare-rheumaticfever-condition
 // elements prohibited
 * implicitRules 0..0
 * language 0..0
+
+// rule that checks instance has at least one category with an NZ RF code
+Invariant: RFConditionNZCategoryConstraint
+Description: "All RF Condition instances shall have a category #rf-nz (NZ rheumatic fever code defined in this IG)"
+Severity: #error
+Expression: "Condition.category.where(coding.code='rf-nz').exists()"
+
+// rule that checks instance has at least one category with the NZ SNOMED RF code
+Invariant: RFConditionSNOMEDCategoryConstraint
+Description: "All RF Condition instances shall have a category SNOMED #58718002 'Rheumatic fever (disorder)'"
+Severity: #error
+Expression: "Condition.category.where(coding.code='58718002').exists()"

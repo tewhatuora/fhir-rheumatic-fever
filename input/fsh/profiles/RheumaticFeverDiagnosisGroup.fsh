@@ -9,7 +9,7 @@ Id: nz-sharedcare-rheumaticfever-diagnosisgroup
 * ^purpose = "Constraints coding of a standard FHIR Observation for use in RF diagnosis representation"
 * insert metaContactDetail([[David Grainger]],[[david.grainger@middleware.co.nz]])
 
-* meta obeys RFTagConstraint      // see file LabelsTags.fsh
+* meta obeys RFNZTagConstraint      // see file CategoriesLabelsTags.fsh
 
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "use"
@@ -24,7 +24,7 @@ Id: nz-sharedcare-rheumaticfever-diagnosisgroup
 * identifier[NationalSystem].use = #usual
 
 * identifier[NationalSystem].system 0..1        // system Uri may (SHOULD) be specified but it's up to clients to do this.
-* identifier[NationalSystem].system insert MakeProfileIdentifierSystemExample([[Uri that defines the type of external identifier]])
+* identifier[NationalSystem].system insert MakeProfileIdentifierSystemExample([[https://standards.digital.health.nz/ns/rfccs]])
 
 // In this slice, clients MUST set a type taken from known external identifier type codes
 * identifier[NationalSystem].type 1..1      
@@ -39,10 +39,11 @@ Id: nz-sharedcare-rheumaticfever-diagnosisgroup
 
 // bind to the permissible SNOMED codes for NZ RF diagnosis groups.
 * code 1..1
-* code ^short = "For rheumatic fever data, must be one of the diagnosis group codes"
-* code from rf-observation-diagnosisgroup-code (required)   // see ValueSet
+* code ^short = "For rheumatic fever data, must be one of three diagnosis group codes"
+* code from RFDiagnosisGroupValueSet (required)   // see ValueSet
 
-* component.code ^short = "Code must uniquely identify the component within this group (Observation instance)"
+* component.code from RFDiagnosisObservationCodingValueSet
+* component.code ^short = "Code must uniquely identify component within the Observation group, and be drawn from the RF NZ diagnosis ValueSet"
 
 * hasMember 0..1
 * hasMember only Reference(Observation)

@@ -10,7 +10,7 @@ Id: nz-sharedcare-rheumaticfever-careplan
 * ^purpose = "Profiles a secondary prevention care plan for a NZ rheumatic fever patient"
 * insert metaContactDetail([[David Grainger]],[[david.grainger@middleware.co.nz]])
 
-* meta obeys RFTagConstraint      // see file LabelsTags.fsh
+* meta obeys RFNZTagConstraint      // see file CategoriesLabelsTags.fsh
  
 * author 1..1
 * author only Reference(Practitioner or Organization)
@@ -22,8 +22,8 @@ Id: nz-sharedcare-rheumaticfever-careplan
 
 * category 1..*
 
-// classifier for OAUTH SMART scoping
-* category = $sct#320721000210102 "Rheumatic fever secondary prevention care plan"
+// ensure there is a categorizer present for OAUTH SMART scoping
+* obeys RFCarePlanNZCategoryConstraint
 
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "use"
@@ -43,7 +43,6 @@ Id: nz-sharedcare-rheumaticfever-careplan
 * identifier[NHI].extension 0..0       // don't want this kind of thing
 
 
-
 // SLICE NUMBER TWO
 // This slice allows (0 or more) use=USUAL identifier references to link to external 'national' systems.  
 
@@ -52,8 +51,8 @@ Id: nz-sharedcare-rheumaticfever-careplan
 * identifier[NationalSystem].use 1..1
 * identifier[NationalSystem].use = #usual
 
-* identifier[NationalSystem].system 0..1        // system Uri may (SHOULD) be specified but it's up to clients to do this.
-* identifier[NationalSystem].system insert MakeProfileIdentifierSystemExample([[Uri that defines the type of external identifier]])
+* identifier[NationalSystem].system 0..1
+* identifier[NationalSystem].system insert MakeProfileIdentifierSystemExample([[https://standards.digital.health.nz/ns/rfccs]])
 
 // In this slice, clients MUST set a type taken from known external identifier type codes
 * identifier[NationalSystem].type 1..1      
@@ -61,7 +60,7 @@ Id: nz-sharedcare-rheumaticfever-careplan
 
 // a value MUST be given and we give an example here
 * identifier[NationalSystem].value 1..1
-* identifier[NationalSystem].value insert MakeProfileIdentifierExample([[Some Salesforce CarePlan object id]],[[CTM-0000144]])
+* identifier[NationalSystem].value insert MakeProfileIdentifierExample([[RFCCS Salesforce CarePlan object id]],[[CTM-0000144]])
 
 * identifier[NationalSystem].id 0..0       // don't want this kind of thing
 * identifier[NationalSystem].extension 0..0       // don't want this kind of thing
@@ -92,3 +91,9 @@ Id: nz-sharedcare-rheumaticfever-careplan
 * activity.modifierExtension 0..0
 * implicitRules 0..0
 * language 0..0
+
+// rule that checks instance has at least one category with an NZ RF code
+Invariant: RFCarePlanNZCategoryConstraint
+Description: "All RF CarePlan instances shall have a category #rf-nz (NZ rheumatic fever code defined in this IG)"
+Severity: #error
+Expression: "CarePlan.category.where(coding.code='rf-nz').exists()"

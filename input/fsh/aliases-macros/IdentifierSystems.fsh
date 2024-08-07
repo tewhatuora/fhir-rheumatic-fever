@@ -110,8 +110,9 @@ RuleSet: MakeProfileIdentifierExample(example-label,example-value)
 * ^example.valueString = "{example-value}"            // note string here because example is of 'open' (*) type
 
 // Set up an Identifier system example with the specified text 
-RuleSet: MakeProfileIdentifierSystemExample(system-description)
-* ^example.valueString = "{system-description}"       // note string here because example is of 'open' (*) type
+RuleSet: MakeProfileIdentifierSystemExample(system-uri)
+* ^example.label = """"                               // .. because ElementDefinition.example requires a label
+* ^example.valueUri = {system-uri}                    // note string here because example is of 'open' (*) type
 
 // Make an Identifier type codeable concept using the specified external system type code
 RuleSet: IdentifierTypeCodeableConcept(identifier-type-code)

@@ -1,4 +1,4 @@
-ValueSet: RheumaticFeverMedicationAllergyValueSet
+ValueSet: RFMedicationAllergyValueSet
 Id: rf-medicationallergy-code
 Title: "Rheumatic fever medication allergy codes"
 Description:  "This value set includes codes for the RF secondary prophylaxis medications / substances a patient has an allergic reaction to"
@@ -11,11 +11,12 @@ Description:  "This value set includes codes for the RF secondary prophylaxis me
 
 * $sct#294497009 "Allergy to penicillin V"
 * $sct#91931000 "Allergy to erythromycin"
-* $sct#332571000210107 "Allergy to benzathine penicillin"
-* $sct#332581000210109 "Allergy to pharmaceutical excipient"          // a.k.a "Components of bicillin"
 * $sct#293722000 "Lignocaine allergy"
 * $sct#294881007 "Allergy to warfarin"
 * $sct#1003755004 "Allergy to latex"                                  // a.k.a "Latex (if gloves used)"
 * $sct#417930000 "Allergy to adhesive agent"                          // a.k.a  "Tape"
 * $sct#419511003 "Propensity to adverse reactions to drug (finding)"  // a.k.a "Other"
 
+* include codes from system $rfnzt where concept descendant-of #nz-specific-medication-allergy-codes
+// * $sctNZ#332571000210107 "Allergy to benzathine penicillin"
+// * $sctNZ#332581000210109 "Allergy to pharmaceutical excipient"          // a.k.a "Components of bicillin"
