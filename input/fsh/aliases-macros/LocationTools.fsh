@@ -5,6 +5,6 @@ RuleSet: HPIFacilityLocation(hpi-facility-id, location-name)
 * location.display = {location-name}
 
 RuleSet: ServiceDeliveryLocationRoleType(type-code)
-* coding.system = $location-type
+* coding.system = $v3-RoleCode
 * coding.code = #"{type-code}"
 // * coding.display = "{display}"

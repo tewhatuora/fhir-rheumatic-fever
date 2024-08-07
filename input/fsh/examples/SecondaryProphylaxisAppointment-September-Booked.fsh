@@ -4,8 +4,8 @@ Description: "Example of a booked patient appointment for RF secondary prophylax
 Usage: #example
 
 * meta.profile = Canonical(Appointment)
-* meta.versionId = "4"
-* meta.lastUpdated = "2024-06-12T07:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 * description = "monthly injection September 2023"

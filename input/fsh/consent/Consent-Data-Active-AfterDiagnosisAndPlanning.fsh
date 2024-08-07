@@ -4,8 +4,8 @@ Usage: #example
 Description: "An active, 3 year, patient DATA consent obtained by the Te Tai Tokerau Rheumatic Fever Service, with sample `data.references`"
 
 * meta.profile = Canonical(Consent)  
-* meta.versionId = "1"
-* meta.lastUpdated = "2024-06-20T02:00:00Z" // UTC datetime
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 
 * status = #active
 * scope = http://terminology.hl7.org/CodeSystem/consentscope#patient-privacy "Privacy Consent"

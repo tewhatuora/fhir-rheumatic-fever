@@ -3,8 +3,8 @@ InstanceOf: RheumaticFeverDiagnosisGroup
 Description: "Illustrates primary strep diagnosis evidence (Strepococcus group A infection is the cause of rheumatic fever)"
 Usage: #example
 
-* meta.versionId = "1"
-* meta.lastUpdated = "2024-06-04T00:00:00Z" // UTC datetime
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 * meta insert RFTag
 
 * identifier[NationalSystem][0] insert SalesforceObservationIdentifier([[OBSD-0102]])     // corresponding salesforce record
@@ -44,8 +44,8 @@ InstanceOf: RheumaticFeverDiagnosisGroup
 Description: "Illustrates second strep diagnosis evidence from repeated ASOT and Anti-Dnase B tests"
 Usage: #example
 
-* meta.versionId = "1"
-* meta.lastUpdated = "2024-06-04T02:00:00Z" // UTC datetime
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 * meta insert RFTag
 
 * identifier[NationalSystem][0] insert SalesforceObservationIdentifier([[OBSD-0103]])     // corresponding salesforce record

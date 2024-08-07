@@ -4,8 +4,8 @@ Description: "Example of medication used in rheumatic fever secondary prophylaxi
 Usage: #example
 
 * meta.profile = Canonical(Medication)
-* meta.versionId = "1"
-* meta.lastUpdated = "2023-10-06T08:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 // NZMT codes are published by NZ on NZHTS

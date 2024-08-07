@@ -7,8 +7,8 @@ Description: "Example rheumatic fever patient who is a teenager of NZ European e
 Usage: #example
 
 * meta.profile = Canonical(RheumaticFeverPatient|1.0.0)
-* meta.versionId = "4"
-* meta.lastUpdated = "2024-07-18T04:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 * extension[interpreterRequired].url = "http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired"
@@ -91,8 +91,8 @@ Description: "Example of a teenager patient with whanau members defined as patie
 Usage: #example
 
 * meta.profile = Canonical(RheumaticFeverPatient|1.0.0)
-* meta.versionId = "4"
-* meta.lastUpdated = "2024-07-18T04:00:00Z"
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
 

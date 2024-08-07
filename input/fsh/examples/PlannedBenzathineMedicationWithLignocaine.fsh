@@ -4,8 +4,8 @@ Description: "Illustrates planning of benzathine prophylaxis medication with a s
 Usage: #example
 
 * meta.profile = Canonical(RheumaticFeverMedicationRequest|1.0.0)
-* meta.versionId = "1"
-* meta.lastUpdated = "2024-05-17T06:10:00Z" // UTC datetime
+* meta.versionId = "2"
+* meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 * meta insert RFTag
 
 * authoredOn = "2023-07-12T04:22:55.965Z"
