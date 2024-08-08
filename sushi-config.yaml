@@ -67,15 +67,19 @@ parameters:
   default-version: true
   suppressed-ids: $examples
   display-warnings: true
-  no-narrative:             #  Suppress narrative so gen'd canon instance JSONs ready to seed 
+  no-narrative:             #  Suppress narrative so gen'd canon/instance JSONs ready to seed/use in HNZ 
   - Appointment/*
   - Bundle/*
   - CarePlan/*
+  - CareTeam/*
+  - Condition/*
   - Consent/*
   - Encounter/*
+  - Medication/*
   - MedicationRequest/*
   - MedicationStatement/*
   - Observation/*
+  - Patient/*
   - Questionnaire/*
   - QuestionnaireResponse/*
 

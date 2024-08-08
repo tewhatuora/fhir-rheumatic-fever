@@ -4,6 +4,7 @@
 ## v0.4.7 fixes
 
 Renamed capability statement instance.
+Reinstated `Consent.performer` in consent examples.
 
 ---
 

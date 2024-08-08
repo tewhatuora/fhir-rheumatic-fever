@@ -10,7 +10,7 @@ Description: "Describes any known patient allergies to medications used in rheum
 * identifier[=].value = "PatientMedicationAllergyQuestionnaire"
 * identifier[=].period.start = "2023-10-16"
 
-* version = "1.1.0"
+* version = "1.0.0"
 * date = "2024-08-07"
 * status = #draft
 * experimental = false
