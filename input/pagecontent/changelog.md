@@ -1,11 +1,11 @@
 # Changelog
 
 <!-- markdownlint-disable MD024 -->
-## v0.4.6 Updated canonical Url 
+## v0.4.6 Updated canonical Url
 
-The canonical base Url for the IG has been updated to https://fhir-ig-uat.digital.health.nz/rheumatic-fever.  This is the UAT version of the IG at the **official HISO IG site**.
+The canonical base Url for the IG has been updated to https://fhir-ig.digital.health.nz/rheumatic-fever for publishing at the official **HISO IG site**.
 
-The IG now appears in the HISO Implementation Guide [index (UAT)](https://fhir-ig-uat.digital.health.nz/)
+This IG now appears in the HISO Implementation Guide [index (UAT)](https://fhir-ig.digital.health.nz/)
 
 ---
 

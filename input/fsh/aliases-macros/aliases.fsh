@@ -1,5 +1,5 @@
 Alias: $sct = http://snomed.info/sct
-Alias: $sctNZEdition = http://snomed.info/sct/21000210109      // Do not use; NZHTS doesn't support lookup, expansion or validation of ANY codes in this codesystem!
+Alias: $sctNZEdition = http://snomed.info/sct/21000210109      // Do not use; NZHTS doesn't support public lookup, expansion or validation of ANY codes in this 'codesystem'!
 
 Alias: $UoM = http://unitsofmeasure.org
 
@@ -40,7 +40,8 @@ Alias: $RFCCSsystem = https://standards.digital.health.nz/ns/rheumatic-fever-ide
 Alias: $BaseIdentifierTypeCS = http://terminology.hl7.org/CodeSystem/v2-0203
 Alias: $nzmt = http://nzmt.org.nz
 
-// For production the following aliases will need to change to base on the autobuild IG canonical.
+// The following aliases must match the canonical Url of the IG at its published location.  
+// FSH language syntax doesn't allow these to be defined automatically on the IG base Url using Canonical() syntax...
 //Alias: $rfnzt = https://build.fhir.org/ig/tewhatuora/rheumatic-fever/CodeSystem/nz-rheumaticfever-codesystem
-Alias: $rfnzt = https://fhir-ig-uat.digital.health.nz/rheumatic-fever
-Alias: $ExternalIdentifierTypeCS = https://fhir-ig-uat.digital.health.nz/rheumatic-fever/CodeSystem/external-system-identifier-type-codesystem
+Alias: $rfnzt = https://fhir-ig.digital.health.nz/rheumatic-fever/CodeSystem/nz-rheumaticfever-codesystem
+Alias: $ExternalIdentifierTypeCS = https://fhir-ig.digital.health.nz/rheumatic-fever/CodeSystem/external-system-identifier-type-codesystem
