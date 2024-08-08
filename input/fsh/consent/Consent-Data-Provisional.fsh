@@ -14,6 +14,7 @@ Description: "A provisional patient DATA consent recorded by Te Tai Tokerau Rheu
 
 * patient insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * organization insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
+* performer insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
 * policy[0].authority = "https://www.privacy.org.nz"
 * policy[=].uri = "https://www.privacy.org.nz/privacy-act-2020/"
