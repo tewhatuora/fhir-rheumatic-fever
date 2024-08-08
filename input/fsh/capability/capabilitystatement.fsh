@@ -1,4 +1,4 @@
-Instance: CareInTheCommunityCapabilityStatement
+Instance: RheumaticFeverCapabilityStatement
 InstanceOf: CapabilityStatement
 Usage: #definition
 

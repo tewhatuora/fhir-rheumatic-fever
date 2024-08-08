@@ -1,6 +1,12 @@
 # Changelog
 
 <!-- markdownlint-disable MD024 -->
+## v0.4.7 fixes
+
+Renamed capability statement instance.
+
+---
+
 ## v0.4.6 Updated canonical Url
 
 The canonical base Url for the IG has been updated to https://fhir-ig.digital.health.nz/rheumatic-fever for publishing at the official **HISO IG site**.
