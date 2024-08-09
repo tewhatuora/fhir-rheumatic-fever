@@ -48,7 +48,7 @@ Id: nz-rheumaticfever-careplan
 // SLICE NUMBER TWO
 // This slice allows (0 or more) use=USUAL identifier references to link to external 'national' systems.  
 
-* identifier[NationalSystem] ^short = "This slice is for clients to link FHIR RF care plans to corresponding records in national systems eg. RFCCS (RFCCS)"
+* identifier[NationalSystem] ^short = "This slice is for clients to link FHIR RF care plans to corresponding records in national systems eg. RFCCS"
 
 * identifier[NationalSystem].use 1..1
 * identifier[NationalSystem].use = #usual
@@ -62,7 +62,7 @@ Id: nz-rheumaticfever-careplan
 
 // a value MUST be given and we give an example here
 * identifier[NationalSystem].value 1..1
-* identifier[NationalSystem].value insert MakeProfileIdentifierExample([[RFCCS RFCCS CarePlan object id]],[[CTM-0000144]])
+* identifier[NationalSystem].value insert MakeProfileIdentifierExample([[RFCCS CarePlan object id]],[[CTM-0000144]])
 
 * identifier[NationalSystem].id 0..0       // don't want this kind of thing
 * identifier[NationalSystem].extension 0..0       // don't want this kind of thing

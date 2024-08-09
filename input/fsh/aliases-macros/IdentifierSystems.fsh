@@ -111,7 +111,7 @@ RuleSet: MakeProfileIdentifierExample(example-label,example-value)
 
 // Set up an Identifier system example with the specified text 
 RuleSet: MakeProfileIdentifierSystemExample(system-uri)
-* ^example.label = """"                               // .. because ElementDefinition.example requires a label
+* ^example.label = "uri"                                // .. only here all ElementDefinitions must have .example.label
 * ^example.valueUri = {system-uri}                    // note string here because example is of 'open' (*) type
 
 // Make an Identifier type codeable concept using the specified external system type code
