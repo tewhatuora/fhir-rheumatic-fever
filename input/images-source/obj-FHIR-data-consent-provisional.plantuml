@@ -1,5 +1,7 @@
 @startuml
 
+!include tags-labels.puml
+
 top to bottom direction
 skinparam dpi 200
 allow_mixing
@@ -19,20 +21,9 @@ skinparam roundcorner 5
 skinparam sequenceArrowThickness 2
 skinparam TitleFontSize 20
 
-' create a object with security label
-' usage: $SEC_LABELLED_INSTANCE(R1,"<object name>","<label Id")
-!unquoted procedure $SEC_LABELLED_INSTANCE($Alias, $displayText="",$label="")
-  object "$displayText" as $Alias {
-    <color:Red><&flag> <Color:Black>security label: ""<size:16><color:DarkRed>$label""
-  }
-!endprocedure
-
 title FHIR Consent instances when patient consent is pending
 
 frame "Representation of limited provisional consent when patient's signed form pending but not received" as F {
-
-
-
 
   object "consent to treatment\n<size:16>**:CONSENT**" as TREATCONSENT #DodgerBlue {
     * status: ""<color:Orange>**#PROPOSED**</color>""
@@ -69,11 +60,11 @@ frame "Representation of limited provisional consent when patient's signed form 
   }
 
   frame "<size:12>Patient data covered by temporary data access provision<sup>2</sup>" as COVERED #GhostWhite/OrangeRed {
-    $SEC_LABELLED_INSTANCE(R1,"planned appointments, etc.\n<size:14>**:CAREPLAN**"                    ,"R (restricted)")
-    $SEC_LABELLED_INSTANCE(R2,"condition severity and specifics\n<size:14>**:CONDITION**"             ,"R (restricted)")
-    $SEC_LABELLED_INSTANCE(R3,"appointments\n<size:14>**:ENCOUNTER**                               "  ,"R (restricted)")
-    $SEC_LABELLED_INSTANCE(R4,"preferences, health assessments\n<size:14>**:QUESTIONNAIRERESPONSE**"  ,"R (restricted)")
-    $SEC_LABELLED_INSTANCE(R5,"diagnosis detail\n<size:14>**:OBSERVATION**                         "  ,"R (restricted)")
+    $TAGGED_INSTANCE(R1,"planned appointments, etc.\n<size:14>**:CAREPLAN**"                    ,"#rf-nz")
+    $TAGGED_INSTANCE(R2,"condition severity and specifics\n<size:14>**:CONDITION**"             ,"#rf-nz")
+    $TAGGED_INSTANCE(R3,"appointments\n<size:14>**:ENCOUNTER**                               "  ,"#rf-nz")
+    $TAGGED_INSTANCE(R4,"preferences, health assessments\n<size:14>**:QUESTIONNAIRERESPONSE**"  ,"#rf-nz")
+    $TAGGED_INSTANCE(R5,"diagnosis detail\n<size:14>**:OBSERVATION**                         "  ,"#rf-nz")
     R3 -[hidden]u- R1
     R4 -[hidden]u- R2
     R5 -[hidden]u- R4
@@ -104,13 +95,9 @@ legend bottom
   2. ""Consent.organization"" identifies which org is custodian of the patient data.
   3. Start date is when the custodian provisionally-assumes consent to start; 
       End date is empty (provision doesn't expire).
-  4. All patient data stored in R-labelled resource instances which **only the custodian**
-       **org can access while consent is pending**.
-  5. The custodian organisation must obtain administrative privilege (parameterized 
-        OAUTH scope) to update **R-labelled** resource types (including label changes).        
+  4. All RF instances containing patient data tagged #rf-nz in ""meta.tag""        
 endlegend
 
-
-footer "Health NZ/Te Whatu Ora.  FHIR instance data model generated from PlantUML source on %date('dd/MM/yyyy')"
+footer "Health NZ/Te Whatu Ora.  FHIR data model generated on %date('dd/MM/yyyy')"
 
 @enduml

@@ -69,3 +69,14 @@ The codes here are arranged in a 2-layer hierarchy which enables ValueSets segre
 * #nz-specific-medication-allergy-codes "Specific allergy types relevant to rheumatic fever secondary prophylaxis" "These code values originate in the SNOMED NZ Edition"
   * #332571000210107 "Allergy to benzathine penicillin"
   * #332581000210109 "Allergy to pharmaceutical excipient"          // a.k.a "Components of bicillin"
+
+* #nz-national-system-identifier-type-codes "Codes for differentiating types of external identifiers in national system slice of FHIR resource Identifier" "These codes signify identifiers which originate in a national system but synchronised into FHIR.  The purpose of designating these codes is to provide a type discriminator for slicing Identifier in FHIR resource profiles"
+  * #rfccs-careplan-id "Identifies a CarePlan (case number) object in the NZ national RF Care Coordination System"
+  * #rfccs-careplanactivity-id "Identifies a CarePlanActivity object in the NZ national RF Care Coordination System"
+  * #rfccs-condition-id "Identifies a patient Condition object in the NZ national RF Care Coordination System"
+  * #rfccs-careteam-id "Identifies a CareTeam object in the NZ national RF Care Coordination System"
+  * #rfccs-serviceappointment-id "Identifies a patient appointment object in the NZ national RF Care Coordination System"
+  * #rfccs-clinicalencounter-id "Identifies a secondary prophylaxis appointment encounter object in the NZ national RF Care Coordination System"
+  * #rfccs-observation-id "Identifies an observation object in the NZ national RF Care Coordination System"
+  * #episurv-number "Identifies a notifiable disease surveillance case number in ESR's EpiSurv national system"
+

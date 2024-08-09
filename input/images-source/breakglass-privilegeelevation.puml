@@ -24,12 +24,12 @@ scale max 450 width
 
 
 '' ** page 1
-title "Rheumatic Fever: Salesforce Health Cloud patient registration integration to Te Whatu Ora FHIR"
+title "Rheumatic Fever: RFCCS Health Cloud patient registration integration to Te Whatu Ora FHIR"
 
 actor "rheumatic fever collaborator" as USER
 participant "FHIR-integrated APP/UX" as APIC #Orange
-participant "Salesforce\nHealth Cloud" as OLLIE #YellowGreen
-database "Salesforce Mulesoft Connector\nplatform event" as SHIFTER #IndianRed
+participant "RFCCS\nHealth Cloud" as OLLIE #YellowGreen
+database "RFCCS Mulesoft Connector\nplatform event" as SHIFTER #IndianRed
 database "Integration Health \nMonitoring (Datadog)" as WATCHDOG #LightCyan
 participant "Mulesoft" as TILLY #SkyBlue
 
@@ -86,7 +86,7 @@ note right of TILLY #Yellow
   3. if the sequence fails with an unrecoverable error, Mulesoft places the 'event' on DLQ
 endnote
 
-TILLY -> OLLIE: Retrieve Patient data \n<size:10>(Mulesoft Salesforce connector)
+TILLY -> OLLIE: Retrieve Patient data \n<size:10>(Mulesoft RFCCS connector)
 deactivate OLLIE
 
 alt #LightGreen successful integration sequence
@@ -94,7 +94,7 @@ alt #LightGreen successful integration sequence
   TILLY -> FHIR++: ""GET /Patient?""\n""identifier=https://standards.digital.health.nz/ns/nhi-id|{{NHI}}&""\n""_profile={{RF Patient profile}}""
   FHIR -> TILLY--: ""200 OK"" bundle
 
-  TILLY -> TILLY: Form FHIR Bundle payload from Patient, CarePlan \nand Consent data from Salesforce HealthCloud
+  TILLY -> TILLY: Form FHIR Bundle payload from Patient, CarePlan \nand Consent data from RFCCS HealthCloud
   TILLY -> FHIR++: ""POST /Bundle""
   note left of TILLY: Mulesoft retries \nFHIR API call if needed
   group transaction POST bundle

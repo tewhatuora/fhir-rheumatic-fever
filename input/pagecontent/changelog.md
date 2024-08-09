@@ -1,6 +1,24 @@
 # Changelog
 
 <!-- markdownlint-disable MD024 -->
+## v0.4.8 updates
+
+### National system (RFCCS) identifiers
+
+- Consolidated national identifier system type codes into the IG CodeSystem (formerly a separate CodeSystem)
+- All national identifiers (slices on resource.Identifier) now have the system Url set to the [HISO standard NamingSystem](https://build.fhir.org/ig/HL7NZ/nzbase/namingSystems.html) value `https://standards.digital.health.nz/ns/rf-ccs-id`
+
+### eSAM identifiers
+
+The patient's address in the example [diagnosis encounter](Encounter-DiagnosisEncounter.html) now has an eSAM identifier with system Url set to the [HISO standard NamingSystem](https://build.fhir.org/ig/HL7NZ/nzbase/namingSystems.html) value `https://standards.digital.health.nz/ns/nz-address-id`
+
+### Doc
+
+- Corrected Consent FHIR data models
+- Revised Terminology documentation page
+
+---
+
 ## v0.4.7 fixes
 
 Renamed capability statement instance.
@@ -402,7 +420,7 @@ As a result of a design decision to constrain values of medication frequency to 
 
 - The example `WhanauCareTeam` has been deleted.
 
-- `Appointment` examples updated to reflect changes to data dictionary, including the addition of another code for salesforce CarePlanActivity identifiers in [ExternalSystemIdentifierTypeValueSet](ValueSet-external-system-identifier-type-code.html).
+- `Appointment` examples updated to reflect changes to data dictionary, including the addition of another code for RFCCS CarePlanActivity identifiers in [ExternalSystemIdentifierTypeValueSet](ValueSet-external-system-identifier-type-code.html).
 
 - A new example has been added demonstrating **consent by a person related to a patient**.
 
@@ -475,7 +493,7 @@ As a result of a design decision to constrain values of medication frequency to 
 
 - All Rheumatic fever terminology now appears in the *rheumatic fever* section of the **Profiles** tab.  
 
-- Key **salesforce <-> FHIR mappings** are now defined in the [rheumatic fever data](dataStandards.html) page.
+- Key **RFCCS <-> FHIR mappings** are now defined in the [rheumatic fever data](dataStandards.html) page.
 
 - Added **Consent** tab describing patient-consent-based access controls implemented by the Te Whatu Ora Shared Care API.
 

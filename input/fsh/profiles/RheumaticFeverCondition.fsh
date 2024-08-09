@@ -43,7 +43,7 @@ Id: nz-rheumaticfever-condition
 
 // a value MUST be given and we give an example here
 * identifier[NationalSystem].value 1..1
-* identifier[NationalSystem].value insert MakeProfileIdentifierExample([[Salesforce object id]],[[CON-0206]])
+* identifier[NationalSystem].value insert MakeProfileIdentifierExample([[RFCCS object id]],[[CON-0206]])
 
 * identifier[NationalSystem].id 0..0       // don't want this kind of thing
 * identifier[NationalSystem].extension 0..0       // don't want this kind of thing

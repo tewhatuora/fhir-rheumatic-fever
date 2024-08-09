@@ -48,7 +48,7 @@ package "Activity resources in the CarePlan" as Activities #Snow {
   'object "secondary prophylaxis\nmedication planning" as PLAN_BENZA_2023 #LightSalmon
 
   object "planned DENTAL appointment\n:**APPOINTMENT**" as FUTURE_APPT #Red {
-    *identifier: type #salesforce-careplanactivity-id (RFCCS)
+    *identifier: type #rfccs-careplanactivity-id (RFCCS)
     ---
     * status: ""**#booked**""
     * start: ""2024-07-04""
@@ -57,7 +57,7 @@ package "Activity resources in the CarePlan" as Activities #Snow {
   }
 
   object "Cancelled specialist appointment\n:**APPOINTMENT**" as CANNED_APPT #Red {
-    *identifier: type #salesforce-careplanactivity-id (RFCCS)
+    *identifier: type #rfccs-careplanactivity-id (RFCCS)
     ---
     * status: ""**#cancelled**""
     * start: ""2024-09-05""
@@ -68,7 +68,7 @@ package "Activity resources in the CarePlan" as Activities #Snow {
 
 
   object "Completed ECHO cardiogram encounter\n:**APPOINTMENT**" as APPT1 #Red {
-    *identifier: type #salesforce-careplanactivity-id (RFCCS)
+    *identifier: type #rfccs-careplanactivity-id (RFCCS)
     ---
     * status: ""**#fulfilled**""
     * start: ""2024-05-16""
@@ -82,7 +82,7 @@ package "Activity resources in the CarePlan" as Activities #Snow {
 }
 
 object "ECHO encounter\n:**ENCOUNTER**" as ECHO #yellow {
-  *identifier: type #salesforce-clinicalencounter-id (RFCCS)
+  *identifier: type #rfccs-clinicalencounter-id (RFCCS)
   ---
   * status: //**#finished**//
   * period: 2023-08-08
@@ -92,7 +92,7 @@ object "ECHO encounter\n:**ENCOUNTER**" as ECHO #yellow {
 
 
 object "Info from encounter\n**:OBSERVATION**" as OBS <<FHIR R4B>> #Pink {
-  *identifier: type #salesforce-observation-id (RFCCS)
+  *identifier: type #rfccs-observation-id (RFCCS)
   ---
   * status: ""#final""
   * code: ""#371541002"" | Provider comment report (record artifact)

@@ -9,7 +9,7 @@ name: New Zealand Rheumatic Fever FHIR Implementation Guide
 title: New Zealand Rheumatic Fever FHIR Implementation Guide
 description: New Zealand Rheumatic Fever FHIR Implementation Guide
 status: draft
-version: 0.4.7
+version: 0.4.8
 fhirVersion: 4.0.1
 copyrightYear: 2024+
 releaseLabel: draft # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
@@ -106,7 +106,7 @@ menu:
     Parties in the examples: rheumatic-fever-examples-cast.html
     Version History: history.html
   API:
-    API capability statement: CapabilityStatement-CareInTheCommunityCapabilityStatement.html
+    API capability statement: CapabilityStatement-RheumaticFeverCapabilityStatement.html
   Support:
     Changelog : changelog.html
     FHIR Spec: new-tab http://hl7.org/fhir/R4/index.html

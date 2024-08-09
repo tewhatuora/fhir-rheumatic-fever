@@ -40,7 +40,7 @@ title "Detailed diagnosis representation (instance model)"
 package "Condition and diagnosis instances linked from RF CarePlan" as Activities #Snow { 
   
   object "Summary of condition\n<size:15>:**CONDITION**" as RFCOND <<RF profile>> #PaleGreen {
-    * identifier (usual): {{salesforce diagnosis Id}}
+    * identifier (usual): {{RFCCS diagnosis Id}}
     ---
      * code: ""#195528001"" Acute rheumatic fever
      * severity: ""#mild | #moderate | #severe""
@@ -90,7 +90,7 @@ package "Condition and diagnosis instances linked from RF CarePlan" as Activitie
   ' }
 
   object "<size:18>ECHO assessment\n**:OBSERVATION**" as OBS1 <<RF profile>> #DarkSeaGreen {
-    *identifier: type #salesforce-observation-id (RFCCS)
+    *identifier: type #rfccs-observation-id (RFCCS)
     ---
     * status: ""#final""
     * effectiveDateTime: datetime
@@ -103,7 +103,7 @@ package "Condition and diagnosis instances linked from RF CarePlan" as Activitie
   }
 
   object "<size:18>Jones Criteria\n**:OBSERVATION**" as OBS2 <<RF profile>> #DarkSeaGreen {
-    *identifier: type #salesforce-observation-id (RFCCS)
+    *identifier: type #rfccs-observation-id (RFCCS)
     ---
     * status: ""#final""
     * effectiveDateTime: datetime
@@ -116,7 +116,7 @@ package "Condition and diagnosis instances linked from RF CarePlan" as Activitie
   }
 
   object "<size:18>Strep primary evidence\n**:OBSERVATION**" as OBS3 <<RF profile>> #DarkSeaGreen {
-    *identifier: type #salesforce-observation-id (RFCCS)
+    *identifier: type #rfccs-observation-id (RFCCS)
     ---
     * status: ""#final""
     * effectiveDateTime: datetime
@@ -129,7 +129,7 @@ package "Condition and diagnosis instances linked from RF CarePlan" as Activitie
   }
 
   object "<size:18>Strep repeat testing\n**:OBSERVATION**" as OBS4 <<RF profile>> #DarkSeaGreen {
-    *identifier: type #salesforce-observation-id (RFCCS)
+    *identifier: type #rfccs-observation-id (RFCCS)
     ---
     * status: ""#final""
     * effectiveDateTime: datetime

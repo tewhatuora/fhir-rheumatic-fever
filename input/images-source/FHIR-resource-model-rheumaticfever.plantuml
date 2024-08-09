@@ -56,7 +56,7 @@ frame "Rheumatic fever FHIR interchangeable data" as HNZMain {
     Captures patient planned medication\nand next appointment
     ---
     *identifier[NHI] (official): NHI
-    *identifier[case] (usual): case Id (salesforce)
+    *identifier[case] (usual): case Id (RFCCS)
     ....
     * category: <color:RoyalBlue><&tag> ""$sct#320721000210102""
       \t "Rheumatic fever secondary prevention care plan" 

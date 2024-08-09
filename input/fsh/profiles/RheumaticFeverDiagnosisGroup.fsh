@@ -32,7 +32,7 @@ Id: nz-rheumaticfever-diagnosisgroup
 
 // a value MUST be given
 * identifier[NationalSystem].value 1..1
-* identifier[NationalSystem].value insert MakeProfileIdentifierExample([[Salesforce object id]],[[OBS-0207]])
+* identifier[NationalSystem].value insert MakeProfileIdentifierExample([[RFCCS object id]],[[OBS-0207]])
 
 * identifier[NationalSystem].id 0..0       // don't want this kind of thing
 * identifier[NationalSystem].extension 0..0       // don't want this kind of thing

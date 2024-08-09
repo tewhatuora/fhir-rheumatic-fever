@@ -35,13 +35,11 @@ Alias: $location-type = http://terminology.hl7.org/CodeSystem/v3-ActCode
 Alias: $termServerExtension = http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-preferredTerminologyServer
 Alias: $preferredTermServer = https://nzhts.digital.health.nz/fhir
 
-Alias: $RFCCSsystem = https://standards.digital.health.nz/ns/rheumatic-fever-identifiers
-
 Alias: $BaseIdentifierTypeCS = http://terminology.hl7.org/CodeSystem/v2-0203
 Alias: $nzmt = http://nzmt.org.nz
+Alias: $RFCCS-id-naming-system = https://standards.digital.health.nz/ns/rf-ccs-id
 
 // The following aliases must match the canonical Url of the IG at its published location.  
 // FSH language syntax doesn't allow these to be defined automatically on the IG base Url using Canonical() syntax...
 //Alias: $rfnzt = https://build.fhir.org/ig/tewhatuora/rheumatic-fever/CodeSystem/nz-rheumaticfever-codesystem
 Alias: $rfnzt = https://fhir-ig.digital.health.nz/rheumatic-fever/CodeSystem/nz-rheumaticfever-codesystem
-Alias: $ExternalIdentifierTypeCS = https://fhir-ig.digital.health.nz/rheumatic-fever/CodeSystem/external-system-identifier-type-codesystem
