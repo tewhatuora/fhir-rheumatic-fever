@@ -60,9 +60,9 @@ NZMT codes are used in rheumatic fever for:
 
 Some FHIR resources in this IG need to be capable of holding identifiers to resources in other Te Whatu Ora applications and national applications.  Examples of this class of *national system* identifiers in FHIR include:
 
-- `RheumaticFeverCareplan`s recording a *Salesforce case identifier* (Te Whatu Ora application)
+- `RheumaticFeverCareplan`s recording a *RFCCS case identifier* (Te Whatu Ora application)
 
-- `RheumaticFeverCondition`s recording a *Salesforce case identifier* and an *EPISurv number* (ESR system)
+- `RheumaticFeverCondition`s recording a *RFCCS case identifier* and an *EPISurv number* (ESR system)
 
 The convention in this IG that all such external 'national identifiers' will be recorded in a **[*NationalSystem*] slice** on the *identifier* resource element.  This slicing requires FHIR Identifiers to be represented as follows:
 

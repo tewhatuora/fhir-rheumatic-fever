@@ -44,60 +44,60 @@ RuleSet: HPIPractitionerIdentifier(hpi-practitioner-id)
 //   * identifier insert eSAMIdentifier([[nnnnnn]])
 RuleSet: eSAMIdentifier(esam-id)
 * use = #usual
-* system = "https://esam.co.nz"
+* system = "https://standards.digital.health.nz/ns/nz-address-id"
 * value = "{esam-id}"
 
 
-// sets up ref to an external identifier as the specified salesforce care team object id
-RuleSet: SalesforceCarePlanIdentifier(salesforce-id)
+// sets up ref to an external identifier as the specified rfccs care team object id
+RuleSet: RFCCSCarePlanIdentifier(rfccs-id)
 
-* system = "https://developer.salesforce.com/docs"      // this is just an example and probably incorrect
-* value = "{salesforce-id}"
+* system = $RFCCS-id-naming-system
+* value = "{rfccs-id}"
 * use = #usual
-* type = $ExternalIdentifierTypeCS#salesforce-careplan-id
+* type  = $rfnzt#rfccs-careplan-id
 
 
-// sets up ref to an external identifier as the specified salesforce careplanactivity object id (used for SF Encounters which represent Appointments - go figure)
-RuleSet: SalesforceCarePlanActivityIdentifier(salesforce-id)
+// sets up ref to an external identifier as the specified rfccs careplanactivity object id (used for SF Encounters which represent Appointments - go figure)
+RuleSet: RFCCSCarePlanActivityIdentifier(rfccs-id)
 
-* system = "https://developer.salesforce.com/docs"      // this is just an example and probably incorrect
-* value = "{salesforce-id}"
+* system = $RFCCS-id-naming-system
+* value = "{rfccs-id}"
 * use = #usual
-* type = $ExternalIdentifierTypeCS#salesforce-careplanactivity-id
+* type  = $rfnzt#rfccs-careplanactivity-id
 
-// sets up ref to an external identifier as the specified salesforce care team object id
-RuleSet: SalesforceConditionIdentifier(salesforce-id)
+// sets up ref to an external identifier as the specified rfccs care team object id
+RuleSet: RFCCSConditionIdentifier(rfccs-id)
 
-* system = "https://developer.salesforce.com/docs"      // this is just an example and probably incorrect
-* value = "{salesforce-id}"
+* system = $RFCCS-id-naming-system
+* value = "{rfccs-id}"
 * use = #usual
-* type = $ExternalIdentifierTypeCS#salesforce-condition-id
+* type  = $rfnzt#rfccs-condition-id
 
 
-// sets up ref to an external identifier as the specified salesforce care team object id
-RuleSet: SalesforceCareTeamIdentifier(salesforce-id)
+// sets up ref to an external identifier as the specified rfccs care team object id
+RuleSet: RFCCSCareTeamIdentifier(rfccs-id)
 
-* system = "https://developer.salesforce.com/docs"      // this is just an example and probably incorrect
-* value = "{salesforce-id}"
+* system = $RFCCS-id-naming-system
+* value = "{rfccs-id}"
 * use = #usual
-* type = $ExternalIdentifierTypeCS#salesforce-careteam-id
+* type  = $rfnzt#rfccs-careteam-id
 
 
-// sets up ref to an external identifier as the specified salesforce care team object id
-RuleSet: SalesforceObservationIdentifier(salesforce-id)
+// sets up ref to an external identifier as the specified rfccs care team object id
+RuleSet: RFCCSObservationIdentifier(rfccs-id)
 
-* system = "https://developer.salesforce.com/docs"      // this is just an example and probably incorrect
-* value = "{salesforce-id}"
+* system = $RFCCS-id-naming-system
+* value = "{rfccs-id}"
 * use = #usual
-* type = $ExternalIdentifierTypeCS#salesforce-observation-id
+* type  = $rfnzt#rfccs-observation-id
 
 
 RuleSet: EpisurvNumber(episurv-id)
-// sets up a USUAL identifier to hold an external (salesforce) identifier of an object
+// sets up a USUAL identifier to hold an external (rfccs) identifier of an object
 
 * system = "https://episurv.esr.cri.nz/"                // this is just an example and probably incorrect
 * value = "{episurv-id}"
-* type = $ExternalIdentifierTypeCS#episurv-number
+* type  = $rfnzt#episurv-number
 
 
 ////// ///// /////  ///// /////  ///// /////  ///// ///// 
@@ -117,7 +117,7 @@ RuleSet: MakeProfileIdentifierSystemExample(system-uri)
 // Make an Identifier type codeable concept using the specified external system type code
 RuleSet: IdentifierTypeCodeableConcept(identifier-type-code)
 * coding.code = #{identifier-type-code}
-* coding.system = $ExternalIdentifierTypeCS
+* coding.system  = $rfnzt
 
 // Make an Identifier type using a code from the HL7 FHIR base code system
 RuleSet: BaseIdentifierType(identifier-base-type-code)

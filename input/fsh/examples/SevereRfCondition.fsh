@@ -8,7 +8,7 @@ Description: "An example of a rheumatic fever condition as initially diagnosed a
 * meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
-* identifier[NationalSystem][0] insert SalesforceConditionIdentifier([[CON-0206]])     // corresponding salesforce record
+* identifier[NationalSystem][0] insert RFCCSConditionIdentifier([[CON-0206]])     // corresponding RFCCS record
 * identifier[NationalSystem][+] insert  EpisurvNumber(21-383414-AK)                    // EPISurv nunber as notified to in diagnosis
 
 * clinicalStatus = http://terminology.hl7.org/CodeSystem/condition-clinical#active "Active"

@@ -16,7 +16,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * meta insert RSecurityLabel
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
-* identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
+* identifier[NationalSystem][0] insert RFCCSCarePlanIdentifier(00073693)
 
 * insert AddressesConditionExample(SevereRfCondition)
 
@@ -61,7 +61,7 @@ Description: "RF care plan where patient registered and basic questionnaires com
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
-* identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
+* identifier[NationalSystem][0] insert RFCCSCarePlanIdentifier(00073693)
 
 * insert AddressesConditionExample(SevereRfCondition)
 
@@ -106,7 +106,7 @@ Description: "Example of an RF care plan with secondary prophylaxis medication p
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
-* identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
+* identifier[NationalSystem][0] insert RFCCSCarePlanIdentifier(00073693)
 
 * title = "Care plan ready to go with all medication planned and appointments booked"
 
@@ -162,7 +162,7 @@ Description: "An RF care plan after the first secondary prophylaxis and follow-u
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
-* identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
+* identifier[NationalSystem][0] insert RFCCSCarePlanIdentifier(00073693)
 
 * title = "Care plan with secondary propylaxis underway - two appointments completed"
 
@@ -220,7 +220,7 @@ Description: "Example of an RF care plan that has been put ON-HOLD after the fir
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
-* identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
+* identifier[NationalSystem][0] insert RFCCSCarePlanIdentifier(00073693)
 
 * title = "Care plan on-hold after first appointment completed"
 
@@ -283,7 +283,7 @@ Description: "Example of a RF care plan CLOSED after the patient recently went o
 * meta insert RFTag
 
 * identifier[NHI] insert NHIIdentifier(ZKC7284)
-* identifier[NationalSystem][0] insert SalesforceCarePlanIdentifier(00073693)
+* identifier[NationalSystem][0] insert RFCCSCarePlanIdentifier(00073693)
 
 * title = "Care plan closed after one appointment completed"
 

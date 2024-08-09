@@ -8,7 +8,7 @@ Usage: #example
 * meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 * meta insert RFTag
 
-* identifier[NationalSystem][0] insert SalesforceObservationIdentifier([[OBSD-0100]])     // corresponding salesforce record
+* identifier[NationalSystem][0] insert RFCCSObservationIdentifier([[OBSD-0100]])     // corresponding RFCCS record
 
 * code insert RFNZCoding(439238004,[[Echocardiography test interpretation (observable entity)]])
 

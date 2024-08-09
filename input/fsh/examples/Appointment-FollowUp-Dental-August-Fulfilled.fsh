@@ -10,7 +10,7 @@ Usage: #example
 
 * description = "dentist follow up August 2023"
 
-* identifier[0] insert SalesforceCarePlanActivityIdentifier([[CPA-00073694-20231117]])     // corresponding salesforce record
+* identifier[0] insert RFCCSCarePlanActivityIdentifier([[CPA-00073694-20231117]])     // corresponding RFCCS record
 
 * serviceCategory =  $sct#58718002 "Rheumatic fever (disorder)"
 

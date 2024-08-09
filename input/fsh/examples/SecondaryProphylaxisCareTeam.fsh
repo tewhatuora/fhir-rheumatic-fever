@@ -8,7 +8,7 @@ Usage: #example
 * meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
-* identifier[NationalSystem] insert SalesforceCareTeamIdentifier([[CTM-0016606]])
+* identifier[NationalSystem] insert RFCCSCareTeamIdentifier([[CTM-0016606]])
 
 //* category = $sctNZ#320741000210108 "Secondary prophylaxis team"
 * category insert RFNZCoding(rf-nz,[[rheumatic fever]])

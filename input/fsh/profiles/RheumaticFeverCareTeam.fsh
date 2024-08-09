@@ -23,13 +23,13 @@ Id: nz-rheumaticfever-careteam
 * identifier ^slicing.discriminator.path = "use"
 * identifier ^slicing.rules = #open
 // We allow here for 1 NHI ref and 0..* external refs 'national' systems. 
-// This allows for mulesoft to keep and track refs between FHIR and Salesforce objects, etc. 
+// This allows for mulesoft to keep and track refs between FHIR and RFCCS objects, etc. 
 * identifier contains NationalSystem 0..*
 
 // SLICE
 // This slice allows clients to link (0 or more) use=USUAL identifiers to reference resources in external 'national' systems.  
 
-* identifier[NationalSystem] ^short = "This allows a rheumatic fever patient resource to link with corresponding objects in systems like salesforce"
+* identifier[NationalSystem] ^short = "This allows a rheumatic fever patient resource to link with corresponding objects in systems like RFCCS"
 
 * identifier[NationalSystem].use 1..1
 * identifier[NationalSystem].use = #usual
@@ -43,7 +43,7 @@ Id: nz-rheumaticfever-careteam
 
 // a value MUST be given and we give an example here
 * identifier[NationalSystem].value 1..1
-* identifier[NationalSystem].value insert MakeProfileIdentifierExample([[Salesforce object id]],[[CTM-0000144]])
+* identifier[NationalSystem].value insert MakeProfileIdentifierExample([[RFCCS object id]],[[CTM-0000144]])
 
 * identifier[NationalSystem].id 0..0       // don't want this kind of thing
 * identifier[NationalSystem].extension 0..0       // don't want this kind of thing
