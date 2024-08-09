@@ -1,5 +1,7 @@
 @startuml
 
+!include tags-labels.puml
+
 top to bottom direction
 skinparam dpi 200
 allow_mixing
@@ -18,15 +20,6 @@ skinparam ranksep 40
 skinparam roundcorner 5
 skinparam sequenceArrowThickness 2
 skinparam TitleFontSize 20
-
-
-' create a object with security label
-' usage: $SEC_LABELLED_INSTANCE(R1,"<object name>","<label Id")
-!unquoted procedure $SEC_LABELLED_INSTANCE($Alias, $displayText="",$label="")
-  object "$displayText" as $Alias {
-    <color:Red><&flag> <Color:Black>security label: ""<size:16><color:DarkRed>$label""
-  }
-!endprocedure
 
 title FHIR Consent instances for confirmed patient consent
 
@@ -72,11 +65,11 @@ frame "Representation of consent when confirmed by patient's signed form" as F {
   }
 
   frame "Patient data covered by data access provision<sup>2</sup>" as COVERED #LightGreen {
-    $SEC_LABELLED_INSTANCE(R1,"planned appointments, etc.\n<size:14>**:CAREPLAN**"                    ,"R (restricted)")
-    $SEC_LABELLED_INSTANCE(R2,"condition severity and specifics\n<size:14>**:CONDITION**"             ,"R (restricted)")
-    $SEC_LABELLED_INSTANCE(R3,"appointments\n<size:14>**:ENCOUNTER**                               "  ,"R (restricted)")
-    $SEC_LABELLED_INSTANCE(R4,"preferences, health assessments\n<size:14>**:QUESTIONNAIRERESPONSE**"  ,"R (restricted)")
-    $SEC_LABELLED_INSTANCE(R5,"diagnosis detail\n<size:14>**:OBSERVATION**                         "  ,"R (restricted)")
+    $TAGGED_INSTANCE(R1,"planned appointments, etc.\n<size:14>**:CAREPLAN**"                    ,"#rf-nz")
+    $TAGGED_INSTANCE(R2,"condition severity and specifics\n<size:14>**:CONDITION**"             ,"#rf-nz")
+    $TAGGED_INSTANCE(R3,"appointments\n<size:14>**:ENCOUNTER**                               "  ,"#rf-nz")
+    $TAGGED_INSTANCE(R4,"preferences, health assessments\n<size:14>**:QUESTIONNAIRERESPONSE**"  ,"#rf-nz")
+    $TAGGED_INSTANCE(R5,"diagnosis detail\n<size:14>**:OBSERVATION**                         "  ,"#rf-nz")
 
     R3 -[hidden]u- R1
     R4 -[hidden]u- R2
@@ -102,13 +95,11 @@ DATACONSENT ".organization\n**HPI org. ref**<sup>1</sup>" -[dashed,#Black,norank
 
 legend bottom
   **Notes**
-  1. Consent instances identify the data subject in "".patient"" references.
-  2. ""Consent.organization"" identifies which org is custodian of the patient data.
-  3. All patient data stored in R-labelled resource instances.
-  4. The custodian organisation must obtain administrative privilege (parameterized 
-        OAUTH scope) to update **R-labelled** resource types (including label changes).
+  1. Consent instances identify the data subject in "".patient"" references
+  2. ""Consent.organization"" identifies which org is custodian of the patient data
+  3. All RF instances containing patient data tagged #rf-nz in ""meta.tag""
 endlegend
 
-footer "Health NZ/Te Whatu Ora.  FHIR instance data model generated from PlantUML source on %date('dd/MM/yyyy')"
+footer "Health NZ/Te Whatu Ora.  FHIR data model generated on %date('dd/MM/yyyy')"
 
 @enduml

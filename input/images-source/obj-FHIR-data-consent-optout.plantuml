@@ -1,5 +1,7 @@
 @startuml
 
+!include tags-labels.puml
+
 top to bottom direction
 skinparam dpi 200
 allow_mixing
@@ -60,7 +62,7 @@ frame "Representation of consent denied (or withdrawn) by patient" as F {
   object "data access permit provision" as DAP #SandyBrown  {
     * type: ""<color:DarkRed>**#DENY**""
     * period: 
-      ""**2023-06-23**"" to ""-""
+      ""**2023-06-23**"" to ""..""
   }
 
   ' resources in other repos
@@ -73,11 +75,11 @@ frame "Representation of consent denied (or withdrawn) by patient" as F {
   }
 
   frame "<size:12>Patient data covered by data access provision<sup>2</sup>" as COVERED #LightGreen {
-    $DUAL_SEC_LABELLED_INSTANCE(R1,"planned appointments, etc.\n<size:14>**:CAREPLAN**"                    ,"R (restricted)","break-the-glass")
-    $DUAL_SEC_LABELLED_INSTANCE(R2,"condition severity and specifics\n<size:14>**:CONDITION**"             ,"R (restricted)","break-the-glass")
-    $DUAL_SEC_LABELLED_INSTANCE(R3,"appointments\n<size:14>**:ENCOUNTER**                               "  ,"R (restricted)","break-the-glass")
-    $DUAL_SEC_LABELLED_INSTANCE(R4,"preferences, health assessments\n<size:14>**:QUESTIONNAIRERESPONSE**"  ,"R (restricted)","break-the-glass")
-    $DUAL_SEC_LABELLED_INSTANCE(R5,"diagnosis detail\n<size:14>**:OBSERVATION**                         "  ,"R (restricted)","break-the-glass")
+    $TAGGED_INSTANCE(R1,"planned appointments, etc.\n<size:14>**:CAREPLAN**"                    ,"#rf-nz")
+    $TAGGED_INSTANCE(R2,"condition severity and specifics\n<size:14>**:CONDITION**"             ,"#rf-nz")
+    $TAGGED_INSTANCE(R3,"appointments\n<size:14>**:ENCOUNTER**                               "  ,"#rf-nz")
+    $TAGGED_INSTANCE(R4,"preferences, health assessments\n<size:14>**:QUESTIONNAIRERESPONSE**"  ,"#rf-nz")
+    $TAGGED_INSTANCE(R5,"diagnosis detail\n<size:14>**:OBSERVATION**                         "  ,"#rf-nz")
 
     R3 -[hidden]u- R1
     R4 -[hidden]u- R2
@@ -103,13 +105,11 @@ legend bottom
   **Notes**
   1. Consent instances identify the data subject in "".patient"" references.
   2. ""Consent.organization"" identifies which org is custodian of the patient data.
-  3. All patient data stored in resource instances with ""**R**"" and ""**break-the-glass**"" labels.
-  4. The custodian organisation must obtain administrative privilege (parameterized 
-        OAUTH scope) to update **R-labelled** resource types (including label changes).
-  5. Any other authenticated API consumer wanting to read data in these labelled instances 
-        must **break the glass** (request a break-glass parameterized OAUTH scope).
+  3. All RF instances containing patient data tagged #rf-nz in ""meta.tag""
+  4. FHIR API access rules for instances covered by an **opt-out** consents will be 
+    controlled by OAUTH scopes TBD
 endlegend
 
-footer "Health NZ/Te Whatu Ora.  FHIR instance data model generated from PlantUML source on %date('dd/MM/yyyy')"
+footer "Health NZ/Te Whatu Ora.  FHIR data model generated on %date('dd/MM/yyyy')"
 
 @enduml
