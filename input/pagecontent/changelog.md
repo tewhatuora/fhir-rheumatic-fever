@@ -12,6 +12,11 @@
 
 The patient's address in the example [diagnosis encounter](Encounter-DiagnosisEncounter.html) now has an eSAM identifier with system Url set to the [HISO standard NamingSystem](https://build.fhir.org/ig/HL7NZ/nzbase/namingSystems.html) value `https://standards.digital.health.nz/ns/nz-address-id`
 
+### Doc
+
+- Corrected Consent FHIR data models
+- Revised Terminology documentation page
+
 ---
 
 ## v0.4.7 fixes

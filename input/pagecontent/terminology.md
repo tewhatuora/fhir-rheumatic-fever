@@ -1,83 +1,81 @@
 ## Rheumatic Fever API terminology overview
 
-This page provides an overview of the terminology systems that are depended on, or have been created, for use in this FHIR API.
+The Rheumatic Fever FHIR API makes uses of the following terminology systems:
 
-The Rheumatic Fever FHIR resources make use of established SNOMED (International and NZ Editions) and NZMT (New Zealand Medication Terminology) codesystems, and defines new terminology needed to code the certainty of a rheumatic fever diagnosis.
+- SNOMED International Edition (`snomed.info/sct`)
+- NZMT - New Zealand Medication Terminology (`nzmt.org.nz`)
+- NZ Base Implementation Guide [terminology](https://fhir.org.nz/ig/base/terminology.html)
 
+### Clinical rheumatic fever terminology in NZ
 
-### NZ terminology for rheumatic fever diagnosis
+There is a substantial amount of clinical terminology in use in New Zealand rheumatic fever care and treatment which is not defined in the SNOMED CT international edition.
 
-This IG introduces new terminology (CodeSystems and ValueSets) to cover four specific aspects of New Zealand rheumatic fever patient conditions which need to be accurately represented.
+To enable this NZ-specific terminology to be practically represented in and interchanged through FHIR, this Implementation Guide defines all NZ-specific terminology [using a single common `CodeSystem`](CodeSystem-nz-rheumaticfever-codesystem.html).
 
-1. **summary diagnosis** of a rheumatic fever condition
+The ValueSets in this IG draw on the single local CodeSystem and in some cases mix in terms from SNOMED CT International Edition, as needed to represent NZ clinical data.
+
+#### NZ-specific terminology
+
+NZ clinicians define rheumatic fever conditions/cases using NZ-specific classifiers in the following categories:
+
+1. **summary classification** a rheumatic fever condition diagnosis
 1. **severity** of rheumatic fever condition
 1. **certainty** of rheumatic fever diagnosis
-1. **symptomatic status at diagnosis** of rheumatic fever
+1. **symptomatic status of patient** at the time of rheumatic fever diagnosis
 
-The new terminology is used in a binding on `Condition.code` and by three *extensions* to `Condition` (see the [Rheumatic Fever Condition structure definition](StructureDefinition-nz-rheumaticfever-condition.html)).
+NZ also uses specific clinical terminology in rheumatic fever diagnosis and treatment in the following areas:
 
-Diagnosis detail data is captured in groups in `Observation` instances (one Observation per diagnosis logical group) and further [ValueSet](ValueSet-rf-observation-diagnosisgroup-code.html) in this IG defines the valid SNOMED codes for this purpose.
+- secondary prophylaxis injection sites
+- secondary prophylaxis medication frequency
+- *Benzathine* (pencillin)-related allergy
+- *indolent carditis* as a diagnosis criterion
+- defining **roles** of whanau care team participants
 
-### New SNOMED-based ValueSets
+Where possible all clinical terminology uses terms from the SNOMED International Edition.
 
-SNOMED codes are used in rheumatic fever for:
-<!-- markdownlint-disable MD037 -->
-1. **severity** of the rheumatic fever condition and of the related rheumatic heart disease condition,
-1. **category** of CarePlans and CareTeams,
-1. identifying the **medication route** by which secondary prophylaxis medication is taken,
-1. identifying the body **site** of secondary prophylaxis medication injection,
-1. codifying **roles** of whanau CareTeam participants,
-1. codifying medication **substances** a patient is allergic to,
-1. codifying the **interval** / **frequency** of medication,
+New codings to suit NZ's unique RF requirements have been defined as terms in the New Zealand Edition of SNOMED.
 
-The codes which are valid for these purposes are defined by ValueSets in this Implementation Guide.  
+Due to restrictions in public accessibility of SNOMED New Zealand edition terms, this Implementation Guide defines all NZ-specific terminology locally within a single [`CodeSystem`](CodeSystem-nz-rheumaticfever-codesystem.html).  Refer to the various ValueSet artefacts which draw on this CodeSystem for the purpose of the various code subsets.
 
-Note that SNOMED codes are taken from the SNOMED CT International Edition wherever possible but a handful of new codes had to be defined where suitable terms were not already available.   These new codes are being introduced in the SNOMED CT **New Zealand Edition** which has a [root concept defined here](https://browser.ihtsdotools.org/?perspective=full&conceptId1=21000210109&edition=MAIN/SNOMEDCT-NZ/2023-10-01&release=&languages=en,mi).
+### Validation of FHIR resource content
 
-The NZ edition is published only every six months (October and April), and there are also SNOMED licensing restrictions affecting accessibility of NZ edition terms in the [New Zealand Health Terminology Server](https://nzhts.digital.health.nz/fhir/ValueSet) and in the the [FHIR global terminology service](https://tx.fhir.org).  Due to these issues FHIR API clients ValueSets which define SNOMED-based terminology are not usable by FHIR API clients when published at the NZ Health Terminology Server, and so at the present time, the official definitions of rheumatic fever terminology are given by the **ValueSets published in this Implementation Guide**.  
+Application developers working with this FHIR API can validate the majority of FHIR resource representations using the IG itself and the default (tx.fhir.org) FHIR terminology service.
 
-It is anticipated that this situation will ease in the future as the new NZ terms become more accessible to NZ clients through established global terminology services.
+Medication resource content using NZMT terminology can be validated against public definitions on the [New Zealand Health Terminology Server](https://nzhts.digital.health.nz/fhir).
 
-### New Zealand Medication Terminology
+### Coding of national system identifiers
 
-New Zealand Medication Terminology is [documented here](https://view.nzmt.org.nz/) and its terms can be easily listed by [expanding an NZHTS-published ValueSet](https://nzhts.digital.health.nz/fhir/ValueSet/$expand?url=https://nzhts.digital.health.nz/fhir/ValueSet/rheumatic-fever-Diagnostic-Certainty)
+Some FHIR resource types profiled in this IG will contain data originating in the national Rheumatic Fever Care Coordination System (RFCCS).  To enable such data to be synchronised between FHIR and the RFCCS system, RFCCS identifiers are stored in FHIR instances of CarePlan, Condition, Observation, etc.
 
-NZMT codes are used in rheumatic fever for:
+The IG handles these identifiers by slicing the identifier element of the FHIR resource, and allowing a **national system identifier coding** to be inserted.
 
-1.secondary prophylaxis medication **ingredient**
+Each identifiers from RFCCS or another 'external' national application is represented in RF FHIR resources using
 
-- eg. `#10134211000116105` | benzathine penicillin (as benzathine benzylpenicillin tetrahydrate) [Used in `Medication.ingredient`]
+1. a HISO-designated identifier naming system,
+1. an identifier type code from the [external-system-identifier-type ValueSet](ValueSet-external-system-identifier-type-code.html) in this IG,
+1. the value of the identifier itself.
 
-2.secondary prophylaxis medication **brand**
-
-- eg. `#43924201000116108` | Bicillin LA 1.2 million units/2.3 mL (900 mg/2.3 mL) injection: suspension, 1 x 2.3 mL syringe [`Medication.code`]
-
-3.secondary prophylaxis **strength/concentration of lignocaine** pain relief medication 
-
-- eg. `#10747581000116100` | lidocaine hydrochloride anhydrous 1% (20 mg/2 mL) injection, ampoule [`MedicationStatement.medicationCodeableConcept`)]
-
-### Coding of external national system identifier types
-
-Some FHIR resources in this IG need to be capable of holding identifiers to resources in other Te Whatu Ora applications and national applications.  Examples of this class of *national system* identifiers in FHIR include:
-
-- `RheumaticFeverCareplan`s recording a *RFCCS case identifier* (Te Whatu Ora application)
-
-- `RheumaticFeverCondition`s recording a *RFCCS case identifier* and an *EPISurv number* (ESR system)
-
-The convention in this IG that all such external 'national identifiers' will be recorded in a **[*NationalSystem*] slice** on the *identifier* resource element.  This slicing requires FHIR Identifiers to be represented as follows:
-
+Example a care plan having RFCCS identifier 00073693 is represented in a FHIR `CarePlan` as follows:
 ```json
-"identifier" : [
-  {
-    "use" : "usual",
-    "type" : {
-      "coding" : "SHOULD be a code defined by this IG for the type of national identifier"
+{.. resource instance content
+  "identifier" : [
+    {
+      "use" : "usual",
+      "type" : {
+        "coding" : [
+          {
+            "system" : "https://fhir-ig.digital.health.nz/rheumatic-fever/CodeSystem/nz-rheumaticfever-codesystem",
+            "code" : "rfccs-careplan-id"
+          }
+        ]
+      },
+      "system" : "https://standards.digital.health.nz/ns/rf-ccs-id",
+      "value" : "00073693"
     },
-    "system" : "Url identifying the Naming System of these identifiers, for example https://standards.digital.health.nz/ns/nhi-id",
-    "value" : "The actual external identifier value"
-  },
-  ...
-]
+    ..other identifiers
+  ]
+.. instance content continues
+}
+
 ```
 
-See the [ValueSet of external identifier types](ValueSet-external-system-identifier-type-code.html) which defines the codes API consumers can give for identifiers which use the [*NationalSystem*] slice.
