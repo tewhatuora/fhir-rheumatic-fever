@@ -1,6 +1,18 @@
 # Changelog
 
 <!-- markdownlint-disable MD024 -->
+
+
+The coding for one type of person's relationship to the patient, as used in Consent on behalf and whanau care team membership, has been revised.
+
+The concept of relationship type 'Other' is now coded using the code `#O` (upper case letter 'O') from the [FHIR/HL7 relationship type codes](https://hl7.org/fhir/R4B/valueset-relatedperson-relationshiptype.html).
+
+(Previously Other mapped to SNOMED 394738000 but this code recently seems to have disappeared from SNOMED).
+
+The [relationship type code ValueSet](ValueSet-rf-careteam-participant-role-code.html) in this IG expands the codes to use when defining whanau care team members patient relationship and in consents-on-behalf.
+
+---
+
 ## v0.4.8 updates
 
 ### National system (RFCCS) identifiers
@@ -11,6 +23,10 @@
 ### eSAM identifiers
 
 The patient's address in the example [diagnosis encounter](Encounter-DiagnosisEncounter.html) now has an eSAM identifier with system Url set to the [HISO standard NamingSystem](https://build.fhir.org/ig/HL7NZ/nzbase/namingSystems.html) value `https://standards.digital.health.nz/ns/nz-address-id`
+
+### Examples
+
+- In [Patient with care team](Patient-SageWestbrookAndWhanau.html), membership has been adjusted to include a care team member with role/relationship type 'Other' using the correct coding.
 
 ### Doc
 

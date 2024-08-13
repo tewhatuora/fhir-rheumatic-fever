@@ -136,11 +136,10 @@ Usage: #example
 * communication[0].language.coding[0].code = #en
 * communication[0].language.coding[0].display = "English"
 
-* contact[0] insert WhanauCareTeamMember( true,  $sct, 58626002,          [[Legal guardian]], [[mother]],         [[Beryl]], [[Hackett]],   [[2023-06-01]],[[2026-01-01]],[[+64 21 111 111]],[[person1@gmail.com]] )        // legal guardian / mother 
-* contact[+] insert WhanauCareTeamMember( true,  $v3-RoleCode, SPS,       [[Spouse]],         [[husband]] ,       [[Connor]],[[Westbrook]], [[2023-06-01]],[[2026-01-01]],[[+64 21 111 222]],[[person2@gmail.com]] )        // spouse
-* contact[+] insert WhanauCareTeamMember( false, $rfnzt, 320731000210100, [[Support person]], [[aunt]],           [[Delina]],[[Donut]],     [[2023-06-01]],[[2026-01-01]],[[+64 21 111 333]],[[person3@gmail.com]] )        // SUPPORT person / aunt
-* contact[+] insert WhanauCareTeamMember( false, $v3-RoleCode, FTH,       [[Father]],         [[father]],         [[Cyril]], [[Westbrook]], [[2023-06-01]],[[2026-01-01]],[[+64 21 111 444]],[[person4@gmail.com]] )        // other / father
-* contact[+] insert WhanauCareTeamMember( false, $v3-RoleCode, BROINLAW,  [[brother-in-law]], [[brother in law]], [[Mike]],  [[Hacket]],    [[2021-01-01]],[[2021-01-01]],[[+64 21 111 555]],[[person5@gmail.com]] )        // other / brother (inactive)
+* contact[0] insert WhanauCareTeamMember( true,  $sct, 58626002,          [[Legal guardian]],               [[mother]],  [[Beryl]], [[Hackett]],   [[2023-06-01]],[[2026-01-01]],[[+64 21 111 111]],[[person1@gmail.com]] )        // legal guardian / mother 
+* contact[+] insert WhanauCareTeamMember( false, http://terminology.hl7.org/CodeSystem/v2-0131, O,[[other]],[[friend]],  [[Pania]], [[Punga]],     [[2021-01-01]],[[2021-01-01]],[[+64 21 111 555]],[[person5@gmail.com]] )        // other / friend
+* contact[+] insert WhanauCareTeamMember( false, $rfnzt, 320731000210100, [[Support person]],               [[aunt]],    [[Delina]],[[Donut]],     [[2023-06-01]],[[2026-01-01]],[[+64 21 111 333]],[[person3@gmail.com]] )        // SUPPORT person / aunt
+* contact[+] insert WhanauCareTeamMember( false, $v3-RoleCode, FTH,       [[Father]],                       [[father]],  [[Cyril]], [[Westbrook]], [[2023-06-01]],[[2026-01-01]],[[+64 21 111 444]],[[person4@gmail.com]] )        // other / father
 
 * deceasedBoolean = false
 
