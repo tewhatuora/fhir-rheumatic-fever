@@ -1,7 +1,7 @@
 ValueSet: RFRelatedPersonRoleValueSet
 Id: rf-careteam-participant-role-code
 Title: "Rheumatic fever patient care team participant role codes"
-Description:  "This value set includes codes for the roles participants can perform in a rheumatic fever patient care team"
+Description:  "This value set defines relationships people can take in a rheumatic fever patient care team, and can also be used to define a consent-on-behalf relationship"
 * ^version = "1.0.0"
 * ^experimental = false
 * ^status = #active
@@ -16,10 +16,12 @@ Description:  "This value set includes codes for the roles participants can perf
 
 * $sct#133932002  "Caregiver (person)"
 * $sct#58626002   "Legal guardian (person)"
-* $sct#394738000  "Other related persons (person)"    // CAUTION this code has disappeared from SNOMED in the latest release
 
+// bring in the local code for SNOMED NZ edition concept of "Support person" 
 * include codes from system $rfnzt where concept descendant-of #NZ-specific-role-codes
-//* $sctNZ#320731000210100 "Support person"
 
-// these codes come from system http://terminology.hl7.org/CodeSystem/v3-RoleCode alias $v3-RoleCode
+// * $sct#394738000  "Other related persons (person)"    // This code seems to have disappeared from SNOMED and has been superceded by #O Other as included below
+
+// Also bring in these codes from HL7 related person relationship type
+// among other things this include brings in http://terminology.hl7.org/CodeSystem/v2-0131#O "Other" 
 * include codes from valueset http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype
