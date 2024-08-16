@@ -2,14 +2,10 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## v0.4.9 updates
 
-The coding for one type of person's relationship to the patient, as used in Consent on behalf and whanau care team membership, has been revised.
-
-The concept of relationship type 'Other' is now coded using the code `#O` (upper case letter 'O') from the [FHIR/HL7 relationship type codes](https://hl7.org/fhir/R4B/valueset-relatedperson-relationshiptype.html).
-
-(Previously Other mapped to SNOMED 394738000 but this code recently seems to have disappeared from SNOMED).
-
-The [relationship type code ValueSet](ValueSet-rf-careteam-participant-role-code.html) in this IG expands the codes to use when defining whanau care team members patient relationship and in consents-on-behalf.
+- Updates to consent documentation.
+- The coding of relationship type 'Other' has changed to use the code `#O` (upper case letter 'O') from the [FHIR/HL7 relationship type codes](https://hl7.org/fhir/R4B/valueset-relatedperson-relationshiptype.html).
 
 ---
 
