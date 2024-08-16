@@ -1,154 +1,150 @@
-<!-- markdownlint-disable MD041 -->
 ## Consent-based access control
 
-### Business requirements overview
+As a basic protection for FHIR resource types that may contain patient health information, this FHIR API requires valid [FHIR Consent](https://hl7.org/fhir/R4B/consent.html) instances to be present that reference FHIR resource instances.
 
-When registering rheumatic fever patients to coordinate care/treatment, Rheumatic Fever Secondary Prevention Service organisations (aka "Lead Providers") seek each patient's consent to:
+See [this page](fhirConsent.html) for details on representing patient consent using FHIR Consents.
 
-1. Receive treatment for the rheumatic fever condition, and
-1. Collection and sharing of data to coordinate treatment and associated health services.
+### Authorization to access FHIR resource instances
 
-#### How and when consent is established
+Consider a FHIR API request to GET the instance `CarePlan/X` where CarePlan is a consent-protected resource type and X is the instance unique identifier.
 
-Each Secondary Prevention Service organisation seeks consent from patients it registers.  
+The FHIR API will permit such a request if:
 
-As consent is obtained in writing (form) it is typically deferred for practical reasons until the patient's first secondary prophylaxis encounter.  
+1. The requestor presents suitable OAUTH credentials including sufficient scopes (SMART scopes), and
+2. The API finds a valid Consent instance that references CarePlan/X.  The rules for validity are defined below.
 
-To handle these scenarios, when consent is officially established **after** the patient is registered (personal data to be entered into RFCCS), the FHIR API allows for a **provisional** arrangement in which Consent instances are created in a `#proposed` status, upgraded to `#active` when the consent is officially recorded.
+If the request has suitable OAUTH scopes but the API cannot find a valid Consent instance referencing CarePlan/X, the API rejects the GET request with a `403 Forbidden` error.
+If the request lacks suitable OAUTH scopes the GET request is rejected with a `401 Not Authorized` error.
 
-#### Opting out / withdrawing consent
+If the CarePlan/X instance access attempt occurs through a FHIR search, and the instance is not covered by a valid consent, either the search request is rejected or the entry is redacted from search results depending on the deficiency of the request.
 
-A patient cay choose NOT to receive secondary prophylaxis treatment.
+#### FHIR Resource types protected
 
-A patient can also DECLINE consent to data sharing (outside of Rheumatic Fever Prevention Services).
+The API applies consent-based access control to FHIR requests on the following resource types (includes profiled variants):
 
-When patients **opt out** of treatment and data sharing, Rheumatic Fever Secondary Prevention services retain patient information for service analysis and in case a patient subsequently resumes treatment.
+```bash
+- Appointment
+- CarePlan
+- Condition
+- Encounter
+- ServiceRequest
+- QuestionnaireResponse
+- Goal
+- Observation
+- Patient
+- Person
+- EpisodeOfCare
+```
 
-#### Custodianship of patient health data
+### Consent validity rules
 
-The custodian of a rheumatic fever patient's data is the Rheumatic Fever Secondary Prevention Service organisation that registers that patient in RFCCS.
+#### Active consent
 
-If a patient transfers to another district and so a different Secondary Prevention Service, data custodianship moves accordingly.
+A patient consent is normally expected to be represented in a FHIR Consent instance in `#active` status, which is meant to 
+reflect a consent actually obtained from the patient.
 
-Custodian organisations are granted sufficient privilege (OAUTH scope) by HNZ to create and maintain RF records in the FHIR API.
+To be considered valid for API access, an `#active` Consent instance must:
 
----
+1. Be current (current date must fall within `Consent.provision.period` start and end dates
 
-### Consent FHIR data models
+1. Be scoped `Consent.scope` = `#patient-privacy`
 
-#### Consent obtained from patient
+1. Identify the patient  
+  `Consent.patient` MUST be a valid FHIR logical reference to a patient by NHI identifier
 
-<!-- markdownlint-disable MD033 -->
+1. Reference the prevailing policies (Privacy Act and Health Information Privacy Code) see examples.
 
-<figure>
-  <!-- Generated from `input/images-source/obj-FHIR-data-consent-active.puml` -->
-  {% include obj-FHIR-data-consent-active.svg %}
-</figure>
-<br clear="all">
+1. Identify how the consent was obtained:
 
----
+- EITHER reference in `.sourceReference` a FHIR `QuestionnaireResponse` instance that captures the consenting response,
 
-#### Consent obtained from a related person to the patient (on-behalf)
+- OR reference in `.organization` (or `.performer`) the organisation that obtained the consent and is custodian of the patient data.
 
-<figure>
-  <!-- Generated from `input/images-source/obj-FHIR-data-consent-givenonbehalf.puml` -->
-  {% include obj-FHIR-data-consent-givenonbehalf.svg %}
-</figure>
-<br clear="all">
+### Provisional consent scenarios
 
----
+Applications may create a Consent in a `#proposed` state.  
 
-#### Patient opted out from data sharing
+This is a placeholder for patient consent that is anticipated, but an application needs to create other FHIR resources before the consent
+can actually be obtained.
 
-<figure>
-  <!-- Generated from `input/images-source/obj-FHIR-data-consent-optout.plantuml` -->
-  {% include obj-FHIR-data-consent-optout.svg %}
-</figure>
-<br clear="all">
-
----
-
-#### Provisional consent (yet to be officially obtained from patient)
-
-<figure>
-  <!-- Generated from `input/images-source/obj-FHIR-data-consent-provisional.plantuml` -->
-  {% include obj-FHIR-data-consent-provisional.svg %}
-</figure>
-<br clear="all">
-
----
-
-## FHIR consent representation and data access control
-
-Data is synchronised between RFCCS and FHIR by integration logic.
-
-In the course of this synchronisation, patient-specific `Consent` instances are formed in the FHIR API.
-
-### How patient consent is represented in FHIR data
-
-1. Each patient's expressed consent is represented as a pair of FHIR `Consent` instances
-    - **scope** `#patient-privacy` (consent to collect/share data)
-    - **scope** `#treatment` (consent to receive treatment).
-1. Each `Consent` instance has a **provision** of **type** `#permit` which identifies the patient (by NHI) and defines the **period** of their consent as a date range.
-1. The data collection/sharing `Consent` has in its **provision** a list of FHIR references which identify all the other FHIR resource instances this consent '*covers*' (applies to).
-1. The **status** of the `Consent` instances can vary:
-    - If patient consent has been obtained, the status of the instances is `#active`
-    - If consent is anticipated but not yet obtained, the status of the instances is `#proposed` (a provisional arrangement)
-    - When consent is denied / withdrawn, the status is `#active` BUT all `#permit`-type provisions are replaced with `#deny`-type provisions.
-1. Every consent identifies a **performer** as the party that is primarily responsible for upholding the policies consented-to.  This will identify the *Rheumatic Fever Secondary Prevention Service* organisation (by HPI org ID).
-1. When consent is provisional, a special extra *actor* **provision** is added to the data  FHIR `Consent` instance.  This actor identifies a CareTeam whose members are all the Secondary Prevention Service organisations that will have provisional access to data (before consent is officially obtained from the patient).
-
-### How FHIR consent affects access to FHIR data
-
-The API performs consent-based data access control to instances of the following FHIR resources types (includes instances using profiles):
-
-- `Appointment`
-- `CarePlan`
-- `Condition`
-- `Encounter`
-- `ServiceRequest`
-- `QuestionnaireResponse`
-- `Observation`
-- `Patient`
-- `Person / RelatedPerson`
-
-Every time an API-consuming application interacts with a FHIR resource instance of one of the above types, the API searches to find any Consent instances that refer to that instance:
-
-- If a valid Consent exists, the FHIR interaction can proceed,
-- If no valid Consent exists, the interaction does not proceed and a 403 Forbidden error is returned,
-- If the resource instance being surfaced is the result of a FHIR Search interaction, it will be redacted from the FHIR search results `Bundle` unless it is covered by a valid Consent.
-
-### Criteria for a consent to be valid
-
-When a `Consent` instance meets the following five criteria, the API allows to the resources it protects:
-
-1. Has scope `Consent.scope` = `#patient-privacy`
-
-1. Has a `#permit` provision (not `#deny`),
-
-1. Is *current* (current date must fall within `Consent.provision.period` start and end dates,
-
-1. Identifies a Secondary Prevention Service as the custodian of the patient data in `Consent.performer`,
-
-1. Identifies a patient as subject (`Consent.patient` is a logical reference by NHI identifier).
-
-In the case of a *provisional consent* (`Consent` status = `#proposed`) there are two further criteria:
-
-<!-- markdownlint-disable MD029 -->
-6. The proposed consent MUST include a provision referencing a `CareTeam` which identifies the Rheumatic Fever Secondary Prevention Services (as HPI organisation ids) which are custodians of patient data, AND
-7. The health application accessing the FHIR API MUST be using client credentials associated with one of the HPI organisations in the CareTeam (6).
-
-### What happens when a consent is not valid?
-
-The API returns HTTP `401 Unauthorized` or `403 Forbidden` errors, depending on the operation being requested.
-
-In FHIR search operations, instances in search results which are not properly covered by consents are REDACTED (are counted as matches, but not included in the results `Bundle`).
+Rules for accessing FHIR resources protected by a `#proposed` Consent are yet to be defined by Health NZ but are likely to involve
+the requesting party following a 'break-glass' protocol and their API client presenting an additional `btg` OAUTH scope in the access token.
 
 ### Consent given on-behalf by related person
 
-Sometimes patient consent has to be given by a person related to the patient (eg. children).
+When patient consent is obtained from a person related to the patient, not the patient themselves, an application may create a Consent instance with the `.performer` identifying the related person.
 
-These scenarios are handled in FHIR using:
+No special rules for API access to FHIR resources protected by an on-behalf Consent have yet been defined by Health NZ.
 
-1. A `RelatedPerson` resource identifying the related party (by name is sufficient) and their relationship to the patient.  The RelatedPerson instance can be contained inside the `Consent` instance, and
-1. An additional `Consent.performer[]` entry which refers to the RelatedPerson instance.
+---
+
+### API error behaviour
+
+When a resource requiring Consent is requested either by a FHIR read, vread or search operation, the API will determine if a valid `Consent` is active for the resource according to the rules described above.
+
+When a valid `Consent` is **NOT found**, the outcomes seen by the API caller will be as follows.
+
+#### search
+
+`GET /{consentedResourceType}?_count=25`
+
+Response status: `200`
+Response body:
+
+```json
+{
+    "resourceType": "Bundle",
+    "id": "38ccf3b4-2bd6-4076-bfa2-66bef78d1fbf",
+    "meta": {
+        "lastUpdated": "2022-12-15T19:55:07.892Z",
+        "security": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationValue",
+                "code": "REDACTED",
+                "display": "redacted"
+            }
+        ]
+    },
+    "total": 41,
+    "entry": ["..."]
+}
+```
+
+In this request example, a request is made to return `_count=25` resources. In this case, for each 25 resources in the result set (`entry`), the `Consent` check is performed. If any resources in this result set have been omitted, the `meta.security` `REDACTED` tag is added to the search result `Bundle`. This indicates to the API consumer that some portion of the resource has been filtered and not included in the content returned, and that there may not be 25 resources returned within the `Bundle`.
+
+#### read, vread
+
+`GET /{consentedResourceType}/{id}`
+
+Response status: `401`
+Response body:
+
+```json
+{
+    "resourceType": "OperationOutcome",
+    "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h1>Operation Outcome</h1><table border=\"0\"><tr><td style=\"font-weight: bold;\">error</td><td>[]</td><td><pre>Consent not valid</pre></td></tr></table></div>"
+    },
+    "issue": [
+        {
+            "severity": "error",
+            "code": "security",
+            "diagnostics": "Consent not valid"
+        }
+    ]
+}
+```
+
+In this request example, a request is made to a single resource which does not have an associated `Consent`. This returned a 401 error.
+
+
+#### Consent period dates
+
+As a convention the *Te Whatu Ora Shared Care FHIR API* requires all `date` and `dateTime` FHIR values to be recorded in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time).
+
+Client applications are responsible for converting UTC dateTimes to the timezone of the user and formatting the date and time display according to the user's preferred locale.
+
+The server will assess currency of a Consent for access purposes using a UTC time comparison with the dates/times in a `Consent.period`.
+
+---
