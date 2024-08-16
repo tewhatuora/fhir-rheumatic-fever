@@ -15,7 +15,7 @@ Id: nz-rheumaticfever-medicationrequest
 * extension contains
   RfMedicationRequestFrequencyExtension named medicationFrequency 0..1
 
-* extension[medicationFrequency] ^short = "Sets a standard interval between RF sceondary prophylaxis medication appointments."
+* extension[medicationFrequency] ^short = "Sets a standard interval between RF secondary prophylaxis medication appointments."
 
 // elements from base profile prohibited - NONE
 
