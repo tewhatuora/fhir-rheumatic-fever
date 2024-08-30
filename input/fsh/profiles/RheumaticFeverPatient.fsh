@@ -18,12 +18,6 @@ Id: nz-rheumaticfever-patient
 * link.other only Reference(Patient)
 * link.type = #seealso
 
-// add another extension to the ones NzPatient already does on FHIR Patient
-* extension contains
-    $nz-interpreter named interpreterRequired 0..*
-
-* extension[interpreterRequired] ^short = "Does this person require an interpreter?"
-
 // extensions to Patient.contact to track the role and relationship of whanau member in contact[]s
 * contact.extension contains
   RfPatientWhanauMemberRoleExtension named whanauMemberCareRole 0..1 and

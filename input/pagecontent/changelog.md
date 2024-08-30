@@ -2,6 +2,15 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## v0.5.0 updates
+
+- Added HNZ DSH FHIR API request custom header variable requirements from the Digital Tooling IG
+- Added Resource-Context custom header spec and schema information to OpenAPI specification of FHIR API operations
+- Upgraded NZBase IG dependency to v3.1 (current).  Due to this update, the NzPatient profile now contains the `interpreter-required` extension which the IG now uses.  The old local extension named `interpreterRequired` is no longer required and has been dropped.  Example patient instances updated to use the NZ Base extension.
+
+---
+
+
 ## v0.4.9 updates
 
 - Updates to consent documentation.

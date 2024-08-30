@@ -85,7 +85,7 @@ frame "Rheumatic fever FHIR interchangeable data" as HNZMain {
     \t**whanauMemberCareRole**: Coding
     \t**whanauMemberCareRelationship**: string
     \t**whanauMemberCarePrimary**: boolean
-    * **interpreterRequired**: boolean
+    * interpreter-required: boolean
   }
 
   class ":CARETEAM" as CareTeam <<RF profile  <&tag>>> #LightSalmon ##[bold] {

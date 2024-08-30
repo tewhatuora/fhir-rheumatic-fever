@@ -11,8 +11,8 @@ Description: "An example rheumatic fever patient who is Māori ethnicity and spe
 * meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
 
-* extension[interpreterRequired].url = "http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired"
-* extension[interpreterRequired].valueBoolean = false
+* extension[interpreter-required].url = "http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired"
+* extension[interpreter-required].valueBoolean = false
 
 * extension[ethnicity].url = "http://hl7.org.nz/fhir/StructureDefinition/nz-ethnicity"
 * extension[ethnicity].valueCodeableConcept = https://standards.digital.health.nz/ns/ethnic-group-level-4-code#21111 "Māori"

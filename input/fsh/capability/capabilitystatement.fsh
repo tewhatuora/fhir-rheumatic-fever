@@ -4,14 +4,23 @@ Usage: #definition
 
 * name = "RheumaticFeverAPICapabilityStatement"
 * title = "Rheumatic Fever FHIR API Capability Statement"
+
 * status = #active
 * date = "2024-06-14"
+* kind = #instance
+* fhirVersion = #4.0.1
+
+* jurisdiction = urn:iso:std:iso:3166#NZ "New Zealand"
 * publisher = "Health New Zealand / Te Whatu Ora"
-* description = "NZ Rheumatic Fever FHIR API"
+* description = "New Zealand rheumatic fever FHIR API capability statement"
 * kind = #instance
 * implementation.description = "NZ Rheumatic Fever FHIR API"
-* implementation.url = "https://fhir.ap1.digital.health.nz/R4"
-* fhirVersion = #4.0.1
+* implementation.url = "https://fhir.api.digital.health.nz/R4"
+
+* contact[+].name = "Health New Zealand Te Whatu Ora"
+* contact[=].telecom.value = "https://www.tewhatuora.govt.nz"
+* contact[=].telecom.system = #url
+
 * format = #json
 * rest.mode = #server
 * rest.security.cors = true
@@ -21,6 +30,24 @@ Usage: #definition
 * rest.security.extension.extension[=].valueUri = "https://auth.integration.covid19.health.nz/oauth2/token"
 * rest.security.extension.extension[+].url = "authorize"
 * rest.security.extension.extension[=].valueUri = "https://auth.integration.covid19.health.nz/oauth2/authorize"
+
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[+].url = Canonical(HnzCustomHeadersExtension)
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[key].valueString = "Correlation-Id"
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[value].valueUri = "https://raw.githubusercontent.com/tewhatuora/schemas/main/shared-care/Correlation-Id.json"
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[required].valueBoolean = false
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[+].extension[key].valueString = "x-api-key"
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[value].valueUri = "https://raw.githubusercontent.com/tewhatuora/schemas/main/shared-care/Api-Key.json"
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[required].valueBoolean = true
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[+].extension[key].valueString = "Request-Context"
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[value].valueUri = "https://raw.githubusercontent.com/tewhatuora/schemas/main/openapi-definitions/Request-Context.json"
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[required].valueBoolean = true
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[documentation].valueString = """A base64-encoded JSON object that defines the context of the current request.
+See https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context.json for the schema
+"""
+* extension[HnzApiSpecBuilderExtension].extension[licenseURL].valueUri = "https://www.tewhatuora.govt.nz/assets/Our-health-system/Digital-health/Digital-Service-Hub/API-Access-and-Use-Agreement.docx"
+* extension[HnzApiSpecBuilderExtension].extension[licenseName].valueString = "Health New Zealand Digital Services Hub API Access and Use Agreement"
+* extension[HnzApiSpecBuilderExtension].extension[externalDocs].valueUri = "https://fhir-ig.digital.health.nz/screening"
+
 
 * rest.interaction.code = #transaction
 * rest.interaction insert StandardErrorsDocumentation
