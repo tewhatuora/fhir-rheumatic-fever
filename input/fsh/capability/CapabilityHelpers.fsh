@@ -53,9 +53,7 @@ RuleSet: ResourceDocumentation(markdown)
 * documentation = "{markdown}"
 
 RuleSet: ResourceContextDocumentation
-* documentation = """A base64-encoded JSON object that defines the user and organisation context of the current request.
-See [Te Whatu Ora github](https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context.json) for the schema that defines this JSON data structure.
-"""
+* documentation = """A base64-encoded [JSON object](https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context.json) describing user and organisation behind the request."""
 
 // documents errors per HNZ standard (https://apistandards.digital.health.nz/api-development/Synchronous%20APIs/Error%20Handling)
 RuleSet: StandardErrorsDocumentation
