@@ -1,5 +1,5 @@
 Instance: RheumaticFeverCapabilityStatement
-InstanceOf: CapabilityStatement
+InstanceOf: HnzToolingCapabilityStatement
 Usage: #definition
 
 * name = "RheumaticFeverAPICapabilityStatement"
@@ -9,6 +9,7 @@ Usage: #definition
 * date = "2024-06-14"
 * kind = #instance
 * fhirVersion = #4.0.1
+* version = "0.5.0"
 
 * jurisdiction = urn:iso:std:iso:3166#NZ "New Zealand"
 * publisher = "Health New Zealand / Te Whatu Ora"
