@@ -24,13 +24,22 @@ Usage: #definition
 
 * format = #json
 * rest.mode = #server
+
 * rest.security.cors = true
-* rest.security.service = http://terminology.hl7.org/CodeSystem/restful-security-service#OAuth
+* rest.security.service = #SMART-on-FHIR
 * rest.security.extension.url = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris"
 * rest.security.extension.extension[0].url = "token"
-* rest.security.extension.extension[=].valueUri = "https://auth.integration.covid19.health.nz/oauth2/token"
-* rest.security.extension.extension[+].url = "authorize"
-* rest.security.extension.extension[=].valueUri = "https://auth.integration.covid19.health.nz/oauth2/authorize"
+* rest.security.extension.extension[=].valueUri = "https://ppd.auth.services.health.nz/realms/hnz-integration/protocol/openid-connect/token"
+* rest.security.extension[+].url = "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities"
+* rest.security.extension[=].valueCode = #client-confidential-symmetric
+
+
+// * rest.security.service = http://terminology.hl7.org/CodeSystem/restful-security-service#OAuth
+// * rest.security.extension.url = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris"
+// * rest.security.extension.extension[0].url = "token"
+// * rest.security.extension.extension[=].valueUri = "https://auth.integration.covid19.health.nz/oauth2/token"
+// * rest.security.extension.extension[+].url = "authorize"
+// * rest.security.extension.extension[=].valueUri = "https://auth.integration.covid19.health.nz/oauth2/authorize"
 
 * extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[+].url = Canonical(HnzCustomHeadersExtension)
 * extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[key].valueString = "Correlation-Id"
