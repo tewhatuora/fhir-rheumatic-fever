@@ -108,7 +108,8 @@ menu:
     Version History: history.html
   API:
     API capability statement: CapabilityStatement-RheumaticFeverCapabilityStatement.html
-    View OpenAPI: new-tab https://fhir-ig.digital.health.nz/openapi/index.html?urls.primaryName=rf
+    View OpenAPI: new-tab https://fhir-ig.digital.health.nz/openapi/index.html?urls.primaryName=rheumatic-fever
+    View OpenAPI (UAT): new-tab https://fhir-ig-uat.digital.health.nz/openapi/index.html?urls.primaryName=rheumatic-fever
     Download OpenAPI: https://fhir-ig.digital.health.nz/rf/openapi.yaml
   Support:
     Changelog : changelog.html
