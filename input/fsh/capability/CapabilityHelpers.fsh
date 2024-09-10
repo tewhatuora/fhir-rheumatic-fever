@@ -1,17 +1,12 @@
 // REST resource CRUD operations
 RuleSet: GenericCRUDInteractions
 * interaction[0].code = #create
-* interaction[=] insert ResourceContextDocumentation
+// * interaction[=] insert ResourceDocumentation([["""### hello world"""]])
 * interaction[+].code = #read
-* interaction[=] insert ResourceContextDocumentation
 * interaction[+].code = #update
-* interaction[=] insert ResourceContextDocumentation
 * interaction[+].code = #delete
-* interaction[=] insert ResourceContextDocumentation
 * interaction[+].code = #vread
-* interaction[=] insert ResourceContextDocumentation
 * interaction[+].code = #search-type
-* interaction[=] insert ResourceContextDocumentation
 * versioning = #versioned
 * readHistory = false
 * updateCreate = false
@@ -23,11 +18,8 @@ RuleSet: GenericCRUDInteractions
 // defines operations supported for canonical definitions (owned by HNZ)
 RuleSet: DefinitionalResourceInteractions
 * interaction[0].code = #read
-* interaction[=] insert ResourceContextDocumentation
 * interaction[+].code = #vread
-* interaction[=] insert ResourceContextDocumentation
 * interaction[+].code = #search-type
-* interaction[=] insert ResourceContextDocumentation
 * versioning = #versioned
 * readHistory = false
 * updateCreate = false
@@ -39,7 +31,6 @@ RuleSet: DefinitionalResourceInteractions
 // REST resource search only interfaces (no CRUD)
 RuleSet: SearchOnlyInteraction
 * interaction[+].code = #search-type
-* rest.resource[=].interaction[0] insert ResourceContextDocumentation
 * versioning = #versioned
 * readHistory = false
 * updateCreate = false
@@ -51,9 +42,6 @@ RuleSet: SearchOnlyInteraction
 // adds markdown doc to a CapabilityStatement element
 RuleSet: ResourceDocumentation(markdown)
 * documentation = "{markdown}"
-
-RuleSet: ResourceContextDocumentation
-* documentation = """Base64-encoded [JSON object](https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context.json) describing user / organisation behind request."""
 
 // documents errors per HNZ standard (https://apistandards.digital.health.nz/api-development/Synchronous%20APIs/Error%20Handling)
 RuleSet: StandardErrorsDocumentation
