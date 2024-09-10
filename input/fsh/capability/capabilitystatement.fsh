@@ -60,7 +60,7 @@ See https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context.
 
 
 * rest.interaction.code = #transaction
-* rest.interaction insert StandardErrorsDocumentation
+* rest.interaction insert APIStandardsDocumentation
 
 * rest.resource[0].type = #Appointment
 * rest.resource[=].profile = Canonical(Appointment)

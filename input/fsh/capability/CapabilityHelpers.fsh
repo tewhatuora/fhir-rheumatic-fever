@@ -44,9 +44,17 @@ RuleSet: ResourceDocumentation(markdown)
 * documentation = "{markdown}"
 
 // documents errors per HNZ standard (https://apistandards.digital.health.nz/api-development/Synchronous%20APIs/Error%20Handling)
-RuleSet: StandardErrorsDocumentation
+RuleSet: APIStandardsDocumentation
 * documentation = """
-  ### Read (GET) Operation Statuses
+  ### Request-Context custom header
+
+  All HNZ FHIR API requests must include identifiers for the health user and organisation making the API request.
+
+  API requestors supply this context using the 'Request-Context' custom header in the form of a base64-encoded JSON object conforming to the [schema](https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context.json)
+
+  ### Error status codes
+
+  #### Read (GET) Operation Statuses
 
   |**Code**|**Meaning**|**Description**|
   |:--:|:-----------------|:--|
@@ -59,7 +67,7 @@ RuleSet: StandardErrorsDocumentation
   |500|SERVER ERROR       |An internal server error prevented return of the representation response|
   |503|SERVICE UNAVAILABLE|We are temporarily unable to return the representation. Please wait and try again later|
 
-  ### Search (GET) Operation Statuses
+  #### Search (GET) Operation Statuses
 
   |**Code**|**Meaning**   |**OperationOutcome** in response?|**Description**|
   |:--:|:-----------------|:----------------------------------|:----------------------------------|
@@ -71,7 +79,7 @@ RuleSet: StandardErrorsDocumentation
   |500|SERVER ERROR       |No |An internal server error prevented return of the representation response|
   |503|SERVICE UNAVAILABLE|No |The server is temporarily unable to return the representation. Please wait and try again later|
 
-  ### Create (POST or PUT) Operation Statuses
+  #### Create (POST or PUT) Operation Statuses
 
   |**Code**|**Meaning**|**Description**|
   |:--:|:-----------------|:--|
@@ -87,7 +95,7 @@ RuleSet: StandardErrorsDocumentation
   |429|TOO MANY REQUESTS  |Your application is sending too many simultaneous requests|
   |500|SERVER ERROR       |We couldn't create or update the resource. Please try again later|
 
-  ### Delete (DELETE) Operation Statuses
+  #### Delete (DELETE) Operation Statuses
 
   |**Code**|**Meaning**|**Description**|
   |:--:|:-----------------|:--|
