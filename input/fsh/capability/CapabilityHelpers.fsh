@@ -48,9 +48,23 @@ RuleSet: APIStandardsDocumentation
 * documentation = """
   ### Request-Context custom header
 
-  All HNZ FHIR API requests must include identifiers for the health user and organisation making the API request.
+  All HNZ FHIR API requests must include the health user and context of usage of the application making the API request.
 
-  API requestors supply this context using the 'Request-Context' custom header in the form of a base64-encoded JSON object conforming to the [schema](https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context.json)
+  This context data is supplied using the 'Request-Context' custom header in the form of a base64-encoded JSON object conforming to [schema](https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context-v2.json)
+
+  COnsumers of the Rheumatic Fever FHIR API must set the following properties in `Request-Context`
+
+  |**Required context property**|**Attribute value**|
+  |:------------------|:---------|
+  | `userIdentifier`  | The userid of the user as authenticated by RFCCS or the PMS/health application. |
+  | `purposeOfUse`    | Set to `"POPHEALTH"`                                              |
+  | `userFullName`    | Display name of the user of RFCCS or the PMS/health application.  |
+  | `hpiOrganisation` | The HPI Organisation identifier for the RF Secondary Prevention Service (aka Lead Provider) the user is affiliated with |
+  | `hpiPractitioner` | If available, the HPI Practitioner identifier (Common Person Number) of the user |
+  | `hpiFacility`     | If available, the HPI Facility identifier of the health facility where the application is being used |
+  
+  The schema for defining and validating these properties can be [found here](https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context-v2.json)
+
 
   ### Error status codes
 

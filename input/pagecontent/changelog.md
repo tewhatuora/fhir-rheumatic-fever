@@ -6,7 +6,7 @@
 
 - Updated CapabilityStatement to specify DSH/Connector Plane security and generate an OpenAPI Specification via HNZ Digital Tooling
 - Updated OpenAPI specification links
-- Added Resource-Context custom header spec to CapabilityStatement and OpenAPI specification
+- Documented `Resource-Context` custom header requirements in CapabilityStatement and OpenAPI specification
 - Upgraded NZBase IG dependency to v3.1 (current).  Due to this update, the NZ Base `NzPatient` profile now contains the `interpreter-required` extension which this IG re-uses (instead of the old local extension named `interpreterRequired` which has been dropped).  Example patient instances updated to use the NZ Base extension.
 
 ---
