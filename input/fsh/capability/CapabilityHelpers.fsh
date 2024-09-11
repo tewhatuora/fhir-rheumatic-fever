@@ -50,9 +50,9 @@ RuleSet: APIStandardsDocumentation
 
   All HNZ FHIR API requests must include the health user and context of usage of the application making the API request.
 
-  This context data is supplied using the 'Request-Context' custom header in the form of a base64-encoded JSON object conforming to [schema](https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context-v2.json)
+  This context data is supplied using the 'Request-Context' custom header in the form of a base64-encoded JSON object.
 
-  COnsumers of the Rheumatic Fever FHIR API must set the following properties in `Request-Context`
+  Consumers of the Rheumatic Fever FHIR API must set the following properties in `Request-Context`
 
   |**Required context property**|**Attribute value**|
   |:------------------|:---------|
