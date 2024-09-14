@@ -2,27 +2,49 @@
 
 ## Authentication / Authorization
 
-In order to make requests against this API clients must:
+All requests to this FHIR API must:
 
-- Obtain an access token from the OAuth token endpoint using the client credentials issued to their organisation,  
+- Set an `Authorization` header with an OAUTH bearer access token.  Access tokens will be obtained from the applicable Health New Zealand authorization server as demonstrated in the accompanying Postman collection.
 
 - Pass the access token as a bearer token in the `Authorization` header of all requests, along with an API key in the `X-Api-Key` header,  
 
-- Include a `Request-Context` header containing a Base64-encoded JSON object detailing the user making the request in the following structure:
+## Request context
+
+All FHIR API requests must include metadata about the user of the application consuming the API.  This is done by setting the `Request-Context` custom header to a Base64-encoded JSON object.
+
+|**Required context property**|**Attribute value**|
+  |:------------------|:---------|
+  | `userIdentifier`             | The userid of the user as authenticated by RFCCS or other authorized PMS/health application. |
+  | `purposeOfUse`               | Set to `"POPHEALTH"`                                              |
+  | `userFullName`               | Display name of the user of RFCCS or the PMS/health application.  |
+  | `hpiOrganisation`            | The HPI Organisation identifier for the RF Secondary Prevention Service (aka Lead Provider) the user is affiliated with |
+  | `hpiPractitioner` (optional) | If available, the HPI Practitioner identifier (Common Person Number) of the user |
+  | `hpiFacility`    (loptional) | If available, the HPI Facility identifier of the health facility where the application is being used |
+  
+  The schema for defining and validating these properties can be [found here](https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context-v2.json)
+
+An example request context follows for a user in the Northland / Te Tai Tokerau RF Secondary Prevention Service:
 
 ```json
 {
   "userIdentifier": "11AAbb@#",
-  "userRole": "Practitioner",
-  "secondaryIdentifiers": {
-    "use": "official",
-    "system": "https://standards.digital.health.nz/ns/hpi-person-id",
-    "value": "99ZZFX"
+  "purposeOfUse": "POPHLTH",
+  "userFullName": "Rosie (Rheumatic Fever Coordinator)",
+  "hpiOrganisation": {
+    "type": "Organization",
+    "identifier": {
+      "use": "official",
+      "system": "https://standards.digital.health.nz/ns/hpi-organisation-id",
+      "value": "G0M086-B"
+    },
+    "display": "Te Tai Tokerau Rheumatic Fever Secondary Prevention Service"
   },
   "encryptedClaims": [],
   "encryptedKid": "01"
 }
 ```
+
+A schema for the Request-Context is [available here](https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context-v2.json)
 
 <p>&nbsp;</p>
 
