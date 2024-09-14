@@ -2,11 +2,13 @@
 
 ## Authentication / Authorization
 
-All requests to this FHIR API must:
+This FHIR API uses standard OAUTH bearer token authentication.
 
-- Set an `Authorization` header with an OAUTH bearer access token.  Access tokens will be obtained from the applicable Health New Zealand authorization server as demonstrated in the accompanying Postman collection.
+All requests to this FHIR API must include an access token in the `Authorization` header.
 
-- Pass the access token as a bearer token in the `Authorization` header of all requests, along with an API key in the `X-Api-Key` header,  
+Authorized clients can obtain access tokens from the Health New Zealand authorization server (KeyCloak) requesting the applicable rheumatic fever [OAUTH scopes and audiences](rheumatic-fever-data-scopes).
+
+See the accompanying Postman collection for example OAUTH token request.
 
 ## Request context
 

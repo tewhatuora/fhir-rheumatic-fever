@@ -107,7 +107,7 @@ See https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context-
 * rest.resource[=].searchParam[+].name = "_profile"
 * rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#Resource-profile"
 * rest.resource[=].searchParam[=].type = #reference
-* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverCarePlan instances** using ?Resource-profile=https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/cinc-rheumaticfever-careplan"
+* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverCarePlan instances** using the applicable profile canonical Url from IG"
 * rest.resource[=].searchParam[+].name = "_id"
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
 * rest.resource[=].searchParam[=].type = #token
@@ -132,7 +132,7 @@ This server supports one subtype of FHIR CareTeam - refer to Profiles
 * rest.resource[=].searchParam[+].name = "_profile"
 * rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#Resource-profile"
 * rest.resource[=].searchParam[=].type = #reference
-* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverCareTeam instances** using ?Resource-profile=https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/cinc-rheumaticfever-careteam"
+* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverCareTeam instances** using the applicable profile canonical Url from IG"
 * rest.resource[=].searchParam[+].name = "_id"
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
 * rest.resource[=].searchParam[=].type = #token
@@ -157,7 +157,7 @@ This server supports one subtype of FHIR CareTeam - refer to Profiles
 * rest.resource[=].searchParam[+].name = "_profile"
 * rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#Resource-profile"
 * rest.resource[=].searchParam[=].type = #reference
-* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverCondition instances** using ?Resource-profile=https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/cinc-rheumaticfever-condition"
+* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverCondition instances** using the applicable profile canonical Url from IG"
 * rest.resource[=].searchParam[+].name = "_id"
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
 * rest.resource[=].searchParam[=].type = #token
@@ -357,7 +357,7 @@ This server supports one profile of FHIR Patient which is the rheumatic fever pa
 * rest.resource[=].searchParam[+].name = "_profile"
 * rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#Resource-profile"
 * rest.resource[=].searchParam[=].type = #reference
-* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverPatient instances** using ?Resource-profile=https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/cinc-rheumaticfever-patient"
+* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverPatient instances** using the applicable profile canonical Url from IG"
 * rest.resource[=].searchParam[+].name = "_id"
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
 * rest.resource[=].searchParam[=].type = #token

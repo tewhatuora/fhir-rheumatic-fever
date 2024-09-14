@@ -4,7 +4,7 @@
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 id: tewhatuora.rheumaticfever
-canonical: https://fhir-ig.digital.health.nz/rheumatic-fever #https://build.fhir.org/ig/tewhatuora/rheumatic-fever
+canonical: https://fhir-ig.digital.health.nz/rheumatic-fever
 name: New Zealand Rheumatic Fever FHIR Implementation Guide
 title: New Zealand Rheumatic Fever FHIR Implementation Guide
 description: New Zealand Rheumatic Fever FHIR Implementation Guide
@@ -18,7 +18,7 @@ releaseLabel: draft # ci-build | draft | qa-preview | ballot | trial-use | relea
 publisher:
   name: Te Whatu Ora
   url: https://www.tewhatuora.govt.nz/
-  # email: test@example.org
+  email: integration@tewhatuora.govt.nz
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced
