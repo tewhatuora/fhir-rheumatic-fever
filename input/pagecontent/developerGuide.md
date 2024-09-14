@@ -48,27 +48,17 @@ A schema for the Request-Context is [available here](https://github.com/tewhatuo
 
 <p>&nbsp;</p>
 
-## Well Known Resource Identifiers
-
-Some resources (Plan Definitions and Questionnaires) are defined by Te Whatu Ora and can be searched for using their well-known identifiers.  
-Please refer to the example `identifier` parameters that can be supplied to the `GET /PlanDefinition` and `GET /Questionnaire` operations for
-the current set of well-known identifiers.
-
 ## FHIR resource profile-based validation
 
-This FHIR server validates all instance payloads on FHIR resource creation/update requests.
+HNZ's FHIR server validates all instance payloads on FHIR resource creation/update requests.
 
-It is recommended that **all** resource instances created on this server **claim conformance to a [profile](./artifacts.html) in this Implementation Guide**. This lets the server perform validation of a resource creation/update payload against the IG profile, rather than using the generic FHIR R4 specification of the resource.
-
-### Claiming a profile in resource creation / update
-
-API Consumers SHOULD pass the profile canonical url in the `meta.profile` element of the instance payload.
+Developers should ensure **all** FHIR resource instances  being created or updated set the correct profile in their `meta.profile` property, so that payloads can be properly validated against the IG profles/definitions by the server.
 
 **Example:**
 
 ```json
 "meta" : {
-  "profile" : ["https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/nz-rheumaticfever-condition"]
+  "profile" : ["https://fhir-ig.digital.health.nz/rheumatic-fever/StructureDefinition/nz-rheumaticfever-condition"]
 }
 ```
 
@@ -89,11 +79,9 @@ Once resources are created, API consumers can retrieve by profile, and if desire
 
 Retrieve all condition resources using version 1.0.0:
 
-`GET /Condition?_profile=https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/nz-rheumaticfever-condition|1.0.0`
+`GET /Condition?_profile=https://fhir-ig.digital.health.nz/rheumatic-fever/StructureDefinition/nz-rheumaticfever-condition|1.0.0`
 
-Retrieve all condition resources using any version of a profile:
-
-`GET /Condition?_profile=https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/nz-rheumaticfever-condition`
+Without the version qualifier, the FHIR search would return all profiled condition resources regardless of the profile version
 
 ---
 
@@ -235,7 +223,7 @@ The following excerpt shows valid use of `urn:uuid`s in a POST Bundle which crea
 
 ### Reference validation in the Te Whatu Ora Shared Care API
 
-The *Te Whatu Ora Shared Care* API does a limited amount of validation of references.  API consumers that send payloads containing the following errors will get `400 Bad Request` errors.
+The API performs some validation on FHIR resource references.  API consumers that send payloads containing the following errors will get `400 Bad Request` errors.
 
 | Type of reference | Invalid example | Response | Client's recourse |
 | :-------------- | :----------------------------- | :--------- | :-------------- |

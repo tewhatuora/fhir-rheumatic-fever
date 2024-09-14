@@ -108,8 +108,8 @@ menu:
     Version History: history.html
   API:
     API capability statement: CapabilityStatement-RheumaticFeverCapabilityStatement.html
+    Developer Guide: developerGuide.html
     View OpenAPI: new-tab https://fhir-ig.digital.health.nz/openapi/index.html?urls.primaryName=Rheumatic+Fever+FHIR+API
-    View OpenAPI (UAT): new-tab https://fhir-ig-uat.digital.health.nz/openapi/index.html?urls.primaryName=Rheumatic+Fever+FHIR+API
     Download OpenAPI: https://fhir-ig.digital.health.nz/rf/openapi.yaml
   Support:
     Changelog : changelog.html
@@ -127,12 +127,12 @@ menu:
 # contact directly and follow the format outlined in the ImplementationGuide resource and
 # ContactDetail.
 contact:
-   - name: David Grainger
+   - name: HNZ Integration Team
      telecom:
        - system: email 
-         value: david.grainger@middleware.co.nz
+         value: integration@tewhatuora.govt.nz
          use: work
-
+         
 # The global property corresponds to the IG.global property, but it
 # uses the type as the YAML key and the profile as its value. Since
 # FHIR does not explicitly disallow more than one profile per type,
