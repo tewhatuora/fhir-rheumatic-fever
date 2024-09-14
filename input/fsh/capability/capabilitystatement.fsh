@@ -220,7 +220,7 @@ This server supports one subtype of FHIR CareTeam - refer to Profiles
 * rest.resource[=].profile = Canonical(RheumaticFeverMedicationRequest)
 * rest.resource[=].supportedProfile = Canonical(NzMedicationRequest)
 * rest.resource[=] insert ResourceDocumentation([[
-This server profiles NzMedicationRequest and supports the NZ Base IG profile NzMedicationRequest in addition.
+This server profiles NzMedicationRequest AND supports the NZ Base IG profile NzMedicationRequest.
 ]])
 * rest.resource[=] insert GenericCRUDInteractions
 * rest.resource[=].searchInclude[0] = "*"
@@ -260,6 +260,7 @@ This server supports the NZ Base IG profiles NzMedicationStatement in addition t
 
 * rest.resource[+].type = #Observation
 * rest.resource[=].profile = Canonical(Observation)
+* rest.resource[=].supportedProfile = Canonical(RheumaticFeverDiagnosisGroup)
 * rest.resource[=] insert GenericCRUDInteractions
 * rest.resource[=].searchParam[0].name = "code"
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-code"
