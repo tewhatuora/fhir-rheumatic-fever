@@ -12,20 +12,20 @@ See the accompanying Postman collection for example OAUTH token request.
 
 ## Request context
 
-All FHIR API requests must include metadata about the user of the application consuming the API.  This is done by setting the `Request-Context` custom header to a Base64-encoded JSON object.
+All FHIR API requests must include metadata about the context of usage for the application consuming the API.  This is done by setting properties in the `Request-Context` custom header (which is a string containing a Base64-encoded JSON object).
 
-|**Required context property**|**Attribute value**|
-  |:------------------|:---------|
-  | `userIdentifier`             | The userid of the user as authenticated by RFCCS or other authorized PMS/health application. |
-  | `purposeOfUse`               | Set to `"POPHEALTH"`                                              |
-  | `userFullName`               | Display name of the user of RFCCS or the PMS/health application.  |
-  | `hpiOrganisation`            | The HPI Organisation identifier for the RF Secondary Prevention Service (aka Lead Provider) the user is affiliated with |
-  | `hpiPractitioner` (optional) | If available, the HPI Practitioner identifier (Common Person Number) of the user |
-  | `hpiFacility`    (loptional) | If available, the HPI Facility identifier of the health facility where the application is being used |
+|**property**             |**Required?**|**Attribute value**|
+  |:----------------------|:------------|:---------------------|
+  | `userIdentifier`      | YES         | The userid of the user as authenticated by RFCCS or other authorized PMS/health application. |
+  | `purposeOfUse`        | YES         | Set to `"POPHEALTH"`                                              |
+  | `userFullName`        | YES         | Display name of the user of RFCCS or the PMS/health application.  |
+  | `hpiOrganisation`     | YES         | The HPI Organisation identifier (format GAAANNN-A) for Secondary Prevention Service the application user is working within |
+  | `hpiPractitioner`     | optional    | If available, the HPI Practitioner identifier (Common Person Number) of the user |
+  | `hpiFacility`         | optional    | If available, the HPI Facility identifier of the health facility where the application is being used |
   
   The schema for defining and validating these properties can be [found here](https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context-v2.json)
 
-An example request context follows for a user in the Northland / Te Tai Tokerau RF Secondary Prevention Service:
+An example request context follows illustrating FHIR API access on behalf of the Northland / Te Tai Tokerau RF Secondary Prevention Service:
 
 ```json
 {
@@ -40,9 +40,7 @@ An example request context follows for a user in the Northland / Te Tai Tokerau 
       "value": "G0M086-B"
     },
     "display": "Te Tai Tokerau Rheumatic Fever Secondary Prevention Service"
-  },
-  "encryptedClaims": [],
-  "encryptedKid": "01"
+  }
 }
 ```
 
@@ -75,6 +73,7 @@ A resource payload MAY claim a specific version of a resource profile if that in
 1. If a resource payload claims a *non-existent* profile version url, this server will reject the operation with a `400 Bad Request` and message "Profile reference '{{URL}}' has not been checked because it is unknown"
 
 ### Resource retrieval by profile
+
 Once resources are created, API consumers can retrieve by profile, and if desired, profile version.
 
 **Example:**
@@ -86,71 +85,6 @@ Retrieve all condition resources using version 1.0.0:
 Without the version qualifier, the FHIR search would return all profiled condition resources regardless of the profile version
 
 ---
-
-## Field level request encryption
-
-The FHIR server supports certain FHIR resource fields to be provided in the create or update request in an encrypted format, to prevent certain data such as PII being transmitted in plain text.
-
-The currently supported fields for this feature are:
-
-- "subject.identifier.value"
-- "subject.display"
-- "patient.birthDate"
-- "patient.gender"
-- "patient.telecom"
-
-When this feature is used, applicable request properties can be provided to the server as an encrypted value, where **the value is stored within the FHIR server unencrypted**.
-When the FHIR resource is subsequently read, the plain text value will be returned.
-
-To use this feature, the request must include the below attributes:
-
-- the `Request-Context` header MUST contain an `encryptedClaims` array, which MUST include valid fields supported by the server. A request with unsupported claims will be rejected
-- the `Request-Context` header MUST contain an `encryptionKid` string to indicate which public key has been used for encryption, which should be the `kid` of the key used.
-- the fields indicated in the `encryptedClaims` array MUST be encrypted using a valid public key as provided by the FHIR server JWKS endpoint, with base64 encoding. If the value
-  cannot be decrypted successfully, due to a client encryption error or invalid public key, an error will be returned.
-
-It is recommended to cache the response from the JWKS endpoint to avoid performance impacts.
-
-### Field encryption code sample in Node.js
-
-```js
-// Node.js 18+
-
-const crypto = require("crypto");
-const jose = require("node-jose"); // v2.2.0
-
-const FHIR_SERVER_BASE_URL = "https://fhir.example.com"; // replace with real FHIR server url
-
-const getPublicKey = async () => {
-  return fetch(`${FHIR_SERVER_BASE_URL}/.well-known/jwks.json`)
-    .then((response) => response.json())
-    .then(async (body) => {
-      const key = await jose.JWK.asKey(body.keys[0]);
-      return key.toPEM();
-    });
-};
-
-const encryptText = async (plainText) => {
-  const encrypted = crypto.publicEncrypt(
-    {
-      key: await getPublicKey(),
-      padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
-      oaepHash: "sha256",
-    },
-    Buffer.from(plainText)
-  );
-  return Buffer.from(encrypted).toString("base64");
-};
-
-(async function () {
-  const stringToEncrypt = "Carey Carrington";
-  console.log(`Encrypting string: ${stringToEncrypt}`);
-  const encrypted = await encryptText(stringToEncrypt);
-  console.log(`Encrypted value as Base64: ${encrypted}`);
-})();
-```
-<!-- markdownlint-disable MD033 -->
-<!-- <img src="request-encryption.png" width="100%"> -->
 
 ## FHIR Resource references
 
