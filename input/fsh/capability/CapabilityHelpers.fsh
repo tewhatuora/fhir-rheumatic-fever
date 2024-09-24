@@ -1,6 +1,7 @@
 // REST resource CRUD operations
 RuleSet: GenericCRUDInteractions
 * interaction[0].code = #create
+// * interaction[=] insert ResourceDocumentation([["""### hello world"""]])
 * interaction[+].code = #read
 * interaction[+].code = #update
 * interaction[+].code = #delete
@@ -16,7 +17,7 @@ RuleSet: GenericCRUDInteractions
 
 // defines operations supported for canonical definitions (owned by HNZ)
 RuleSet: DefinitionalResourceInteractions
-* interaction[+].code = #read
+* interaction[0].code = #read
 * interaction[+].code = #vread
 * interaction[+].code = #search-type
 * versioning = #versioned
@@ -43,9 +44,31 @@ RuleSet: ResourceDocumentation(markdown)
 * documentation = "{markdown}"
 
 // documents errors per HNZ standard (https://apistandards.digital.health.nz/api-development/Synchronous%20APIs/Error%20Handling)
-RuleSet: StandardErrorsDocumentation
+RuleSet: APIStandardsDocumentation
 * documentation = """
-  ### Read (GET) Operation Statuses
+  ### Request-Context custom header
+
+  All HNZ FHIR API requests must include the health user and context of usage of the application making the API request.
+
+  This context is supplied using the 'Request-Context' custom header in the form of a base64-encoded JSON object.
+
+  Consumers of the Rheumatic Fever FHIR API must set the following properties in `Request-Context`
+
+  |**Required context property**|**Attribute value**|
+  |:------------------|:---------|
+  | `userIdentifier`  | The userid of the user as authenticated by RFCCS or the PMS/health application. |
+  | `purposeOfUse`    | Set to `"POPHEALTH"`                                              |
+  | `userFullName`    | Display name of the user of RFCCS or the PMS/health application.  |
+  | `hpiOrganisation` | The HPI Organisation identifier for the RF Secondary Prevention Service (aka Lead Provider) the user is affiliated with |
+  | `hpiPractitioner` | If available, the HPI Practitioner identifier (Common Person Number) of the user |
+  | `hpiFacility`     | If available, the HPI Facility identifier of the health facility where the application is being used |
+  
+  The schema for defining and validating these properties can be [found here](https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context-v2.json)
+
+
+  ### Error status codes
+
+  #### Read (GET) Operation Statuses
 
   |**Code**|**Meaning**|**Description**|
   |:--:|:-----------------|:--|
@@ -58,7 +81,7 @@ RuleSet: StandardErrorsDocumentation
   |500|SERVER ERROR       |An internal server error prevented return of the representation response|
   |503|SERVICE UNAVAILABLE|We are temporarily unable to return the representation. Please wait and try again later|
 
-  ### Search (GET) Operation Statuses
+  #### Search (GET) Operation Statuses
 
   |**Code**|**Meaning**   |**OperationOutcome** in response?|**Description**|
   |:--:|:-----------------|:----------------------------------|:----------------------------------|
@@ -70,7 +93,7 @@ RuleSet: StandardErrorsDocumentation
   |500|SERVER ERROR       |No |An internal server error prevented return of the representation response|
   |503|SERVICE UNAVAILABLE|No |The server is temporarily unable to return the representation. Please wait and try again later|
 
-  ### Create (POST or PUT) Operation Statuses
+  #### Create (POST or PUT) Operation Statuses
 
   |**Code**|**Meaning**|**Description**|
   |:--:|:-----------------|:--|
@@ -86,7 +109,7 @@ RuleSet: StandardErrorsDocumentation
   |429|TOO MANY REQUESTS  |Your application is sending too many simultaneous requests|
   |500|SERVER ERROR       |We couldn't create or update the resource. Please try again later|
 
-  ### Delete (DELETE) Operation Statuses
+  #### Delete (DELETE) Operation Statuses
 
   |**Code**|**Meaning**|**Description**|
   |:--:|:-----------------|:--|

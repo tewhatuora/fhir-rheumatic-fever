@@ -1,29 +1,66 @@
 Instance: RheumaticFeverCapabilityStatement
-InstanceOf: CapabilityStatement
+InstanceOf: HnzToolingCapabilityStatement
 Usage: #definition
 
 * name = "RheumaticFeverAPICapabilityStatement"
 * title = "Rheumatic Fever FHIR API Capability Statement"
+
 * status = #active
 * date = "2024-06-14"
+* kind = #instance
+* fhirVersion = #4.0.1
+* version = "0.5.0"
+
+* jurisdiction = urn:iso:std:iso:3166#NZ "New Zealand"
 * publisher = "Health New Zealand / Te Whatu Ora"
-* description = "NZ Rheumatic Fever FHIR API"
+* description = "New Zealand rheumatic fever FHIR API capability statement"
 * kind = #instance
 * implementation.description = "NZ Rheumatic Fever FHIR API"
-* implementation.url = "https://fhir.ap1.digital.health.nz/R4"
-* fhirVersion = #4.0.1
+* implementation.url = "https://fhir.api.digital.health.nz/R4"
+
+* contact[+].name = "Health New Zealand Te Whatu Ora"
+* contact[=].telecom.value = "https://www.tewhatuora.govt.nz"
+* contact[=].telecom.system = #url
+
 * format = #json
 * rest.mode = #server
+
 * rest.security.cors = true
-* rest.security.service = http://terminology.hl7.org/CodeSystem/restful-security-service#OAuth
+* rest.security.service = #SMART-on-FHIR
 * rest.security.extension.url = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris"
 * rest.security.extension.extension[0].url = "token"
-* rest.security.extension.extension[=].valueUri = "https://auth.integration.covid19.health.nz/oauth2/token"
-* rest.security.extension.extension[+].url = "authorize"
-* rest.security.extension.extension[=].valueUri = "https://auth.integration.covid19.health.nz/oauth2/authorize"
+* rest.security.extension.extension[=].valueUri = "https://ppd.auth.services.health.nz/realms/hnz-integration/protocol/openid-connect/token"
+* rest.security.extension[+].url = "http://fhir-registry.smarthealthit.org/StructureDefinition/capabilities"
+* rest.security.extension[=].valueCode = #client-confidential-symmetric
+
+
+// * rest.security.service = http://terminology.hl7.org/CodeSystem/restful-security-service#OAuth
+// * rest.security.extension.url = "http://fhir-registry.smarthealthit.org/StructureDefinition/oauth-uris"
+// * rest.security.extension.extension[0].url = "token"
+// * rest.security.extension.extension[=].valueUri = "https://auth.integration.covid19.health.nz/oauth2/token"
+// * rest.security.extension.extension[+].url = "authorize"
+// * rest.security.extension.extension[=].valueUri = "https://auth.integration.covid19.health.nz/oauth2/authorize"
+
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[+].url = Canonical(HnzCustomHeadersExtension)
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[key].valueString = "Correlation-Id"
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[value].valueUri = "https://raw.githubusercontent.com/tewhatuora/schemas/main/shared-care/Correlation-Id.json"
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[required].valueBoolean = false
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[+].extension[key].valueString = "x-api-key"
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[value].valueUri = "https://raw.githubusercontent.com/tewhatuora/schemas/main/shared-care/Api-Key.json"
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[required].valueBoolean = true
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[+].extension[key].valueString = "Request-Context"
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[value].valueUri = "https://raw.githubusercontent.com/tewhatuora/schemas/main/openapi-definitions/Request-Context.json"
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[required].valueBoolean = true
+* extension[HnzApiSpecBuilderExtension].extension[globalHeaders].extension[=].extension[documentation].valueString = """A base64-encoded JSON object that defines the context of the current request.
+See https://github.com/tewhatuora/schemas/blob/main/json-schema/Request-Context-v2.json for the schema this object must conform to.
+"""
+* extension[HnzApiSpecBuilderExtension].extension[licenseURL].valueUri = "https://www.tewhatuora.govt.nz/assets/Our-health-system/Digital-health/Digital-Service-Hub/API-Access-and-Use-Agreement.docx"
+* extension[HnzApiSpecBuilderExtension].extension[licenseName].valueString = "Health New Zealand Digital Services Hub API Access and Use Agreement"
+* extension[HnzApiSpecBuilderExtension].extension[externalDocs].valueUri = "https://fhir-ig.digital.health.nz/rf"
+
 
 * rest.interaction.code = #transaction
-* rest.interaction insert StandardErrorsDocumentation
+* rest.interaction insert APIStandardsDocumentation
 
 * rest.resource[0].type = #Appointment
 * rest.resource[=].profile = Canonical(Appointment)
@@ -70,7 +107,7 @@ Usage: #definition
 * rest.resource[=].searchParam[+].name = "_profile"
 * rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#Resource-profile"
 * rest.resource[=].searchParam[=].type = #reference
-* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverCarePlan instances** using ?Resource-profile=https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/cinc-rheumaticfever-careplan"
+* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverCarePlan instances** using the applicable profile canonical Url from IG"
 * rest.resource[=].searchParam[+].name = "_id"
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
 * rest.resource[=].searchParam[=].type = #token
@@ -95,7 +132,7 @@ This server supports one subtype of FHIR CareTeam - refer to Profiles
 * rest.resource[=].searchParam[+].name = "_profile"
 * rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#Resource-profile"
 * rest.resource[=].searchParam[=].type = #reference
-* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverCareTeam instances** using ?Resource-profile=https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/cinc-rheumaticfever-careteam"
+* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverCareTeam instances** using the applicable profile canonical Url from IG"
 * rest.resource[=].searchParam[+].name = "_id"
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
 * rest.resource[=].searchParam[=].type = #token
@@ -120,7 +157,7 @@ This server supports one subtype of FHIR CareTeam - refer to Profiles
 * rest.resource[=].searchParam[+].name = "_profile"
 * rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#Resource-profile"
 * rest.resource[=].searchParam[=].type = #reference
-* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverCondition instances** using ?Resource-profile=https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/cinc-rheumaticfever-condition"
+* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverCondition instances** using the applicable profile canonical Url from IG"
 * rest.resource[=].searchParam[+].name = "_id"
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
 * rest.resource[=].searchParam[=].type = #token
@@ -183,7 +220,7 @@ This server supports one subtype of FHIR CareTeam - refer to Profiles
 * rest.resource[=].profile = Canonical(RheumaticFeverMedicationRequest)
 * rest.resource[=].supportedProfile = Canonical(NzMedicationRequest)
 * rest.resource[=] insert ResourceDocumentation([[
-This server profiles NzMedicationRequest and supports the NZ Base IG profile NzMedicationRequest in addition.
+This server profiles NzMedicationRequest AND supports the NZ Base IG profile NzMedicationRequest.
 ]])
 * rest.resource[=] insert GenericCRUDInteractions
 * rest.resource[=].searchInclude[0] = "*"
@@ -223,6 +260,7 @@ This server supports the NZ Base IG profiles NzMedicationStatement in addition t
 
 * rest.resource[+].type = #Observation
 * rest.resource[=].profile = Canonical(Observation)
+* rest.resource[=].supportedProfile = Canonical(RheumaticFeverDiagnosisGroup)
 * rest.resource[=] insert GenericCRUDInteractions
 * rest.resource[=].searchParam[0].name = "code"
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-code"
@@ -319,7 +357,7 @@ This server supports one profile of FHIR Patient which is the rheumatic fever pa
 * rest.resource[=].searchParam[+].name = "_profile"
 * rest.resource[=].searchParam[=].definition = "https://hl7.org/fhir/searchparameter-registry.html#Resource-profile"
 * rest.resource[=].searchParam[=].type = #reference
-* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverPatient instances** using ?Resource-profile=https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/StructureDefinition/cinc-rheumaticfever-patient"
+* rest.resource[=].searchParam[=].documentation = "Filter **RheumaticFeverPatient instances** using the applicable profile canonical Url from IG"
 * rest.resource[=].searchParam[+].name = "_id"
 * rest.resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
 * rest.resource[=].searchParam[=].type = #token

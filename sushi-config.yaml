@@ -4,12 +4,12 @@
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 id: tewhatuora.rheumaticfever
-canonical: https://fhir-ig.digital.health.nz/rheumatic-fever #https://build.fhir.org/ig/tewhatuora/rheumatic-fever
+canonical: https://fhir-ig.digital.health.nz/rheumatic-fever
 name: New Zealand Rheumatic Fever FHIR Implementation Guide
 title: New Zealand Rheumatic Fever FHIR Implementation Guide
 description: New Zealand Rheumatic Fever FHIR Implementation Guide
 status: draft
-version: 0.4.9
+version: 0.5.0
 fhirVersion: 4.0.1
 copyrightYear: 2024+
 releaseLabel: draft # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
@@ -18,7 +18,7 @@ releaseLabel: draft # ci-build | draft | qa-preview | ballot | trial-use | relea
 publisher:
   name: Te Whatu Ora
   url: https://www.tewhatuora.govt.nz/
-  # email: test@example.org
+  email: integration@tewhatuora.govt.nz
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced
@@ -27,9 +27,10 @@ publisher:
 dependencies:
   fhir.org.nz.ig.base: 
     uri: http://fhir.org.nz/ig/base/ImplementationGuide/fhir.org.nz.ig.base
-    version: 3.0.0
+    version: current
   hl7.fhir.uv.sdc: 3.0.0         # for indicating preferred terminology server for Questionnaire answerValueSets
-  hl7.terminology.r4: 5.5.0       
+  hl7.terminology.r4: 5.5.0
+  tewhatuora.digitaltooling: 0.0.11
   
 # The pages property corresponds to IG.definition.page. SUSHI can
 # auto-generate the page list, but if the author includes pages in
@@ -98,6 +99,7 @@ menu:
   Home: index.html
   Artifacts: artifacts.html
   Documentation:
+    Data access control: fhirDataAccessControl.html
     Data models: rheumatic-fever-data-models.html
     Data mapping: dataStandards.html
     FHIR representation of patient consent: fhirConsent.html
@@ -107,6 +109,9 @@ menu:
     Version History: history.html
   API:
     API capability statement: CapabilityStatement-RheumaticFeverCapabilityStatement.html
+    Developer Guide: developerGuide.html
+    View OpenAPI: new-tab https://fhir-ig.digital.health.nz/openapi/index.html?urls.primaryName=Rheumatic+Fever+FHIR+API
+    Download OpenAPI: https://fhir-ig.digital.health.nz/rf/openapi.yaml
   Support:
     Changelog : changelog.html
     FHIR Spec: new-tab http://hl7.org/fhir/R4/index.html
@@ -123,12 +128,12 @@ menu:
 # contact directly and follow the format outlined in the ImplementationGuide resource and
 # ContactDetail.
 contact:
-   - name: David Grainger
+   - name: HNZ Integration Team
      telecom:
        - system: email 
-         value: david.grainger@middleware.co.nz
+         value: integration@tewhatuora.govt.nz
          use: work
-
+         
 # The global property corresponds to the IG.global property, but it
 # uses the type as the YAML key and the profile as its value. Since
 # FHIR does not explicitly disallow more than one profile per type,

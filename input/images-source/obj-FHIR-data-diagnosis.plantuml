@@ -67,28 +67,6 @@ package "Condition and diagnosis instances linked from RF CarePlan" as Activitie
     + location[2]: school when diagnosed
   }
 
-  
-  ' class "patient detail at time of diagnosis\n**:PATIENT**" as DPATIENT <<RF profile>> #Pink {
-  '   Extends NzPatient (NZ Base) with 
-  '    RF patient registration detail.
-  '   ---
-  '   *identifier[NHI] (official): NHI
-  '   ---
-  '   *name: HumanName
-  '   *birthDate: date
-  '   *communication.language
-  '   *gender: code
-  '   *deceasedBoolean: boolean
-  '   *telecom: ContactPoint[]
-  '   *address: Address[]
-  '   +iwi: code
-  '   +ethnicity 0..*: code[]
-  '   +nzCitizen: code
-  '   .. (extensions)..
-  '   +**patient.contact[].**
-  '   +**interpreterRequired**: boolean
-  ' }
-
   object "<size:18>ECHO assessment\n**:OBSERVATION**" as OBS1 <<RF profile>> #DarkSeaGreen {
     *identifier: type #rfccs-observation-id (RFCCS)
     ---

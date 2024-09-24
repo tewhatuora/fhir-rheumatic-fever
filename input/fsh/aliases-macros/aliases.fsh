@@ -27,7 +27,6 @@ Alias: $action-type = http://terminology.hl7.org/CodeSystem/action-type
 Alias: $definition-topic = http://terminology.hl7.org/CodeSystem/definition-topic
 Alias: $usage-context-type = http://terminology.hl7.org/CodeSystem/usage-context-type
 Alias: $observation-category = http://terminology.hl7.org/CodeSystem/observation-category
-Alias: $pathway-status-codes = https://build.fhir.org/ig/tewhatuora/fhir-rheumatic-fever/CodeSystem/longterm-pathway-state-cs
 
 Alias: $v3-RoleCode   = http://terminology.hl7.org/CodeSystem/v3-RoleCode // aka https://terminology.hl7.org/6.0.2/ValueSet-v3-ServiceDeliveryLocationRoleType.html
 Alias: $location-type = http://terminology.hl7.org/CodeSystem/v3-ActCode
@@ -39,7 +38,4 @@ Alias: $BaseIdentifierTypeCS = http://terminology.hl7.org/CodeSystem/v2-0203
 Alias: $nzmt = http://nzmt.org.nz
 Alias: $RFCCS-id-naming-system = https://standards.digital.health.nz/ns/rf-ccs-id
 
-// The following aliases must match the canonical Url of the IG at its published location.  
-// FSH language syntax doesn't allow these to be defined automatically on the IG base Url using Canonical() syntax...
-//Alias: $rfnzt = https://build.fhir.org/ig/tewhatuora/rheumatic-fever/CodeSystem/nz-rheumaticfever-codesystem
 Alias: $rfnzt = https://fhir-ig.digital.health.nz/rheumatic-fever/CodeSystem/nz-rheumaticfever-codesystem

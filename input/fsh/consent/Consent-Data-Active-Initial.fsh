@@ -1,11 +1,9 @@
 Instance: Consent-Data-Active-Initial
 InstanceOf: Consent
 Usage: #example
-Description: "An active, 3 year, patient DATA consent obtained by the Te Tai Tokerau Rheumatic Fever Service, with sample `data.references`"
+Description: "An initial record of patient 3-year DATA consent obtained by the Te Tai Tokerau Rheumatic Fever Service"
 
 * meta.profile = Canonical(Consent)  
-* meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 
 * status = #active
 * scope = http://terminology.hl7.org/CodeSystem/consentscope#patient-privacy "Privacy Consent"
@@ -14,7 +12,7 @@ Description: "An active, 3 year, patient DATA consent obtained by the Te Tai Tok
 
 * patient insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * organization insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
-* performer insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
+//* performer insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
 * policy[0].authority = "https://www.privacy.org.nz"
 * policy[=].uri = "https://www.privacy.org.nz/privacy-act-2020/"
@@ -26,15 +24,3 @@ Description: "An active, 3 year, patient DATA consent obtained by the Te Tai Tok
 * provision.period.start = "2023-06-12T02:30:35Z"
 * provision.period.end = "2026-06-11T02:30:35Z"  
 * provision.type = #permit
-
-// boatload of example data references to consent-protected resource instances
-* provision insert ConsentInstanceDataRef( RegisteredPatient )
-
-* provision insert ConsentInstanceDataRef( PatientMedicationAllergyQuestionnaireResponse )
-* provision insert ConsentInstanceDataRef( MedicationsAndFollowUpGuidanceQuestionnaireResponse )
-* provision insert ConsentInstanceDataRef( PatientWhanauGoalsPreferencesQuestionnaireResponse )
- 
-* provision insert ConsentInstanceDataRef( SecondaryProphylaxisCareTeam )
-
-// condition
-* provision insert ConsentInstanceDataRef( SevereRfCondition )

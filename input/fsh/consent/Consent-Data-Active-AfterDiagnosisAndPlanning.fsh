@@ -4,8 +4,6 @@ Usage: #example
 Description: "An active, 3 year, patient DATA consent obtained by the Te Tai Tokerau Rheumatic Fever Service, with sample `data.references`"
 
 * meta.profile = Canonical(Consent)  
-* meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 
 * status = #active
 * scope = http://terminology.hl7.org/CodeSystem/consentscope#patient-privacy "Privacy Consent"
@@ -14,7 +12,7 @@ Description: "An active, 3 year, patient DATA consent obtained by the Te Tai Tok
 
 * patient insert NHIPatientRef(ZKC7284,[[Sage Westbrook]])
 * organization insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
-* performer insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
+//* performer insert ReferenceOrganisation(G0M086-B,[[Te Tai Tokerau Rheumatic Fever Secondary Prevention Service]])
 
 * policy[0].authority = "https://www.privacy.org.nz"
 * policy[=].uri = "https://www.privacy.org.nz/privacy-act-2020/"
