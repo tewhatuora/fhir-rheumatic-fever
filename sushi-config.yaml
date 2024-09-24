@@ -99,6 +99,7 @@ menu:
   Home: index.html
   Artifacts: artifacts.html
   Documentation:
+    Data access control: fhirDataAccessControl.html
     Data models: rheumatic-fever-data-models.html
     Data mapping: dataStandards.html
     FHIR representation of patient consent: fhirConsent.html
