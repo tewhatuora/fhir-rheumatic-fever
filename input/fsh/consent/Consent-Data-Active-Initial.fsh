@@ -1,7 +1,7 @@
 Instance: Consent-Data-Active-Initial
 InstanceOf: Consent
 Usage: #example
-Description: "An active, 3 year, patient DATA consent obtained by the Te Tai Tokerau Rheumatic Fever Service, with sample `data.references`"
+Description: "An initial record of patient 3-year DATA consent obtained by the Te Tai Tokerau Rheumatic Fever Service"
 
 * meta.profile = Canonical(Consent)  
 * meta.versionId = "2"
@@ -26,15 +26,3 @@ Description: "An active, 3 year, patient DATA consent obtained by the Te Tai Tok
 * provision.period.start = "2023-06-12T02:30:35Z"
 * provision.period.end = "2026-06-11T02:30:35Z"  
 * provision.type = #permit
-
-// boatload of example data references to consent-protected resource instances
-* provision insert ConsentInstanceDataRef( RegisteredPatient )
-
-* provision insert ConsentInstanceDataRef( PatientMedicationAllergyQuestionnaireResponse )
-* provision insert ConsentInstanceDataRef( MedicationsAndFollowUpGuidanceQuestionnaireResponse )
-* provision insert ConsentInstanceDataRef( PatientWhanauGoalsPreferencesQuestionnaireResponse )
- 
-* provision insert ConsentInstanceDataRef( SecondaryProphylaxisCareTeam )
-
-// condition
-* provision insert ConsentInstanceDataRef( SevereRfCondition )
