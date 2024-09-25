@@ -3,7 +3,7 @@ InstanceOf: RheumaticFeverMedicationRequest
 Description: "Illustrates a request for active secondary prophylaxis medication that can appear in a rheumatic fever care plan"
 Usage: #example
 
-* meta.profile = Canonical(RheumaticFeverMedicationRequest|1.0.0)
+* meta.profile = Canonical(RheumaticFeverMedicationRequest)
 * meta.versionId = "2"
 * meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 * meta insert RFTag

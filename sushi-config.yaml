@@ -9,7 +9,7 @@ name: New Zealand Rheumatic Fever FHIR Implementation Guide
 title: New Zealand Rheumatic Fever FHIR Implementation Guide
 description: New Zealand Rheumatic Fever FHIR Implementation Guide
 status: draft
-version: 0.5.0
+version: 1.0.0
 fhirVersion: 4.0.1
 copyrightYear: 2024+
 releaseLabel: draft # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
