@@ -3,7 +3,7 @@ InstanceOf: RheumaticFeverMedicationRequest
 Description: "Illustrates planning of benzathine prophylaxis medication with a second embedded MedicationRequest for lignocaine pain relief"
 Usage: #example
 
-* meta.profile = Canonical(RheumaticFeverMedicationRequest|1.0.0)
+* meta.profile = Canonical(RheumaticFeverMedicationRequest)
 * meta.versionId = "2"
 * meta.lastUpdated = "2024-08-07T08:31:00Z" // UTC datetime
 * meta insert RFTag
