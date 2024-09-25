@@ -2,6 +2,10 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## v1.0.0 September 25 2024 published version
+
+---
+
 ## v0.5.0 updates
 
 - Updated CapabilityStatement to specify DSH/Connector Plane security and generate an OpenAPI Specification via HNZ Digital Tooling
