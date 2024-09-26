@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD033 MD041 -->
+
 ## Consent-based access control
 
 As a basic protection for FHIR resource types that may contain patient health information, this FHIR API requires valid [FHIR Consent](https://hl7.org/fhir/R4B/consent.html) instances to be present that reference FHIR resource instances.
@@ -40,25 +42,43 @@ The API applies consent-based access control to FHIR requests on the following r
 
 #### Active consent
 
-A patient consent is normally expected to be represented in a FHIR Consent instance in `#active` status, which is meant to 
-reflect a consent actually obtained from the patient.
+A patient consent is normally expected to be represented in a FHIR Consent instance in `#active` status,
+which is meant to reflect a consent actually obtained from the patient.
 
 To be considered valid for API access, an `#active` Consent instance must:
 
-1. Be current (current date must fall within `Consent.provision.period` start and end dates
+1. Have a permitting provision (`Consent.provision.type` of `#permit`),
 
-1. Be scoped `Consent.scope` = `#patient-privacy`
+1. Be current (current date must fall within `Consent.provision.period` start and end dates,
 
-1. Identify the patient  
-  `Consent.patient` MUST be a valid FHIR logical reference to a patient by NHI identifier
+1. Be scoped `Consent.scope` = `#patient-privacy`,
 
-1. Reference the prevailing policies (Privacy Act and Health Information Privacy Code) see examples.
+1. Identify the patient
+  `Consent.patient` MUST be a valid FHIR logical reference to a patient by NHI identifier,
+
+1. Reference the prevailing policies (Privacy Act and Health Information Privacy Code) see examples,
 
 1. Identify how the consent was obtained:
 
 - EITHER reference in `.sourceReference` a FHIR `QuestionnaireResponse` instance that captures the consenting response,
 
 - OR reference in `.organization` (or `.performer`) the organisation that obtained the consent and is custodian of the patient data.
+
+<figure>
+  <!-- Generated from `input/images-source/obj-FHIR-data-consent-active.puml` -->
+  {% include obj-FHIR-data-consent-active.svg %}
+</figure>
+<br clear="all">
+
+### Opting out of data sharing
+
+On the other hand when a patient opts out (declines to give consent) for data sharing, a FHIR `Consent` resource will represent this using an `#active` status but with a `Consent.provision.type` of `#deny` as illustrated below.
+
+<figure>
+  <!-- Generated from `input/images-source/obj-FHIR-data-consent-optout.plantuml` -->
+  {% include obj-FHIR-data-consent-optout.svg %}
+</figure>
+<br clear="all">
 
 ### Provisional consent scenarios
 
@@ -70,11 +90,23 @@ can actually be obtained.
 Rules for accessing FHIR resources protected by a `#proposed` Consent are yet to be defined by Health NZ but are likely to involve
 the requesting party following a 'break-glass' protocol and their API client presenting an additional `btg` OAUTH scope in the access token.
 
+<figure>
+  <!-- Generated from `input/images-source/obj-FHIR-data-consent-provisional.plantuml` -->
+  {% include obj-FHIR-data-consent-provisional.svg %}
+</figure>
+<br clear="all">
+
 ### Consent given on-behalf by related person
 
 When patient consent is obtained from a person related to the patient, not the patient themselves, an application may create a Consent instance with the `.performer` identifying the related person.
 
 No special rules for API access to FHIR resources protected by an on-behalf Consent have yet been defined by Health NZ.
+
+<figure>
+  <!-- Generated from `input/images-source/obj-FHIR-data-consent-givenonbehalf.puml` -->
+  {% include obj-FHIR-data-consent-givenonbehalf.svg %}
+</figure>
+<br clear="all">
 
 ---
 
@@ -137,7 +169,6 @@ Response body:
 ```
 
 In this request example, a request is made to a single resource which does not have an associated `Consent`. This returned a 401 error.
-
 
 #### Consent period dates
 
