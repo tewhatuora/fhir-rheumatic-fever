@@ -40,4 +40,3 @@ Description:  "This value set combines SNOMED internaional codes with a handful 
 * $sct#394723001  "Anti-deoxyribonuclease B antibody level (procedure)"
 * $sct#117015009  "Throat culture (procedure)"
 * $sct#9718006    "Polymerase chain reaction analysis (procedure)"
-* $sct#312504002  "Antigen test (procedure)"
