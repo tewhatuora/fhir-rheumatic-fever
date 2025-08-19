@@ -28,14 +28,12 @@ Usage: #example
 * component[+] insert ObservationQuantity($sct, 394723001, [[Anti-deoxyribonuclease B antibody level (procedure)]], 680000, [[IU/litre]], [[[iU]/L]] )
 * component[+] insert ObservationDate(    $sct, 394723001, [[Anti-deoxyribonuclease B antibody level (procedure)]], "2023-06-02T02:00:00Z" )
 
-// 1/3: strep throat culture test was NOT DONE
+// 1/2: strep throat culture test was NOT DONE
 * component[+] insert ObservationAbsent(  $sct, 117015009, [[Throat culture (procedure)]], not-performed, [[Not performed]] )
 
-// 2/3: Strep PCR test - test was DONE and positive finding
+// 2/2: Strep PCR test - test was DONE and positive finding
 * component[+] insert ObservationInterpretation( $sct, 9718006,  [[Polymerase chain reaction analysis (procedure)]], POS, [[Positive]] )
 
-// 3/3: Strep RAT - UNKNOWN if test was DONE
-* component[+] insert ObservationAbsent(  $sct, 312504002, [[Antigen test (procedure)]], unknown, [[Unknown]] )
 
 
 // //////// //////// //////// //////// //////// //////// ////////
