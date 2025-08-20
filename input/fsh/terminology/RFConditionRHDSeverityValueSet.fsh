@@ -12,5 +12,6 @@ Description:  "This value set defines codes for the severity of rheumatic heart 
 * $sct#255604002 "Mild (qualifier value)"
 * $sct#1255665007 "Moderate (qualifier value)"
 * $sct#24484000 "Severe (severity modifier) (qualifier value)"
+* $sct#32413006 "Transplantation of heart (procedure)"
 * $sct#261665006 "Unknown (qualifier value)"
 

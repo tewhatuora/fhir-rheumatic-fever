@@ -43,6 +43,7 @@ The codes here are arranged in a 2-layer hierarchy which enables ValueSets segre
   * #300171000210106  "Trivial (qualifier value)"
   * #59391000119102   "History of heart valve repair (situation)"
   * #301561000210102  "History of heart valve replacement (situation)"
+  * #32413006       "Transplantation of heart (procedure)"
 
 // diagnosis evidence groupings of Observation data
 * #diagnosis-evidence-group-codes "Observation diagnosis evidence groupings" "These code values originate in SNOMED CT, two being defined only in the SNOMED NZ Edition"
