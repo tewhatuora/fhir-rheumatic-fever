@@ -5,7 +5,7 @@ Description:  "This system defines standard codes used throughout this Implement
 * ^publisher = "Te Whatu Ora / Health New Zealand"
 * ^experimental = false
 * ^caseSensitive = true
-* ^version = "1.0.0"
+* ^version = "1.0.1"
 * ^purpose = """
 The codes defined in this CodeSystem are used throughout the rheumatic fever IG, including in resource profiles.
 
