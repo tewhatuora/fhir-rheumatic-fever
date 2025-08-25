@@ -63,3 +63,11 @@ Description: "Gathers information in secondary prophylaxis planning which guides
 * item[=].answerOption[+].valueString = "Standing Order (local)"
 * item[=].answerOption[+].valueString = "Standing Order (national)"
 * item[=].answerOption[+].valueString = "Individual prescription"
+
+* item[+] insert singleChoiceQuestion(ReasonOnOralSecondaryProphylaxis,[[6)]],[[Reason on Oral Secondary Prophylaxis (choose one)]])
+* item[=].answerOption[0].valueString = "Patient not tolerating IM or SC benzathine"
+* item[=].answerOption[+].valueString = "Penicillin allergy"
+* item[=].answerOption[+].valueString = "Reaction to penicillin"
+* item[=].answerOption[+].valueString = "Benzathine declined by a caregiver"
+* item[=].answerOption[+].valueString = "Benzathine declined by patient"
+* item[=].answerOption[+].valueString = "Other"
