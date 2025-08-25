@@ -2,7 +2,7 @@ ValueSet: RFConditionRHDSeverityValueSet
 Id: rf-condition-rhdseverity-code
 Title: "Rheumatic heart disease severity codes"
 Description:  "This value set defines codes for the severity of rheumatic heart disease which determines the severity of a patient's rheumatic fever condition"
-* ^version = "1.1.0"
+* ^version = "1.1.1"
 * ^experimental = false
 * ^status = #active
 

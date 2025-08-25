@@ -13,7 +13,7 @@ Description: "Gathers information in secondary prophylaxis planning which guides
 * date = "2023-11-10"
 * status = #draft
 * experimental = false
-* version = "1.0.0"
+* version = "1.0.1"
 
 * name = "MedicationsAndFollowUpGuidanceQuestionnaire"
 * title = "Medications and Follow-up Guidance Questionnaire"
@@ -65,9 +65,9 @@ Description: "Gathers information in secondary prophylaxis planning which guides
 * item[=].answerOption[+].valueString = "Individual prescription"
 
 * item[+] insert singleChoiceQuestion(ReasonOnOralSecondaryProphylaxis,[[6)]],[[Reason on Oral Secondary Prophylaxis (choose one)]])
-* item[=].answerOption[0].valueString = "Patient not tolerating IM or SC benzathine"
-* item[=].answerOption[+].valueString = "Penicillin allergy"
-* item[=].answerOption[+].valueString = "Reaction to penicillin"
-* item[=].answerOption[+].valueString = "Benzathine declined by a caregiver"
-* item[=].answerOption[+].valueString = "Benzathine declined by patient"
-* item[=].answerOption[+].valueString = "Other"
+* item[=].answerOption[0].valueCoding = $sct#407563006 "Treatment not tolerated (situation)"
+* item[=].answerOption[+].valueCoding = $sct#91936005 "Allergy to penicillin (finding)"
+* item[=].answerOption[+].valueCoding = $sct#292954005 "Penicillin adverse reaction (disorder)"
+* item[=].answerOption[+].valueCoding = $sct#724073007 "Declined by caregiver (qualifier value)"
+* item[=].answerOption[+].valueCoding = $sct#182895007 "Drug declined by patient (situation)"
+* item[=].answerOption[+].valueCoding = $sct#74964007 "Other"
