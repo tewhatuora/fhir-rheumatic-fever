@@ -2,7 +2,7 @@ ValueSet: RFDiagnosisObservationCodingValueSet
 Id: rf-observation-diagnosis-component-code
 Title: "Codes for component observations of NZ rheumatic fever diagnosis"
 Description:  "This value set combines SNOMED internaional codes with a handful of special codes for NZ RF diagnosis observation data coding"
-* ^version = "1.0.1"
+* ^version = "1.0.2"
 * ^experimental = false
 * ^status = #active
 
@@ -20,6 +20,8 @@ Description:  "This value set combines SNOMED internaional codes with a handful 
 
 // Jones criteria observation component codings
 * $sct#703119002  "Carditis due to rheumatic fever (disorder)"
+* $sct#599041000210109 "Transient advanced atrioventricular block (disorder)"
+* $sct#1148763004 "Acute rheumatic fever with carditis (disorder)"
 * $sct#95325000   "Subcutaneous nodule (finding)"
 * $sct#200951007  "Erythema marginatum in acute rheumatic fever (disorder)"
 * $sct#111211002  "Migratory polyarthritis (disorder)"
