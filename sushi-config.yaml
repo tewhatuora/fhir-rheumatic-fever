@@ -209,6 +209,10 @@ groups:
     - PatientWhanauGoalsPreferencesQuestionnaire
     - SecondaryProphylaxisHealthAssessmentQuestionnaire
     - OralSecondaryProphylaxisHealthAssessmentQuestionnaire
+    - BenzathineMedication
+    - BenzetacilMedication
+    - LentocillinMedication
+    - TardocillinMedication
 
 
   Consent:
