@@ -1,12 +1,15 @@
 Instance: BenzathineMedication
 InstanceOf: Medication
-Description: "Example of medication used in rheumatic fever secondary prophylaxis (prevention) as NZMT terminology"
-Usage: #example
+Description: ""
+Usage: #definition
 
-* meta.profile = Canonical(Medication)
-* meta.versionId = "2"
-* meta.lastUpdated = "2024-08-07T08:31:00Z"
 * meta insert RFTag
+
+* id = "BenzathineMedication"
+
+* identifier[0].use = #official
+* identifier[=].value = "BenzathineMedication"
+* identifier[=].period.start = "2025-09-05"
 
 // NZMT codes are published by NZ on NZHTS
 * code insert NZMTMedicationCoding(43924201000116108,[[Bicillin LA 1.2 million units/2.3 mL (900 mg/2.3 mL) injection: suspension, 1 x 2.3 mL syringe]])
