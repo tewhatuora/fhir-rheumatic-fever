@@ -34,6 +34,9 @@ Usage: #example
 // 2/2: Strep PCR test - test was DONE and positive finding
 * component[+] insert ObservationInterpretation( $sct, 9718006,  [[Polymerase chain reaction analysis (procedure)]], POS, [[Positive]] )
 
+// Evidence of preceding group A Strep Infection
+* component[+] insert ObservationInterpretation( $sct, 302809008, [[Evidence of preceding group A Strep Infection]], POS, [[Positive]] )
+
 
 
 // //////// //////// //////// //////// //////// //////// ////////
