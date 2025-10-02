@@ -2,7 +2,7 @@ ValueSet: RFDiagnosisObservationCodingValueSet
 Id: rf-observation-diagnosis-component-code
 Title: "Codes for component observations of NZ rheumatic fever diagnosis"
 Description:  "This value set combines SNOMED internaional codes with a handful of special codes for NZ RF diagnosis observation data coding"
-* ^version = "1.0.2"
+* ^version = "1.0.3"
 * ^experimental = false
 * ^status = #active
 
@@ -42,3 +42,4 @@ Description:  "This value set combines SNOMED internaional codes with a handful 
 * $sct#394723001  "Anti-deoxyribonuclease B antibody level (procedure)"
 * $sct#117015009  "Throat culture (procedure)"
 * $sct#9718006    "Polymerase chain reaction analysis (procedure)"
+* $sct#302809008  "Evidence of preceding group A Strep Infection"
