@@ -1,12 +1,12 @@
 Profile: RheumaticFeverCondition
 Parent: NzCondition
 Title: "Rheumatic Fever Condition"
-Description: "Extends NzCondition to add classifiers for RHD severity, diagnostic certainty and symptomatic status and specifies groups of diagnosic evidence that can be attached."
+Description: "Extends NzCondition to add classifiers for RHD severity, diagnostic certainty and symptomatic status and specifies groups of diagnostic evidence that can be attached."
 Id: nz-rheumaticfever-condition
 
 * ^version = "1.0.0"
 * ^jurisdiction = urn:iso:std:iso:3166#NZ
-* ^purpose = "Adds classifiers for severity, diagnostic certainty and symptomatic status and specifies groups of diagnosic evidence to be attached"
+* ^purpose = "Adds classifiers for severity, diagnostic certainty and symptomatic status and specifies groups of diagnostic evidence to be attached"
 * insert metaContactDetail([[David Grainger]],[[david.grainger@middleware.co.nz]])
 
 * meta obeys RFNZTagConstraint      // see file CategoriesLabelsTags.fsh
