@@ -24,6 +24,9 @@ Id: nz-rheumaticfever-patient
   RfPatientWhanauMemberRelationshipExtension named whanauMemberCareRelationship 0..1 and
   RfPatientWhanauMemberPrimaryExtension named whanauMemberCarePrimary 0..1
 
+* extension contains
+  http://hl7.org/fhir/StructureDefinition/patient-interpreterRequired named interpreter-required 0..1
+
 // elements removed by this profile
 * implicitRules 0..0
 * language 0..0

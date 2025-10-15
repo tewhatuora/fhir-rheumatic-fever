@@ -25,11 +25,11 @@ publisher:
 # use cases, the value can be an object with keys for id, uri, and version.
 #
 dependencies:
-  fhir.org.nz.ig.base: 
+  fhir.org.nz.ig.base:
     uri: http://fhir.org.nz/ig/base/ImplementationGuide/fhir.org.nz.ig.base
-    version: current
+    version: 3.0.1
   hl7.fhir.uv.sdc: 3.0.0         # for indicating preferred terminology server for Questionnaire answerValueSets
-  hl7.terminology.r4: 5.5.0
+  hl7.terminology.r4: 6.5.0
   tewhatuora.digitaltooling: 0.0.11
   
 # The pages property corresponds to IG.definition.page. SUSHI can

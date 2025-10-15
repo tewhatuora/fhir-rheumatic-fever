@@ -2,6 +2,12 @@
 
 <!-- markdownlint-disable MD024 -->
 
+## v1.0.0 October 15 2025 published version
+
+Downgraded NZBase IG dependency to v3.0.1. This is because of the change to the fhir-ig-builder adding in version numbers to the referenced resources. Copied the implementation of NZBase IG dependency to v3.1 (current) to add the `interpreter-required` extension for the patient.
+
+---
+
 ## v1.0.0 September 25 2024 published version
 
 ---
