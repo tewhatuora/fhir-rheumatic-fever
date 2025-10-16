@@ -8,3 +8,4 @@ Description:  "This value set defines codes which describe whether a patient was
 
 * $sct#264931009 "Symptomatic (qualifier value)"
 * $sct#67335000  "Asymptomatic diagnosis of (contextual qualifier) (qualifier value)"
+* $sct#261665006 "Unknown (qualifier value)"
