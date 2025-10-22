@@ -209,6 +209,7 @@ groups:
     - PatientWhanauGoalsPreferencesQuestionnaire
     - SecondaryProphylaxisHealthAssessmentQuestionnaire
     - OralSecondaryProphylaxisHealthAssessmentQuestionnaire
+    - DiagnosisRiskFactorsQuestionnaire
     - BenzathineMedication
     - BenzetacilMedication
     - LentocillinMedication
