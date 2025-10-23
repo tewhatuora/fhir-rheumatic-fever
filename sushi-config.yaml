@@ -204,6 +204,8 @@ groups:
     description: canonical instance definitions
     resources:
     - LeadProvidersGroup
+    - DiagnosisRiskFactorsQuestionnaire
+    - RecurrenceDiagnosisQuestionnaire
     - MedicationsAndFollowUpGuidanceQuestionnaire
     - PatientMedicationAllergyQuestionnaire
     - PatientWhanauGoalsPreferencesQuestionnaire
