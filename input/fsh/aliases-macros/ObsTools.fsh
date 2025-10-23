@@ -37,7 +37,7 @@ RuleSet: ObservationCodeableValue(system, compCode, compDisplay, valueSystem, va
 * code.coding.system = {system}
 * code.coding.code = #"{compCode}"
 * code.coding.display = "{compDisplay}"
-* code.text = "{display}"
+* code.text = "{compDisplay}"
 * valueCodeableConcept.coding.system = {valueSystem}
 * valueCodeableConcept.coding.code = #"{valueCode}"
 * valueCodeableConcept.coding.display = "{valueDisplay}"

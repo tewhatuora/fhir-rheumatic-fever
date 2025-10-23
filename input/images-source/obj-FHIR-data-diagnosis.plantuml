@@ -122,6 +122,7 @@ package "Condition and diagnosis instances linked from RF CarePlan" as Activitie
   $Coding(EncContext,"Diagnostic context SNOMED (<size:9>Encounter.serviceType</size>)","#22232009","Hospital (environment)")
   $Coding(EncContext,"Diagnostic context SNOMED (<size:9>Encounter.serviceType</size>)","#257585005","Clinic (environment)")
   $Coding(EncContext,"Diagnostic context SNOMED (<size:9>Encounter.serviceType</size>)","#365856005","Screening finding (finding)")
+  $Coding(EncContext,"Diagnostic context SNOMED (<size:9>Encounter.serviceType</size>)","#576181000210102"," History of disease diagnosed overseas (finding)")
   $Coding(EncContext,"Diagnostic context SNOMED (<size:9>Encounter.serviceType</size>)","#261665006","Unknown (qualifier value)")
 
   $Coding(JONESCODING,"Jones criteria SNOMED","#703119002","Carditis due to rheumatic fever (disorder)")
