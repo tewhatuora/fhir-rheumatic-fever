@@ -1,6 +1,6 @@
 Instance: BenzathineMedication
 InstanceOf: Medication
-Description: ""
+Description: "Benzathine penicillin medication"
 Usage: #definition
 
 * meta insert RFTag
