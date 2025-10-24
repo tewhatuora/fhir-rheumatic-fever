@@ -12,6 +12,7 @@ Description:  "This value set combines SNOMED internaional codes with a handful 
 // handy regex when copying coding content from instance: delete from ]] to end of line \]\].*$
 
 // ECHO cardio observation component codings
+* $sct#40701008  "Echocardiography (procedure)"
 * $sct#48724000   "Mitral valve regurgitation (disorder)"
 * $sct#79619009   "Mitral valve stenosis (disorder)"
 * $sct#60234000   "Aortic valve regurgitation (disorder)"
