@@ -15,7 +15,7 @@ cannot lookup nor access term definitions on NZHTS -- NZ's official terminology 
 meant to use) NZ edition SNOMED terms/codes.
 
 Due to these restrictions this IG defines codes needed for NZ rheumatic fever data representation locally within the IG, in this CodeSystem.  
-Some of these codes re-use the original code numbers assigned in the NZ SNOMED edition in case this becomes publically accessible in future.
+Some of these codes re-use the original code numbers assigned in the NZ SNOMED edition in case this becomes publicly accessible in future.
 The codes here are arranged in a 2-layer hierarchy which enables ValueSets segregated by purpose and help consumers understand the various purposes of the codes.
 """
 
@@ -54,6 +54,7 @@ The codes here are arranged in a 2-layer hierarchy which enables ValueSets segre
 // special RF diagnosis component coding
 * #diagnosis-component-NZ-special-concepts "Special concepts in NZ RF diagnosis" "These code value originate in SNOMED CT, one being defined only in the SNOMED NZ Edition"
   * #448021000210106  "Indolent carditis (disorder)"
+  * #599041000210109  "Transient advanced atrioventricular block (disorder)"
 
 * #NZ-specific-role-codes
   * #320731000210100 "Support person" "Role code used in patient whanau care team (RfPatient.contact)"

@@ -34,3 +34,6 @@ Usage: #example
 
 * item[+] insert answerItemX(PrescribingMethod,[[5)]],[[Method of prescribing (choose one)]])
 * item[=].answer.valueString = "Standing Order (local)"
+
+* item[+] insert answerItemX(ReasonOnOralSecondaryProphylaxis,[[6)]],[[Reason on Oral Secondary Prophylaxis (choose one)]])
+* item[=].answer.valueCoding =  $sct#407563006 "Treatment not tolerated (situation)"

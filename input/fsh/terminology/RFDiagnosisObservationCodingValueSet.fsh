@@ -21,7 +21,6 @@ Description:  "This value set combines SNOMED internaional codes with a handful 
 
 // Jones criteria observation component codings
 * $sct#703119002  "Carditis due to rheumatic fever (disorder)"
-* $sct#599041000210109 "Transient advanced atrioventricular block (disorder)"
 * $sct#1148763004 "Acute rheumatic fever with carditis (disorder)"
 * $sct#95325000   "Subcutaneous nodule (finding)"
 * $sct#200951007  "Erythema marginatum in acute rheumatic fever (disorder)"

@@ -21,8 +21,8 @@ Usage: #example
 
 // numero zero
 * component[+] insert ObservationPresent( $sct,  703119002,        [[Carditis due to rheumatic fever (disorder)]], true)
-* component[+] insert ObservationPresent( $sct, 448021000210106,  [[Indolent carditis (disorder)]],               true)
-* component[+] insert ObservationPresent( $sct, 599041000210109, [[Transient advanced atrioventricular block (disorder)]], true)
+* component[+] insert ObservationPresent( $rfnzt, 448021000210106, [[Indolent carditis (disorder)]], true)
+* component[+] insert ObservationPresent( $rfnzt, 599041000210109, [[Transient advanced atrioventricular block (disorder)]], true)
 * component[+] insert ObservationPresent( $sct,  1148763004,       [[Acute rheumatic fever with carditis (disorder)]], true)
 * component[+] insert ObservationPresent( $sct,  95325000,         [[Subcutaneous nodule (finding)]],              false)
 * component[+] insert ObservationAbsent(  $sct,  200951007,        [[Erythema marginatum in acute rheumatic fever (disorder)]], unknown, [[Unknown]] )

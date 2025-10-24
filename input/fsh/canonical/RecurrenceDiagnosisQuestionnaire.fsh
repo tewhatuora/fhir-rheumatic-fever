@@ -70,4 +70,4 @@ Description: "Gathers information about prophylaxis and recurrence details for a
 
 * item[+] insert dateQuestion(LastDocumentedDose,[[9)]],[[Date of last documented secondary prophylaxis benzathine dose?]])
 
-* item[+] insert textQuestion(ProphylaxisProvider,[[10)]],[[Risk Factors for Recurrence?]])
+* item[+] insert textQuestion(RiskFactorsRecurrence,[[10)]],[[Risk Factors for Recurrence?]])

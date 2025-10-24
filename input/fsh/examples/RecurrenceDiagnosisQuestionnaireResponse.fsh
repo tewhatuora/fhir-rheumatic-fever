@@ -30,3 +30,6 @@ Usage: #example
 
 * item[+].linkId = "LastDocumentedDose"
 * item[=].answer.valueDate = "2023-06-15"
+
+* item[+].linkId = "RiskFactorsRecurrence"
+* item[=].answer.valueString = "Living in crowded housing conditions; recent streptococcal infection in household"
