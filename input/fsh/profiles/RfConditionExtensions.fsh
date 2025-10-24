@@ -31,3 +31,27 @@ Description: "Symptom status at time of rheumatic fever diagnosis"
 Context: Condition
 * value[x] only Coding
 * value[x] from RFConditionSymptomaticAtDiagnosisValueSet (required)
+
+
+Extension: RfConditionAssertionDateExtension
+Id:  rf-condition-assertiondate
+Title: "Date of assertion of rheumatic heart disease severity"
+Description: "Tracks the RF-specific date when rheumatic heart disease severity was asserted."
+Context: Condition
+* value[x] only dateTime
+
+
+Extension: RfDiagnosisOverriddenExtension
+Id:  rf-diagnosis-overridden
+Title: "Rheumatic fever diagnosis overridden"
+Description: "Indicates that the assigned rheumatic fever diagnosis has been overridden by a clinician"
+Context: Condition
+* value[x] only boolean
+
+
+Extension: RfDiagnosisOverrideReasonExtension
+Id:  rf-diagnosis-override-reason
+Title: "Reason for overriding rheumatic fever diagnosis"
+Description: "Reason for overriding the assigned rheumatic fever diagnosis"
+Context: Condition
+* value[x] only string

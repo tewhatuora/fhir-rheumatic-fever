@@ -21,6 +21,7 @@ Id: nz-rheumaticfever-condition
 * onsetDateTime ^short = "The date (UTC dateTime) when rheumatic fever was thought to have begun"
 
 * recorder only Reference(Practitioner)
+* asserter only Reference(Practitioner)
 
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "use"
@@ -82,6 +83,12 @@ Id: nz-rheumaticfever-condition
   RfConditionAssessmentDateExtension named assessmentDate 0..1
     and
   RfConditionSymptomaticAtDiagnosisExtension named symptomStatusAtDiagnosis 0..1
+    and
+  rf-condition-assertiondate named assertionDate 0..1
+    and
+  rf-diagnosis-overridden named diagnosisOverridden 0..1
+    and
+  rf-diagnosis-override-reason named diagnosisOverrideReason 0..1
 
 * extension[assessmentDate] ^short = "date (dateTime value in UTC timezone) of RHD severity assessment"
 * extension[diagnosticCertainty] ^short = "**This certainty code MUST be interpreted in conjunction with the patient's diagnosis in the .code element**"
