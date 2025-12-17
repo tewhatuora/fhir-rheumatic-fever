@@ -211,9 +211,13 @@ groups:
     - PatientWhanauGoalsPreferencesQuestionnaire
     - SecondaryProphylaxisHealthAssessmentQuestionnaire
     - OralSecondaryProphylaxisHealthAssessmentQuestionnaire
+    - AmoxicillinMedication
     - BenzathineMedication
     - BenzetacilMedication
+    - ErythromycinMedication
     - LentocillinMedication
+    - PenicillinMedication
+    - RoxithromycinMedication
     - TardocillinMedication
 
 
