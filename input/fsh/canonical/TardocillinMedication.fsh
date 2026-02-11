@@ -12,4 +12,4 @@ Usage: #definition
 * identifier[=].period.start = "2025-09-05"
 
 * code insert NZMTMedicationCoding(50320661000117106,[[Tardocillin 1200 injection: suspension, 1 x 4 mL vial]])
-* ingredient.itemCodeableConcept insert NZMTMedicationCoding(48123881000116100,[[benzathine penicillin (as benzathine benzylpenicillin tetrahydrate) + lidocaine]])
+* ingredient.itemCodeableConcept insert NZMTMedicationCoding(10134211000116105,[[benzathine penicillin (as benzathine benzylpenicillin tetrahydrate)]])
